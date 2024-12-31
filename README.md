@@ -72,8 +72,10 @@ ALLOWED_HOSTS= <'domain, domain, domain, ect...'>  # default '*'
 
 ```
 
-
-
+## Install Tailwind CSS and FlyonUI
+```npm
+npm install
+```
 
 ## Run migrations
 
