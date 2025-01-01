@@ -1,26 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="container mx-auto flex flex-col items-center">
-    <h1 class="mb-4 mt-10 text-6xl font-bold text-blue-500 dark:text-blue-200" >
-      Chat Bubble
-    </h1>
 
-   <div class="chat chat-receiver">
-  <div class="chat-avatar avatar">
-    <div class="size-10 rounded-full">
-      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar" />
-    </div>
-  </div>
-  <div class="chat-bubble">I finally finished the marathon!</div>
-</div>
-<div class="chat chat-sender">
-  <div class="chat-avatar avatar">
-    <div class="size-10 rounded-full">
-      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-2.png" alt="avatar" />
-    </div>
-  </div>
-  <div class="chat-bubble">Wow, that's incredible! I'm so proud of you!</div>
-</div>
-  </section>
+{% include "components/hero/hero.html" %}
+
 {% endblock content %}

@@ -77,6 +77,11 @@ ALLOWED_HOSTS= <'domain, domain, domain, ect...'>  # default '*'
 npm install
 ```
 
+## Run Tailwind CSS
+```npm
+npm run watch:css
+```
+
 ## Run migrations
 
 ```python

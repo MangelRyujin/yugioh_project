@@ -1,23 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" data-theme="ligth">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
 </head>
 
-<body >
-    <nav class="navbar bg-base-100 rounded-box shadow px-2">
-        <div class="flex flex-1 items-center">
-          <a class="link text-base-content/90 link-neutral text-xl font-semibold no-underline" href="#">
-            FlyonUI
+<body class="relative  ">
+  <div class="absolute " >
+    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
+  </div>
+  
+ 
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/50 flex justify-between rounded-box shadow px-3 z-50 ">
+        <div class="flex  items-center">
+          <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            Rem<span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-bg-warning to-purple-500">iux</span>
           </a>
         </div>
-        <div class="navbar-end flex items-center gap-4">
-          <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end] ">
+        <div class="navbar-center  flex  items-center gap-4">
+          <div class="dropdown relative inline-flex gap-2 [--auto-close:inside] [--offset:8] [--placement:bottom-end] ">
            
                 <label class="swap swap-rotate ">
                     <input type="checkbox" value="dark" class="theme-controller" />
@@ -26,17 +32,17 @@
                   </label>
            
             
-            <button id="dropdown-scrollable" type="button" class="mx-1 dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+            <button id="dropdown-scrollable" type="button" class=" dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
               <div class="indicator">
                 <span class="indicator-item bg-error size-2 rounded-full"></span>
                 <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
               </div>
             </button>
-            <div class="dropdown-menu dropdown-open:opacity-100 hidden" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
+            <div class="dropdown-menu z-50 dropdown-open:opacity-100 hidden" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
               <div class="dropdown-header justify-center">
                 <h6 class="text-base-content/90 text-base">Notifications</h6>
               </div>
-              <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 overflow-auto max-md:max-w-60">
+              <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 overflow-auto max-md:max-w-64 ">
                 <div class="dropdown-item">
                   <div class="avatar away-bottom">
                     <div class="w-10 rounded-full">
@@ -163,7 +169,7 @@
               </ul>
             </div>
             {% else %}
-            <a class="btn max:btn-square btn-primary mx-1 " href="/admin">
+            <a class="btn btn-gradient btn-primary waves waves-light  " href="/admin">
               <span class="">Iniciar</span>
               <span class="icon-[tabler--arrow-right] "></span>
             </a>
@@ -173,9 +179,11 @@
           
         </div>
       </nav>
-      
-    {% block content %}{% endblock content %}
-    <footer class="footer bg-base-200/60 px-6 py-4">
+    <main class="container mx-auto px-3 mt-10">
+      {% block content %}{% endblock content %}
+    </main>
+    
+    <footer class="footer bg-base-200/60 px-4 py-4">
       <div class="flex w-full flex-wrap items-center justify-between">
         <div class="flex items-center gap-2 text-xl font-bold">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path
@@ -205,6 +213,27 @@
     </footer>
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+     <script>
+      window.addEventListener('load', function () {
+        const animationButtons = document.querySelectorAll('.animation-button')
+        const box = document.getElementById('animated-box')
+    
+        animationButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const animationClass = button.value
+    
+            // Remove all existing motion- classes
+            const currentClasses = Array.from(box.classList)
+            const motionClasses = currentClasses.filter(className => className.startsWith('motion-'))
+            motionClasses.forEach(className => box.classList.remove(className))
+    
+            // Temporarily remove the animation class to re-trigger it
+            void box.offsetWidth // Trigger reflow to allow re-adding the class
+            box.classList.add(animationClass, 'motion-duration-1000')
+          })
+        })
+      })
+    </script>
 </body>
 </html>
