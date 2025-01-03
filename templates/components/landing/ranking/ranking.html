@@ -1,0 +1,39 @@
+{% load static %}
+
+    <div class="max-w-screen-xl   py-12 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+        <!-- Row -->
+        
+        <div class="items-center   gap-8  lg:grid lg:grid-cols-2 xl:gap-16 ">
+            <div class=" sm:text-lg   ">
+                <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-center lg:text-left">Ranking</h2>
+                <p class="mb-8 text-gray-500 font-light lg:text-xl">Ganece el puesto del mejor duelista y participe en el  ranking de la <span class="bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-500 via-purple-500 to-indigo-500
+            animate-text text-xl font-bold text-nowrap">Facción</span> a la cual perteneces o en los eventos de <span class="bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-500 via-purple-500 to-indigo-500
+            animate-text text-xl font-bold text-nowrap">Duelo de dioses</span>.</p>
+                <!-- List -->
+                <div class="w-full">
+                    <nav class="tabs flex-col items-start gap-2 space-y-1" aria-label="Tabs" role="tablist" data-tabs-vertical="true" aria-orientation="horizontal" >
+                        <button type="button" class="btn btn-gradient  active-tab:bg-error active-tab:text-error hover:btn-error active w-full" id="tabs-pill-vertical-item-1" data-tab="#tabs-pill-vertical-1" aria-controls="tabs-pill-vertical-1" role="tab" aria-selected="true" >
+                          Facción Slifer
+                        </button>
+                        <button type="button" class="btn btn-gradient  active-tab:bg-accent active-tab:text-accent  hover:btn-accent w-full" id="tabs-pill-vertical-item-2" data-tab="#tabs-pill-vertical-2" aria-controls="tabs-pill-vertical-2" role="tab" aria-selected="false" >
+                            Facción Obelis
+                        </button>
+                        <button type="button" class="btn btn-gradient  active-tab:bg-warning active-tab:text-warning  hover:btn-warning w-full" id="tabs-pill-vertical-item-3" data-tab="#tabs-pill-vertical-3" aria-controls="tabs-pill-vertical-3" role="tab" aria-selected="false" >
+                            Facción Ra
+                        </button>
+                        <button type="button" class="btn btn-gradient  active-tab:bg-primary active-tab:text-primary  hover:text-white hover:btn-primary w-full" id="tabs-pill-vertical-item-4" data-tab="#tabs-pill-vertical-4" aria-controls="tabs-pill-vertical-4" role="tab" aria-selected="false" >
+                            Duelo de dioses
+                        </button>
+                      </nav>
+                  </div>
+                
+            </div>
+           
+                {% include "components/landing/ranking/data.html" %}
+        
+        </div>
+        
+       
+    </div>
