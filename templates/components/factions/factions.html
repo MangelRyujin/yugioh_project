@@ -1,0 +1,24 @@
+{% load static %}
+
+    <div class="max-w-screen-xl   py-12 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+        <!-- Row -->
+        
+        <div class="items-center   gap-8   ">
+            <div class=" sm:text-lg   ">
+                <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-center lg:text-left">Facciones disponibles</h2>
+                <p class="mb-8 text-gray-500 font-light lg:text-xl">Existen 3 facciones disponibles para los jugadores, existiran rankings dentro de la misma faccion y competiciones entre ellas llamada 
+                    <span class="bg-gradient-to-r bg-clip-text  text-transparent 
+                    from-indigo-500 via-purple-500 to-indigo-500
+                    animate-text text-xl font-bold text-nowrap">Duelo de dioses</span>  
+                    con el objetivo de competir entre las facciones y definir a los mejores jugadores del juego.</p>
+                        <!-- List -->
+                
+                
+            </div>
+            {% include "components/factions/cards.html" %}
+           
+                
+        
+        </div>
+       
+    </div>

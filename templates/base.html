@@ -1,25 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
 <body class="relative  ">
-  <div class="absolute " >
+  <div class="absolute z-50" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
   </div>
   
  
-    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/50 flex justify-between rounded-box shadow px-3 z-50 ">
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-3 z-50 ">
         <div class="flex  items-center">
-          <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            Rem<span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-bg-warning to-purple-500">iux</span>
+          <a class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-400 via-purple-500 to-indigo-700
+            animate-text text-nowrap no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            Remiux
           </a>
         </div>
         <div class="navbar-center  flex  items-center gap-4">
@@ -27,17 +31,21 @@
            
                 <label class="swap swap-rotate ">
                     <input type="checkbox" value="dark" class="theme-controller" />
-                    <span class="swap-off icon-[tabler--sun] size-7"></span>
-                    <span class="swap-on icon-[tabler--moon] size-7 "></span>
+                    <span class="swap-off icon-[tabler--sun] size-[1.375rem]"></span>
+                    <span class="swap-on icon-[tabler--moon] size-[1.375rem] "></span>
                   </label>
            
-            
+                  
             <button id="dropdown-scrollable" type="button" class=" dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
               <div class="indicator">
-                <span class="indicator-item bg-error size-2 rounded-full"></span>
+                
+                <span class="indicator-item bg-error size-3 rounded-full flex justify-center">
+                  <span class="bg-error absolute size-full animate-ping rounded-full opacity-75"></span>
+                </span>
                 <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
               </div>
             </button>
+          
             <div class="dropdown-menu z-50 dropdown-open:opacity-100 hidden" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
               <div class="dropdown-header justify-center">
                 <h6 class="text-base-content/90 text-base">Notifications</h6>
@@ -179,11 +187,11 @@
           
         </div>
       </nav>
-    <main class="container mx-auto px-3 mt-10">
+    <main class="container mx-auto px-3 mt-3 md:mt-8 ">
       {% block content %}{% endblock content %}
     </main>
     
-    <footer class="footer bg-base-200/60 px-4 py-4">
+    <footer class="footer bg-base-200/60 px-4 py-4 mt-10">
       <div class="flex w-full flex-wrap items-center justify-between">
         <div class="flex items-center gap-2 text-xl font-bold">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path
@@ -213,6 +221,7 @@
     </footer>
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
      <script>
       window.addEventListener('load', function () {
@@ -234,6 +243,11 @@
           })
         })
       })
+    </script>
+    <script>
+      AOS.init({
+        once: true,
+      });
     </script>
 </body>
 </html>
