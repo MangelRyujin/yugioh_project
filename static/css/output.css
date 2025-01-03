@@ -8113,6 +8113,11 @@ textarea:focus-visible {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
 }
 
 @media (min-width: 1280px) {
