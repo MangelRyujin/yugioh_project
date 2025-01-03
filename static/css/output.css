@@ -635,10 +635,6 @@ html {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3H4a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6M9 17v1a3 3 0 0 0 6 0v-1'/%3E%3C/svg%3E");
 }
 
-.icon-\[tabler--brand-amazon\] {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 12.5a15.198 15.198 0 0 1-7.37 1.44A14.62 14.62 0 0 1 3 11m16.5 4c.907-1.411 1.451-3.323 1.5-5c-1.197-.773-2.577-.935-4-1'/%3E%3C/svg%3E");
-}
-
 .icon-\[tabler--brand-facebook\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2z'/%3E%3C/svg%3E");
 }
@@ -649,18 +645,6 @@ html {
 
 .icon-\[tabler--brand-google\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.945 11a9 9 0 1 1-3.284-5.997l-2.655 2.392A5.5 5.5 0 1 0 17.125 14H13v-3z'/%3E%3C/svg%3E");
-}
-
-.icon-\[tabler--brand-netflix\] {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 3l10 18h-4L5 3zM5 3v18h4V10.5M19 21V3h-4v10.5'/%3E%3C/svg%3E");
-}
-
-.icon-\[tabler--brand-uber\] {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0'/%3E%3Cpath d='M9 10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm-6 2h6'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-.icon-\[tabler--brand-whatsapp\] {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z'/%3E%3Cpath d='M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0za5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .icon-\[tabler--brand-x\] {
@@ -1589,15 +1573,6 @@ html {
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
 }
 
-.chat {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .checkbox {
   flex-shrink: 0;
   --chkbg: var(--fallback-n,oklch(var(--n)/1));
@@ -2512,13 +2487,6 @@ select.is-invalid + .advance-select-toggle:focus,
   color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
 }
 
-.badge-success {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity, 1)));
-}
-
 .badge-warning {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity, 1)));
@@ -2588,11 +2556,6 @@ select.is-invalid + .advance-select-toggle:focus,
 .badge-outline.badge-accent {
   --tw-text-opacity: 1;
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-.badge-outline.badge-success {
-  --tw-text-opacity: 1;
-  color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity, 1)));
 }
 
 .badge-outline.badge-warning {
@@ -5823,14 +5786,6 @@ textarea:focus-visible {
   height: 320px;
 }
 
-.badge-xs {
-  height: 1rem;
-  padding-left: 0.375rem;
-  padding-right: 0.375rem;
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .btn-sm {
   height: 1.875rem;
   min-height: 1.875rem;
@@ -6246,14 +6201,6 @@ textarea:focus-visible {
   animation: var(--motion-all-loop-and-enter-animations);
 }
 
-.motion-preset-slide-left {
-  --motion-origin-translate-x: 25%;
-  --motion-origin-opacity: 0;
-  --motion-opacity-in-animation: motion-opacity-in calc(var(--motion-opacity-duration) * var(--motion-opacity-perceptual-duration-multiplier)) var(--motion-opacity-timing) var(--motion-opacity-delay) both;
-  --motion-translate-in-animation: motion-translate-in calc(var(--motion-translate-duration) * var(--motion-translate-perceptual-duration-multiplier)) var(--motion-translate-timing) var(--motion-translate-delay) both;
-  animation: var(--motion-all-loop-and-enter-animations);
-}
-
 @keyframes RomboConfettiPop {
   0% {
     opacity: 0;
@@ -6432,10 +6379,6 @@ textarea:focus-visible {
   margin-inline-start: 0.5rem;
 }
 
-.ms-3 {
-  margin-inline-start: 0.75rem;
-}
-
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -6528,11 +6471,6 @@ textarea:focus-visible {
   height: 100%;
 }
 
-.size-6 {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .\!h-2\.5 {
   height: 0.625rem !important;
 }
@@ -6577,10 +6515,6 @@ textarea:focus-visible {
   width: 100%;
 }
 
-.w-96 {
-  width: 24rem;
-}
-
 .min-w-28 {
   min-width: 7rem;
 }
@@ -6615,10 +6549,6 @@ textarea:focus-visible {
 
 .grow {
   flex-grow: 1;
-}
-
-.origin-top {
-  transform-origin: top;
 }
 
 .transform {
@@ -6763,6 +6693,12 @@ textarea:focus-visible {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse));
+}
+
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -6779,12 +6715,6 @@ textarea:focus-visible {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse));
 }
 
 .self-center {
@@ -6936,10 +6866,6 @@ textarea:focus-visible {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.bg-error\/20 {
-  background-color: var(--fallback-er,oklch(var(--er)/0.2));
-}
-
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -7032,16 +6958,16 @@ textarea:focus-visible {
   padding: 0.125rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .\!px-2 {
@@ -7052,6 +6978,11 @@ textarea:focus-visible {
 .\!px-2\.5 {
   padding-left: 0.625rem !important;
   padding-right: 0.625rem !important;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-3 {
@@ -7074,19 +7005,14 @@ textarea:focus-visible {
   padding-bottom: 0.5rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-8 {
@@ -7116,11 +7042,6 @@ textarea:focus-visible {
 .\!text-sm {
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-3xl {
@@ -7156,6 +7077,11 @@ textarea:focus-visible {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .\!font-medium {
@@ -7204,6 +7130,11 @@ textarea:focus-visible {
 
 .tracking-tight {
   letter-spacing: -0.025em;
+}
+
+.text-accent {
+  --tw-text-opacity: 1;
+  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
 }
 
 .text-base-content {
@@ -7265,21 +7196,6 @@ textarea:focus-visible {
 .text-warning {
   --tw-text-opacity: 1;
   color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-}
-
-.text-error-content {
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-}
-
-.text-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-.text-info {
-  --tw-text-opacity: 1;
-  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity, 1)));
 }
 
 .no-underline {
@@ -7359,22 +7275,16 @@ textarea:focus-visible {
   animation: var(--motion-all-loop-and-enter-animations);
 }
 
-.motion-opacity-in-0 {
-  --motion-origin-opacity: 0.001;
-  --motion-opacity-in-animation: motion-opacity-in calc(var(--motion-opacity-duration) * var(--motion-opacity-perceptual-duration-multiplier)) var(--motion-opacity-timing) var(--motion-opacity-delay) both;
-  animation: var(--motion-all-loop-and-enter-animations);
-}
-
 .motion-duration-1000 {
   --motion-duration: 1000ms;
 }
 
-.motion-duration-500 {
-  --motion-duration: 500ms;
-}
-
 .motion-duration-300 {
   --motion-duration: 300ms;
+}
+
+.motion-duration-500 {
+  --motion-duration: 500ms;
 }
 
 .motion-duration-700 {
@@ -7383,47 +7293,6 @@ textarea:focus-visible {
 
 .motion-delay-\[1600ms\] {
   --motion-delay: 1600ms;
-}
-
-.motion-delay-\[1000ms\] {
-  --motion-delay: 1000ms;
-}
-
-.motion-delay-\[1500ms\] {
-  --motion-delay: 1500ms;
-}
-
-.motion-delay-\[500ms\] {
-  --motion-delay: 500ms;
-}
-
-.motion-delay-\[400ms\] {
-  --motion-delay: 400ms;
-}
-
-.motion-delay-\[300ms\] {
-  --motion-delay: 300ms;
-}
-
-.motion-delay-\[600ms\] {
-  --motion-delay: 600ms;
-}
-
-.motion-delay-\[800ms\] {
-  --motion-delay: 800ms;
-}
-
-.motion-ease-spring-bouncier {
-  --motion-timing: var(--motion-spring-bouncier);
-  --motion-perceptual-duration-multiplier: 2.035;
-  --motion-filter-timing: var(--motion-spring-smooth);
-  --motion-opacity-timing: var(--motion-spring-smooth);
-  --motion-background-color-timing: var(--motion-spring-smooth);
-  --motion-text-color-timing: var(--motion-spring-smooth);
-  --motion-filter-perceptual-duration-multiplier: 1.66;
-  --motion-opacity-perceptual-duration-multiplier: 1.66;
-  --motion-background-color-perceptual-duration-multiplier: 1.66;
-  --motion-text-color-perceptual-duration-multiplier: 1.66;
 }
 
 .motion-ease-spring-bouncy {
@@ -7837,588 +7706,6 @@ textarea:focus-visible {
   border-color: transparent;
 }
 
-@supports not (color: oklch(0% 0 0)) {
-  .active-tab\:btn-accent {
-    --btn-color: var(--fallback-a);
-  }
-
-  .active-tab\:btn-warning {
-    --btn-color: var(--fallback-wa);
-  }
-
-  .active-tab\:btn-error {
-    --btn-color: var(--fallback-er);
-  }
-}
-
-@media (hover: hover) {
-  .active-tab\:btn-accent.btn-soft:hover {
-    background-color: var(--fallback-a,oklch(var(--a)/0.3));
-  }
-
-  .active-tab\:btn-warning.btn-soft:hover {
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  }
-
-  .active-tab\:btn-error.btn-soft:hover {
-    background-color: var(--fallback-er,oklch(var(--er)/0.3));
-  }
-
-  .active-tab\:btn-accent.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-a,oklch(var(--a)/0.1));
-  }
-
-  .active-tab\:btn-warning.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-  }
-
-  .active-tab\:btn-error.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-er,oklch(var(--er)/0.1));
-  }
-
-  .active-tab\:btn-accent.btn-text:hover {
-    background-color: var(--fallback-a,oklch(var(--a)/0.1));
-  }
-
-  .active-tab\:btn-warning.btn-text:hover {
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-  }
-
-  .active-tab\:btn-error.btn-text:hover {
-    background-color: var(--fallback-er,oklch(var(--er)/0.1));
-  }
-}
-
-@supports (color: oklch(0% 0 0)) {
-  .active-tab\:btn-accent {
-    --btn-color: var(--a);
-  }
-
-  .active-tab\:btn-warning {
-    --btn-color: var(--wa);
-  }
-
-  .active-tab\:btn-error {
-    --btn-color: var(--er);
-  }
-
-  .active-tab\:btn-accent.btn-gradient {
-    --light-shade: var(--a);
-  }
-
-  .active-tab\:btn-warning.btn-gradient {
-    --light-shade: var(--wa);
-  }
-
-  .active-tab\:btn-error.btn-gradient {
-    --light-shade: var(--er);
-  }
-}
-
-[data-tab].active.active-tab\:btn-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-warning {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-error {
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-soft {
-  background-color: var(--fallback-a,oklch(var(--a)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-a,oklch(var(--a)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-soft:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.3));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-soft {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-soft:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-soft {
-  background-color: var(--fallback-er,oklch(var(--er)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-er,oklch(var(--er)/0.3));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-soft:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.3));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.5));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-outline:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-outline:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-outline:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-text:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-text:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-error.btn-text:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-a,oklch(var(--a)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-a,oklch(var(--a)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-accent.btn-gradient:focus-visible {
-  outline-color: var(--fallback-a,oklch(var(--a)/0.3));
-  border-color: transparent;
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-wa,oklch(var(--wa)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-wa,oklch(var(--wa)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-warning.btn-gradient:focus-visible {
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  border-color: transparent;
-}
-
-[data-tab].active.active-tab\:btn-error.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-er,oklch(var(--er)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-error.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-er,oklch(var(--er)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active.active-tab\:btn-error.btn-gradient:focus-visible {
-  outline-color: var(--fallback-er,oklch(var(--er)/0.3));
-  border-color: transparent;
-}
-
-@supports not (color: oklch(0% 0 0)) {
-  .active-tab\:btn-accent {
-    --btn-color: var(--fallback-a);
-  }
-
-  .active-tab\:btn-warning {
-    --btn-color: var(--fallback-wa);
-  }
-
-  .active-tab\:btn-error {
-    --btn-color: var(--fallback-er);
-  }
-}
-
-@media (hover: hover) {
-  .active-tab\:btn-accent.btn-soft:hover {
-    background-color: var(--fallback-a,oklch(var(--a)/0.3));
-  }
-
-  .active-tab\:btn-warning.btn-soft:hover {
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  }
-
-  .active-tab\:btn-error.btn-soft:hover {
-    background-color: var(--fallback-er,oklch(var(--er)/0.3));
-  }
-
-  .active-tab\:btn-accent.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-a,oklch(var(--a)/0.1));
-  }
-
-  .active-tab\:btn-warning.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-  }
-
-  .active-tab\:btn-error.btn-outline:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-er,oklch(var(--er)/0.1));
-  }
-
-  .active-tab\:btn-accent.btn-text:hover {
-    background-color: var(--fallback-a,oklch(var(--a)/0.1));
-  }
-
-  .active-tab\:btn-warning.btn-text:hover {
-    background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-  }
-
-  .active-tab\:btn-error.btn-text:hover {
-    background-color: var(--fallback-er,oklch(var(--er)/0.1));
-  }
-}
-
-@supports (color: oklch(0% 0 0)) {
-  .active-tab\:btn-accent {
-    --btn-color: var(--a);
-  }
-
-  .active-tab\:btn-warning {
-    --btn-color: var(--wa);
-  }
-
-  .active-tab\:btn-error {
-    --btn-color: var(--er);
-  }
-
-  .active-tab\:btn-accent.btn-gradient {
-    --light-shade: var(--a);
-  }
-
-  .active-tab\:btn-warning.btn-gradient {
-    --light-shade: var(--wa);
-  }
-
-  .active-tab\:btn-error.btn-gradient {
-    --light-shade: var(--er);
-  }
-}
-
-[data-tab].active .active-tab\:btn-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-warning {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-error {
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-soft {
-  background-color: var(--fallback-a,oklch(var(--a)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-a,oklch(var(--a)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-soft:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.3));
-  outline-color: var(--fallback-a,oklch(var(--a)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-soft {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-soft:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-soft {
-  background-color: var(--fallback-er,oklch(var(--er)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-soft.btn-active {
-  background-color: var(--fallback-er,oklch(var(--er)/0.3));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-soft:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.3));
-  outline-color: var(--fallback-er,oklch(var(--er)/0.5));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-outline:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-outline:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-outline {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-outline.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-outline:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-text:focus-visible {
-  background-color: var(--fallback-a,oklch(var(--a)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-text:focus-visible {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-text {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:btn-active.btn-text.btn-active {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-error.btn-text:focus-visible {
-  background-color: var(--fallback-er,oklch(var(--er)/0.1));
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-a,oklch(var(--a)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-a,oklch(var(--a)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-accent.btn-gradient:focus-visible {
-  outline-color: var(--fallback-a,oklch(var(--a)/0.3));
-  border-color: transparent;
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-wa,oklch(var(--wa)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-wa,oklch(var(--wa)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-warning.btn-gradient:focus-visible {
-  outline-color: var(--fallback-wa,oklch(var(--wa)/0.3));
-  border-color: transparent;
-}
-
-[data-tab].active .active-tab\:btn-error.btn-gradient {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-er,oklch(var(--er)/var(--tw-border-opacity, 1)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-  --tw-shadow-color: var(--fallback-er,oklch(var(--er)/0.26));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-error.btn-gradient:hover {
-  --tw-shadow-color: var(--fallback-er,oklch(var(--er)/0.2));
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-[data-tab].active .active-tab\:btn-error.btn-gradient:focus-visible {
-  outline-color: var(--fallback-er,oklch(var(--er)/0.3));
-  border-color: transparent;
-}
-
 .selected .combo-box-selected\:carousel-box.carousel-box {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
@@ -8551,46 +7838,6 @@ textarea:focus-visible {
   --progress-color: var(--fallback-su,oklch(var(--su)/1));
 }
 
-.\*\:rounded-md > * {
-  border-radius: 0.375rem;
-}
-
-.\*\:p-3 > * {
-  padding: 0.75rem;
-}
-
-.\*\:shadow > * {
-  --tw-shadow: 0 2px 4px 0 var(--fallback-bs,oklch(var(--bs)/0.26));
-  --tw-shadow-colored: 0 2px 4px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:bg-primary\/20:hover {
-  background-color: var(--fallback-p,oklch(var(--p)/0.2));
-}
-
-.hover\:bg-accent\/20:hover {
-  background-color: var(--fallback-a,oklch(var(--a)/0.2));
-}
-
-.hover\:bg-error\/20:hover {
-  background-color: var(--fallback-er,oklch(var(--er)/0.2));
-}
-
-.hover\:bg-warning\/20:hover {
-  background-color: var(--fallback-wa,oklch(var(--wa)/0.2));
-}
-
-.hover\:text-primary:hover {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
-}
-
-.hover\:text-error:hover {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
-}
-
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -8648,11 +7895,6 @@ textarea:focus-visible {
   opacity: 1;
 }
 
-[data-tab].active.active-tab\:bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
-}
-
 [data-tab].active.active-tab\:bg-accent {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity, 1)));
@@ -8663,19 +7905,14 @@ textarea:focus-visible {
   background-color: var(--fallback-er,oklch(var(--er)/var(--tw-bg-opacity, 1)));
 }
 
+[data-tab].active.active-tab\:bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
+}
+
 [data-tab].active.active-tab\:bg-warning {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity, 1)));
-}
-
-[data-tab].active.active-tab\:text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-[data-tab].active.active-tab\:text-error {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
 [data-tab].active.active-tab\:text-accent {
@@ -8683,9 +7920,9 @@ textarea:focus-visible {
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
 }
 
-[data-tab].active.active-tab\:text-warning {
+[data-tab].active.active-tab\:text-error {
   --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
+  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
 [data-tab].active.active-tab\:text-primary {
@@ -8693,9 +7930,9 @@ textarea:focus-visible {
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
 }
 
-[data-tab].active .active-tab\:bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
+[data-tab].active.active-tab\:text-warning {
+  --tw-text-opacity: 1;
+  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
 }
 
 [data-tab].active .active-tab\:bg-accent {
@@ -8708,19 +7945,14 @@ textarea:focus-visible {
   background-color: var(--fallback-er,oklch(var(--er)/var(--tw-bg-opacity, 1)));
 }
 
+[data-tab].active .active-tab\:bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
+}
+
 [data-tab].active .active-tab\:bg-warning {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity, 1)));
-}
-
-[data-tab].active .active-tab\:text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-[data-tab].active .active-tab\:text-error {
-  --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
 [data-tab].active .active-tab\:text-accent {
@@ -8728,14 +7960,19 @@ textarea:focus-visible {
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
 }
 
-[data-tab].active .active-tab\:text-warning {
+[data-tab].active .active-tab\:text-error {
   --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
+  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
 [data-tab].active .active-tab\:text-primary {
   --tw-text-opacity: 1;
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
+}
+
+[data-tab].active .active-tab\:text-warning {
+  --tw-text-opacity: 1;
+  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
 }
 
 .selected .combo-box-selected\:block {
@@ -8770,9 +8007,9 @@ textarea:focus-visible {
     padding-right: 1.5rem;
   }
 
-  .sm\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .sm\:text-lg {
@@ -8800,6 +8037,11 @@ textarea:focus-visible {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
@@ -8838,6 +8080,11 @@ textarea:focus-visible {
     margin-bottom: calc(5rem * var(--tw-space-y-reverse));
   }
 
+  .lg\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
   .lg\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -8857,14 +8104,14 @@ textarea:focus-visible {
     text-align: left;
   }
 
-  .lg\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.625rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
