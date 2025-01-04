@@ -33,23 +33,23 @@
 
   }
   
-  .card-2:hover .wrapper-2 {
+  .card-2-anima .wrapper-2 {
     transform: perspective(900px) translateY(10%) rotateX(25deg) translateZ(0)  scale(.7);
     
   }
-  .card-2:hover .slifer{
+  .card-2-anima .slifer{
     box-shadow: 2px 35px 32px -8px rgba(226, 7, 7, 0.836);
     -webkit-box-shadow: 0px 8px 50px -12px rgba(226, 7, 7, 0.836);
     -moz-box-shadow: 2px 3px 32px 1px rgba(226, 7, 7, 0.836);
   }
   
-  .card-2:hover .obelis{
+  .card-2-anima .obelis{
     box-shadow: 2px 35px 32px -8px rgba(8, 67, 206, 0.854);
     -webkit-box-shadow: 0px 8px 50px -12px rgba(8, 67, 206, 0.854);
     -moz-box-shadow: 2px 3px 32px 1px rgba(8, 67, 206, 0.854);
   }
 
-  .card-2:hover .ra{
+  .card-2-anima .ra{
     box-shadow: 2px 35px 32px -8px rgba(218, 169, 5, 0.75);
     -webkit-box-shadow: 0px 8px 50px -12px rgba(218, 169, 5, 0.75);
     -moz-box-shadow: 2px 3px 32px 1px rgba(218, 169, 5, 0.75);
@@ -77,19 +77,19 @@
     
   }
   
-  .card-2:hover .wrapper-2::before,
+  .card-2-anima .wrapper-2::before,
   .wrapper-2::after {
     opacity: 1;
   }
   
-  .card-2:hover .wrapper-2::after {
+  .card-2-anima .wrapper-2::after {
     height: 120px;
   }
   .title {
     width: 100%;
     transition: transform 0.5s;
   }
-  .card-2:hover .title {
+  .card-2-anima .title {
     transform: translate3d(0%, -50px, 100px);
   }
   
@@ -117,7 +117,7 @@
     filter: drop-shadow(0px 6px 6px rgba(29, 75, 241, 0.789));
   }
 
-  .card-2:hover .character-2 {
+  .card-2-anima .character-2 {
     opacity: 1;
     transform: translate3d(0%, -20%, 60px);
   }
