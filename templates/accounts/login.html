@@ -47,10 +47,20 @@
                 <label for="username" class="block text-gray-700">Usuario</label>
                 <input type="text" id="username" name="username" class="text-purple-500 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
+            {% if error %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
             <div class="mb-4">
                 <label for="password" class="block text-gray-700">Contraseña</label>
                 <input type="password" id="password" name="password" class="text-purple-500 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
+            {% if error %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
             <div class="mb-4 text-right">
                 <a href="#" class="font-bold text-indigo-600 link link-primary link-animated">¿Has olvidado tu contraseña?</a>
             </div>

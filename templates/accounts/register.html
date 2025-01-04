@@ -45,11 +45,11 @@
             {% csrf_token %}
             <div class="mb-4">
                 <label for="username" class="block text-gray-700">Nombre de Usuario</label>
-                <input type="text" id="username" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" value="{% if form.username.value %}{{form.username.value}}{% endif %}" id="username" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.username.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+            <div class="mt-2">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.username.errors %}
                             {{ error }}
                         {% endfor %}
@@ -58,11 +58,11 @@
             {% endif %}
             <div class="mb-4">
                 <label for="email" class="block text-gray-700">Correo Electrónico</label>
-                <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="email" value="{% if form.email.value %}{{form.email.value}}{% endif %}" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.email.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+            <div class="mt-2">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.email.errors %}
                             {{ error }}
                         {% endfor %}
@@ -71,11 +71,11 @@
             {% endif %}
             <div class="mb-4">
                 <label for="first_name" class="block text-gray-700">Nombre</label>
-                <input type="text" id="first_name" name="first_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}" id="first_name" name="first_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.first_name.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+            <div class="mt-2">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.first_name.errors %}
                             {{ error }}
                         {% endfor %}
@@ -84,11 +84,11 @@
             {% endif %}
             <div class="mb-4">
                 <label for="last_name" class="block text-gray-700">Apellido</label>
-                <input type="text" id="last_name" name="last_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}" id="last_name" name="last_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.last_name.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+            <div class="mt-2">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.last_name.errors %}
                             {{ error }}
                         {% endfor %}
@@ -100,10 +100,10 @@
                 <input type="password" id="password1" name="password1" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.password1.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+            <div class="mt-2">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.password1.errors %}
-                            {{ error }}
+                            <span class="block sm:inline">{{ error }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -113,10 +113,10 @@
                 <input type="password" id="password2" name="password2" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
             {% if form.password2.errors %}
-                <div class="col-12">
-                    <div class="alert alert-danger mt-2 px-2">
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                         {% for error in form.password2.errors %}
-                            {{ error }}
+                            <span class="block sm:inline">{{ error }}</span>
                         {% endfor %}
                     </div>
                 </div>

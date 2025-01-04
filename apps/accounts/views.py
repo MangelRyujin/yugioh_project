@@ -28,6 +28,5 @@ def register_view(request):
             user = form.save()
             login(request, user)
             return redirect('/')
-        else:
-            print("no")
+            
     return render(request, 'accounts/register.html', {'form': form})
