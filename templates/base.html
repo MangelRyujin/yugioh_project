@@ -13,7 +13,7 @@
 </head>
 
 <body class="relative  ">
-  <div class="absolute  z-50" >
+  <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
   </div>
   
@@ -145,7 +145,7 @@
                   </div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="{% url 'profile' %}">
                     <span class="icon-[tabler--user]"></span>
                     My Profile
                   </a>
@@ -193,14 +193,6 @@
     <main class="container mx-auto px-3 mt-3 md:mt-8 ">
       {% block content %}{% endblock content %}
     </main>
-    <div class="flex items-center gap-1">
-      <input type="checkbox" class="switch switch-primary" id="switchType1" />
-      <label class="label label-text text-base" for="switchType1"> Default </label>
-    </div>
-    <div class="flex items-center gap-1">
-      <input type="checkbox" class="switch switch-primary" id="switchType2" checked />
-      <label class="label label-text text-base" for="switchType2"> Checked </label>
-    </div>
     <footer class="footer bg-base-200/60 px-4 py-4 mt-10">
       
       <div class="flex w-full flex-wrap items-center justify-between">
