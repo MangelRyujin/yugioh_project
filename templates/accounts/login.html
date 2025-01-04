@@ -39,12 +39,6 @@
 <body class="bg-animated flex items-center justify-center h-screen">
     <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-2xl font-bold mb-6 text-center text-white">Iniciar Sesión</h2>
-        <div class="mb-4">
-            <a href="/" class="flex items-center text-indigo-400 hover:text-indigo-600 transition duration-300 ease-in-out">
-                <span class="icon-[tabler--home] size-5 mr-2"></span>
-                <span>Volver a la página de inicio</span>
-            </a>
-        </div>
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <div class="max-w-sm mb-4">
@@ -89,7 +83,9 @@
             {% endif %}
             <div class="mb-4 text-right">
                 <a href="#" class="font-bold text-indigo-400 link link-primary link-animated">¿Has olvidado tu contraseña?</a>
+                <a href="\" class="font-bold text-indigo-400 link link-primary link-animated">Volver a la página de inicio</a>
             </div>
+            
             <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Iniciar Sesión</button>
         </form>
     </div>

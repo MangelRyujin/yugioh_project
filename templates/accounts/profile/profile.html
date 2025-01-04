@@ -22,7 +22,7 @@
 <div id="content-block" class="mt-4 md:ml-64 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="g-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-xl font-semibold mb-4">Detalles Generales</h2>
+            <h2 class="text-xl font-semibold mb-4">Actualizar Datos</h2>
             <form action="{% url 'update_profile' %}" method="POST">
                 {% csrf_token %}
                 <div class="max-w-sm mb-2">
@@ -167,11 +167,20 @@
             </form>
         </div>
         <div class="g-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-xl font-semibold mb-4">Imagen de Perfil</h2>
+            <h2 class="text-xl font-semibold mb-4">Informaciòn de Usuario</h2>
+            
+            <div class="profile-data mb-4 shadow-lg rounded-md p-2">
+                <p><strong>Nombre:</strong> Juan Pérez</p>
+                <p><strong>Email:</strong> juan.perez@example.com</p>
+                <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+            </div>
+            
             <div class="profile-image mb-4 shadow-lg rounded-md p-2">
                 <img src="{% static 'img/blue-eyes-toon.png' %}" alt="Imagen de Perfil" class="w-32 h-32 object-cover rounded-full mx-auto">
             </div>
-            <button type="button" class="btn btn-primary w-full">Actualizar Imagen</button>
+            
+            <button type="button" class="btn btn-primary w-full">Cambiar Avatar</button>
         </div>
     </div>
     <p class="mt-4 text-center">Selecciona una opción del menú para ver el contenido.</p>
