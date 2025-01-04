@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        .bg-animated {
+            background: url('{% static "img/register-back.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            animation: backgroundAnimation 10s infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(0.8); }
+            100% { filter: brightness(1); }
+        }
+    </style>
+</head>
+<body class="bg-animated flex items-center justify-center h-screen">
+    <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r bg-clip-text text-transparent 
+                    from-indigo-500 via-purple-500 to-indigo-500
+                    animate-text text-nowrap">Registro de Usuario</h2>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Nombre de Usuario</label>
+                <input type="text" id="username" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.username.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.email.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label for="first_name" class="block text-gray-700">Nombre</label>
+                <input type="text" id="first_name" name="first_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.first_name.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.first_name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label for="last_name" class="block text-gray-700">Apellido</label>
+                <input type="text" id="last_name" name="last_name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.last_name.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.last_name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label for="password1" class="block text-gray-700">Contraseña</label>
+                <input type="password" id="password1" name="password1" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.password1.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.password1.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mb-4">
+                <label for="password2" class="block text-gray-700">Confirmar Contraseña</label>
+                <input type="password" id="password2" name="password2" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            {% if form.password2.errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger mt-2 px-2">
+                        {% for error in form.password2.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Registrarse</button>
+        </form>
+    </div>
+</body>
+</html>

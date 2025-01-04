@@ -190,7 +190,14 @@
     <main class="container mx-auto px-3 mt-3 md:mt-8 ">
       {% block content %}{% endblock content %}
     </main>
-    
+    <div class="flex items-center gap-1">
+      <input type="checkbox" class="switch switch-primary" id="switchType1" />
+      <label class="label label-text text-base" for="switchType1"> Default </label>
+    </div>
+    <div class="flex items-center gap-1">
+      <input type="checkbox" class="switch switch-primary" id="switchType2" checked />
+      <label class="label label-text text-base" for="switchType2"> Checked </label>
+    </div>
     <footer class="footer bg-base-200/60 px-4 py-4 mt-10">
       
       <div class="flex w-full flex-wrap items-center justify-between">
