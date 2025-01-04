@@ -169,16 +169,19 @@
                   </a>
                 </li>
                 <li class="dropdown-footer gap-2">
-                  <a class="btn btn-error btn-soft btn-block" href="#">
-                    <span class="icon-[tabler--logout]"></span>
-                    Sign out
-                  </a>
+                    <form action="{% url 'logout' %}" method="post" class="w-full">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-error btn-soft btn-block">
+                        <span class="icon-[tabler--logout]"></span>
+                        Sign out
+                      </button>
+                    </form>
                 </li>
               </ul>
             </div>
             {% else %}
-            <a class="btn btn-gradient btn-primary waves waves-light  " href="/">
-              <span class="text-lg">Unirse</span>
+            <a class="btn btn-gradient btn-primary waves waves-light " href="{% url 'login' %}">
+              <span class="text-lg">Log in</span>
               
             </a>
            

@@ -29,6 +29,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 LIST_ALLOWED_HOSTS = config('ALLOWED_HOSTS',default='*')
 ALLOWED_HOSTS = LIST_ALLOWED_HOSTS.split(",")
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [
