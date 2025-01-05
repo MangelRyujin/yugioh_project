@@ -12,7 +12,8 @@
         .bg-animated {
             background: url('{% static "img/register-back.jpg" %}') no-repeat center center fixed;
             background-size: cover;
-            animation: backgroundAnimation 10s infinite alternate;
+            
+            {% comment %} animation: backgroundAnimation 10s infinite alternate; {% endcomment %}
             position: relative;
             z-index: 1;
         }
@@ -37,18 +38,25 @@
     </style>
 </head>
 <body class="bg-animated flex items-center justify-center h-screen">
-    <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center text-white">Registro de Usuario</h2>
-        <form action="{% url 'register' %}" method="POST">
+    <div class="container px-3">
+    <div class="bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg  max-w-md mx-auto ">
+      <a href="{% url "index" %}" class="btn btn-square btn-gradient btn-primary ">
+        <span class="icon-[tabler--arrow-back-up] size-6"></span>
+      </a>
+        
+        <h1 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-400 via-purple-500 to-indigo-700
+            animate-text">Registro de Usuario</h1>
+        <form action="{% url 'register' %}" method="POST" class="grid justify-center grid-cols-1">
             {% csrf_token %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                   <span class="input-group-text">
-                    <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                    <span class="icon-[tabler--user] text-primary  size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="username" value="{% if form.username.value %}{{form.username.value}}{% endif %}" placeholder="testuser" class="input input-filled peer"/>
-                    <label class="input-filled-label" for="leadingIconFilled" >Usuario</label>
+                    <input type="text" name="username" value="{% if form.username.value %}{{form.username.value}}{% endif %}" placeholder="testuser" class="input input-filled peer text-white"/>
+                    <label class="input-filled-label text-primary" for="leadingIconFilled" >Usuario</label>
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
@@ -62,14 +70,14 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                   <span class="input-group-text">
-                    <span class="icon-[tabler--mail] text-base-content/80 size-6"></span>
+                    <span class="icon-[tabler--mail] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="email" name="email" value="{% if form.email.value %}{{form.email.value}}{% endif %}" placeholder="example@example.com" class="input input-filled peer"/>
-                    <label class="input-filled-label" for="emailInput">Correo Electrónico</label>
+                    <input type="email" name="email" value="{% if form.email.value %}{{form.email.value}}{% endif %}" placeholder="example@example.com" class="input input-filled peer text-white"/>
+                    <label class="input-filled-label text-primary" for="emailInput">Correo Electrónico</label>
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
@@ -83,14 +91,14 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                   <span class="input-group-text">
-                    <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                    <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="first_name" value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}" placeholder="Juan" class="input input-filled peer"/>
-                    <label class="input-filled-label" for="leadingIconFilled" >Nombre</label>
+                    <input type="text" name="first_name" value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}" placeholder="Juan" class="input input-filled peer text-white"/>
+                    <label class="input-filled-label text-primary" for="leadingIconFilled" >Nombre</label>
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
@@ -104,14 +112,14 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                   <span class="input-group-text">
-                    <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                    <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="last_name" value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}" placeholder="Pérez" class="input input-filled peer"/>
-                    <label class="input-filled-label" for="leadingIconFilled" >Apellido</label>
+                    <input type="text" name="last_name" value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}" placeholder="Pérez" class="input input-filled peer text-white"/>
+                    <label class="input-filled-label text-primary" for="leadingIconFilled" >Apellido</label>
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
@@ -125,19 +133,19 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                     <span class="input-group-text">
-                        <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
+                        <span class="icon-[tabler--lock] text-primary size-6"></span>
                       </span>
                   <div class="relative w-full">
-                    <input type="password" name="password1" id="toggle-password-filled1" class="input input-filled peer" placeholder="Ingresa la contraseña"/>
-                    <label class="input-filled-label" for="toggle-password-filled1">Contraseña</label>
+                    <input type="password" name="password1" id="toggle-password-filled1" class="input input-filled peer text-white" placeholder="Ingresa la contraseña"/>
+                    <label class="input-filled-label text-primary" for="toggle-password-filled1">Contraseña</label>
                   </div>
                   <span class="input-group-text">
                     <button type="button" data-toggle-password='{ "target": "#toggle-password-filled1" }' class="block" aria-label="password toggle">
-                      <span class="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 flex-shrink-0"></span>
-                      <span class="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 flex-shrink-0"></span>
+                      <span class="icon-[tabler--eye] text-primary password-active:block hidden size-5 flex-shrink-0"></span>
+                      <span class="icon-[tabler--eye-off] text-primary password-active:hidden block size-5 flex-shrink-0"></span>
                     </button>
                   </span>
                 </div>
@@ -152,19 +160,19 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="max-w-sm mb-2">
+            <div class="flex-colum justify-center mb-2">
                 <div class="input-group-filled">
                     <span class="input-group-text">
-                        <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
+                        <span class="icon-[tabler--lock] text-primary size-6"></span>
                       </span>
                   <div class="relative w-full">
-                    <input type="password" name="password2" id="toggle-password-filled2" class="input input-filled peer" placeholder="Confirma la contraseña"/>
-                    <label class="input-filled-label" for="toggle-password-filled2">Confirma la contraseña</label>
+                    <input type="password" name="password2" id="toggle-password-filled2" class="input input-filled peer text-white" placeholder="Confirma la contraseña"/>
+                    <label class="input-filled-label text-primary" for="toggle-password-filled2">Confirma la contraseña</label>
                   </div>
                   <span class="input-group-text">
                     <button type="button" data-toggle-password='{ "target": "#toggle-password-filled2" }' class="block" aria-label="password toggle">
-                      <span class="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 flex-shrink-0"></span>
-                      <span class="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 flex-shrink-0"></span>
+                      <span class="icon-[tabler--eye] text-primary password-active:block hidden size-5 flex-shrink-0"></span>
+                      <span class="icon-[tabler--eye-off] text-primary password-active:hidden block size-5 flex-shrink-0"></span>
                     </button>
                   </span>
                 </div>
@@ -179,12 +187,14 @@
                     </div>
                 </div>
             {% endif %}
+            
             <div class="mb-4 text-right">
-                <a href="\" class="font-bold text-indigo-400 link link-primary link-animated">Volver a la página de inicio</a>
-            </div>
+              <a href="{% url "login" %}" class="font-bold  link text-white link-animated">Ya tengo cuenta? <span class="text-primary">Login</span> </a>
+          </div>
             <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Registrarse</button>
         </form>
     </div>
+  </div>
     <script src="{% static 'js/flyonui.js' %}"></script>
 </body>
 </html>
