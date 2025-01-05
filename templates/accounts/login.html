@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        .bg-animated {
+            background: url('{% static "img/login-back.png" %}') no-repeat center center fixed;
+            background-size: cover;
+            animation: backgroundAnimation 10s infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(0.8); }
+            100% { filter: brightness(1); }
+        }
+    </style>
+</head>
+<body class="bg-animated flex items-center justify-center h-screen">
+    <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center text-white">Iniciar Sesión</h2>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="max-w-sm mb-4">
+                <div class="input-group-filled">
+                  <span class="input-group-text">
+                    <span class="icon-[tabler--user] text-base-content/80 size-6 text-gray-300"></span>
+                  </span>
+                  <div class="relative grow">
+                    <input type="text" name="username" placeholder="John Doe" class="input input-filled peer text-gray-300 bg-gray-700 border-gray-600" id="leadingIconFilled" />
+                    <label class="input-filled-label text-gray-300" for="leadingIconFilled">Nombre de Usuario</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+            {% if error %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <div class="max-w-sm mb-4">
+                <div class="input-group-filled">
+                    <span class="input-group-text">
+                        <span class="icon-[tabler--lock] text-base-content/80 size-6 text-gray-300"></span>
+                      </span>
+                  <div class="relative w-full">
+                    <input type="password" name="password" id="toggle-password-filled" class="input input-filled peer text-gray-300 bg-gray-700 border-gray-600" placeholder="Enter password"/>
+                    <label class="input-filled-label text-gray-300" for="toggle-password-filled">Contraseña</label>
+                  </div>
+                  <span class="input-group-text text-gray-300">
+                    <button type="button" data-toggle-password='{ "target": "#toggle-password-filled" }' class="block" aria-label="password toggle">
+                      <span class="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 flex-shrink-0 text-gray-300"></span>
+                      <span class="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 flex-shrink-0 text-gray-300"></span>
+                    </button>
+                  </span>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+            {% if error %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <div class="mb-4 text-right">
+                <a href="#" class="font-bold text-indigo-400 link link-primary link-animated">¿Has olvidado tu contraseña?</a>
+                <a href="\" class="font-bold text-indigo-400 link link-primary link-animated">Volver a la página de inicio</a>
+            </div>
+            
+            <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Iniciar Sesión</button>
+        </form>
+    </div>
+    <script src="{% static 'js/flyonui.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+</body>
+</html>

@@ -29,6 +29,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 LIST_ALLOWED_HOSTS = config('ALLOWED_HOSTS',default='*')
 ALLOWED_HOSTS = LIST_ALLOWED_HOSTS.split(",")
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # LOCAL APPS
-    'apps.general'
+    'apps.general',
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +153,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
+
+# User Model
+AUTH_USER_MODEL = 'accounts.User'

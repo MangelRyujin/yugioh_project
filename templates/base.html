@@ -13,7 +13,7 @@
 </head>
 
 <body class="relative  ">
-  <div class="absolute  z-50" >
+  <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
   </div>
   
@@ -145,7 +145,7 @@
                   </div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="{% url 'profile' %}">
                     <span class="icon-[tabler--user]"></span>
                     My Profile
                   </a>
@@ -169,16 +169,19 @@
                   </a>
                 </li>
                 <li class="dropdown-footer gap-2">
-                  <a class="btn btn-error btn-soft btn-block" href="#">
-                    <span class="icon-[tabler--logout]"></span>
-                    Sign out
-                  </a>
+                    <form action="{% url 'logout' %}" method="post" class="w-full">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-error btn-soft btn-block">
+                        <span class="icon-[tabler--logout]"></span>
+                        Sign out
+                      </button>
+                    </form>
                 </li>
               </ul>
             </div>
             {% else %}
-            <a class="btn btn-gradient btn-primary waves waves-light  " href="/">
-              <span class="text-lg">Unirse</span>
+            <a class="btn btn-gradient btn-primary waves waves-light " href="{% url 'login' %}">
+              <span class="text-lg">Log in</span>
               
             </a>
            
@@ -190,7 +193,6 @@
     <main class="container mx-auto px-3 mt-3 md:mt-8 ">
       {% block content %}{% endblock content %}
     </main>
-    
     <footer class="footer bg-base-200/60 px-4 py-4 mt-10">
       
       <div class="flex w-full flex-wrap items-center justify-between">
