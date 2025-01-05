@@ -21,17 +21,111 @@
 
 <div id="content-block" class="mt-4 md:ml-64 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="g-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
+
+        <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full">
+            <h2 class="text-xl font-semibold mb-4">Informaciòn de Usuario</h2>
+            
+            
+
+            <div class"profile-data mb-4 shadow-lg rounded-md p-2">
+                <div class="vertical-scrollbar shadow max-h-96 w-full p-4">
+
+                    <div class="profile-image mb-10 shadow-lg rounded-full p-2 relative w-40 h-50 mx-auto">
+                        <img src="{% static 'img/blue-eyes-toon.png' %}" alt="Imagen de Perfil" class="w-full h-full object-cover rounded-full">
+                        <button class="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 bg-blue-500 text-white rounded-full p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-center lg:text-left">General</h2>
+                    <div class="divider divider-primary"></div>
+
+                    <div class="profile-data mb-4 shadow-lg rounded-md p-2">
+                        <p><strong>Nombre:</strong> Juan Pérez</p>
+                        <p><strong>Email:</strong> juan.perez@example.com</p>
+                        <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                    </div> 
+                    
+                    <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-center lg:text-left">Estadisticas</h2>
+                    <div class="divider divider-primary"></div>
+                    
+                    <div class="w-full">
+                        <ul class="border-base-content/25 divide-base-content/25 :last*:rounded-b-md divide-y rounded-md border *:p-3 first:*:rounded-t-md" >
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-info text-info-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-tailwind] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">Bootstrap is an open source toolkit</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-info w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-success text-success-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-vue] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">Vue.js is the Progressive JavaScript Framework</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-success w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-error text-error-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-angular] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2 text-ellipsis">Angular implements Functional Programming concepts</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-error w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-primary text-primary-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-react] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">React version update</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-primary w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg">
             <h2 class="text-xl font-semibold mb-4">Actualizar Datos</h2>
             <form action="{% url 'update_profile' %}" method="POST">
                 {% csrf_token %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                       <span class="input-group-text">
                         <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
                       </span>
-                      <div class="relative grow">
-                        <input type="text" name="username" value="{{ user.username }}" placeholder="testuser" class="input input-filled peer"/>
+                      <div class="relative grow w-full">
+                        <input type="text" name="username" value="{{ user.username }}" placeholder="testuser" class="input input-filled peer w-full"/>
                         <label class="input-filled-label" for="leadingIconFilled" >Usuario</label>
                       </div>
                     </div>
@@ -46,13 +140,13 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                       <span class="input-group-text">
                         <span class="icon-[tabler--mail] text-base-content/80 size-6"></span>
                       </span>
-                      <div class="relative grow">
-                        <input type="email" name="email" value="{{ user.email }}" placeholder="example@example.com" class="input input-filled peer"/>
+                      <div class="relative grow w-full">
+                        <input type="email" name="email" value="{{ user.email }}" placeholder="example@example.com" class="input input-filled peer w-full"/>
                         <label class="input-filled-label" for="emailInput">Correo Electrónico</label>
                       </div>
                     </div>
@@ -67,13 +161,13 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                       <span class="input-group-text">
                         <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
                       </span>
-                      <div class="relative grow">
-                        <input type="text" name="first_name" value="{{ user.first_name }}" placeholder="Juan" class="input input-filled peer"/>
+                      <div class="relative grow w-full">
+                        <input type="text" name="first_name" value="{{ user.first_name }}" placeholder="Juan" class="input input-filled peer w-full"/>
                         <label class="input-filled-label" for="leadingIconFilled" >Nombre</label>
                       </div>
                     </div>
@@ -88,13 +182,13 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                       <span class="input-group-text">
                         <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
                       </span>
-                      <div class="relative grow">
-                        <input type="text" name="last_name" value="{{ user.last_name }}" placeholder="Pérez" class="input input-filled peer"/>
+                      <div class="relative grow w-full">
+                        <input type="text" name="last_name" value="{{ user.last_name }}" placeholder="Pérez" class="input input-filled peer w-full"/>
                         <label class="input-filled-label" for="leadingIconFilled" >Apellido</label>
                       </div>
                     </div>
@@ -109,13 +203,13 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                         <span class="input-group-text">
                             <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
                           </span>
                       <div class="relative w-full">
-                        <input type="password" name="password1" id="toggle-password-filled1" class="input input-filled peer" placeholder="Ingresa la contraseña"/>
+                        <input type="password" name="password1" id="toggle-password-filled1" class="input input-filled peer w-full" placeholder="Ingresa la contraseña"/>
                         <label class="input-filled-label" for="toggle-password-filled1">Contraseña</label>
                       </div>
                       <span class="input-group-text">
@@ -136,13 +230,13 @@
                         </div>
                     </div>
                 {% endif %}
-                <div class="max-w-sm mb-2">
-                    <div class="input-group-filled">
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
                         <span class="input-group-text">
                             <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
                           </span>
                       <div class="relative w-full">
-                        <input type="password" name="password2" id="toggle-password-filled2" class="input input-filled peer" placeholder="Confirma la contraseña"/>
+                        <input type="password" name="password2" id="toggle-password-filled2" class="input input-filled peer w-full" placeholder="Confirma la contraseña"/>
                         <label class="input-filled-label" for="toggle-password-filled2">Confirma la contraseña</label>
                       </div>
                       <span class="input-group-text">
@@ -166,22 +260,7 @@
                 <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Actualizar</button>
             </form>
         </div>
-        <div class="g-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-xl font-semibold mb-4">Informaciòn de Usuario</h2>
-            
-            <div class="profile-data mb-4 shadow-lg rounded-md p-2">
-                <p><strong>Nombre:</strong> Juan Pérez</p>
-                <p><strong>Email:</strong> juan.perez@example.com</p>
-                <p><strong>Teléfono:</strong> +34 123 456 789</p>
-                <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-            </div>
-            
-            <div class="profile-image mb-4 shadow-lg rounded-md p-2">
-                <img src="{% static 'img/blue-eyes-toon.png' %}" alt="Imagen de Perfil" class="w-32 h-32 object-cover rounded-full mx-auto">
-            </div>
-            
-            <button type="button" class="btn btn-primary w-full">Cambiar Avatar</button>
-        </div>
+        
     </div>
     <p class="mt-4 text-center">Selecciona una opción del menú para ver el contenido.</p>
 </div>
