@@ -1,0 +1,93 @@
+{% load static %}
+
+    <div class="max-w-screen-xl   py-12 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6  ">
+        <!-- Row -->
+        
+        <div class="items-center   gap-8  lg:grid lg:grid-cols-2 xl:gap-16 ">
+            <div class=" sm:text-lg   ">
+                <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-center lg:text-left ">Contactar</h2>
+                <p class="mb-8 text-gray-500 font-light lg:text-xl">Siempre estamos a la mejor disposición para la comunidad. Puede contactarnos por las siguientes vias ya sea 
+                    para precentar alguna queja, sugerencia o alguna ayuda por nuestro trabajo.</p>
+                <!-- List -->
+                <div class="accordion divide-neutral/20 divide-y">
+                    
+                    <div class="accordion-item" id="delivery-basic-1">
+                        <button class="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="delivery-basic-1-collapse" aria-expanded="false" >
+                          <span class="icon-[tabler--plus] accordion-item-active:hidden text-base-content size-4.5 block shrink-0"></span>
+                          <span class="icon-[tabler--minus] accordion-item-active:block text-base-content size-4.5 hidden shrink-0"></span>
+                          ¿Cómo reportar una queja?
+                        </button>
+                        <div id="delivery-basic-1-collapse" class="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="delivery-basic" role="region" >
+                          <div class="px-5 pb-4">
+                            <p class="text-base-content/80 font-normal">
+                                Puede reportar abuso de un usuario con el uso de la plataforma ya sea un administrador o usuario normal. Verificaremos que las pruebas sean correctas y tomaremos medias con el personal demandado.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="accordion-item " id="delivery-basic">
+                      <button class="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="delivery-basic-collapse" aria-expanded="false" >
+                        <span class="icon-[tabler--plus] accordion-item-active:hidden text-base-content size-4.5 block shrink-0"></span>
+                        <span class="icon-[tabler--minus] accordion-item-active:block text-base-content size-4.5 hidden shrink-0"></span>
+                        ¿Cómo reportar un error?
+                      </button>
+                      <div id="delivery-basic-collapse" class="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="delivery-basic" role="region" >
+                        <div class="px-5 pb-4">
+                          <p class="text-base-content/80 font-normal">
+                            Al encontrar un error en el sitio siempre trate de presentar pruebas de ese error ya sea mediante una foto (recomendado) o explicando el error detalladamante.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item" id="cancel-basic">
+                      <button class="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="cancel-basic-collapse" aria-expanded="false" >
+                        <span class="icon-[tabler--plus] accordion-item-active:hidden text-base-content size-4.5 block shrink-0"></span>
+                        <span class="icon-[tabler--minus] accordion-item-active:block text-base-content size-4.5 hidden shrink-0"></span>
+                        ¿Cómo puedo precentar ideas?
+                      </button>
+                      <div id="cancel-basic-collapse" class="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="cancel-basic" role="region" >
+                        <div class="px-5 pb-4">
+                          <p class="text-base-content/80 font-normal">
+                            Tenemos un forum en el cual puede presentar propuestas de para nuevas actualizaciónes de la página siempre.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item" id="cancel-basic">
+                        <button class="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="cancel-basic-collapse" aria-expanded="false" >
+                          <span class="icon-[tabler--plus] accordion-item-active:hidden text-base-content size-4.5 block shrink-0"></span>
+                          <span class="icon-[tabler--minus] accordion-item-active:block text-base-content size-4.5 hidden shrink-0"></span>
+                          ¿Dónde puedo ver las últimas noticias?
+                        </button>
+                        <div id="cancel-basic-collapse" class="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="cancel-basic" role="region" >
+                          <div class="px-5 pb-4">
+                            <p class="text-base-content/80 font-normal">
+                              Las noticias las publicaremos siempre en nuestro foro sobre cualquier actualización del sitio.
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="cancel-basic">
+                        <button class="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="cancel-basic-collapse" aria-expanded="false" >
+                          <span class="icon-[tabler--plus] accordion-item-active:hidden text-base-content size-4.5 block shrink-0"></span>
+                          <span class="icon-[tabler--minus] accordion-item-active:block text-base-content size-4.5 hidden shrink-0"></span>
+                          ¿Dónde puedo ayudar?
+                        </button>
+                        <div id="cancel-basic-collapse" class="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="cancel-basic" role="region" >
+                          <div class="px-5 pb-4">
+                            <p class="text-base-content/80 font-normal">
+                              Siempre puede ayudarnos a crecer haciendo una contribución ya que esta es para ayudarnos a mejorar aún más nuestro sitio.
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+                
+            </div>
+           
+                {% include "components/landing/contact/cards.html" %}
+        
+        </div>
+       
+    </div>
