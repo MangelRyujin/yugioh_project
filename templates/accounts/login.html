@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <style>
         .bg-animated {
-            background: url('{% static "img/login-back.png" %}') no-repeat center center fixed;
+            background: url('{% static "img/register-back.jpg" %}') no-repeat center center fixed;
             background-size: cover;
-            animation: backgroundAnimation 10s infinite alternate;
+            {% comment %} animation: backgroundAnimation 10s infinite alternate; {% endcomment %}
             position: relative;
             z-index: 1;
         }
@@ -36,37 +36,66 @@
         }
     </style>
 </head>
-<body class="bg-animated flex items-center justify-center h-screen">
-    <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r bg-clip-text text-transparent 
-                    from-indigo-500 via-purple-500 to-indigo-500
-                    animate-text text-nowrap">Iniciar Sesión</h2>
-        <form action="{% url 'login' %}" method="POST">
+<body class="bg-animated flex items-center justify-center h-screen  ">
+    <div class="container px-3">
+    <div class="bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg  max-w-md mx-auto ">
+      <a href="{% url "index" %}" class="btn btn-square btn-gradient btn-primary ">
+        <span class="icon-[tabler--arrow-back-up] size-6"></span>
+      </a>
+        <h1 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-400 via-purple-500 to-indigo-700
+            animate-text">Iniciar Sesión</h1>
+        <form action="{% url 'login' %}" method="POST" class="grid justify-center grid-cols-1">
             {% csrf_token %}
-            <div class="mb-4">
-                <label for="username" class="block text-gray-700">Usuario</label>
-                <input type="text" id="username" name="username" class="text-purple-500 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
+            <div class="flex-colum justify-center mb-4">
+                <div class="input-group-filled">
+                  <span class="input-group-text">
+                    <span class="icon-[tabler--user] text-primary size-6 "></span>
+                  </span>
+                  <div class="relative grow">
+                    <input type="text" name="username" placeholder="John Doe" class="input input-filled peer  bg-gray-700 border-gray-600 text-white" id="leadingIconFilled" />
+                    <label class="input-filled-label text-primary" for="leadingIconFilled">Nombre de Usuario</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
             {% if error %}
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                     {{ error }}
                 </div>
             {% endif %}
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700">Contraseña</label>
-                <input type="password" id="password" name="password" class="text-purple-500 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
+            <div class="flex-colum justify-center mb-4">
+                <div class="input-group-filled">
+                    <span class="input-group-text">
+                        <span class="icon-[tabler--lock] text-primary size-6 "></span>
+                      </span>
+                  <div class="relative w-full">
+                    <input type="password" name="password" id="toggle-password-filled" class="input input-filled peer  bg-gray-700 border-gray-600 text-white" placeholder="Enter password"/>
+                    <label class="input-filled-label text-primary" for="toggle-password-filled">Contraseña</label>
+                  </div>
+                  <span class="input-group-text ">
+                    <button type="button" data-toggle-password='{ "target": "#toggle-password-filled" }' class="block" aria-label="password toggle">
+                      <span class="icon-[tabler--eye] text-primary password-active:block hidden size-5 flex-shrink-0 "></span>
+                      <span class="icon-[tabler--eye-off] text-primary password-active:hidden block size-5 flex-shrink-0 "></span>
+                    </button>
+                  </span>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
             {% if error %}
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                     {{ error }}
                 </div>
             {% endif %}
             <div class="mb-4 text-right">
-                <a href="#" class="font-bold text-indigo-600 link link-primary link-animated">¿Has olvidado tu contraseña?</a>
+                <a href="#" class="font-bold  link text-white link-animated">¿Has olvidado tu contraseña?</a>
+                <a href="{% url "register" %}" class="font-bold  link text-white link-animated">No tengo cuenta? <span class="text-primary">Registro</span></a>
             </div>
+            
             <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Iniciar Sesión</button>
         </form>
     </div>
+  </div>
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 </body>

@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<button type="button" class="btn btn-text max-sm:btn-square sm:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+    <span class="icon-[tabler--menu-2] size-5"></span>
+</button>
+
+<aside id="default-sidebar" class="overlay sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:flex sm:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
+    <div class="drawer-body px-2 pt-4">
+        <ul class="menu p-0">
+            <li>
+                <a href="#" onclick="loadContent('detalles-generales')">
+                    <span class="icon-[tabler--user] size-5"></span>
+                    Detalles generales
+                </a>
+            </li>
+            <!-- Agrega más elementos de lista según sea necesario -->
+        </ul>
+    </div>
+</aside>
+
+<div id="content-block" class="mt-4 md:ml-64 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg w-full">
+            <h2 class="text-xl font-semibold mb-4">Informaciòn de Usuario</h2>
+            
+            
+
+            <div class"profile-data mb-4 shadow-lg rounded-md p-2">
+                <div class="vertical-scrollbar shadow max-h-96 w-full p-4">
+
+                    <div class="profile-image mb-10 shadow-lg rounded-full p-2 relative w-40 h-50 mx-auto">
+                        <img src="{% static 'img/blue-eyes-toon.png' %}" alt="Imagen de Perfil" class="w-full h-full object-cover rounded-full">
+                        <button class="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 bg-blue-500 text-white rounded-full p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-center lg:text-left">General</h2>
+                    <div class="divider divider-primary"></div>
+
+                    <div class="profile-data mb-4 shadow-lg rounded-md p-2">
+                        <p><strong>Nombre:</strong> Juan Pérez</p>
+                        <p><strong>Email:</strong> juan.perez@example.com</p>
+                        <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                    </div> 
+                    
+                    <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-center lg:text-left">Estadisticas</h2>
+                    <div class="divider divider-primary"></div>
+                    
+                    <div class="w-full">
+                        <ul class="border-base-content/25 divide-base-content/25 :last*:rounded-b-md divide-y rounded-md border *:p-3 first:*:rounded-t-md" >
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-info text-info-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-tailwind] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">Bootstrap is an open source toolkit</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-info w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-success text-success-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-vue] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">Vue.js is the Progressive JavaScript Framework</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-success w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-error text-error-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-angular] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2 text-ellipsis">Angular implements Functional Programming concepts</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-error w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex items-start">
+                            <div class="avatar placeholder me-3">
+                              <div class="bg-primary text-primary-content w-10 rounded-lg">
+                                <span class="icon-[tabler--brand-react] size-6"></span>
+                              </div>
+                            </div>
+                            <div class="grow">
+                              <h6 class="text-base text-base-content mb-2">React version update</h6>
+                              <div class="progress h-2 w-full" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-primary w-1/2"></div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Actualizar Datos</h2>
+            <form action="{% url 'update_profile' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                      <span class="input-group-text">
+                        <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                      </span>
+                      <div class="relative grow w-full">
+                        <input type="text" name="username" value="{{ user.username }}" placeholder="testuser" class="input input-filled peer w-full"/>
+                        <label class="input-filled-label" for="leadingIconFilled" >Usuario</label>
+                      </div>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.username.errors %}
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.username.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                      <span class="input-group-text">
+                        <span class="icon-[tabler--mail] text-base-content/80 size-6"></span>
+                      </span>
+                      <div class="relative grow w-full">
+                        <input type="email" name="email" value="{{ user.email }}" placeholder="example@example.com" class="input input-filled peer w-full"/>
+                        <label class="input-filled-label" for="emailInput">Correo Electrónico</label>
+                      </div>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.email.errors %}
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.email.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                      <span class="input-group-text">
+                        <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                      </span>
+                      <div class="relative grow w-full">
+                        <input type="text" name="first_name" value="{{ user.first_name }}" placeholder="Juan" class="input input-filled peer w-full"/>
+                        <label class="input-filled-label" for="leadingIconFilled" >Nombre</label>
+                      </div>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.first_name.errors %}
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.first_name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                      <span class="input-group-text">
+                        <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                      </span>
+                      <div class="relative grow w-full">
+                        <input type="text" name="last_name" value="{{ user.last_name }}" placeholder="Pérez" class="input input-filled peer w-full"/>
+                        <label class="input-filled-label" for="leadingIconFilled" >Apellido</label>
+                      </div>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.last_name.errors %}
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.last_name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                        <span class="input-group-text">
+                            <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
+                          </span>
+                      <div class="relative w-full">
+                        <input type="password" name="password1" id="toggle-password-filled1" class="input input-filled peer w-full" placeholder="Ingresa la contraseña"/>
+                        <label class="input-filled-label" for="toggle-password-filled1">Contraseña</label>
+                      </div>
+                      <span class="input-group-text">
+                        <button type="button" data-toggle-password='{ "target": "#toggle-password-filled1" }' class="block" aria-label="password toggle">
+                          <span class="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 flex-shrink-0"></span>
+                          <span class="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 flex-shrink-0"></span>
+                        </button>
+                      </span>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.password1.errors %}
+                <div class="mt-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.password1.errors %}
+                                <span class="block sm:inline">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="mb-2 w-full">
+                    <div class="input-group-filled w-full">
+                        <span class="input-group-text">
+                            <span class="icon-[tabler--lock] text-base-content/80 size-6"></span>
+                          </span>
+                      <div class="relative w-full">
+                        <input type="password" name="password2" id="toggle-password-filled2" class="input input-filled peer w-full" placeholder="Confirma la contraseña"/>
+                        <label class="input-filled-label" for="toggle-password-filled2">Confirma la contraseña</label>
+                      </div>
+                      <span class="input-group-text">
+                        <button type="button" data-toggle-password='{ "target": "#toggle-password-filled2" }' class="block" aria-label="password toggle">
+                          <span class="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 flex-shrink-0"></span>
+                          <span class="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 flex-shrink-0"></span>
+                        </button>
+                      </span>
+                    </div>
+                    <span class="input-filled-focused"></span>
+                  </div>
+                {% if form.password2.errors %}
+                    <div class="mt-2">
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {% for error in form.password2.errors %}
+                                <span class="block sm:inline">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-gradient btn-primary waves waves-light btn-lg w-full">Actualizar</button>
+            </form>
+        </div>
+        
+    </div>
+    <p class="mt-4 text-center">Selecciona una opción del menú para ver el contenido.</p>
+</div>
+
+<script>
+    function loadContent(contentType) {
+        const contentBlock = document.getElementById('content-block');
+        if (contentType === 'detalles-generales') {
+            contentBlock.innerHTML = ``;
+        }
+    }
+</script>
+{% endblock %}
