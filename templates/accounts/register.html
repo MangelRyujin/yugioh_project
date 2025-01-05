@@ -16,6 +16,7 @@
             {% comment %} animation: backgroundAnimation 10s infinite alternate; {% endcomment %}
             position: relative;
             z-index: 1;
+            height:100dvh;
         }
 
         .bg-animated::before {
@@ -37,7 +38,7 @@
         }
     </style>
 </head>
-<body class="bg-animated flex items-center justify-center h-screen">
+<body class="bg-animated flex items-center justify-center ">
     <div class="container px-3">
     <div class="bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg  max-w-md mx-auto ">
       <a href="{% url "index" %}" class="btn btn-square btn-gradient btn-primary ">
