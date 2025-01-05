@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" data-theme="auto" >
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,16 +23,17 @@
           <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-400 via-purple-500 to-indigo-700
             animate-text text-nowrap no-underline hover:no-underline font-bold text-xl lg:text-3xl" href="#">
-            <img src="{% static "img/logo.svg" %}" width="40" height="50"/> YuGiFaction
+            <img src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
           </a>
         </div>
         <div class="navbar-center  flex  items-center gap-4">
           <div class="dropdown relative inline-flex gap-2 [--auto-close:inside] [--offset:8] [--placement:bottom-end] ">
            
                 <label class="swap swap-rotate ">
-                    <input type="checkbox" value="dark" class="theme-controller" />
-                    <span class="swap-off icon-[tabler--sun] size-[1.375rem]"></span>
-                    <span class="swap-on icon-[tabler--moon] size-[1.375rem] "></span>
+                    <input type="checkbox" data-toggle-theme="dark"/>
+                    <span class="swap-off icon-[tabler--moon] size-[1.375rem] "></span>
+                    <span class="swap-on icon-[tabler--sun] size-[1.375rem]"></span>
+                    
                   </label>
            
                   
@@ -201,7 +202,7 @@
           <a class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-400 via-purple-500 to-indigo-700
             animate-text text-nowrap no-underline hover:no-underline font-bold text-sm lg:text-base" href="#">
-            <img src="{% static "img/logo.svg" %}" width="40" height="50"/> YuGiFaction
+            <img loading="lazy" src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
           </a>
         </div>
        

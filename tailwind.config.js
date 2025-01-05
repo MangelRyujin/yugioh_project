@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./templates/**/*.html", "./**/templates/**/*.html","./node_modules/flyonui/dist/js/*.js"],
-  darkMode: "media",
+  plugins: [
+    require("flyonui"),
+    require("flyonui/plugin"),
+    require("tailwindcss-motion"), // Require only if you want to use FlyonUI JS component
+  ],
   theme: {
-    flyonui: {
-      themes: ["light", "dark", "gourmet"]
-    },
     extend: {
       fontFamily: {
 
@@ -27,11 +28,11 @@ module.exports = {
         }
     },
   },
-  plugins: [
-    require("flyonui"),
-    require("flyonui/plugin"),
-    require("tailwindcss-motion"), // Require only if you want to use FlyonUI JS component
-  ],
+  flyonui: {
+    themes: ['light', 'dark']
+  },
+  darkMode: ['class', '[data-theme="dark"]'],
+  
   
 }
 

@@ -8889,6 +8889,11 @@ textarea:focus-visible {
   display: block;
 }
 
+.dark\:border-gray-700:is([data-theme="dark"] *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
+}
+
 @media not all and (min-width: 768px) {
   .max-md\:max-w-64 {
     max-width: 16rem;
@@ -9059,12 +9064,5 @@ textarea:focus-visible {
 
 .rtl\:\!mr-0:where([dir="rtl"], [dir="rtl"] *) {
   margin-right: 0px !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .dark\:border-gray-700 {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
-  }
 }
 
