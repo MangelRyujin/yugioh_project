@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -180,40 +179,67 @@
           
         </div>
       </nav>
+      <button type="button" class="btn btn-text max-sm:btn-square sm:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+        <span class="icon-[tabler--menu-2] size-5"></span>
+      </button>
+      
+      <aside id="default-sidebar" class="overlay sm:shadow bg-base-200/30 overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:flex sm:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
+        <div class="drawer-body px-2 pt-4">
+          <ul class="menu p-0 bg-none">
+            <li>
+              <a href="#">
+                <span class="icon-[tabler--brand-databricks] size-6"></span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon-[tabler--user] size-6"></span>
+                Perfil
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon-[tabler--cards-filled] size-6"></span>
+                Armar deck
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon-[tabler--shopping-cart-filled] size-6"></span>
+                Mis compras
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon-[tabler--arrows-right-left] size-6"></span>
+                Mis intercambios
+              </a>
+            </li>
+            
+            
+          </ul>
+          <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3">
+            <div class="avatar placeholder">
+              <div class="bg-primary text-primary-content w-10 rounded-full">
+                <span class="icon-[tabler--crown] size-6 shrink-0"></span>
+              </div>
+            </div>
+            <h5 class="text-base-content mt-4 text-lg font-semibold">Urgradiar plan</h5>
+            <p class="text-base-content/80 text-xs">Ten acceso a mejores funciones</p>
+            <button class="btn btn-primary btn-block mt-2">Ver planes</button>
+          </div>
+        </div>
+    </aside>
+    
     <main class="container mx-auto px-3 mt-3 md:mt-8 ">
-      {% block content %}{% endblock content %}
+      
+      {% comment %} {% block content %}{% endblock content %} {% endcomment %}
     </main>
 
-    <footer class="footer bg-base-200/60 px-4 py-4 mt-10">
-      
-      <div class="flex w-full flex-wrap items-center justify-between">
-        <div class="flex items-center gap-2 text-xl font-bold">
-          <a class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
-            from-indigo-400 via-purple-500 to-indigo-700
-            animate-text text-nowrap no-underline hover:no-underline font-bold text-sm lg:text-base" href="#">
-            <img loading="lazy" src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
-          </a>
-        </div>
-       
-        <div class="flex h-5 gap-4">
-          <a href="#" class="link link-animated" aria-label="Github Link">
-            <span class="icon-[tabler--brand-github] size-5"></span>
-          </a>
-          <a href="#" class="link link-animated" aria-label="Facebook Link">
-            <span class="icon-[tabler--brand-facebook] size-5"></span>
-          </a>
-          <a href="#" class="link link-animated" aria-label="X Link">
-            <span class="icon-[tabler--brand-x] size-5"></span>
-          </a>
-          <a href="#" class="link link-animated" aria-label="Google Link">
-            <span class="icon-[tabler--brand-google] size-5"></span>
-          </a>
-        </div>
-      </div>
-    </footer>
+    
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
      <script>
       window.addEventListener('load', function () {
@@ -235,11 +261,6 @@
           })
         })
       })
-    </script>
-    <script>
-      AOS.init({
-        once: true,
-      });
     </script>
 </body>
 </html>
