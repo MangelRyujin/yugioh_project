@@ -179,39 +179,45 @@
           
         </div>
       </nav>
-      <button type="button" class="btn btn-text max-sm:btn-square sm:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+      <button type="button" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient btn-primary wave btn-text max-sm:btn-square md:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
         <span class="icon-[tabler--menu-2] size-5"></span>
       </button>
       
-      <aside id="default-sidebar" class="overlay sm:shadow bg-base-200/30 overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:flex sm:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
-        <div class="drawer-body px-2 pt-4">
-          <ul class="menu p-0 bg-none">
-            <li>
-              <a href="#">
+      <aside id="default-sidebar" class="overlay sm:shadow bg-base-200 overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 md:flex md:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
+        <div class="drawer-body bg-none px-2 pt-4">
+          <ul class="menu p-0 gap-1">
+            <li class="mx-1 my-1">
+              <a href="{% url "dashboard" %}" class="link-primary animate-text link-animated active">
                 <span class="icon-[tabler--brand-databricks] size-6"></span>
                 Dashboard
               </a>
             </li>
-            <li>
-              <a href="#">
+            <li class="mx-1">
+              <a href="{% url "profile" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--user] size-6"></span>
                 Perfil
               </a>
             </li>
-            <li>
-              <a href="#">
-                <span class="icon-[tabler--cards-filled] size-6"></span>
+            <li class="mx-1">
+              <a href="#" class="link-primary animate-text link-animated">
+                <span class="icon-[tabler--cards-filled] size-6" ></span>
                 Armar deck
               </a>
             </li>
-            <li>
-              <a href="#">
+            <li class="mx-1">
+              <a href="#" class="link-primary animate-text link-animated">
+                <span class="icon-[tabler--brand-kickstarter] size-6" ></span>
+                Mi colección
+              </a>
+            </li>
+            <li class="mx-1">
+              <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--shopping-cart-filled] size-6"></span>
                 Mis compras
               </a>
             </li>
-            <li>
-              <a href="#">
+            <li class="mx-1 mb-1">
+              <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--arrows-right-left] size-6"></span>
                 Mis intercambios
               </a>
@@ -219,22 +225,22 @@
             
             
           </ul>
-          <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3">
+          <div class=" mt-4 ">
             <div class="avatar placeholder">
               <div class="bg-primary text-primary-content w-10 rounded-full">
                 <span class="icon-[tabler--crown] size-6 shrink-0"></span>
               </div>
             </div>
-            <h5 class="text-base-content mt-4 text-lg font-semibold">Urgradiar plan</h5>
+            <h5 class="text-base-content mt-4 text-lg font-semibold">Cambiar plan</h5>
             <p class="text-base-content/80 text-xs">Ten acceso a mejores funciones</p>
-            <button class="btn btn-primary btn-block mt-2">Ver planes</button>
+            <button class="btn btn-primary btn-gradient btn-block mt-2">Ver planes</button>
           </div>
         </div>
     </aside>
     
-    <main class="container mx-auto px-3 mt-3 md:mt-8 ">
+    <main class=" md:ml-64 relative z-10 p-3">
       
-      {% comment %} {% block content %}{% endblock content %} {% endcomment %}
+       {% block content %}{% endblock content %} 
     </main>
 
     
