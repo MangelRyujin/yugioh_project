@@ -1,0 +1,103 @@
+{% load static %}
+<div class="card shadow-md  ">
+    <div class="alert justify-start" role="alert">
+        
+      <span class="font-bold ">
+        Editar datos personales</span>
+    </div>
+    <div class="card-body alert rounded-b-md p-3">
+        <form class="needs-validation peer grid gap-y-3" novalidate>
+            <!-- Account Details -->
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div class="max-w-sm">
+                <div class="input-group-filled">
+                  <span class="input-group-text">
+                    <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                  </span>
+                  <div class="relative grow">
+                    <input type="text" placeholder="Nombre" class="input input-filled peer" id="userFirstName" />
+                    <label class="input-filled-label" for="userFirstName" >Nombre</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+              <div class="max-w-sm">
+                <div class="input-group-filled">
+                  <span class="input-group-text">
+                    <span class="icon-[tabler--user] text-base-content/80 size-6"></span>
+                  </span>
+                  <div class="relative grow">
+                    <input type="text" placeholder="Apellido" class="input input-filled peer" id="userLastName" />
+                    <label class="input-filled-label" for="userLastName" >Apellido</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+            </div>
+            <!-- Email and password -->
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
+              <div class="max-w-sm">
+                <div class="max-w-sm">
+                  <select
+                    data-select='{
+                    "placeholder": "Select option...",
+                    "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+                    "toggleClasses": "advance-select-toggle advance-select-lg",
+                    "dropdownClasses": "advance-select-menu",
+                    "optionClasses": "advance-select-option selected:active",
+                    "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
+                    "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-5 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+                    }'
+                    class="hidden"
+                    >
+                    <option value="1">Provincia 1</option>
+                    <option value="2">Provincia 2</option>
+                    <option value="3">Provincia 3</option>
+                    <option value="4">Provincia 4</option>
+                    </select>
+                  
+                </div>
+              </div>
+              <div class="max-w-sm">
+                <select
+                  data-select='{
+                  "placeholder": "Select option...",
+                  "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+                  "toggleClasses": "advance-select-toggle advance-select-lg",
+                  "dropdownClasses": "advance-select-menu",
+                  "optionClasses": "advance-select-option selected:active",
+                  "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
+                  "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-5 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+                  }'
+                  class="hidden"
+                  >
+                  <option value="1">Monicipio 1</option>
+                  <option value="2">Monicipio 2</option>
+                  <option value="3">Monicipio 3</option>
+                  <option value="4">Monicipio 4</option>
+                  </select>
+                
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
+              <div class="max-w-sm">
+                <div class="input-group-filled">
+                  <span class="input-group-text">
+                    <span class="icon-[tabler--phone-filled] text-base-content/80 size-6"></span>
+                  </span>
+                  <div class="relative grow">
+                    <input type="text" placeholder="Móvil" class="input input-filled peer" id="userPhoneNumber" />
+                    <label class="input-filled-label" for="userPhoneNumber" >Móvil</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+            </div>
+            
+           <div class="flex justify-end">
+              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient">Submit</button>
+            </div>
+          </form>
+  </div>
+</div>
