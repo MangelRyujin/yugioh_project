@@ -12,8 +12,9 @@
 </head>
 
 <body class="relative  ">
+  {% include "components/album/add_card_modal/index.html" %}
   <div class="absolute  z-0" >
-    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
+    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-1 animate-pulse " alt="ligth">
   </div>
   
  
@@ -145,15 +146,21 @@
                   </div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'profile' %}">
-                    <span class="icon-[tabler--user]"></span>
+                  <a class="dropdown-item " href="{% url 'profile' %}">
+                    <span class="icon-[tabler--user] size-6"></span>
                     Mi perfil
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{% url "dashboard" %}">
-                    <span class="icon-[tabler--settings]"></span>
+                    <span class="icon-[tabler--settings] size-6"></span>
                     Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url "dashboard" %}">
+                    <span class="icon-[tabler--building-store] size-6"></span>
+                    Tienda
                   </a>
                 </li>
                 
@@ -178,9 +185,9 @@
           </div>
           
         </div>
-      </nav>
-      <button type="button" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient btn-primary wave btn-text max-sm:btn-square md:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
-        <span class="icon-[tabler--menu-2] size-5"></span>
+    </nav>
+      <button type="button" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary border-2 btn-primary wave btn-text max-sm:btn-square md:hidden z-50" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+        <span class="icon-[tabler--menu-2] size-6 "></span>
       </button>
       
       <aside id="default-sidebar" class="overlay sm:shadow bg-base-200 overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 md:flex md:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
@@ -188,7 +195,7 @@
           <ul class="menu p-0 gap-1">
             <li class="mx-1 my-1">
               <a href="{% url "dashboard" %}" class="link-primary animate-text link-animated active">
-                <span class="icon-[tabler--brand-databricks] size-6"></span>
+                <span class="icon-[tabler--brand-pnpm] size-6"></span>
                 Dashboard
               </a>
             </li>
@@ -205,7 +212,7 @@
               </a>
             </li>
             <li class="mx-1">
-              <a href="#" class="link-primary animate-text link-animated">
+              <a href="{% url "album" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--brand-kickstarter] size-6" ></span>
                 Mi colección
               </a>

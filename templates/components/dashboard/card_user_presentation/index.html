@@ -1,0 +1,30 @@
+{% load static %}
+<div class="card bg-transparent backdrop-blur-sm shadow-md  ">
+    <div class="alert p-3 btn-gradient btn-primary alert-soft border-none flex items-center gap-2" role="alert">
+        <img loading="lazy" src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="40" class="bg-black p-1 rounded-full"/> 
+      <span class="font-bold">
+        Jugador: {{user.username}}</span>
+    </div>
+    <div class="card-body bg-primary/20 rounded-b-md p-3">
+      <h5 class="">YGF: {{user.pk}}</h5>
+      <p class=" ">Nombre: {{user.first_name}}</p>
+      <p class=" ">Apellido: {{user.last_name}}</p>
+      <p class="mt-2">Gracias por acompañarnos en nuestro proyecto. Te reconocemos como un jugador de <span class="text-nowrap font-bold 
+        bg-gradient-to-r bg-clip-text  text-transparent text-lg
+        from-indigo-500 via-purple-500 to-indigo-500
+        animate-text ">YuGi Faction</span></p>
+      <div class="grid grid-cols-1 justify-center mt-4">
+        <div class="flex w-full items-center justify-between gap-2 ">
+            <span class="">Nivel de jugador</span>
+            <div class=" btn-primary btn-gradient p-1 flex justify-around gap-1 rounded">
+                <span class="icon-[tabler--star-filled] size-6"></span>
+                <span class="icon-[tabler--star-filled] size-6"></span>
+                <span class="icon-[tabler--star-filled] size-6"></span>
+                <span class="icon-[tabler--star-filled] size-6"></span>
+                <span class="icon-[tabler--star-filled] size-6"></span>
+            </div>
+        </div>
+      
+        </div>
+  </div>
+</div>

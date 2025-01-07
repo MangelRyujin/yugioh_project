@@ -6,5 +6,5 @@ from .views.home import home
 
 urlpatterns = [
     path('', home, name='index'),   
-    path('administración/', dashboard, name='dashboard'),   
+    
 ]

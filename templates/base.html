@@ -146,15 +146,21 @@
                   </div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'profile' %}">
-                    <span class="icon-[tabler--user]"></span>
+                  <a class="dropdown-item " href="{% url 'profile' %}">
+                    <span class="icon-[tabler--user] size-6"></span>
                     Mi perfil
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{% url "dashboard" %}">
-                    <span class="icon-[tabler--settings]"></span>
+                    <span class="icon-[tabler--settings] size-6"></span>
                     Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url "dashboard" %}">
+                    <span class="icon-[tabler--building-store] size-6"></span>
+                    Tienda
                   </a>
                 </li>
                 
@@ -162,7 +168,7 @@
                     <form action="{% url 'logout' %}" method="post" class="w-full">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-error btn-soft btn-block">
-                        <span class="icon-[tabler--logout]"></span>
+                        <span class="icon-[tabler--logout] size-6"></span>
                         Cerrar sesión
                       </button>
                     </form>
