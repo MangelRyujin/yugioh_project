@@ -7,22 +7,24 @@
                     <span class="input-group-text">
                     <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
                     </span>
-                    <input type="search" class="input input-lg grow" placeholder="Search" id="kbdInput" />
-                    <label class="sr-only" for="kbdInput">Search</label>
-                    <span class="input-group-text gap-2">
-                        <span class="icon-[tabler--cards-filled] text-base-content/80 size-6"></span>
-                    </span>
-                </div>
-                <bottom aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" class="btn btn-gradient btn-success ">
-                    <span class="icon-[tabler--square-rounded-plus-filled] size-6" ></span>
+                    <input type="search" class="input input-lg grow" placeholder="Buscar" id="kbdInput" />
+                    <label class="sr-only" for="kbdInput">Buscar</label>
                     
+                </div>
+                <bottom aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
+                class="btn btn-gradient btn-success tooltip [--placement:bottom] flex items-center">
+                    <span class="icon-[tabler--square-rounded-plus-filled] size-6" ></span>
+                    <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
+                      <span class="tooltip-body">Añadir a la lista de venta</span>
+                    </span>
+                    Añadir
                 </bottom>
                 
                 
             </div>
             <div class="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-11 gap-2">
                 {% for i in list  %}
-                <div class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right]">
+                <div class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right] ">
                     
                     <span class="absolute  badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary  md:badge-sm">+99</span>
                     <img loading="lazy" src="{% static "img/slifer-card.jpg" %}" width="60" height="60" class="cover-image-2 " alt="card"/>
