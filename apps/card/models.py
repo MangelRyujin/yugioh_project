@@ -26,6 +26,7 @@ class AlbumCard(models.Model):
     konami_id = models.CharField(max_length=8, blank=False, null=False, default='00000000')
     real_image = models.ImageField(upload_to='example/', blank=True, null=True)
     album = models.ForeignKey(Album, related_name='cards', on_delete=models.CASCADE)
+    #card = models.OneToOneField(Card, related_name='card', on_delete=models.CASCADE)
     
     class Meta:
         verbose_name = "AlbumCard"
