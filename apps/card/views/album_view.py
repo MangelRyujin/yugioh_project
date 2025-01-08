@@ -3,13 +3,37 @@ from apps.card.models import *
 import requests
 from rest_framework import status, response
 from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def search_cards(request):
+
+@login_required
+def search_user_cards(request):
+    if request.method == 'POST':
+        query = request.POST.get('kbdInput2', '')
+        #print(f"Query: {query}")  # Agrega esta línea para depurar
+        if not query:
+            print("No se recibió ningún valor para 'kbdInput'")
+        user_album = Album.objects.get(user=request.user)
+        album_cards = AlbumCard.objects.filter(album=user_album, card__name__icontains=query, stock__gt=0)
+        
+        context = {
+            'cards': album_cards,
+        }
+        
+        #print(f"Primer objeto de album_cards: {album_cards.first().card.name}")
+        #print(album_cards.first().card.name)
+        # imprime por consola el primer objeto de album_cards
+        
+        
+        return render(request, 'components/album/card_list.html', context)
+    return HttpResponse('<p>Método no permitido</p>', status=405)
+
+def search_cards_modal(request):
     if request.method == 'POST':
         #print(request.POST.get('kbdInput'))
-        query = request.POST.get('kbdInput', '')
+        query = request.POST.get('kbdInput1', '')
         external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?name={query}'
         #print(f"Query: {query}")  # Agrega esta línea para depurar
         
