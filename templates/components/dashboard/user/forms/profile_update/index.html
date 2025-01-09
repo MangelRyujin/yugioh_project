@@ -6,7 +6,8 @@
         Editar datos personales</span>
     </div>
     <div class="card-body alert rounded-b-md p-3">
-        <form class="needs-validation peer grid gap-y-3" novalidate>
+        <form action="{% url 'update_profile' %}" method="POST" class="needs-validation peer grid gap-y-3" novalidate>
+          {% csrf_token %}
             <!-- Account Details -->
             
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -16,7 +17,7 @@
                     <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" placeholder="Nombre" class="input input-filled peer" id="userFirstName" />
+                    <input type="text" name="first_name" placeholder="Nombre" class="input input-filled peer" id="userFirstName" value="{{user.first_name}}" />
                     <label class="input-filled-label text-primary" for="userFirstName" >Nombre</label>
                   </div>
                 </div>
@@ -28,7 +29,7 @@
                     <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" placeholder="Apellido" class="input input-filled peer" id="userLastName" />
+                    <input type="text" name="last_name" placeholder="Apellido" class="input input-filled peer" id="userLastName" value="{{user.last_name}}" />
                     <label class="input-filled-label text-primary" for="userLastName" >Apellido</label>
                   </div>
                 </div>
@@ -39,7 +40,7 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
               <div class="max-w-sm">
                 <div class="max-w-sm ">
-                  <select
+                  <select name="city"
                     data-select='{
                     "placeholder": "Select option...",
                     "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
@@ -51,16 +52,16 @@
                     }'
                     class="hidden"
                     >
-                    <option value="1">Provincia 1</option>
-                    <option value="2">Provincia 2</option>
-                    <option value="3">Provincia 3</option>
-                    <option value="4">Provincia 4</option>
-                    </select>
+                    <option value="1" {% if user.city == "1" %}selected{% endif %}>Provincia 1</option>
+                    <option value="2" {% if user.city == "2" %}selected{% endif %}>Provincia 2</option>
+                    <option value="3" {% if user.city == "3" %}selected{% endif %}>Provincia 3</option>
+                    <option value="4" {% if user.city == "4" %}selected{% endif %}>Provincia 4</option>
+                  </select>
                   
                 </div>
               </div>
               <div class="max-w-sm">
-                <select
+                <select name="state"
                   data-select='{
                   "placeholder": "Select option...",
                   "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
@@ -72,11 +73,11 @@
                   }'
                   class="hidden"
                   >
-                  <option value="1">Monicipio 1</option>
-                  <option value="2">Monicipio 2</option>
-                  <option value="3">Monicipio 3</option>
-                  <option value="4">Monicipio 4</option>
-                  </select>
+                  <option value="1" {% if user.state == "1" %}selected{% endif %}>Monicipio 1</option>
+                  <option value="2" {% if user.state == "2" %}selected{% endif %}>Monicipio 2</option>
+                  <option value="3" {% if user.state == "3" %}selected{% endif %}>Monicipio 3</option>
+                  <option value="4" {% if user.state == "4" %}selected{% endif %}>Monicipio 4</option>
+                </select>
                 
               </div>
             </div>
@@ -87,7 +88,7 @@
                     <span class="icon-[tabler--phone-filled] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" placeholder="Móvil" class="input input-filled peer" id="userPhoneNumber" />
+                    <input type="text" name="phone_number" placeholder="Móvil" class="input input-filled peer" id="userPhoneNumber" value="{{user.phone_number}}"/>
                     <label class="input-filled-label text-primary" for="userPhoneNumber" >Móvil</label>
                   </div>
                 </div>
@@ -96,7 +97,7 @@
             </div>
             
            <div class="flex justify-end">
-              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient">Submit</button>
+              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient">Actualizar</button>
             </div>
           </form>
   </div>

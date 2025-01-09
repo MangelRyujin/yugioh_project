@@ -12,18 +12,38 @@ class RegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2','first_name','last_name']
 
 class ProfileUpdateForm(UserChangeForm):
-
-    password1 = forms.CharField(widget=forms.PasswordInput(), required=False)
-    password2 = forms.CharField(widget=forms.PasswordInput(), required=False)
+    phone_number = forms.IntegerField(required=False)
+    city = forms.CharField(required=False)
+    state = forms.CharField(required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'phone_number', 'city', 'state']
+        
 
-    def clean_password2(self):
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
+class CustomPasswordChangeForm(forms.Form):
+    new_password1 = forms.CharField(
+        label="Nueva contraseña",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        help_text="Tu nueva contraseña debe cumplir con las políticas de seguridad."
+    )
+    new_password2 = forms.CharField(
+        label="Confirmar nueva contraseña",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+    )
 
-        if password1 and password1 != password2:
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get("new_password1")
+        new_password2 = cleaned_data.get("new_password2")
+
+        if new_password1 and new_password2 and new_password1 != new_password2:
             raise forms.ValidationError("Las contraseñas no coinciden.")
-        return password2
+        return cleaned_data
+
+    def save(self, user):
+        new_password = self.cleaned_data["new_password1"]
+        user.set_password(new_password)
+        user.save()
