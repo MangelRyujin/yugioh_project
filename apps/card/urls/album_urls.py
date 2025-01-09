@@ -8,5 +8,5 @@ urlpatterns = [
     path('', album, name='album'),   
     path('search/', search_cards_modal, name='search_cards_modal'),
     path('search-user-cards/', search_user_cards, name='search_user_cards'),
-    path('add-card/', add_card, name='add_card'),
+    path('add-card/<int:pk>/', add_card, name='add_card'),
 ]

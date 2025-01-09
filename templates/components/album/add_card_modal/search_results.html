@@ -1,52 +1,7 @@
 {% load static %}
 <div class="grid grid-cols-1 gap-4 mt-4">
     {% for card in cards %}
-    <div class="border-base-content/20 flex items-start gap-3 rounded-lg border-b bg-base-100 p-2 " >
-              
-        <div class="flex flex-col items-start  w-full h-full">
-          <div class="flex items-start gap-3">
-            
-            <img src="{{ card.card_images.0.image_url_small  }}" alt="imagen" alt="card" loading="lazy" width="60" height="60" class="object-cover" />
-            <div class="flex flex-col items-start  w-full">
-              <span class="text-base-content font-medium">{{ card.name }}</span>
-              <span class="text-base-content/80 mt-1 text-xs">{{ card.type }}</span>
-            </div>
-            
-          </div>
-          
-          {% comment %} <span class="text-base-content/80 mt-1 text-xs">[Divine-Beast/Effect]</span> {% endcomment %}
-          
-          <div class="flex justify-start w-full items-center gap-4 mt-2">
-            <div class="w-full">
-              <label class="label label-text" for="number-input-cant">Cantidad:</label>
-              <div class="input-group max-w-32 border-none" data-input-number>
-                <span class="input-group-text gap-3">
-                  <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Decrement button" data-input-number-decrement>
-                    <span class="icon-[tabler--minus] size-4 flex-shrink-0"></span>
-                  </button>
-                </span>
-                <input class="input text-center" id="number-input-cant" type="text" value="0" data-input-number-input />
-                <span class="input-group-text gap-3">
-                  <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Increment button" data-input-number-increment>
-                <span class="icon-[tabler--plus] size-4 flex-shrink-0"></span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-              
-        </div>
-
-        <form action="{% url 'add_card' %}" method="POST">
-          {% csrf_token %}
-          <input type="hidden" name="konami_id" value="{{card.konami_id}}">
-          <button type="submit" class=" btn btn-success btn-sm px-2" aria-label="Increment button" data-input-number-increment>
-            <span class="icon-[tabler--square-rounded-plus-filled] size-5 flex-shrink-0"></span>
-            Añadir
-          </button>
-        </form>
-          </div>
-        </div>
-      </div>
+      {% include "components/album/add_card_modal/card_form_add.html" %}
     {% endfor %}
 </div>
+<script src="{% static 'js/flyonui.js' %}"></script>

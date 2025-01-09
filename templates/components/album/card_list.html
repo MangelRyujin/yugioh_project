@@ -1,8 +1,8 @@
 
 {% for card in cards %}
-      <div class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right] hover:shadow-2xl transition duration-300">
+      <div class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right]  transition duration-300">
           
-          <div class="relative transform transition-transform duration-300 ease-in-out hover:-translate-y-2">
+          <div class="relative transform transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-md">
               <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">{{card.stock}}</span>
               
               {% for card_image in card.card.card_images.all %}

@@ -25,6 +25,15 @@
     <!-- Listado de Cartas -->
     <div id="card-list" class="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-11 gap-2">
       {% include "components/album/card_list.html" %}
+      {% comment %} <button class="btn btn-primary" id="notyf-default-example">Default notyf</button>
     </div> <!-- Listado de cartas -->
-       
+    <script>
+      window.addEventListener('load', function () {
+        const notyfDefault = new Notyf()
+    
+        document.getElementById('notyf-default-example').addEventListener('click', function () {
+         notyfDefault.success('This is primary notification!')
+        })
+      })
+    </script> {% endcomment %}
 {% endblock content %}

@@ -1,0 +1,64 @@
+<div class="border-base-content/20 flex items-start gap-3 rounded-lg border-b bg-base-100 p-2 " id="Card{{card.konami_id}}" >
+              
+    <div class="flex flex-col items-start  w-full h-full">
+      <div class="flex items-start gap-3 w-full">
+        
+        <img src="{{ card.card_images.0.image_url_small  }}" alt="imagen" alt="card" loading="lazy" width="60" height="60" class="object-cover" />
+        <div class="flex flex-col items-start  w-full">
+          <span class="text-base-content font-medium">{{ card.name }}</span>
+          <span class="text-base-content/80 mt-1 text-xs">{{ card.type }}</span>
+        </div>
+        
+      </div>  
+      <div class="flex items-start gap-1 w-full">   
+        <form class="grid grid-cols-2 justify-start w-full items-end gap-2 "
+            hx-post="{% url 'search_user_cards' %}" 
+            hx-trigger="submit" 
+            hx-target="#Card{{card.konami_id}}" 
+            hx-indicator="#sniper"
+        >
+          {% csrf_token %}
+          <div class="">
+            <label class="label label-text" for="number-input-cant">Cantidad:</label>
+            <div class="input-group  w-full">
+              
+              <input type="number" min=1 class="input grow input-sm" placeholder="1" value='1' id="trailingAndLeadingInput" />
+              <label class="sr-only" for="trailingAndLeadingInput">Entre la cantidad</label>
+              <span class="input-group-text"> <p class="icon-[tabler--cards-filled] size-4"></p></span>
+            </div>
+          </div>
+          <div class="">
+            <label class="label label-text" for="favorite-simpson">Version</label>
+            <select class="select select-sm" id="favorite-simpson">
+              
+              <option>Común</option>
+              <option>TCG</option>
+              <option>OCG</option>
+            </select>
+          </div>
+          <div class="col-span-2 grid grid-cols-2 justify-between items-end">
+            <div class="">
+              <label class="label label-text" for="number-input-price">Precio por unidad:</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="text" class="input grow input-sm" placeholder="00.00"  id="number-input-price" />
+                <label class="sr-only" for="number-input-price">Entre el monto</label>
+                <span class="input-group-text">USD</span>
+              </div>
+            </div>
+            <div class=" flex justify-end">
+              <button type="submit" class="btn-gradient btn btn-success btn-sm flex justify-center items-center" aria-label="Increment button" data-input-number-increment>
+                <span class="loading loading-dots loading-sm htmx-indicator"></span>
+                <span class="icon-[tabler--square-rounded-plus-filled] size-5 flex-shrink-0"></span>
+                
+              </button>
+            </div>
+          </div>
+        </div>
+          
+        </form>
+      </div>          
+    </div>
+      </div>
+    </div>
+  </div>

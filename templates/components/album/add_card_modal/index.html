@@ -15,7 +15,7 @@
                 <span class="icon-[tabler--search]  size-6"></span>
                 </span>
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <input type="search" class="input input-lg grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" hx-post="{% url 'search_cards_modal' %}" hx-trigger="keyup changed delay:500ms" hx-target="#search-results" hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]" />
+                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" hx-post="{% url 'search_cards_modal' %}" hx-trigger="input changed, delay:500ms" hx-target="#search-results" hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]" />
                 <label class="sr-only" for="kbdInput1">Buscar</label>
                 <span class="input-group-text gap-2">
                     <span class="icon-[tabler--cards-filled]  size-6"></span>
@@ -28,7 +28,9 @@
         </div>
         <div class="modal-body px-3">
 
-           <div id="search-results"></div>
+           <div id="search-results">
+            {% comment %} {% include "components/album/add_card_modal/search_results.html" %} {% endcomment %}
+           </div>
 
            
         </div>
@@ -38,3 +40,4 @@
       </div>
     </div>
   </div>
+  
