@@ -12,10 +12,13 @@ class RegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2','first_name','last_name']
 
 class ProfileUpdateForm(UserChangeForm):
+    phone_number = forms.IntegerField(required=False)
+    city = forms.CharField(required=False)
+    state = forms.CharField(required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'phone_number', 'city', 'state']
         
 
 class CustomPasswordChangeForm(forms.Form):

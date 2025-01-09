@@ -46,7 +46,6 @@ def change_password_view(request):
         if form.is_valid():
             form.save(request.user)
             update_session_auth_hash(request, request.user)  # Mantener la sesión iniciada
-            print('SI')
             messages.success(request, 'Tu contraseña ha sido cambiada exitosamente.')
             return redirect('profile')
         else:
@@ -61,19 +60,12 @@ def change_password_view(request):
 
 def update_profile_view(request):
     if request.method == 'POST':
-        
+        print('SI')
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
-            
+           
             user = form.save(commit=False)
-            #password1 = form.cleaned_data.get('password1')
-            #if password1:
-                #user.set_password(password1)
             user.save()
-            
-            #if password1:
-                #update_session_auth_hash(request, user)  # Mantener la sesión iniciada después de cambiar la contraseña
-            
             messages.success(request, 'Tu perfil ha sido actualizado con éxito.')
             return redirect('profile')
         else:
