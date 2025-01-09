@@ -3,7 +3,9 @@ from django.contrib.auth import authenticate, login
 from apps.accounts.forms import RegisterForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from apps.accounts.forms import CustomPasswordChangeForm
 
 # Create your views here.
 
@@ -37,18 +39,41 @@ def register_view(request):
 def profile_view(request):
     return render(request, 'accounts/profile/profile.html')
 
+@login_required
+def change_password_view(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+            update_session_auth_hash(request, request.user)  # Mantener la sesión iniciada
+            print('SI')
+            messages.success(request, 'Tu contraseña ha sido cambiada exitosamente.')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Por favor corrige los errores a continuación.')
+    else:
+        form = CustomPasswordChangeForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/profile/profile.html', context)
 
 def update_profile_view(request):
     if request.method == 'POST':
+        
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
+            
             user = form.save(commit=False)
-            password1 = form.cleaned_data.get('password1')
-            if password1:
-                user.set_password(password1)
+            #password1 = form.cleaned_data.get('password1')
+            #if password1:
+                #user.set_password(password1)
             user.save()
-            if password1:
-                update_session_auth_hash(request, user)  # Mantener la sesión iniciada después de cambiar la contraseña
+            
+            #if password1:
+                #update_session_auth_hash(request, user)  # Mantener la sesión iniciada después de cambiar la contraseña
+            
             messages.success(request, 'Tu perfil ha sido actualizado con éxito.')
             return redirect('profile')
         else:
@@ -56,6 +81,7 @@ def update_profile_view(request):
     else:
         form = ProfileUpdateForm(instance=request.user)
     
-    return render(request, 'accounts/profile/profile.html', {
+    context = {
         'form': form
-    })
+    }
+    return render(request, 'accounts/profile/profile.html', context)
