@@ -1,44 +1,41 @@
-
-{% for card in cards %}
-      <div class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right]  transition duration-300">
+{% load static %}
+{% if pagination %}
+<span class="">Cartas mostradas {{pagination.object_list|length }} de {{pagination.paginator.count }} </span>
+<div  class="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-11 gap-2 mt-3">
+  {% for card in pagination %}
+      <div  class="tooltip relative p-1 flex justify-center [--trigger:click]  [--placement:bottom-start] sm:[--placement:right]  transition duration-300">
           
           <div class="relative transform transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-md">
               <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">{{card.stock}}</span>
+             
+         
+                  <img loading="lazy" src="{{ card.card_images.image_url_small }}" width="60" height="60" class="cover-image-2" alt="card"/>
               
-              {% for card_image in card.card.card_images.all %}
-                  <img loading="lazy" src="{{ card_image.image_url_small }}" width="60" height="60" class="cover-image-2" alt="card"/>
-              {% endfor %}
           </div>
-
-          <div class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="popover">
-              <div class="tooltip-body bg-base-100/90 text-base-content/80 w-80 rounded-lg p-2 text-start shadow">
-              
-                <div class="flex flex-col">
-                  <div class="text-base-content text-lg font-medium">{{ card.card.name }}</div>
-              <div class="mt-1 text-xs">
-                <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
-                <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
-                <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
-                  {% comment "" %}
-                    {% for i in range(album_card.card.level) %}
-                    <span class="icon-[tabler--star-filled] size-3 text-warning" ></span>
-                  {% endfor %}
-                  {% endcomment %}
-                  
+          <div class="tooltip-content tooltip-shown:opacity-100  tooltip-shown:visible" role="popover">
+            <div class="tooltip-body bg-base-100/90 text-base-content/80 w-80 rounded-lg p-2 text-start shadow">
+            
+              <div class="flex flex-col">
+                <div class="text-base-content text-lg font-medium">{{ card.name }}</div>
+                <div class="mt-1 text-xs">
+                  <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
+                  <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
+                  <span class="icon-[tabler--star-filled] size-3 text-warning"></span>
                 </div>
+
                 <p class="mt-1">
-                  {{ card.card.type }}
+                  {{ card.type }}
                   <br/>
                   <span  class="text-xs">
-                    {{card.card.desc}}
+                    {{card.desc}}
                   </span>
                 </p>
                 <div class="mt-2 space-y-2">
                   <div class="flex items-center gap-1.5">
-                    ATK/ {{ card.card.atk }}
+                    ATK/ {{ card.atk }}
                   </div>
                   <div class="flex items-center gap-1.5">
-                    DEF/ {{ card.card.defense }}
+                    DEF/ {{ card.defense }}
                   </div>
                   <div class="flex items-center gap-1.5">
                     EDITION: TCG
@@ -49,25 +46,33 @@
                 </div>
                 <div class="divider my-1"></div>
                 <div class="text-sm flex items-center justify-between gap-3">
-                  <div>
-                    
-                    Precio: <span class="text-base-content me-1 font-medium">{{card.price}} USD</span>
-                  </div>
-                  <div class="flex justify-end gap-3">
-                    
-                    <a href="#" class="btn btn-gradient btn-warning btn-sm">
-                        <span class="icon-[tabler--edit-circle] "></span>
-                        
-                    </a>
-                    <a href="#" class="btn btn-gradient btn-error btn-sm">
-                        <span class="icon-[tabler--square-rounded-x-filled] "></span>
-                        
-                    </a>
-                  </div>
-                </div>
-                  </div>
+                    <div>
+                      
+                      Precio: <span class="text-base-content me-1 font-medium">{{card.price}} USD</span>
+                    </div>
+                    <div class="flex justify-end gap-3">
+                      
+                      <a href="#" class="btn btn-gradient btn-warning btn-sm">
+                          <span class="icon-[tabler--edit-circle] "></span>
+                          
+                      </a>
+                      <a href="#" class="btn btn-gradient btn-error btn-sm">
+                          <span class="icon-[tabler--square-rounded-x-filled] "></span>
+                          
+                      </a>
+                    </div>
                 </div>
               </div>
+            </div>
+          </div>
+
         </div>
         {% endfor %}
-      
+</div>
+
+{% endif %}
+
+       
+          
+          
+       

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from apps.card.filters import AlbumCardFilter
 from apps.card.models import *
 import requests
 from django.http import  HttpResponse
@@ -7,30 +8,17 @@ from django.shortcuts import render
 from apps.card.models import AlbumCard, Album
 import requests
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+from apps.card.utils.create_card import album_card_create
+from django.db.models import Q
 # Create your views here.
 
 
 @login_required
 def search_user_cards(request):
-    if request.method == 'POST':
-        query = request.POST.get('kbdInput2', '')
-        #print(f"Query: {query}")  # Agrega esta línea para depurar
-        if not query:
-            print("No se recibió ningún valor para 'kbdInput'")
-        user_album = Album.objects.get(user=request.user)
-        album_cards = AlbumCard.objects.filter(album=user_album, card__name__icontains=query, stock__gt=0)
-        
-        context = {
-            'cards': album_cards,
-        }
-        
-        #print(f"Primer objeto de album_cards: {album_cards.first().card.name}")
-        #print(album_cards.first().card.name)
-        # imprime por consola el primer objeto de album_cards
-        
-        
-        return render(request, 'components/album/card_list.html', context)
-    return HttpResponse('<p>Método no permitido</p>', status=405)
+    return render(request, 'components/album/card_list.html',_show_cards(request))
+
 
 def search_cards_modal(request):
     if request.method == 'POST':
@@ -52,21 +40,38 @@ def search_cards_modal(request):
     return HttpResponse('<p>Método no permitido</p>', status=405)
 
 def album(request):
-    #context={'list':[0,1,3,4,56,7,8,9,12,4112,41,0,1,3,4,56,7,8,9,12,4112,41,0,1,3,4,56,7,8,9,12,4112,41]}
-    #external_api_url = 'https://primervirgen.pythonanywhere.com/api/cards/?konami_id=33656832'
+    return render(request,'dashboard/album/index.html',_show_cards(request))
+
+
+
+def add_card(request,pk):
+    if request.method == 'POST':
+        external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?konami_id={pk}' 
+        context={}    
+        # response para almacenar los datos de la carta
+        response = requests.get(external_api_url)
+        if response.status_code == 200:
+            data = response.json()['results'][0]
+            # user_album_card = get_object_or_404(AlbumCard, konami_id=pk)
+            cards= album_card_create(request,data)
+            context['card']=data
+            context['cards']=cards
+            context['message']='Carta añadida correctamente'
+            
+        return render(request,'components/album/add_card_modal/card_form_add.html',context)
     
-    
-    user_album = Album.objects.get(user=request.user)
-    album_cards = AlbumCard.objects.filter(album=user_album, stock__gt=0)
-    
-    
-    context = {
-        'cards': album_cards,
+
+def _show_cards(request):
+    keyword = request.GET.get('kbdInput2','')
+    if request.method == 'POST':
+        keyword = request.POST.get("kbdInput2",'')
+    search_card = AlbumCard.objects.filter(name__icontains=keyword,album__user=request.user).order_by('-id')
+    cards = AlbumCardFilter(request.GET, queryset=search_card)
+    paginator = Paginator(cards.qs, 25)    # Show 25 contacts per page.
+    page_number = request.GET.get("page",1)
+    page_obj = paginator.get_page(page_number)
+    context={
+        'pagination':page_obj,
+        'kbdInput2':keyword
     }
-    
-    return render(request,'dashboard/album/index.html', context)
-
-
-
-def add_card(request,pk:int):
-    pass
+    return context

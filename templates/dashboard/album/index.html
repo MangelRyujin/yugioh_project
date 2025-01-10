@@ -8,7 +8,13 @@
             <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
             </span>
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-            <input type="search" class="input input-lg grow" placeholder="Buscar" id="kbdInput2" name="kbdInput2" hx-post="{% url 'search_user_cards' %}" hx-trigger="keyup changed delay:500ms" hx-target="#card-list" hx-include="[name=kbdInput2], [name=csrfmiddlewaretoken]" />
+            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput2" 
+            name="kbdInput2" 
+            hx-post="{% url 'search_user_cards' %}" 
+            hx-trigger="input changed, delay:500ms" 
+            hx-target="#card-list" hx-include="[name=kbdInput2], [name=csrfmiddlewaretoken]" 
+            hx-indicator="#spinerSearchAllMyAlbumCards"/>
+            <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
             <label class="sr-only" for="kbdInput2">Buscar</label>
         </div>
         <bottom aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
@@ -23,8 +29,9 @@
                 
             
     <!-- Listado de Cartas -->
-    <div id="card-list" class="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-11 gap-2">
+    <div id="card-list" class="w-full grid grid-cols-1">
       {% include "components/album/card_list.html" %}
+    </div>
       {% comment %} <button class="btn btn-primary" id="notyf-default-example">Default notyf</button>
     </div> <!-- Listado de cartas -->
     <script>

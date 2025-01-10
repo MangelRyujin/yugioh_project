@@ -15,15 +15,21 @@
                 <span class="icon-[tabler--search]  size-6"></span>
                 </span>
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" hx-post="{% url 'search_cards_modal' %}" hx-trigger="input changed, delay:500ms" hx-target="#search-results" hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]" />
+                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" 
+                hx-post="{% url 'search_cards_modal' %}" 
+                hx-trigger="input changed, delay:500ms" 
+                hx-target="#search-results" 
+                hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]"
+                hx-indicator="#searchIndicatorModal" />
                 <label class="sr-only" for="kbdInput1">Buscar</label>
                 <span class="input-group-text gap-2">
-                    <span class="icon-[tabler--cards-filled]  size-6"></span>
+                    {% comment %} <span class="icon-[tabler--cards-filled]  size-6"></span> {% endcomment %}
+                    <span id="searchIndicatorModal" class="loading loading-dots loading-sm htmx-indicator"></span>
                 </span>
             </div>
-            <bottom  class="btn btn-gradient btn-error ">
+            {% comment %} <bottom  class="btn btn-gradient btn-error ">
                 <span class="icon-[tabler--square-rounded-x-filled] size-6" ></span>
-            </bottom>
+            </bottom> {% endcomment %}
           </div>
         </div>
         <div class="modal-body px-3">

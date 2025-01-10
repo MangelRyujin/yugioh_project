@@ -33,7 +33,10 @@ def create_card(request,pk):
                     new_album_card.save()
                     
                     # Crear instancia de Card
-                    card = Card.objects.create(
+                    card = AlbumCard.objects.create(
+                        price=request.POST.get('price', 0),
+                        rarity = request.POST.get('price', 0),
+                        stock = request.POST.get('price', 1),
                         konami_id=data['konami_id'],
                         name=data['name'],
                         typeline=data['typeline'],
@@ -56,16 +59,7 @@ def create_card(request,pk):
                         album_card=new_album_card
                     )
                     
-                    # Crear instancias de CardSet
-                    for set_data in data['card_sets']:
-                        card_set = CardSet.objects.create(
-                            set_name=set_data['set_name'],
-                            set_code=set_data['set_code'],
-                            set_rarity=set_data['set_rarity'],
-                            set_rarity_code=set_data['set_rarity_code'],
-                            set_price=set_data['set_price']
-                        )
-                        card.card_sets.add(card_set)
+                    
                     
                     # Crear instancias de CardImage
                     for image_data in data['card_images']:
@@ -75,24 +69,49 @@ def create_card(request,pk):
                             image_url_small=image_data['image_url_small'],
                             image_url_cropped=image_data['image_url_cropped']
                         )
-                    
-                    # Crear instancias de CardPrice
-                    for price_data in data['card_prices']:
-                        CardPrice.objects.create(
-                            card=card,
-                            cardmarket_price=price_data['cardmarket_price'],
-                            tcgplayer_price=price_data['tcgplayer_price'],
-                            ebay_price=price_data['ebay_price'],
-                            amazon_price=price_data['amazon_price'],
-                            coolstuffinc_price=price_data['coolstuffinc_price']
-                        )
-            
-            album_cards = AlbumCard.objects.filter(album=user_album, stock__gt=0)
-            
             context = {
-                'cards': album_cards,
+                'cards': AlbumCard.objects.filter(album=user_album),
             }
             
             return render(request, 'dashboard/album/index.html', context)
         
     return HttpResponse('<p>Método no permitido</p>', status=405)
+
+def album_card_create(request,data):
+    album = Album.objects.get(user=request.user)
+    card = AlbumCard.objects.create(
+                        price=request.POST.get('price', 0),
+                        rarity = request.POST.get('rarity', '1'),
+                        stock = request.POST.get('stock', 1),
+                        version = request.POST.get('version', '1'),
+                        konami_id=data['konami_id'],
+                        name=data['name'],
+                        typeline=data['typeline'],
+                        type=data['type'],
+                        humanReadableCardType=data['humanReadableCardType'],
+                        frameType=data['frameType'],
+                        desc=data['desc'],
+                        race=data['race'],
+                        pend_desc=data['pend_desc'],
+                        monster_desc=data['monster_desc'],
+                        atk=data['atk'],
+                        defense=data['defense'],
+                        level=data['level'],
+                        attribute=data['attribute'],
+                        archetype=data['archetype'],
+                        scale=data['scale'],
+                        linkval=data['linkval'],
+                        linkmarkers=data['linkmarkers'],
+                        album=album,
+                    )
+                    
+                    
+                    # Crear instancias de CardImage
+    for image_data in data['card_images']:
+                        CardImage.objects.create(
+                            card=card,
+                            image_url=image_data['image_url'],
+                            image_url_small=image_data['image_url_small'],
+                            image_url_cropped=image_data['image_url_cropped']
+                        )
+    return AlbumCard.objects.filter(album=album)
