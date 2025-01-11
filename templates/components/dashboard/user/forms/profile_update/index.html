@@ -6,7 +6,8 @@
         Editar datos personales</span>
     </div>
     <div class="card-body alert rounded-b-md p-3">
-        <form action="{% url 'update_profile' %}" method="POST" class="needs-validation peer grid gap-y-3" novalidate>
+        <form action="{% url 'update_profile' %}" method="POST" class="needs-validation peer grid gap-y-3" novalidate
+          hx-post="{% url 'update_profile' %}" hx-target="#user-card" hx-swap="outerHTML">
           {% csrf_token %}
             <!-- Account Details -->
             
