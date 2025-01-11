@@ -42,10 +42,10 @@ class="needs-validation peer grid grid-cols-2 gap-3">
         </div>
         
           <div class="">
-            <label class="label label-text" for="card_version">Versión</label>
+            <label class="label label-text" for="card_version">Versión </label>
             <select required class="select select-sm" name='version' id="card_version">
-              <option {% if form.rarity.value == "1" %}selected{% endif %} value="1">OCG</option>
-              <option {% if form.rarity.value == "2" %}selected{% endif %} value="2">TCG</option>
+              <option {% if form.version.value == "TCG" %}selected{% endif %} value="1">TCG</option>
+              <option {% if form.version.value == "OCG" %}selected{% endif %} value="2">OCG</option>
               
             </select>
           </div>
