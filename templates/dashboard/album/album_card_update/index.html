@@ -12,40 +12,39 @@
                 </div>
                 <div class="flex items-start gap-2 w-full mt-3 ">
                     <div class="">
-                        <img src="{{ card.card_images.image_url }}" alt="{{card.name}}" loading="lazy" width="100" height="100" class="object-cover">
+                        <img src="{{ card.card_images.image_url }}" alt="{{card.name}}" loading="lazy" width="130" height="130" class="object-cover">
                     </div>
                     <div class="flex flex-col items-start  w-full">
                       <span class="text-base-content font-medium">{{ card.name }}</span>
                       {% if card.level %}
-                        <span class="text-base-content/80  text-xs">
+                        <span class="text-base-content/80 mt-1 text-xs">
                             {% for _ in ''|ljust:card.level %}
                             <p class="icon-[tabler--star-filled] text-warning size-3 "></p>
-                            <p class="icon-[tabler--star-filled] text-warning size-3 "></p>
-                            <p class="icon-[tabler--star-filled] text-warning size-3 "></p>
-                            <p class="icon-[tabler--star-filled] text-warning size-3 "></p>
+                            
                             
                             {% endfor %}
                         </span>
                       {% endif %}
-                      <span class="text-base-content/80  text-xs">{{ card.humanReadableCardType }} 
-                        {% if card.typeline %} ,
-                            <span class="text-base-content/80  text-xs">{{ card.typeline }}</span>
-                        {% endif %}
-                        </span>
                       
-                      <span class="text-base-content/80  text-xs">{{ card.desc }}</span>
-                      {% if card.pend_desc %}
-                        <span class="text-base-content/80  text-xs">{{ card.pend_desc }}</span>
-                      {% endif %}
-                      {% if card.atk or card.defense %}
-                        <div class="flex gap-3">
+                      <span class="text-base-content/80 mt-1 text-xs">{{ card.humanReadableCardType }} </span>
+                        {% if card.typeline %} 
+                            <span class="text-base-content/80 mt-1 text-xs">{{ card.typeline }}</span>
+                        {% endif %}
+                        {% if card.atk or card.defense %}
+                        <div class="flex gap-3 mt-1">
                             <span class="text-base-content/80  text-xs">ATK/{{ card.atk }}</span>
                             <span class="text-base-content/80  text-xs">DEF/{{ card.defense }}</span>
                         </div>
                       {% endif %}
+                      
+                      
                     </div>
                     
                 </div>
+                <span class="text-base-content/80  text-xs">{{ card.desc }}</span>
+                      {% if card.pend_desc %}
+                        <span class="text-base-content/80  text-xs">{{ card.pend_desc }}</span>
+                      {% endif %}
                 
             </div>
             

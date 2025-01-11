@@ -2838,6 +2838,7 @@ select.is-invalid + .advance-select-toggle:focus,
   display: block;
 }
 
+<<<<<<< HEAD
 .alert-success {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity, 1)));
@@ -2845,6 +2846,8 @@ select.is-invalid + .advance-select-toggle:focus,
   color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity, 1)));
 }
 
+=======
+>>>>>>> 7204b5816075e7647811c89ede459613c3fdfb8d
 .alert-error {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-er,oklch(var(--er)/var(--tw-bg-opacity, 1)));
@@ -2899,11 +2902,14 @@ select.is-invalid + .advance-select-toggle:focus,
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
+<<<<<<< HEAD
 .alert-outline.alert-success {
   --tw-text-opacity: 1;
   color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity, 1)));
 }
 
+=======
+>>>>>>> 7204b5816075e7647811c89ede459613c3fdfb8d
 .alert-outline.alert-error {
   --tw-text-opacity: 1;
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
