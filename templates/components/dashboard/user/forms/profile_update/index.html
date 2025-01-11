@@ -41,43 +41,13 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
               <div class="max-w-sm">
                 <div class="max-w-sm ">
-                  <select name="city"
-                    data-select='{
-                    "placeholder": "Select option...",
-                    "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
-                    "toggleClasses": "advance-select-toggle advance-select-lg",
-                    "dropdownClasses": "advance-select-menu",
-                    "optionClasses": "advance-select-option selected:active",
-                    "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-                    "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-5 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
-                    }'
-                    class="hidden"
-                    >
-                    <option value="1" {% if user.city == "1" %}selected{% endif %}>Provincia 1</option>
-                    <option value="2" {% if user.city == "2" %}selected{% endif %}>Provincia 2</option>
-                    <option value="3" {% if user.city == "3" %}selected{% endif %}>Provincia 3</option>
-                    <option value="4" {% if user.city == "4" %}selected{% endif %}>Provincia 4</option>
+                  <select id="city" class="select select-lg max-w-sm" aria-label="select">
                   </select>
                   
                 </div>
               </div>
               <div class="max-w-sm">
-                <select name="state"
-                  data-select='{
-                  "placeholder": "Select option...",
-                  "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
-                  "toggleClasses": "advance-select-toggle advance-select-lg",
-                  "dropdownClasses": "advance-select-menu",
-                  "optionClasses": "advance-select-option selected:active",
-                  "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-                  "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-5 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
-                  }'
-                  class="hidden"
-                  >
-                  <option value="1" {% if user.state == "1" %}selected{% endif %}>Monicipio 1</option>
-                  <option value="2" {% if user.state == "2" %}selected{% endif %}>Monicipio 2</option>
-                  <option value="3" {% if user.state == "3" %}selected{% endif %}>Monicipio 3</option>
-                  <option value="4" {% if user.state == "4" %}selected{% endif %}>Monicipio 4</option>
+                <select id="state" class="select select-lg max-w-sm" aria-label="select">
                 </select>
                 
               </div>
@@ -103,3 +73,111 @@
           </form>
   </div>
 </div>
+
+<script>
+  // JSON de provincias y ciudades
+  const provincias = {
+      "Pinar del Río": [
+          "Consolación del Sur", "Guane", "La Palma", "Los Palacios", "Mantua",
+          "Minas de Matahambre", "Pinar del Río", "San Juan y Martínez", "San Luis",
+          "Sandino", "Viñales"
+      ],
+      "Artemisa": [
+          "Alquízar", "Artemisa", "Bauta", "Caimito", "Candelaria", "Guanajay",
+          "Güira de Melena", "Mariel", "San Antonio de los Baños", "San Cristóbal"
+      ],
+      "Mayabeque": [
+          "Batabanó", "Bejucal", "Güines", "Jaruco", "Madruga", "Melena del Sur",
+          "Nueva Paz", "Quivicán", "San José de las Lajas", "San Nicolás",
+          "Santa Cruz del Norte"
+      ],
+      "La Habana": [
+          "Arroyo Naranjo", "Boyeros", "Cerro", "Centro Habana", "Cotorro",
+          "Diez de Octubre", "Guanabacoa", "Habana del Este", "Habana Vieja",
+          "La Lisa", "Marianao", "Playa", "Plaza de la Revolución", "Regla",
+          "San Miguel del Padrón"
+      ],
+      "Matanzas": [
+          "Calimete", "Cárdenas", "Ciénaga de Zapata", "Colón", "Jagüey Grande",
+          "Jovellanos", "Limonar", "Martí", "Matanzas", "Perico", "Unión de Reyes"
+      ],
+      "Cienfuegos": [
+          "Abreus", "Aguada de Pasajeros", "Cienfuegos", "Cruces", "Cumanayagua",
+          "Palmira", "Rodas"
+      ],
+      "Villa Clara": [
+          "Caibarién", "Camajuaní", "Cifuentes", "Corralillo", "Encrucijada",
+          "Manicaragua", "Placetas", "Quemado de Güines", "Ranchuelo", "Remedios",
+          "Sagua la Grande", "Santa Clara"
+      ],
+      "Sancti Spíritus": [
+          "Cabaiguán", "Fomento", "Jatibonico", "La Sierpe", "Sancti Spíritus",
+          "Taguasco", "Trinidad", "Yaguajay"
+      ],
+      "Ciego de Ávila": [
+          "Bolivia", "Chambas", "Ciego de Ávila", "Ciro Redondo", "Florencia",
+          "Majagua", "Morón", "Primero de Enero", "Venezuela"
+      ],
+      "Camagüey": [
+          "Camagüey", "Carlos Manuel de Céspedes", "Esmeralda", "Florida",
+          "Guáimaro", "Jimaguayú", "Minas", "Najasa", "Nuevitas",
+          "Santa Cruz del Sur", "Sibanicú", "Vertientes"
+      ],
+      "Las Tunas": [
+          "Amancio", "Colombia", "Jobabo", "Las Tunas", "Majibacoa",
+          "Manatí", "Puerto Padre"
+      ],
+      "Holguín": [
+          "Antilla", "Baguanos", "Banes", "Báguano", "Cacocum", "Calixto García",
+          "Cueto", "Frank País", "Gibara", "Holguín", "Mayarí", "Moa",
+          "Rafael Freyre", "Sagua de Tánamo", "Urbano Noris"
+      ],
+      "Granma": [
+          "Bartolomé Masó", "Bayamo", "Buey Arriba", "Campechuela", "Cauto Cristo",
+          "Guisa", "Jiguaní", "Manzanillo", "Media Luna", "Niquero", "Pilón",
+          "Río Cauto", "Yara"
+      ],
+      "Santiago de Cuba": [
+          "Contramaestre", "Guamá", "Mella", "Palma Soriano", "San Luis",
+          "Santiago de Cuba", "Segundo Frente", "Songo-La Maya", "Tercer Frente"
+      ],
+      "Guantánamo": [
+          "Baracoa", "Caimanera", "El Salvador", "Guantánamo", "Imías", "Maisí",
+          "Manuel Tames", "Niceto Pérez", "San Antonio del Sur", "Yateras"
+      ],
+      "Isla de la Juventud": [
+          "Nueva Gerona"
+      ]
+  };
+
+  // Referencias a los elementos select
+  const citySelect = document.getElementById('city');
+  const stateSelect = document.getElementById('state');
+
+  // Llenar el select de ciudades
+  for (const city in provincias) {
+      const option = document.createElement('option');
+      option.value = city;
+      option.textContent = city;
+      citySelect.appendChild(option);
+  }
+
+  // Evento para cuando se cambia la ciudad seleccionada
+  citySelect.addEventListener('change', function () {
+      const selectedCity = citySelect.value;
+
+      // Limpiar el select de estados
+      stateSelect.innerHTML = '<option value="">Seleccione un estado</option>';
+
+      // Llenar el select de estados con las ciudades correspondientes
+      if (selectedCity) {
+          const states = provincias[selectedCity];
+          states.forEach(state => {
+              const option = document.createElement('option');
+              option.value = state;
+              option.textContent = state;
+              stateSelect.appendChild(option);
+          });
+      }
+  });
+</script>

@@ -1,0 +1,33 @@
+{
+    "Pinar del Río": [
+        "Consolación del Sur", "Guane", "La Palma", "Los Palacios", "Mantua",
+        "Minas de Matahambre", "Pinar del Río", "San Juan y Martínez", "San Luis",
+        "Sandino", "Viñales"
+    ],
+    "Artemisa": [
+        "Alquízar", "Artemisa", "Bauta", "Caimito", "Candelaria", "Guanajay",
+        "Güira de Melena", "Mariel", "San Antonio de los Baños", "San Cristóbal"
+    ],
+    "Mayabeque": [
+        "Batabanó", "Bejucal", "Güines", "Jaruco", "Madruga", "Melena del Sur",
+        "Nueva Paz", "Quivicán", "San José de las Lajas", "San Nicolás", 
+        "Santa Cruz del Norte"
+    ],
+    "La Habana": [
+        "Arroyo Naranjo", "Boyeros", "Cerro", "Centro Habana", "Cotorro",
+        "Diez de Octubre", "Guanabacoa", "Habana del Este", "Habana Vieja",
+        "La Lisa", "Marianao", "Playa", "Plaza de la Revolución", "Regla",
+        "San Miguel del Padrón"
+    ],
+    "Matanzas": [
+        "Calimete", "Cárdenas", "Ciénaga de Zapata", "Colón", "Jagüey Grande",
+        "Jovellanos", "Limonar", "Martí", "Matanzas", "Perico", "Unión de Reyes"
+    ],
+    "Cienfuegos": [
+        "Abreus", "Aguada de Pasajeros", "Cienfuegos", "Cruces", "Cumanayagua",
+        "Palmira", "Rodas"
+    ],
+    "Villa Clara": [
+        "Caibarién", "Camajuaní", "Cifuentes", "Corralillo", "Encrucijada"
+    ]
+}
