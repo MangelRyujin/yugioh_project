@@ -1718,41 +1718,6 @@ html {
   visibility: visible;
 }
 
-.divider {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  align-self: stretch;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  height: 1rem;
-  white-space: nowrap;
-}
-
-.divider::before {
-  height: 1px;
-  width: 100%;
-  flex-grow: 1;
-  border-top-width: 1px;
-  --tw-content: '';
-  content: var(--tw-content);
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-}
-
-.divider::after {
-  display: flex;
-  height: 1px;
-  width: 100%;
-  flex-grow: 1;
-  border-top-width: 1px;
-  --tw-content: '';
-  content: var(--tw-content);
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-}
-
 .drawer {
   position: fixed;
   z-index: 80;
@@ -4091,10 +4056,6 @@ select.is-invalid + .advance-select-toggle:focus,
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.divider:not(:empty) {
-  gap: 1rem;
-}
-
 .drawer-body::-webkit-scrollbar-thumb {
   background-color: var(--fallback-s,oklch(var(--s)/0.5));
 }
@@ -4992,8 +4953,17 @@ input:focus-visible {
           mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_qM83%7Banimation:spinner_8HQG 1.05s infinite%7D.spinner_oXPr%7Banimation-delay:.1s%7D.spinner_ZTLf%7Banimation-delay:.2s%7D@keyframes spinner_8HQG%7B0%25,57.14%25%7Banimation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)%7D28.57%25%7Banimation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)%7D100%25%7Btransform:translate(0)%7D%7D%3C/style%3E%3Ccircle class='spinner_qM83' cx='4' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_oXPr' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_ZTLf' cx='20' cy='12' r='3'/%3E%3C/svg%3E");
 }
 
+.loading-ring {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg' stroke='%23fff'%3E%3Cg fill='none' fill-rule='evenodd' stroke-width='2'%3E%3Ccircle cx='22' cy='22' r='1'%3E%3Canimate attributeName='r' begin='0s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-opacity' begin='0s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='22' cy='22' r='1'%3E%3Canimate attributeName='r' begin='-0.9s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-opacity' begin='-0.9s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg' stroke='%23fff'%3E%3Cg fill='none' fill-rule='evenodd' stroke-width='2'%3E%3Ccircle cx='22' cy='22' r='1'%3E%3Canimate attributeName='r' begin='0s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-opacity' begin='0s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='22' cy='22' r='1'%3E%3Canimate attributeName='r' begin='-0.9s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-opacity' begin='-0.9s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+}
+
 .loading-sm {
   width: 1.25rem;
+}
+
+.loading-lg {
+  width: 2.5rem;
 }
 
 :where(.menu li:empty) {
@@ -7053,6 +7023,15 @@ textarea:focus-visible {
   line-height: 1rem;
 }
 
+.btn-xs {
+  height: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .btn-sm {
   height: 1.875rem;
   min-height: 1.875rem;
@@ -7664,6 +7643,10 @@ textarea:focus-visible {
   inset-inline-end: 0.75rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -7879,6 +7862,11 @@ textarea:focus-visible {
   height: 2.5rem;
 }
 
+.size-2 {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
 .size-3 {
   width: 0.75rem;
   height: 0.75rem;
@@ -7953,10 +7941,6 @@ textarea:focus-visible {
 
 .w-60 {
   width: 15rem;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .w-\[20\%\] {
@@ -8130,8 +8114,8 @@ textarea:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-cols-5 {
@@ -8188,10 +8172,6 @@ textarea:focus-visible {
 
 .gap-1 {
   gap: 0.25rem;
-}
-
-.gap-1\.5 {
-  gap: 0.375rem;
 }
 
 .gap-2 {
@@ -8453,10 +8433,6 @@ textarea:focus-visible {
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity, 1)));
-}
-
-.bg-base-100\/90 {
-  background-color: var(--fallback-b1,oklch(var(--b1)/0.9));
 }
 
 .bg-base-200 {
@@ -8810,6 +8786,10 @@ textarea:focus-visible {
   line-height: 2.5rem;
 }
 
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.375rem;
@@ -9122,12 +9102,12 @@ textarea:focus-visible {
   --placement: bottom-end;
 }
 
-.\[--placement\:bottom-start\] {
-  --placement: bottom-start;
-}
-
 .\[--placement\:bottom\] {
   --placement: bottom;
+}
+
+.\[--placement\:top\] {
+  --placement: top;
 }
 
 .\[--trigger\:click\] {
@@ -9901,24 +9881,12 @@ textarea:focus-visible {
   visibility: visible;
 }
 
-.tooltip.show .tooltip-shown\:scale-50 {
-  --tw-scale-x: .5;
-  --tw-scale-y: .5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .tooltip.show .tooltip-shown\:opacity-100 {
   opacity: 1;
 }
 
 .tooltip-content.show.tooltip-shown\:visible {
   visibility: visible;
-}
-
-.tooltip-content.show.tooltip-shown\:scale-50 {
-  --tw-scale-x: .5;
-  --tw-scale-y: .5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .tooltip-content.show.tooltip-shown\:opacity-100 {
@@ -10143,8 +10111,12 @@ textarea:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .sm\:grid-cols-8 {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+  .sm\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .sm\:justify-end {
+    justify-content: flex-end;
   }
 
   .sm\:gap-8 {
@@ -10161,14 +10133,15 @@ textarea:focus-visible {
     line-height: 1.5rem;
   }
 
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
   .sm\:shadow {
     --tw-shadow: 0 2px 4px 0 var(--fallback-bs,oklch(var(--bs)/0.26));
     --tw-shadow-colored: 0 2px 4px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  .sm\:\[--placement\:right\] {
-    --placement: right;
   }
 }
 
@@ -10218,8 +10191,8 @@ textarea:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-8 {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
@@ -10232,10 +10205,6 @@ textarea:focus-visible {
     display: grid;
   }
 
-  .lg\:grid-cols-11 {
-    grid-template-columns: repeat(11, minmax(0, 1fr));
-  }
-
   .lg\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -10246,6 +10215,10 @@ textarea:focus-visible {
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-9 {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
   }
 
   .lg\:justify-start {

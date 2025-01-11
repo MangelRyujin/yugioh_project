@@ -17,9 +17,11 @@ from django.db.models import Q
 
 @login_required
 def search_user_cards(request):
-    return render(request, 'components/album/card_list.html',_show_cards(request))
+    context=_show_cards(request)
+    context['search']=True
+    return render(request, 'components/album/card_list.html',context)
 
-
+@login_required
 def search_cards_modal(request):
     if request.method == 'POST':
         #print(request.POST.get('kbdInput'))
@@ -39,11 +41,12 @@ def search_cards_modal(request):
             return HttpResponse(f'<p>Error: {str(e)}</p>', status=500)
     return HttpResponse('<p>Método no permitido</p>', status=405)
 
+@login_required
 def album(request):
     return render(request,'dashboard/album/index.html',_show_cards(request))
 
 
-
+@login_required
 def add_card(request,pk):
     if request.method == 'POST':
         external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?konami_id={pk}' 
@@ -60,7 +63,7 @@ def add_card(request,pk):
             
         return render(request,'components/album/add_card_modal/card_form_add.html',context)
     
-
+@login_required
 def _show_cards(request):
     keyword = request.GET.get('kbdInput2','')
     if request.method == 'POST':
@@ -75,3 +78,16 @@ def _show_cards(request):
         'kbdInput2':keyword
     }
     return context
+
+@login_required
+def album_card_delete(request,pk):
+    card = AlbumCard.objects.get(album__user=request.user,pk=pk)
+    context={
+        'card':card
+    }
+    if request.method == 'DELETE':
+        if card:
+            card.delete()
+            context['card']=[]
+    
+    return render(request,'components/album/card.html',context)
