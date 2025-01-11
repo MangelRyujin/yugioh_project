@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from apps.accounts.decorators import user_is_not_authenticated
 from apps.accounts.forms import RegisterForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -9,6 +10,7 @@ from apps.accounts.forms import CustomPasswordChangeForm
 
 # Create your views here.
 
+@user_is_not_authenticated
 def login_view(request):
     context = {
         "next": request.GET.get('next') or '/'
@@ -26,6 +28,7 @@ def login_view(request):
                     
     return render(request, 'accounts/login.html', context)
 
+@user_is_not_authenticated
 def register_view(request):
     form=RegisterForm(request.POST or None)
     if request.method == 'POST':
