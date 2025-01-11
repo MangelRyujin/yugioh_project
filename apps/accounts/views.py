@@ -74,12 +74,12 @@ def update_profile_view(request):
             user.save()
             messages.success(request, 'Tu perfil ha sido actualizado con éxito.')
             if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/card_user_presentation/partials/card.html', {'user': user})
+                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', {'user': user})
             return redirect('profile')
         else:
             messages.error(request, 'Por favor corrige los errores a continuación.')
             if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/card_user_presentation/partials/card.html', {'form': form})
+                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', {'form': form})
     else:
         form = ProfileUpdateForm(instance=request.user)
     
