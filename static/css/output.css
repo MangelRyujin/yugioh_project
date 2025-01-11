@@ -2789,6 +2789,13 @@ select.is-invalid + .advance-select-toggle:focus,
   display: block;
 }
 
+.alert-error {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-er,oklch(var(--er)/var(--tw-bg-opacity, 1)));
+  --tw-text-opacity: 1;
+  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
+}
+
 .alert-soft {
   border-width: 1px;
   border-color: currentColor;
@@ -2832,6 +2839,11 @@ select.is-invalid + .advance-select-toggle:focus,
 
 .alert-soft.alert-error {
   background-color: var(--fallback-er,oklch(var(--er)/0.2));
+  --tw-text-opacity: 1;
+  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
+}
+
+.alert-outline.alert-error {
   --tw-text-opacity: 1;
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
@@ -7860,11 +7872,6 @@ textarea:focus-visible {
 .size-10 {
   width: 2.5rem;
   height: 2.5rem;
-}
-
-.size-2 {
-  width: 0.5rem;
-  height: 0.5rem;
 }
 
 .size-3 {
