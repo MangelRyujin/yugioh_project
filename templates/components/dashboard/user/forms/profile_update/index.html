@@ -41,13 +41,21 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
               <div class="max-w-sm">
                 <div class="max-w-sm ">
-                  <select id="city" class="select select-lg max-w-sm" aria-label="select">
+                  <select id="city" class="select select-lg max-w-sm" aria-label="select" name="city">
+                    <option disabled selected>--- Seleccione una provincia ---</option>
+                    {% if user.city %}
+                    <option selected>{{user.city}}</option>
+                    {% endif %}
                   </select>
                   
                 </div>
               </div>
               <div class="max-w-sm">
-                <select id="state" class="select select-lg max-w-sm" aria-label="select">
+                <select id="state" class="select select-lg max-w-sm" aria-label="select" name="state">
+                  <option disabled selected>Seleccione una provincia</option>
+                  {% if user.state %}
+                    <option selected>{{user.state}}</option>
+                  {% endif %}
                 </select>
                 
               </div>
@@ -167,7 +175,7 @@
       const selectedCity = citySelect.value;
 
       // Limpiar el select de estados
-      stateSelect.innerHTML = '<option value="">Seleccione un estado</option>';
+      stateSelect.innerHTML = '<option value="">Seleccione un municipio</option>';
 
       // Llenar el select de estados con las ciudades correspondientes
       if (selectedCity) {
