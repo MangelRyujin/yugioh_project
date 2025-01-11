@@ -134,3 +134,15 @@
   }
   
 }
+
+.htmx-indicator {
+  display: none !important;
+  opacity: 1;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+  display:flex !important;
+}
+
+

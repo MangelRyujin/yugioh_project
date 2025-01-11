@@ -1,4 +1,4 @@
-{% load static %}
+{% csrf_token %}
 <div id="add-card-modal" class="overlay modal overlay-open:opacity-100 hidden [--overlay-backdrop:static]" role="dialog" tabindex="-1" data-overlay-keyboard="false">
     <div class="modal-dialog overlay-open:opacity-100 ">
       <div class="modal-content">
@@ -14,108 +14,31 @@
                 <span class="input-group-text">
                 <span class="icon-[tabler--search]  size-6"></span>
                 </span>
-                <input type="search" class="input input-lg grow" placeholder="Buscar" id="kbdInput" />
-                <label class="sr-only" for="kbdInput">Buscar</label>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" 
+                hx-post="{% url 'search_cards_modal' %}" 
+                hx-trigger="input changed, delay:500ms" 
+                hx-target="#search-results" 
+                hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]"
+                hx-indicator="#searchIndicatorModal" />
+                <label class="sr-only" for="kbdInput1">Buscar</label>
                 <span class="input-group-text gap-2">
-                    <span class="icon-[tabler--cards-filled]  size-6"></span>
+                    {% comment %} <span class="icon-[tabler--cards-filled]  size-6"></span> {% endcomment %}
+                    <span id="searchIndicatorModal" class="loading loading-dots loading-sm htmx-indicator"></span>
                 </span>
             </div>
-            <bottom  class="btn btn-gradient btn-error ">
+            {% comment %} <bottom  class="btn btn-gradient btn-error ">
                 <span class="icon-[tabler--square-rounded-x-filled] size-6" ></span>
-            </bottom>
+            </bottom> {% endcomment %}
           </div>
         </div>
         <div class="modal-body px-3">
-           <div class="grid grid-cols-1 gap-4 mt-4">
-            {% for i in list  %}
-            <div class="border-base-content/20 flex items-start gap-3 rounded-lg border-b bg-base-100 p-2 " >
-              
-              <div class="flex flex-col items-start  w-full h-full">
-                <div class="flex items-start gap-3">
-                  <img src="{% static "img/slifer-card.jpg" %}" alt="card" loading="lazy" width="60" height="60" class="object-cover" />
-                  <div class="flex flex-col items-start  w-full">
-                    <span class="text-base-content font-medium">Slifer the Sky Dragon</span>
-                    <span class="text-base-content/80 mt-1 text-xs">[Divine-Beast/Effect]</span>
-                  </div>
-                  
-                </div>
-                
-                {% comment %} <span class="text-base-content/80 mt-1 text-xs">[Divine-Beast/Effect]</span> {% endcomment %}
-                
-                <div class="flex justify-start w-full items-center gap-4 mt-2">
 
-                  <div class="w-full">
-                    <label class="label label-text" for="number-input-cant">Cantidad:</label>
-                    <div class="input-group max-w-32 border-none" data-input-number>
-                      <span class="input-group-text gap-3">
-                        <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Decrement button" data-input-number-decrement>
-                          <span class="icon-[tabler--minus] size-4 flex-shrink-0"></span>
-                        </button>
-                      </span>
-                      <input class="input text-center" id="number-input-cant" type="text" value="0" data-input-number-input />
-                      <span class="input-group-text gap-3">
-                        <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Increment button" data-input-number-increment>
-                          <span class="icon-[tabler--plus] size-4 flex-shrink-0"></span>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div class="w-full">
-                    <label class="label label-text" for="number-input-price">Tipo:</label>
-                    <div class="w-full">
-                      <select
-                        data-select='{
-                        "placeholder": "Seccionar tipo...",
-                        "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
-                        "toggleClasses": "advance-select-toggle",
-                        "dropdownClasses": "advance-select-menu",
-                        "optionClasses": "advance-select-option selected:active",
-                        "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
-                        "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
-                        }'
-                        class="hidden"
-                      >
-
-                        <option value="name">Normal</option>
-                        <option value="email">TCG</option>
-                        <option value="description">OCG</option>
-                        
-                      </select>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="flex w-full justify-between items-end mt-1">
-                  <div>
-                    <label class="label label-text" for="number-input-price">Precio por unidad:</label>
-                    <div class="input-group items-center max-w-40 border-none" data-input-number>
-                      <span class="input-group-text gap-3">
-                        <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Decrement button" data-input-number-decrement>
-                          <span class="icon-[tabler--minus] size-4 flex-shrink-0"></span>
-                        </button>
-                      </span>
-                      <input class="input text-center" id="number-input-price" type="text" value="0" data-input-number-input />
-                      <span class="input-group-text gap-3">
-                        <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Increment button" data-input-number-increment>
-                          <span class="icon-[tabler--plus] size-4 flex-shrink-0"></span>
-                        </button>
-                      </span>
-                      USD
-                    </div>
-                    
-                  </div>
-
-                <button type="button" class=" btn btn-success btn-sm px-2" aria-label="Increment button" data-input-number-increment>
-                  <span class="icon-[tabler--square-rounded-plus-filled] size-5 flex-shrink-0"></span>
-                  Añadir
-                </button>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+           <div id="search-results">
+            {% comment %} {% include "components/album/add_card_modal/search_results.html" %} {% endcomment %}
            </div>
-          
+
+           
         </div>
         <div class="modal-footer">
           
@@ -123,3 +46,4 @@
       </div>
     </div>
   </div>
+  

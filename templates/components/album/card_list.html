@@ -1,0 +1,26 @@
+{% load static %}
+{% if pagination %}
+<span class="">Cartas mostradas {{pagination.object_list|length }} de {{pagination.paginator.count }} </span>
+<div  class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-9 gap-2 mt-3">
+  {% for card in pagination %}
+      {% include "components/album/card.html" %}
+  {% endfor %}
+</div>
+{% if search %}
+<script>
+  document.querySelectorAll('[id^="myAlbumCard"]').forEach(function(card) {
+    card.addEventListener('click', function() {
+        this.classList.toggle('show');
+        
+
+    });
+});
+</script>
+{% endif %}
+{% endif %}
+
+
+       
+          
+          
+       

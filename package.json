@@ -9,6 +9,7 @@
     "watch:css": "tailwindcss build static/css/main.css -o static/css/output.css -w"
   },
   "dependencies": {
+    "notyf": "^3.10.0",
     "tailwindcss-motion": "^1.0.0",
     "theme-change": "^2.5.0"
   }

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.html", "./**/templates/**/*.html","./node_modules/flyonui/dist/js/*.js"],
+  content: ["./templates/**/*.html", "./**/templates/**/*.html","./node_modules/flyonui/dist/js/*.js","./node_modules/notyf/**/*.js"],
   plugins: [
     require("flyonui"),
     require("flyonui/plugin"),
@@ -29,7 +29,8 @@ module.exports = {
     },
   },
   flyonui: {
-    themes: ['light', 'dark']
+    themes: ['light', 'dark'],
+    vendors: true
   },
   darkMode: ['class', '[data-theme="dark"]'],
   

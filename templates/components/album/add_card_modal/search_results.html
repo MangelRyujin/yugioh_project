@@ -1,0 +1,8 @@
+{% load static %}
+{% load custom_tags %} 
+<div class="grid grid-cols-1 gap-4 mt-4">
+    {% for card in cards %}
+        {% include "components/album/add_card_modal/card_form_add.html" %}
+    {% endfor %}
+    
+</div>
