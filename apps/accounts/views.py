@@ -63,6 +63,7 @@ def change_password_view(request):
 
 def update_profile_view(request):
     if request.method == 'POST':
+        context = {}
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save(commit=False)
@@ -76,7 +77,5 @@ def update_profile_view(request):
             messages.error(request, 'Por favor corrige los errores a continuación.')
             if request.headers.get('HX-Request'):
                 return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', context)
-        context = {
-        'form': form
-        }
+        context['form'] = form
         return render(request, 'accounts/profile/profile.html', context)
