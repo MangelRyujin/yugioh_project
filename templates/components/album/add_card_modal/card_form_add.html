@@ -71,8 +71,12 @@
             </div>
           </div>
         </div>
+
         {% if message %}
-        <span class="text-success">{{message}}</span>
+        <script>
+          showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+        </script>
+        <span class="alert alert-soft alert-success p-2 text-xs mt-1">{{message}}</span>
             <div
             hx-get="{% url "search_user_cards" %}"
             hx-trigger="load" 

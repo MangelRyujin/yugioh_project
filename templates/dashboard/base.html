@@ -7,6 +7,7 @@
     {% block meta %}{% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     <link rel="stylesheet" href="{% static 'css/notyf.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -17,10 +18,12 @@
   {% include "components/album/add_card_modal/index.html" %}
   <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-1 animate-pulse " alt="ligth">
-  </div>
-  
- 
-    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-50 ">
+  </div>  
+  <div id="notification-container" class="fixed top-4 right-4 space-y-4 z-50"></div>
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-40 ">
+      
+      
+      
         <div class="flex  items-center">
           <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-400 via-purple-500 to-indigo-700
@@ -127,8 +130,8 @@
               </a>
             </div>
             {% if user.is_authenticated %}
-            <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
-              <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+            <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end] z-0">
+              <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center z-0" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                 <div class="avatar">
                   <div class="size-9.5 rounded-full">
                     <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
@@ -170,7 +173,7 @@
                     <form action="{% url 'logout' %}" method="post" class="w-full">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-error btn-soft btn-block">
-                        <span class="icon-[tabler--logout]"></span>
+                        <span class="icon-[tabler--logout] size-6"></span>
                         Cerrar sesión
                       </button>
                     </form>
@@ -235,7 +238,7 @@
             
           </ul>
           <div class=" mt-4 ">
-            <div class="flex items-center w-full">
+            <div class="flex items-center w-full ">
               <div class="avatar placeholder  ">
                 <div class="bg-primary text-primary-content w-10 rounded-full">
                   <span class="icon-[tabler--crown] size-6 shrink-0"></span>
@@ -243,7 +246,7 @@
                 </div>
                 
               </div>
-              <h5 class="text-base-content ms-2 text-lg font-semibold">Económico</h5>
+              <h5 class="text-base-content ms-2  text-lg font-semibold ">Económico</h5>
             </div>
             <h5 class="text-base-content mt-2 text-lg font-semibold">Cambiar plan</h5>
             <p class="text-base-content/80 text-xs">Ten acceso a mejores funciones</p>
@@ -257,6 +260,73 @@
        {% block content %}{% endblock content %} 
     </main>
 
+    <script>
+      const notificationTypes = {
+          info: {
+              color: "bg-info/70 text-white",
+              progressColor: "bg-info"
+          },
+          success: {
+              color: "bg-success/70 text-white",
+              progressColor: "bg-success"
+          },
+          warning: {
+              color: "bg-warning/70 text-white",
+              progressColor: "bg-warning"
+          },
+          error: {
+              color: "bg-error/70 text-white",
+              progressColor: "bg-error"
+          }
+      };
+  
+      function showNotification(type, title, message, duration, icon) {
+          
+          const notificationType = notificationTypes[type];
+          const notificationContainer = document.getElementById('notification-container');
+  
+          const notification = document.createElement('div');
+         
+          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-3 max-w-xs backdrop-blur-sm  blur-notify`;
+  
+          notification.innerHTML = `
+             
+              <p class="mb-3 flex items-center text-sm">
+              <i class="${icon} text-md me-2"></i>
+              ${message}</p>
+              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+             
+                  <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
+              </div>
+          `;
+  
+          notificationContainer.appendChild(notification);
+  
+          setTimeout(() => {
+              notification.classList.remove('slide-in');
+          }, 10);
+  
+          const intervalTime = 50; // Intervalo de actualización en milisegundos
+          const totalIntervals = duration / intervalTime;
+          let progress = 0;
+          const progressBar = notification.querySelector('.h-full');
+          console.log(progressBar); // Verificar que el elemento se selecciona correctamente
+          const interval = setInterval(() => {
+              progress += 100 / totalIntervals;
+              progressBar.style.width = `${progress}%`;
+              //console.log(`Progress: ${progress}%`); // Verificar que el progreso se actualiza correctamente
+              if (progress >= 100) {
+                  clearInterval(interval);
+                  setTimeout(() => {
+                      notification.classList.add('slide-out');
+                      setTimeout(() => {
+                          notification.remove();
+                      }, 500);
+                  }, 500);
+              }
+          }, intervalTime);
+      }
+  </script>
     
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>

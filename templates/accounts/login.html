@@ -59,12 +59,13 @@
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
-              </div>
-            {% if error %}
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                {% if error %}
+                <div class="alert alert-soft alert-error  p-2 mt-2" role="alert">
                     {{ error }}
                 </div>
             {% endif %}
+              </div>
+            
             <div class="flex-colum justify-center mb-4">
                 <div class="input-group-filled">
                     <span class="input-group-text">
@@ -82,12 +83,13 @@
                   </span>
                 </div>
                 <span class="input-filled-focused"></span>
+                {% if error %}
+                  <div class="alert alert-soft alert-error  p-2 mt-2" role="alert">
+                      {{ error }}
+                  </div>
+                {% endif %}
               </div>
-            {% if error %}
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    {{ error }}
-                </div>
-            {% endif %}
+            
             <div class="mb-4 text-right">
                 <a href="#" class="font-bold  link text-white link-animated">¿Has olvidado tu contraseña?</a>
                 <a href="{% url "register" %}" class="font-bold  link text-white link-animated">No tengo cuenta? <span class="text-primary">Registro</span></a>

@@ -89,5 +89,6 @@ def album_card_delete(request,pk):
         if card:
             card.delete()
             context['card']=[]
+            context['message']="Carta eliminada correctamente"
     
     return render(request,'components/album/card.html',context)

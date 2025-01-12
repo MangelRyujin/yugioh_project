@@ -146,3 +146,7 @@
 }
 
 
+.blur-notify{
+  backdrop-filter: blur(3px) !important;
+  z-index: 99999 !important;
+}
