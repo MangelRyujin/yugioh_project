@@ -37,3 +37,8 @@
 
   </div>
 {% endif %}
+{% if message %}
+<script>
+    showNotification('error', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+</script>
+{% endif %}

@@ -19,10 +19,10 @@
   <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-1 animate-pulse " alt="ligth">
   </div>  
- 
+  <div id="notification-container" class="fixed top-4 right-4 space-y-4 z-50"></div>
     <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-40 ">
       
-      <div id="notification-container" class="fixed top-4 right-4 space-y-4"></div>
+      
       
         <div class="flex  items-center">
           <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
@@ -130,8 +130,8 @@
               </a>
             </div>
             {% if user.is_authenticated %}
-            <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
-              <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+            <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end] z-0">
+              <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center z-0" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                 <div class="avatar">
                   <div class="size-9.5 rounded-full">
                     <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
@@ -173,7 +173,7 @@
                     <form action="{% url 'logout' %}" method="post" class="w-full">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-error btn-soft btn-block">
-                        <span class="icon-[tabler--logout]"></span>
+                        <span class="icon-[tabler--logout] size-6"></span>
                         Cerrar sesión
                       </button>
                     </form>
@@ -238,7 +238,7 @@
             
           </ul>
           <div class=" mt-4 ">
-            <div class="flex items-center w-full">
+            <div class="flex items-center w-full ">
               <div class="avatar placeholder  ">
                 <div class="bg-primary text-primary-content w-10 rounded-full">
                   <span class="icon-[tabler--crown] size-6 shrink-0"></span>
@@ -246,7 +246,7 @@
                 </div>
                 
               </div>
-              <h5 class="text-base-content ms-2 text-lg font-semibold">Económico</h5>
+              <h5 class="text-base-content ms-2  text-lg font-semibold ">Económico</h5>
             </div>
             <h5 class="text-base-content mt-2 text-lg font-semibold">Cambiar plan</h5>
             <p class="text-base-content/80 text-xs">Ten acceso a mejores funciones</p>
@@ -263,38 +263,39 @@
     <script>
       const notificationTypes = {
           info: {
-              color: "bg-blue-500 text-white",
-              progressColor: "bg-blue-700"
+              color: "bg-info/70 text-white",
+              progressColor: "bg-info"
           },
           success: {
-              color: "bg-green-500 text-white",
-              progressColor: "bg-green-700"
+              color: "bg-success/70 text-white",
+              progressColor: "bg-success"
           },
           warning: {
-              color: "bg-yellow-500 text-white",
-              progressColor: "bg-yellow-700"
+              color: "bg-warning/70 text-white",
+              progressColor: "bg-warning"
           },
           error: {
-              color: "bg-red-500 text-white",
-              progressColor: "bg-red-700"
+              color: "bg-error/70 text-white",
+              progressColor: "bg-error"
           }
       };
   
       function showNotification(type, title, message, duration, icon) {
-          console.log('im in')
+          
           const notificationType = notificationTypes[type];
           const notificationContainer = document.getElementById('notification-container');
   
           const notification = document.createElement('div');
-          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-6 w-80`;
+         
+          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-3 max-w-xs backdrop-blur-sm  blur-notify`;
   
           notification.innerHTML = `
-              <div class="flex items-center mb-4">
-                  <i class="${icon} text-2xl mr-2"></i>
-                  <h2 class="text-xl font-bold">${title}</h2>
-              </div>
-              <p class="mb-4">${message}</p>
+             
+              <p class="mb-3 flex items-center text-sm">
+              <i class="${icon} text-md me-2"></i>
+              ${message}</p>
               <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+             
                   <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
               </div>
           `;

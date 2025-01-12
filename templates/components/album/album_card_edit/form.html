@@ -69,13 +69,12 @@ class="needs-validation peer grid grid-cols-2 gap-3">
                   Editar
               </button>
           </div>
+          {% if message %}
+                    <script>
+                        showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+                    </script>
+          {% endif %}
             
-            {% if message %}
-            <div class="flex col-span-2 justify-start">
-              <span class="text-success text-xs">{{message}}</span>
-            </div>
-            
-            {% endif %} 
       
      
     </form>
