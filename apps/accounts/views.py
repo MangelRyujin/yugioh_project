@@ -7,7 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from apps.accounts.forms import CustomPasswordChangeForm
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -87,3 +87,22 @@ def update_profile_view(request):
         'form': form
     }
     return render(request, 'accounts/profile/profile.html', context)
+
+# Change password form component
+@login_required(login_url='/login/')
+def change_password_form(request):
+    if request.method == 'POST':
+        context={}
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            context['form']=form
+            context['message']='Tu contraseña ha sido cambiada exitosamente.'
+            print('exitoso')
+            return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html',context)
+            # response = HttpResponse()
+            # response["HX-Redirect"]= '/login/'
+            # return response
+        print(form)
+        context['form']=form
+        return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html',context)

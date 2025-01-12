@@ -6,31 +6,31 @@
         Editar datos personales</span>
     </div>
     <div class="card-body alert rounded-b-md p-3">
-        <form action="{% url 'update_profile' %}" method="POST" class="needs-validation peer grid gap-y-3" novalidate
-          hx-post="{% url 'update_profile' %}" hx-target="#user-info" hx-swap="outerHTML">
+        <form  class="needs-validation peer grid gap-y-3"
+          hx-post="{% url 'update_profile' %}" hx-target="#user-info" hx-swap="outerHTML" hx-indicator="#spinnerProfileUPdate">
           {% csrf_token %}
             <!-- Account Details -->
             
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div class="max-w-sm ">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div class=" ">
                 <div class="input-group-filled ">
                   <span class="input-group-text">
                     <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="first_name" placeholder="Nombre" class="input input-filled peer" id="userFirstName" value="{{user.first_name}}" />
+                    <input type="text" name="first_name" placeholder="Nombre" required class="input input-filled peer" id="userFirstName" value="{% if user.first_name %}{{user.first_name}}{% endif %}" />
                     <label class="input-filled-label text-primary" for="userFirstName" >Nombre</label>
                   </div>
                 </div>
                 <span class="input-filled-focused"></span>
               </div>
-              <div class="max-w-sm">
+              <div class="">
                 <div class="input-group-filled">
                   <span class="input-group-text">
                     <span class="icon-[tabler--user] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="last_name" placeholder="Apellido" class="input input-filled peer" id="userLastName" value="{{user.last_name}}" />
+                    <input type="text" name="last_name" placeholder="Apellido" required class="input input-filled peer" id="userLastName" value="{% if user.last_name %}{{user.last_name}}{% endif %}" />
                     <label class="input-filled-label text-primary" for="userLastName" >Apellido</label>
                   </div>
                 </div>
@@ -38,36 +38,36 @@
               </div>
             </div>
             <!-- Email and password -->
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
-              <div class="max-w-sm">
-                <div class="max-w-sm ">
-                  <select id="city" class="select select-lg max-w-sm" aria-label="select" name="city">
-                    <option disabled selected>--- Seleccione una provincia ---</option>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-3">
+              
+                <div class=" ">
+                  <select id="city" class="select select-lg " aria-label="select" name="city" required>
+                    <option disabled>Provincia</option>
                     {% if user.city %}
                     <option selected>{{user.city}}</option>
                     {% endif %}
                   </select>
                   
                 </div>
-              </div>
-              <div class="max-w-sm">
-                <select id="state" class="select select-lg max-w-sm" aria-label="select" name="state">
-                  <option disabled selected>Seleccione una provincia</option>
-                  {% if user.state %}
-                    <option selected>{{user.state}}</option>
-                  {% endif %}
-                </select>
-                
-              </div>
+             
+                <div class="">
+                  <select id="state" class="select select-lg " aria-label="select" name="state" required>
+                    <option disabled selected>Municipio</option>
+                    {% if user.state %}
+                      <option selected>{{user.state}}</option>
+                    {% endif %}
+                  </select>
+                  
+                </div>
             </div>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mt-3">
-              <div class="max-w-sm">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-3">
+              <div class="">
                 <div class="input-group-filled">
                   <span class="input-group-text">
                     <span class="icon-[tabler--phone-filled] text-primary size-6"></span>
                   </span>
                   <div class="relative grow">
-                    <input type="text" name="phone_number" placeholder="Móvil" class="input input-filled peer" id="userPhoneNumber" value="{{user.phone_number}}"/>
+                    <input type="number" name="phone_number" placeholder="Móvil" class="input input-filled peer" id="userPhoneNumber" value="{% if user.phone_number %}{{user.phone_number}}{% endif %}"/>
                     <label class="input-filled-label text-primary" for="userPhoneNumber" >Móvil</label>
                   </div>
                 </div>
@@ -76,7 +76,9 @@
             </div>
             
            <div class="flex justify-end">
-              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient">Actualizar</button>
+              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient flex justify-center items-center">
+                <span id="spinnerProfileUPdate" class="loading loading-dots loading-sm htmx-indicator"></span>
+                Actualizar</button>
             </div>
           </form>
   </div>
