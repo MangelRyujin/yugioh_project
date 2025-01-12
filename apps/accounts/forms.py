@@ -34,6 +34,10 @@ class CustomPasswordChangeForm(forms.Form):
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
     )
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
     def clean(self):
         cleaned_data = super().clean()
         new_password1 = cleaned_data.get("new_password1")
@@ -43,7 +47,7 @@ class CustomPasswordChangeForm(forms.Form):
             raise forms.ValidationError("Las contraseñas no coinciden.")
         return cleaned_data
 
-    def save(self, user):
+    def save(self):
         new_password = self.cleaned_data["new_password1"]
-        user.set_password(new_password)
-        user.save()
+        self.user.set_password(new_password)
+        self.user.save()
