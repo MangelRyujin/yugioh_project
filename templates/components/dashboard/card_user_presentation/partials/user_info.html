@@ -1,4 +1,11 @@
 <div id="user-info">
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+            </script>
+        {% endfor %}
+    {% endif %}
     <h5 class="">YGF: {{user.pk}}</h5>
     <p class=" ">Email: {{user.email}}</p>
     <p class=" ">Móvil: {{user.phone_number}}</p>

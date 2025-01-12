@@ -1,14 +1,34 @@
-{% extends "dashboard/base.html" %}
-{% load static %}
-{% block content %}
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-       {% comment %} {% include "components/dashboard/card_user_presentation/index.html" %} {% endcomment %}
-  
+<style>
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 
-        
-          
-    </div>
-{% endblock content %} 
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    .slide-in {
+        animation: slideIn 0.5s forwards;
+    }
+
+    .slide-out {
+        animation: slideOut 0.5s forwards;
+    }
+</style>
+
+<button class="bg-blue-500 text-white px-4 py-2 rounded m-2" onclick="showNotification('info', 'Información', 'Este es un mensaje informativo.', 3000, 'fas fa-info-circle')">Mostrar Info</button>
+<div id="notification-container" class="fixed top-4 right-4 space-y-4"></div>
+
 <script>
     const notificationTypes = {
         info: {

@@ -17,8 +17,6 @@
   <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
   </div>
-  
- 
     <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-50 ">
         <div class="flex  items-center">
           <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
@@ -218,6 +216,72 @@
         </div>
       </div>
     </footer>
+    <script>
+      const notificationTypes = {
+          info: {
+              color: "bg-blue-500 text-white",
+              progressColor: "bg-blue-700"
+          },
+          success: {
+              color: "bg-green-500 text-white",
+              progressColor: "bg-green-700"
+          },
+          warning: {
+              color: "bg-yellow-500 text-white",
+              progressColor: "bg-yellow-700"
+          },
+          error: {
+              color: "bg-red-500 text-white",
+              progressColor: "bg-red-700"
+          }
+      };
+  
+      function showNotification(type, title, message, duration, icon) {
+          const notificationType = notificationTypes[type];
+          const notificationContainer = document.getElementById('notification-container');
+  
+          const notification = document.createElement('div');
+          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-6 w-80`;
+  
+          notification.innerHTML = `
+              <div class="flex items-center mb-4">
+                  <i class="${icon} text-2xl mr-2"></i>
+                  <h2 class="text-xl font-bold">${title}</h2>
+              </div>
+              <p class="mb-4">${message}</p>
+              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
+              </div>
+          `;
+  
+          notificationContainer.appendChild(notification);
+  
+          setTimeout(() => {
+              notification.classList.remove('slide-in');
+          }, 10);
+  
+          const intervalTime = 50; // Intervalo de actualización en milisegundos
+          const totalIntervals = duration / intervalTime;
+          let progress = 0;
+          const progressBar = notification.querySelector('.h-full');
+          console.log(progressBar); // Verificar que el elemento se selecciona correctamente
+          const interval = setInterval(() => {
+              progress += 100 / totalIntervals;
+              progressBar.style.width = `${progress}%`;
+              //console.log(`Progress: ${progress}%`); // Verificar que el progreso se actualiza correctamente
+              if (progress >= 100) {
+                  clearInterval(interval);
+                  setTimeout(() => {
+                      notification.classList.add('slide-out');
+                      setTimeout(() => {
+                          notification.remove();
+                      }, 500);
+                  }, 500);
+              }
+          }, intervalTime);
+      }
+  </script>
+    
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
