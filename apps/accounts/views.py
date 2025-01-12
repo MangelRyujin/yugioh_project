@@ -7,7 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from apps.accounts.forms import CustomPasswordChangeForm
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -43,47 +43,40 @@ def register_view(request):
 def profile_view(request):
     return render(request, 'accounts/profile/profile.html')
 
-@login_required
+
+@login_required(login_url='/login/')
 def change_password_view(request):
     if request.method == 'POST':
-        form = CustomPasswordChangeForm(request.POST, user=request.user)
+        context = {}
+        #form = CustomPasswordChangeForm(request.POST, user=request.user)
+        form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
+            context['form']=form
             update_session_auth_hash(request, request.user)  # Mantener la sesión iniciada
             messages.success(request, 'Tu contraseña ha sido cambiada exitosamente.')
-            if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html', {'form': CustomPasswordChangeForm(user=request.user), 'success': True})
-            return redirect('profile')
-        else:
-            messages.error(request, 'Por favor corrige los errores a continuación.')
-            if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html', {'form': form})
-    else:
-        form = CustomPasswordChangeForm(user=request.user)
+            return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html', context)
+        context['form']=form
+        messages.error(request, 'Por favor corrige los errores que se muestran.')
+        return render(request, 'components/dashboard/user/forms/change_password/partials/change_password_form.html', context)
     
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/profile/profile.html', context)
 
 def update_profile_view(request):
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save(commit=False)
+            context['form']=form
             user.save()
             messages.success(request, 'Tu perfil ha sido actualizado con éxito.')
             if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', {'user': user})
+                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', context)
             return redirect('profile')
         else:
             messages.error(request, 'Por favor corrige los errores a continuación.')
             if request.headers.get('HX-Request'):
-                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', {'form': form})
-    else:
-        form = ProfileUpdateForm(instance=request.user)
-    
-    context = {
+                return render(request, 'components/dashboard/card_user_presentation/partials/user_info.html', context)
+        context = {
         'form': form
-    }
-    return render(request, 'accounts/profile/profile.html', context)
+        }
+        return render(request, 'accounts/profile/profile.html', context)
