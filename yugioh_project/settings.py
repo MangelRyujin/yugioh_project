@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.general',
     'apps.accounts',
     'apps.card',
+    'apps.order',
 ]
 
 MIDDLEWARE = [
