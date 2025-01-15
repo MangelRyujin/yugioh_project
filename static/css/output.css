@@ -2871,6 +2871,13 @@ select.is-invalid + .advance-select-toggle:focus,
   display: block;
 }
 
+.alert-primary {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
+  --tw-text-opacity: 1;
+  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity, 1)));
+}
+
 .alert-success {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity, 1)));
@@ -2930,6 +2937,11 @@ select.is-invalid + .advance-select-toggle:focus,
   background-color: var(--fallback-er,oklch(var(--er)/0.2));
   --tw-text-opacity: 1;
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
+}
+
+.alert-outline.alert-primary {
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
 }
 
 .alert-outline.alert-success {
@@ -5053,7 +5065,16 @@ input:focus-visible {
     .link-primary:hover {
       color: color-mix(in oklab,var(--fallback-p,oklch(var(--p)/1)) 80%,black);
     }
+
+    .link-accent:hover {
+      color: color-mix(in oklab,var(--fallback-a,oklch(var(--a)/1)) 80%,black);
+    }
   }
+}
+
+.link-accent {
+  --tw-text-opacity: 1;
+  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
 }
 
 .link:focus {
