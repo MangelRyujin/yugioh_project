@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.html", "./**/templates/**/*.html","./node_modules/flyonui/dist/js/*.js","./node_modules/notyf/**/*.js"],
+  content: ["./templates/**/*.html", "./**/templates/**/*.html","./node_modules/flyonui/dist/js/*.js","./node_modules/notyf/**/*.js","./node_modules/datatables.net/js/dataTables.min.js"],
   plugins: [
     require("flyonui"),
     require("flyonui/plugin"),

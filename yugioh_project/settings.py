@@ -32,6 +32,8 @@ ALLOWED_HOSTS = LIST_ALLOWED_HOSTS.split(",")
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'apps.general',
     'apps.accounts',
     'apps.card',
+    'apps.order',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +163,12 @@ LOGIN_REDIRECT_URL = '/'
 
 # User Model
 AUTH_USER_MODEL = 'accounts.User'
+
+
+# EMAIL configs
+EMAIL_BACKEND = config('EMAIL_BACKEND',default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST',default='smtp.gmail.com')
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_USER',default='example@gmail.com')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD',default='your-password-api-key')

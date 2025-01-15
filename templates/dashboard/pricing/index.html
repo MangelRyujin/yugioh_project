@@ -14,80 +14,33 @@
     </div>
   </div>
   
-  <div class="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 md:grid-cols-3">
-    <div class="card bg-base-200/20 border-base-content/20 border shadow-none">
+  <div class="grid grid-cols-1 items-center gap-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 ">
+    {% for subscription in subscriptions %}
+    
+    <div class="card  {% if subscription.popular %}bg-primary/10 border-primary{% else %}bg-base-200/20{% endif %}  border shadow-lg">
+      {% if subscription.popular %}
+        <div class="relative">
+          <span class="badge  badge-primary absolute end-2 top-2">Popular</span>
+        </div>
+      {% endif %}
+      
       <div class="card-body gap-3 text-center">
         <div>
-          <span class="text-base-content text-xl font-medium ">Basic</span>
-          <p class="text-sm truncate">A simple start for everyone</p>
+          <span class="text-base-content text-xl font-medium ">{{subscription.name}}</span>
+          <p class="text-sm">{{subscription.description}}</p>
         </div>
-        <div class="text-primary flex justify-center gap-x-1">
-          <span class="text-base-content/80 text-xl">$</span>
+        <div class="text-primary flex justify-center items-center gap-x-1">
+          <span class="text-base-content/80 text-base lg:text-xl pb-4 lg:pb-6">$</span>
           <p
             data-toggle-count='{
             "target": "#toggle-price-count",
-            "min": 3,
-            "max": 29
+            "min": {{subscription.month_price_CUP}},
+            "max": {{subscription.discount_anual_price_cup}}
           }'
-            class="text-5xl font-semibold">
-            3
+            class="text-4xl lg:text-5xl font-semibold">
+            {{subscription.month_price_CUP}}
           </p>
-        </div>
-        <ul class="text-sm space-y-3">
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">100 responses a month</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Unlimited forms & surveys</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Unlimited fields</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Basic form creation tools</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Up to 2 subdomains</span>
-          </li>
-        </ul>
-        <button class="btn btn-outline  btn-primary mt-4">UPGRADE</button>
-      </div>
-    </div>
-    <div class="card bg-primary/10 border-primary border shadow-lg">
-      <div class="relative">
-        <span class="badge  badge-primary absolute end-2 top-2">Popular</span>
-      </div>
-      <div class="card-body gap-3 text-center">
-        <div>
-          <span class="text-base-content text-xl font-medium ">Standard</span>
-          <p class="text-sm">For small to medium businesses</p>
-        </div>
-        <div class="text-primary flex justify-center gap-x-1">
-          <span class="text-base-content/80 text-xl">$</span>
-          <p
-            data-toggle-count='{
-            "target": "#toggle-price-count",
-            "min": 15,
-            "max": 159
-          }'
-            class="text-5xl font-semibold">
-            15
-          </p>
+          <span class="text-base-content/80 text-base lg:text-xl pt-4 lg:pt-6">CUP</span>
         </div>
         <ul class="text-sm space-y-3">
           <li class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -121,61 +74,10 @@
             <span class="text-base-content/80 truncate">Custom Landing page</span>
           </li>
         </ul>
-        <button class="btn btn-lg btn-gradient btn-primary mt-4">UPGRADE</button>
+        <button class="btn btn-lg btn-gradient btn-primary mt-4">Solicitar</button>
       </div>
     </div>
-    <div class="card bg-base-200/20 border-base-content/20 border shadow-none">
-      <div class="card-body gap-3 text-center">
-        <div>
-          <span class="text-base-content text-xl font-medium">Enterprise</span>
-          <p class="text-sm truncate">Solution for big organizations</p>
-        </div>
-        <div class="text-primary flex justify-center gap-x-1">
-          <span class="text-base-content/80 text-xl">$</span>
-          <p
-            data-toggle-count='{
-            "target": "#toggle-price-count",
-            "min": 79,
-            "max": 999
-          }'
-            class="text-5xl font-semibold">
-            79
-          </p>
-        </div>
-        <ul class="text-sm space-y-3">
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">PayPal payments</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Logic Jumps</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">File upload with 5GB storage</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Custom domain support</span>
-          </li>
-          <li class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="bg-primary/20 text-primary flex items-center justify-center rounded-full p-1">
-              <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
-            </span>
-            <span class="text-base-content/80 truncate">Stripe integration</span>
-          </li>
-        </ul>
-        <button class="btn btn-outline btn-primary mt-4">UPGRADE</button>
-      </div>
-    </div>
+    {% endfor %}
+    
   </div>
 {% endblock content %} 
