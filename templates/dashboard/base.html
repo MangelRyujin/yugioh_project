@@ -199,7 +199,7 @@
         <div class="drawer-body bg-none px-2 pt-4">
           <ul class="menu p-0 gap-1">
             <li class="mx-1 my-1">
-              <a href="{% url "dashboard" %}" class="link-primary animate-text link-animated active">
+              <a href="{% url "dashboard" %}" class="link-primary animate-text link-animated ">
                 <span class="icon-[tabler--brand-pnpm] size-6"></span>
                 Dashboard
               </a>
@@ -210,12 +210,25 @@
                 Perfil
               </a>
             </li>
+            <li class="mx-1 mb-1">
+              <a href="{% url "order" %}" class="link-primary animate-text link-animated">
+                <span class="icon-[tabler--package-export] size-6"></span>
+                Envios
+              </a>
+            </li>
+            <li class="mx-1 mb-1">
+              <a href="{% url "order" %}" class="link-primary animate-text link-animated">
+                <span class="icon-[tabler--packages] size-6"></span>
+                Crear paquetes
+              </a>
+            </li>
             <li class="mx-1">
               <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--cards-filled] size-6" ></span>
                 Armar deck
               </a>
             </li>
+            
             <li class="mx-1">
               <a href="{% url "album" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--brand-kickstarter] size-6" ></span>
@@ -335,6 +348,7 @@
 
      {% comment %} <script src="{% static 'js/htmx.min.js' %}"></script> {% endcomment %}
      <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+     
      <script>
       window.addEventListener('load', function () {
         const animationButtons = document.querySelectorAll('.animation-button')

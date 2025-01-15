@@ -8,4 +8,5 @@ urlpatterns = [
     
     path('', dashboard, name='dashboard'),   
     path('album/', include('apps.card.urls.album_urls')), 
+    path('envios/', include('apps.order.urls.order_urls')), 
 ]

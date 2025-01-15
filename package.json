@@ -9,6 +9,8 @@
     "watch:css": "tailwindcss build static/css/main.css -o static/css/output.css -w"
   },
   "dependencies": {
+    "datatables.net": "^2.2.1",
+    "jquery": "^3.7.1",
     "notyf": "^3.10.0",
     "tailwindcss-motion": "^1.0.0",
     "theme-change": "^2.5.0"

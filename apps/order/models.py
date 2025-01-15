@@ -8,7 +8,7 @@ from apps.accounts.models import User
 
 class Order(models.Model):
     create_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='create_user')
-    current_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='current_user')
+    customer_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customer_user')
     current_destination = models.CharField(max_length=120)
     delivery = models.BooleanField(default=False)
     

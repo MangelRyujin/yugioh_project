@@ -19,6 +19,6 @@ class ItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'create_user', 'current_user','current_destination', 'delivery']
+    list_display = ['id', 'create_user', 'customer_user','current_destination', 'delivery']
     list_per_page = 100
     inlines = [ItemInline]
