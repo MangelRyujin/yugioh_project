@@ -197,7 +197,7 @@
       
       <aside id="default-sidebar" class="overlay sm:shadow bg-base-200 overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 md:flex md:translate-x-0 mt-16 z-40" role="dialog" tabindex="-1" >
         <div class="drawer-body bg-none px-2 pt-4">
-          <ul class="menu p-0 gap-1">
+          <ul class="menu p-0 gap-1 ">
             <li class="mx-1 my-1">
               <a href="{% url "dashboard" %}" class="link-primary animate-text link-animated ">
                 <span class="icon-[tabler--brand-pnpm] size-6"></span>
@@ -211,15 +211,15 @@
               </a>
             </li>
             <li class="mx-1 mb-1">
-              <a href="{% url "order" %}" class="link-primary animate-text link-animated">
+              <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--package-export] size-6"></span>
-                Envios
+                Envios en proceso
               </a>
             </li>
             <li class="mx-1 mb-1">
-              <a href="{% url "order" %}" class="link-primary animate-text link-animated">
+              <a href="{% url "paid_order" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--packages] size-6"></span>
-                Crear paquetes
+                Crear paketes
               </a>
             </li>
             <li class="mx-1">
@@ -242,15 +242,16 @@
               </a>
             </li>
             <li class="mx-1 mb-1">
-              <a href="#" class="link-primary animate-text link-animated">
+              <a href="{% url "unpaid_order" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--shopping-cart-exclamation] size-6"></span>
-                Ventas
+                Nuevas ventas
               </a>
             </li>
             
             
+            
           </ul>
-          <div class=" mt-4 ">
+          <div class=" mt-4 mb-14">
             <div class="flex items-center w-full ">
               <div class="avatar placeholder  ">
                 <div class="bg-primary text-primary-content w-10 rounded-full">
