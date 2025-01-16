@@ -211,7 +211,7 @@
               </a>
             </li>
             <li class="mx-1 mb-1">
-              <a href="#" class="link-primary animate-text link-animated">
+              <a href="{% url "delivery_pakage" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--package-export] size-6"></span>
                 Envios en proceso
               </a>
@@ -222,12 +222,12 @@
                 Crear paketes
               </a>
             </li>
-            <li class="mx-1">
+            {% comment %} <li class="mx-1">
               <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--cards-filled] size-6" ></span>
                 Armar deck
               </a>
-            </li>
+            </li> {% endcomment %}
             
             <li class="mx-1">
               <a href="{% url "album" %}" class="link-primary animate-text link-animated">
@@ -235,12 +235,12 @@
                 Mi colección
               </a>
             </li>
-            <li class="mx-1">
+            {% comment %} <li class="mx-1">
               <a href="#" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--shopping-cart-filled] size-6"></span>
                 Mis compras
               </a>
-            </li>
+            </li> {% endcomment %}
             <li class="mx-1 mb-1">
               <a href="{% url "unpaid_order" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--shopping-cart-exclamation] size-6"></span>
