@@ -31,119 +31,108 @@
         <table class="table min-w-full">
           <thead>
             <tr>
-              <th scope="col" class="--exclude-from-ordering w-3.5 pe-0">
-                <div class="flex h-5 items-center">
-                  <input id="table-search-all" type="checkbox" class="checkbox checkbox-sm" />
-                  <label for="table-search-all" class="sr-only">Checkbox</label>
-                </div>
-              </th>
+              
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Nombre
+                  Código
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Comprador
+                  Estado
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Vendedor
+                  Creador
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Cantidad
+                  Responsable actual
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Precio
+                  Provincia actual
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
               <th scope="col" class="group w-fit">
                 <div class="flex items-center justify-between">
-                  Categoría
+                  Fecha de salida
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
+              
               <th scope="col" class="--exclude-from-ordering">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="w-3.5 pe-0">
-                <div class="flex h-5 items-center">
-                  <input id="table-search-1" type="checkbox" class="checkbox checkbox-sm" data-datatable-row-selecting-individual="" />
-                  <label for="table-search-1" class="sr-only">Checkbox</label>
-                </div>
-              </td>
+            <tr class="hover">
               
-              <td class="text-nowrap">Blue-Eyes White Dragon</td>
+              
+              <td class="text-nowrap">01</td>
+              <td><span class="badge badge-soft badge-error ">Faltan entregas</span></td>
               <td class="text-nowrap">Mangel</td>
               <td class="text-nowrap">Mauro</td>
-              <td>3</td>
-              <td>$999</td>
+              <td>Ciefuegos</td>
+              <td>24 de septiembre del 2025</td>
               
-              <td><span class="badge badge-soft badge-primary badge-sm">Carta</span></td>
+              
               <td>
-                <button class="btn btn-gradient btn-primary btn-text btn-sm" aria-label="Action button">
-                  
-                  Pagado
+                <button class="btn btn-circle btn-success border border-success btn-text btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--check] size-5"></span>
+                </button>
+                <button class="btn btn-circle btn-warning border border-warning btn-text btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--pencil] size-5"></span>
                 </button>
               </td>
             </tr>
-            <tr>
-              <td class="w-3.5 pe-0">
-                <div class="flex h-5 items-center">
-                  <input id="table-search-2" type="checkbox" class="checkbox checkbox-sm" data-datatable-row-selecting-individual="" />
-                  <label for="table-search-2" class="sr-only">Checkbox</label>
-                </div>
-              </td>
-              <td class="text-nowrap">Forros negros</td>
+            <tr class="hover">
+              
+              <td class="text-nowrap">02</td>
+              <td><span class="badge badge-soft badge-success ">Todo entregado</span></td>
               <td class="text-nowrap">Fidel</td>
               <td class="text-nowrap">Mauro</td>
-              <td>2</td>
-              <td>$899</td>
-              <td><span class="badge badge-soft badge-info badge-sm">Forro</span></td>
+              <td>Habana</td>
+              <td>5 de marzo del 2025</td>
+              
               <td>
-                <button class="btn btn-gradient btn-primary btn-text btn-sm" aria-label="Action button">
-                  
-                  Pagado
+                <button class="btn btn-circle  btn-text btn-sm btn-disabled" aria-label="Action button">
+                  <span class="icon-[tabler--check] size-5"></span>
+                </button>
+                <button class="btn btn-circle btn-warning border border-warning btn-text btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--pencil] size-5"></span>
                 </button>
               </td>
             </tr>
-            <tr>
-              <td class="w-3.5 pe-0">
-                <div class="flex h-5 items-center">
-                  <input id="table-search-3" type="checkbox" class="checkbox checkbox-sm" data-datatable-row-selecting-individual="" />
-                  <label for="table-search-3" class="sr-only">Checkbox</label>
-                </div>
-              </td>
-              <td class="text-nowrap">Playmat Elemental Hero</td>
+            <tr class="hover">
+              
+              <td class="text-nowrap">03</td>
+              <td><span class="badge badge-soft badge-success ">Todo entregado</span></td>
               <td class="text-nowrap">Victor</td>
               <td class="text-nowrap">Fidel</td>
-              <td>1</td>
-              <td>$399</td>
-              <td><span class="badge badge-soft badge-success badge-sm">Playmat</span></td>
+              <td>Villa Clara</td>
+              <td>12 de octubre del 2025</td>
+              
               <td>
-                <button class="btn btn-gradient btn-primary btn-text btn-sm" aria-label="Action button">
-                  
-                  Pagado
+                <button class="btn btn-circle  btn-text btn-sm btn-disabled" aria-label="Action button">
+                  <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                
+                <button class="btn btn-circle btn-warning border border-warning btn-text btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--pencil] size-5"></span>
+                </button>
               </td>
             </tr>
             
