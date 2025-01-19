@@ -1,0 +1,100 @@
+{% extends "shop/base.html" %}
+{% block content %}
+{% load static %}
+{% csrf_token %}  
+    <!-- Barra de Busqueda con Filtro -->
+    <button type="button" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary px-2 border-2 btn-primary wave btn-text max-sm:btn-square z-50" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+        <span class="icon-[tabler--filter] size-6 "></span>
+      </button>
+    <div class="grid grid-cols-1 mb-4 ">
+        <div class="input-group bg-transparent max-w-sm ">
+            <span class="input-group-text">
+            <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
+            </span>
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput3" 
+            name="kbdInput2" 
+            hx-post="{% url 'search_user_cards' %}" 
+            hx-trigger="input changed, delay:500ms" 
+            hx-target="#card-list" hx-include="[name=kbdInput3], [name=csrfmiddlewaretoken]" 
+            hx-indicator="#spinerSearchAllMyAlbumCards"/>
+            <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
+            <label class="sr-only" for="kbdInput3">Buscar</label>
+        </div>
+        {% comment %} <bottom aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
+        class="btn btn-gradient btn-success tooltip [--placement:bottom] flex items-center">
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-filter"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" /></svg>
+            <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
+              <span class="tooltip-body">Añadir a la lista de venta</span>
+            </span>
+            Filtros
+        </bottom> {% endcomment %}
+    </div>   
+
+    <!-- Listado de Cartas en Venta -->
+    <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7 ">
+        
+        <div class=" p-3 shadow-md rounded  bg-base-200/50 flex justify-start w-full items-start gap-3  relative ">
+            <span class="  absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50  -rotate-12  ">TCG</span>
+
+            <div class="">
+            <img src="{% static 'img/prueba.jpg' %}" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
+            </div>
+                <div class="w-full flex flex-col justify-between h-full gap-3">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-base-content text-sm md:text-md lg:text-lg text-success/60 font-bold">
+                            Red Eyes Black Dragon
+                        </p>
+                        
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Cantidad: 5 unidades
+                        </p>
+                        <a href="https://wa.me/+5355193484" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
+                            Vendedor: Mangel <span class=" text-success icon-[tabler--brand-whatsapp] size-4 "></span>
+                            </a>
+                        <p class="text-base-content text-xs sm:text-sm ">Rareza: Común</p>
+                        <p class="text-base-content text-xs sm:text-sm ">Precio: $5.99</p>
+                        
+                    </div>
+                    <div class="flex justify-end gap-3 w-full mt-2">
+                        <button class="btn btn-soft btn-primary btn-sm "> <span class="icon-[tabler--shopping-cart] size-5"></span></button>
+                        <a href="#" class="btn btn-soft btn-info btn-sm"><span class="icon-[tabler--eye] size-5"></span></a>
+                    </div>
+    
+                    {% comment %}
+                    <p class="text-white">
+                        <span class="short-description">Descripción de la carta.</span>
+                        <span class="long-description hidden"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, tempora, corrupti ducimus doloremque nulla mollitia in repellat ab quaerat at facilis necessitatibus illum dolores libero quas minus asperiores eos. Explicabo corrupti reprehenderit dolores molestias quod, vero atque! Tempora voluptatem dignissimos tempore deleniti molestiae, odit provident consequatur? Unde distinctio placeat nostrum.</span>
+                        <button class="show-more text-blue-500">Mostrar más</button>
+                    </p>
+                    {% endcomment %}
+               
+            </div>
+            
+        </div>
+        
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.show-more').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const shortDesc = this.previousElementSibling.previousElementSibling;
+                    const longDesc = this.previousElementSibling;
+                    if (longDesc.classList.contains('hidden')) {
+                        longDesc.classList.remove('hidden');
+                        shortDesc.classList.add('hidden');
+                        this.textContent = 'Mostrar menos';
+                    } else {
+                        longDesc.classList.add('hidden');
+                        shortDesc.classList.remove('hidden');
+                        this.textContent = 'Mostrar más';
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock content %}
+
