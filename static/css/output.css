@@ -703,10 +703,6 @@ html {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m12 6l4 6l5-4l-2 10H5L3 8l5 4z'/%3E%3C/svg%3E");
 }
 
-.icon-\[tabler--dots-vertical\] {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m0 7a1 1 0 1 0 2 0a1 1 0 1 0-2 0m0-14a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3C/svg%3E");
-}
-
 .icon-\[tabler--edit-circle\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='m12 15l8.385-8.415a2.1 2.1 0 0 0-2.97-2.97L9 12v3zm4-10l3 3'/%3E%3Cpath d='M9 7.07A7 7 0 0 0 10 21a7 7 0 0 0 6.929-6'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -2920,6 +2916,13 @@ select.is-invalid + .advance-select-toggle:focus,
   color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity, 1)));
 }
 
+.badge-info {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-in,oklch(var(--in)/var(--tw-bg-opacity, 1)));
+  --tw-text-opacity: 1;
+  color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity, 1)));
+}
+
 .badge-success {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity, 1)));
@@ -3001,6 +3004,11 @@ select.is-invalid + .advance-select-toggle:focus,
 .badge-outline.badge-accent {
   --tw-text-opacity: 1;
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
+}
+
+.badge-outline.badge-info {
+  --tw-text-opacity: 1;
+  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity, 1)));
 }
 
 .badge-outline.badge-success {
@@ -4031,6 +4039,15 @@ select.is-invalid + .advance-select-toggle:focus,
   background-image: linear-gradient(90deg, transparent 80%, var(--chkbg) 80%),
       linear-gradient(-90deg, transparent 80%, var(--chkbg) 80%),
       linear-gradient(0deg, var(--chkbg) 45%, var(--chkfg) 45%, var(--chkfg) 55%, var(--chkbg) 55%);
+}
+
+.checkbox-primary {
+  --chkbg: var(--fallback-p,oklch(var(--p)/1));
+  --chkfg: var(--fallback-pc,oklch(var(--pc)/1));
+}
+
+.checkbox-primary:checked:focus-visible, .checkbox-primary[checked="true"]:focus-visible, .checkbox-primary[aria-checked="true"]:focus-visible {
+  outline-color: var(--fallback-p,oklch(var(--p)/0.3));
 }
 
 .checkbox.disabled,
@@ -7984,6 +8001,10 @@ textarea:focus-visible {
   margin-bottom: 3rem;
 }
 
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -8154,6 +8175,11 @@ textarea:focus-visible {
   height: 100%;
 }
 
+.size-2 {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
 .\!h-2\.5 {
   height: 0.625rem !important;
 }
@@ -8177,6 +8203,10 @@ textarea:focus-visible {
 
 .h-full {
   height: 100%;
+}
+
+.max-h-52 {
+  max-height: 13rem;
 }
 
 .max-h-56 {
@@ -8252,8 +8282,8 @@ textarea:focus-visible {
   max-width: 16rem;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
+.max-w-72 {
+  max-width: 18rem;
 }
 
 .max-w-full {
@@ -8525,12 +8555,6 @@ textarea:focus-visible {
 
 .gap-y-3 {
   row-gap: 0.75rem;
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
@@ -9128,11 +9152,6 @@ textarea:focus-visible {
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .py-4 {
@@ -10363,12 +10382,6 @@ textarea:focus-visible {
     font-size: 0.75rem;
     line-height: 1rem;
   }
-}
-
-.\[\&\>\.active\]\:text-bg-soft-primary>.active {
-  background-color: var(--fallback-p,oklch(var(--p)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
 }
 
 .hover\:-translate-y-2:hover {

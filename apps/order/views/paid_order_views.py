@@ -4,5 +4,5 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
-def order(request):
-    return render(request,'dashboard/order/index.html')
+def paid_order(request):
+    return render(request,'dashboard/order/paid_order/index.html')

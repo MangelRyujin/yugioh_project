@@ -1,0 +1,225 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="grid grid-cols-1  gap-4 mb-5">
+    <form class="flex-col flex gap-4 w-full">
+      <div class="w-full flex justify-end">
+        <div class="w-full max-w-72">
+          <select
+            data-select='{
+            "placeholder": "Seleccionar un usuario",
+            "searchPlaceholder": "Selecciona un usuario...",
+            "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+            "toggleClasses": "advance-select-toggle",
+            "hasSearch": true,
+            "dropdownClasses": "advance-select-menu max-h-52 pt-0 vertical-scrollbar rounded-scrollbar",
+            "optionClasses": "advance-select-option selected:active",
+            "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] flex-shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
+            "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+            }'
+            class="hidden "
+          >
+            <option value="">Selecciona un usuario</option>
+            <option value="aries">Aries-Cienfuegos</option>
+            <option value="taurus">Taurus-Cienfuegos</option>
+            <option value="gemini">Gemini-Matanza</option>
+            <option value="cancer">Cancer-Camaguey</option>
+            <option value="leo">Leo-Pinar del rio</option>
+            <option value="virgo">Virgo-Holguin</option>
+            <option value="libra">Libra-Cienfuegos</option>
+            <option value="scorpio">Scorpio-Tunas</option>
+            <option value="sagittarius">Sagittarius-Cienfuegos</option>
+            <option value="capricorn">Capricorn-Cienfuegos</option>
+            <option value="aquarius">Aquarius-Habana</option>
+            <option value="pisces">-Cienfuegos</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex justify-end">
+         <bottom 
+        class="btn btn-gradient btn-success  [--placement:bottom] flex items-center ">
+            <span class="icon-[tabler--square-rounded-plus-filled] size-6" ></span>
+            
+            Crear
+        </bottom> 
+      </div>
+     
+    </from>
+    <div class="card  bg-base-200 shadow-none ">
+      <div class="alert alert-primary alert-soft border-none p-3" role="alert">
+        <h5 class="card-title ">Pakete: 01</h5>
+      </div>
+      <div class="card-body p-3">
+        <p class=""><strong>Creador del pakete: </strong>Victor</p>
+        <p class=""><strong>Entregar a: </strong>Mangel</p>
+        <p class=""><strong>Nombre: </strong>Miguel Angel</p>
+        <p class=""><strong>Apellido: </strong>Fernandez Rodriguez</p>
+        <p class=""><strong>Email: </strong>example@gmail.com</p>
+        <p class=""><strong>Móvil: </strong>55193484</p>
+        <p class=""><strong>Provincia de salida: </strong>Matanzas</p>
+        <p class=""><strong>Provincia destino: </strong>Cienfuegos</p>
+        <div class="flex justify-end gap-3 mt-4">
+          <button  class="btn btn-gradient btn-primary">Completar</button>
+          <button  class="btn btn-gradient btn-error">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    
+      
+  
+  </div>     
+    <div class="flex w-full justify-center">
+      <div
+      
+  class=" flex flex-col w-full "
+  data-datatable='{
+  "pageLength": 2000,
+  "selecting": true,
+  "rowSelectingOptions": {
+    "selectAllSelector": "#table-search-all"
+  },
+  "language": {
+      "zeroRecords": "<div class=\"py-10 px-5 flex flex-col justify-center items-center text-center\"><span class=\"icon-[tabler--search] shrink-0 size-6 text-base-content\"></span><div class=\"max-w-sm mx-auto\"><p class=\"mt-2 text-sm text-base-content/80\">No se encontraron resultados</p></div></div>"
+    }
+}'
+>
+  
+  <div class="horizontal-scrollbar overflow-x-auto">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden">
+        <table class="table min-w-full">
+          <thead>
+            <tr>
+              <th scope="col" class="--exclude-from-ordering w-3.5 pe-0">
+                <div class="flex h-5 items-center">
+                  <input id="table-search-all" type="checkbox" class="checkbox checkbox-sm checkbox-primary" />
+                  <label for="table-search-all" class="sr-only">Checkbox</label>
+                </div>
+              </th>
+              <th scope="col" class="group w-fit">
+                <div class="flex items-center justify-between">
+                  Nombre
+                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
+                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
+                </div>
+              </th>
+              <th scope="col" class="group w-fit">
+                <div class="flex items-center justify-between">
+                  Comprador
+                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
+                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
+                </div>
+              </th>
+              <th scope="col" class="group w-fit">
+                <div class="flex items-center justify-between">
+                  Vendedor
+                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
+                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
+                </div>
+              </th>
+              <th scope="col" class="group w-fit">
+                <div class="flex items-center justify-between">
+                  Cantidad
+                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
+                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
+                </div>
+              </th>
+          
+              <th scope="col" class="group w-fit">
+                <div class="flex items-center justify-between">
+                  Categoría
+                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
+                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
+                </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover">
+              <td class="w-3.5 pe-0">
+                <div class="flex h-5 items-center">
+                  <input id="table-search-1" type="checkbox" class="checkbox checkbox-sm checkbox-primary" data-datatable-row-selecting-individual="" />
+                  <label for="table-search-1" class="sr-only">Checkbox</label>
+                </div>
+              </td>
+              
+              <td class="text-nowrap">Blue-Eyes White Dragon</td>
+              <td class="text-nowrap">Mangel</td>
+              <td class="text-nowrap">Mauro</td>
+              <td>3</td>
+            
+              
+              <td><span class="badge badge-soft badge-primary ">Carta</span></td>
+              
+            </tr>
+            <tr class="hover">
+              <td class="w-3.5 pe-0">
+                <div class="flex h-5 items-center">
+                  <input id="table-search-2" type="checkbox" class="checkbox checkbox-sm checkbox-primary" data-datatable-row-selecting-individual="" />
+                  <label for="table-search-2" class="sr-only">Checkbox</label>
+                </div>
+              </td>
+              <td class="text-nowrap">Forros negros</td>
+              <td class="text-nowrap">Fidel</td>
+              <td class="text-nowrap">Mauro</td>
+              <td>2</td>
+             
+              <td><span class="badge badge-soft badge-info ">Forro</span></td>
+              
+            </tr>
+            <tr class="hover">
+              <td class="w-3.5 pe-0">
+                <div class="flex h-5 items-center">
+                  <input id="table-search-3" type="checkbox" class="checkbox checkbox-sm checkbox-primary" data-datatable-row-selecting-individual="" />
+                  <label for="table-search-3" class="sr-only">Checkbox</label>
+                </div>
+              </td>
+              <td class="text-nowrap">Playmat Elemental Hero</td>
+              <td class="text-nowrap">Victor</td>
+              <td class="text-nowrap">Fidel</td>
+              <td>1</td>
+             
+              <td><span class="badge badge-soft badge-success ">Playmat</span></td>
+              
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-base-content/25 flex items-center justify-between gap-3 border-t p-3 max-md:flex-wrap max-md:justify-center">
+    <div class="text-base-content/80 text-sm" data-datatable-info="">
+      Resultados mostrados
+      <span data-datatable-info-to="30"></span>
+      de
+      <span data-datatable-info-length="50"></span>
+      existentes
+    </div>
+    
+  </div>
+</div>
+    </div>
+    
+    <script src="{% static "js/table/jquery.min.js" %}"></script>
+    <script src="{% static "js/table/dataTables.min.js" %}"></script>
+    <script>
+        window.addEventListener('load', () => {
+            
+          const available = document.querySelector('#select-stock')
+          console.log('available', available)
+          const { dataTable } = new HSDataTable('#datatable-filter')
+      
+          dataTable.search.fixed('stock', (searchStr, data, index) => {
+            const isAvaiable = available.value === 'all' ? '' : available.value
+            const parser = new DOMParser()
+            const name = parser.parseFromString(data[3], 'text/html').body.textContent.trim()
+      
+            return isAvaiable === name || isAvaiable === ''
+          })
+          available.addEventListener('change', () => dataTable.draw())
+        })
+      </script>
+{% endblock content %} 
