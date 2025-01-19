@@ -1,12 +1,299 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock meta %}
     <title>{% block title %}{% endblock title %}</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
 </head>
-<body>
+
+<body class="relative  ">
+  <div class="absolute  z-0" >
+    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
+  </div>
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-50 ">
+        <div class="flex  items-center">
+          <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-400 via-purple-500 to-indigo-700
+            animate-text text-nowrap no-underline hover:no-underline font-bold text-xl lg:text-3xl" href="#">
+            <img src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
+          </a>
+        </div>
+        <div class="navbar-center  flex  items-center gap-4">
+          <div class="dropdown relative inline-flex gap-2 [--auto-close:inside] [--offset:8] [--placement:bottom-end] ">
+           
+                <label class="swap swap-rotate ">
+                    <input type="checkbox" data-toggle-theme="dark"/>
+                    <span class="swap-off icon-[tabler--moon] size-[1.375rem] "></span>
+                    <span class="swap-on icon-[tabler--sun] size-[1.375rem]"></span>
+                    
+                  </label>
+           
+                  
+            <button id="dropdown-scrollable" type="button" class=" dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+              <div class="indicator">
+                
+                <span class="indicator-item bg-error size-3 rounded-full flex justify-center">
+                  <span class="bg-error absolute size-full animate-ping rounded-full opacity-75"></span>
+                </span>
+                <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
+              </div>
+            </button>
+          
+            <div class="dropdown-menu z-50 dropdown-open:opacity-100 hidden" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
+              <div class="dropdown-header justify-center">
+                <h6 class="text-base-content/90 text-base">Notifications</h6>
+              </div>
+              <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 overflow-auto max-md:max-w-64 ">
+                <div class="dropdown-item">
+                  <div class="avatar away-bottom">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">Charles Franklin</h6>
+                    <small class="text-base-content/50 truncate">Accepted your connection</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <div class="avatar">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-2.png" alt="avatar 2" />
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">Martian added moved Charts & Maps task to the done board.</h6>
+                    <small class="text-base-content/50 truncate">Today 10:00 AM</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <div class="avatar online-bottom">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-8.png" alt="avatar 8" />
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">New Message</h6>
+                    <small class="text-base-content/50 truncate">You have new message from Natalie</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <div class="avatar placeholder">
+                    <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                      <span class="icon-[tabler--user] size-full"></span>
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">Application has been approved 🚀</h6>
+                    <small class="text-base-content/50 text-wrap">Your ABC project application has been approved.</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <div class="avatar">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-10.png" alt="avatar 10" />
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">New message from Jane</h6>
+                    <small class="text-base-content/50 text-wrap">Your have new message from Jane</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <div class="avatar">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-3.png" alt="avatar 3" />
+                    </div>
+                  </div>
+                  <div class="w-60">
+                    <h6 class="truncate text-base">Barry Commented on App review task.</h6>
+                    <small class="text-base-content/50 truncate">Today 8:32 AM</small>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="dropdown-footer justify-center gap-1">
+                <span class="icon-[tabler--eye] size-4"></span>
+                View all
+              </a>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
+              <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                <div class="avatar">
+                  <div class="size-9.5 rounded-full">
+                    <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
+                  </div>
+                </div>
+              </button>
+              <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-avatar">
+                <li class="dropdown-header gap-2">
+                  <div class="avatar">
+                    <div class="w-10 rounded-full">
+                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar" />
+                    </div>
+                  </div>
+                  <div>
+                    <h6 class="text-base-content/90 text-base font-semibold">{{user.username}}</h6>
+                    <small class="text-base-content/50">{{user.email}}</small>
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="{% url 'profile' %}">
+                    <span class="icon-[tabler--user] size-6"></span>
+                    Mi perfil
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url "dashboard" %}">
+                    <span class="icon-[tabler--settings] size-6"></span>
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url "dashboard" %}">
+                    <span class="icon-[tabler--building-store] size-6"></span>
+                    Tienda
+                  </a>
+                </li>
+                
+                <li class="dropdown-footer gap-2">
+                    <form action="{% url 'logout' %}" method="post" class="w-full">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-error btn-soft btn-block">
+                        <span class="icon-[tabler--logout] size-6"></span>
+                        Cerrar sesión
+                      </button>
+                    </form>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <a class="btn btn-gradient btn-primary waves waves-light " href="{% url 'login' %}">
+              <span class="text-lg">Log in</span>
+              
+            </a>
+           
+            {% endif %} 
+          </div>
+          
+        </div>
+      </nav>
+    <main class="container mx-auto px-3 mt-3 md:mt-8 ">
+      {% block content %}{% endblock content %}
+    </main>
+
     
+    <script>
+      const notificationTypes = {
+          info: {
+              color: "bg-blue-500 text-white",
+              progressColor: "bg-blue-700"
+          },
+          success: {
+              color: "bg-green-500 text-white",
+              progressColor: "bg-green-700"
+          },
+          warning: {
+              color: "bg-yellow-500 text-white",
+              progressColor: "bg-yellow-700"
+          },
+          error: {
+              color: "bg-red-500 text-white",
+              progressColor: "bg-red-700"
+          }
+      };
+  
+      function showNotification(type, title, message, duration, icon) {
+          const notificationType = notificationTypes[type];
+          const notificationContainer = document.getElementById('notification-container');
+  
+          const notification = document.createElement('div');
+          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-6 w-80`;
+  
+          notification.innerHTML = `
+              <div class="flex items-center mb-4">
+                  <i class="${icon} text-2xl mr-2"></i>
+                  <h2 class="text-xl font-bold">${title}</h2>
+              </div>
+              <p class="mb-4">${message}</p>
+              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
+              </div>
+          `;
+  
+          notificationContainer.appendChild(notification);
+  
+          setTimeout(() => {
+              notification.classList.remove('slide-in');
+          }, 10);
+  
+          const intervalTime = 50; // Intervalo de actualización en milisegundos
+          const totalIntervals = duration / intervalTime;
+          let progress = 0;
+          const progressBar = notification.querySelector('.h-full');
+          console.log(progressBar); // Verificar que el elemento se selecciona correctamente
+          const interval = setInterval(() => {
+              progress += 100 / totalIntervals;
+              progressBar.style.width = `${progress}%`;
+              //console.log(`Progress: ${progress}%`); // Verificar que el progreso se actualiza correctamente
+              if (progress >= 100) {
+                  clearInterval(interval);
+                  setTimeout(() => {
+                      notification.classList.add('slide-out');
+                      setTimeout(() => {
+                          notification.remove();
+                      }, 500);
+                  }, 500);
+              }
+          }, intervalTime);
+      }
+  </script>
+    
+    <script src="{% static 'js/flyonui.js' %}"></script>
+    <script src="{% static 'js/change_theme.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+     <script>
+      window.addEventListener('load', function () {
+        const animationButtons = document.querySelectorAll('.animation-button')
+        const box = document.getElementById('animated-box')
+    
+        animationButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const animationClass = button.value
+    
+            // Remove all existing motion- classes
+            const currentClasses = Array.from(box.classList)
+            const motionClasses = currentClasses.filter(className => className.startsWith('motion-'))
+            motionClasses.forEach(className => box.classList.remove(className))
+    
+            // Temporarily remove the animation class to re-trigger it
+            void box.offsetWidth // Trigger reflow to allow re-adding the class
+            box.classList.add(animationClass, 'motion-duration-1000')
+          })
+        })
+      })
+    </script>
+    <script>
+      AOS.init({
+        once: true,
+      });
+    </script>
+    <script>
+        document.addEventListener('flyonUIInit', function () {
+            // Reinitialize FlyonUI components
+            // Aquí puedes agregar cualquier inicialización específica de FlyonUI que necesites
+            if (typeof flyonUI !== 'undefined') {
+                flyonUI.init();
+            }
+        });
+    </script>
 </body>
 </html>
