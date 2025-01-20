@@ -3,9 +3,13 @@
 {% load static %}
 {% csrf_token %}  
     <!-- Barra de Busqueda con Filtro -->
-    <button type="button" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary px-2 border-2 btn-primary wave btn-text max-sm:btn-square z-50" aria-haspopup="dialog" aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar" >
+    <button type="button" id="show-modal" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary px-2 border-2 btn-primary wave btn-text max-sm:btn-square z-50"     
+    aria-haspopup="dialog" 
+    aria-expanded="false" 
+    aria-controls="add-filter-modal" 
+    data-overlay="#add-filter-modal" >
         <span class="icon-[tabler--filter] size-6 "></span>
-      </button>
+    </button>
     <div class="grid grid-cols-1 mb-4 ">
         <div class="input-group bg-transparent max-w-sm ">
             <span class="input-group-text">
@@ -21,11 +25,11 @@
             <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
             <label class="sr-only" for="kbdInput3">Buscar</label>
         </div>
-        
     </div>   
 
     <!-- Listado de Cartas en Venta -->
     {% include "shop/partials/cards-list.html" %}
+    {% include "shop/partials/cards-filter-list.html" %}
 
 {% endblock content %}
 

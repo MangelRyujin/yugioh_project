@@ -2403,25 +2403,6 @@ html {
   flex-shrink: 0;
 }
 
-.range {
-  height: 0.5rem;
-  width: 100%;
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
-  --range-shdw: var(--fallback-bc,oklch(var(--bc)/1));
-  position: relative;
-  border-radius: 9999px;
-  background-color: transparent;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.range:focus {
-  outline: none;
-}
-
 .select {
   display: inline-flex;
   cursor: pointer;
@@ -5754,112 +5735,11 @@ input:focus-visible {
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
-.range::-webkit-slider-runnable-track {
-  height: 0.5rem;
-  width: 100%;
-  border-radius: 9999px;
-  background-color: var(--fallback-n,oklch(var(--n)/0.1));
-}
-
-.range::-moz-range-track {
-  height: 0.5rem;
-  width: 100%;
-  border-radius: 9999px;
-  background-color: var(--fallback-n,oklch(var(--n)/0.1));
-}
-
-.range::-webkit-slider-thumb {
-  position: relative;
-  top: 50%;
-  width: 1rem;
-  height: 1rem;
-  --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity, 1)));
-  --tw-shadow: 0 2px 4px 0 var(--fallback-bs,oklch(var(--bs)/0.26));
-  --tw-shadow-colored: 0 2px 4px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  -webkit-transition-property: all;
-  transition-property: all;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  appearance: none;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  color: var(--range-shdw);
-  border-color: var(--range-shdw);
-  border-style: solid;
-  border-width: 3px;
-}
-
-.range::-webkit-slider-thumb:hover {
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  cursor: grab;
-  box-shadow: 0 0 0 2px var(--range-shdw);
-}
-
-.range::-webkit-slider-thumb:active {
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  cursor: grabbing;
-  box-shadow: 0 0 0 3px var(--range-shdw);
-}
-
-.range::-moz-range-thumb {
-  position: relative;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity, 1)));
-  --tw-shadow: 0 2px 4px 0 var(--fallback-bs,oklch(var(--bs)/0.26));
-  --tw-shadow-colored: 0 2px 4px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  -moz-transition-property: all;
-  transition-property: all;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  top: 50%;
-  color: var(--range-shdw);
-  box-sizing: border-box;
-  border-color: var(--range-shdw);
-  border-style: solid;
-  border-width: 3px;
-}
-
-.range::-moz-range-thumb:hover {
-  cursor: grab;
-  box-shadow: 0 0 0 2px var(--range-shdw);
-}
-
-.range::-moz-range-thumb:active {
-  cursor: grabbing;
-  box-shadow: 0 0 0 3px var(--range-shdw);
-}
-
 .range.disabled,
 .range:disabled,
 .range[disabled] {
   pointer-events: none;
   opacity: 0.3;
-}
-
-[dir="rtl"] .range::-webkit-slider-thumb {
-  transform: translateY(-50%) scaleX(-1);
-}
-
-[dir="rtl"] .range::-moz-range-thumb {
-  transform: translateY(-50%) scaleX(-1);
-}
-
-[dir="rtl"] .range::-webkit-slider-runnable-track,
-[dir="rtl"] .range::-moz-range-track {
-  direction: rtl;
 }
 
 .select:hover {
@@ -6989,6 +6869,30 @@ textarea:focus-visible {
 .dt-layout-row:has(.dt-paging),
 .dt-scroll-body thead {
   display: none !important;
+}
+
+.flatpickr-day.today:not(.selected) {
+  border-color: transparent;
+  background-color: var(--fallback-p,oklch(var(--p)/0.2));
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
+}
+
+.flatpickr-day.inRange,
+  .flatpickr-day.prevMonthDay.inRange,
+  .flatpickr-day.nextMonthDay.inRange,
+  .flatpickr-day.today.inRange,
+  .flatpickr-day.prevMonthDay.today.inRange,
+  .flatpickr-day.nextMonthDay.today.inRange,
+  .flatpickr-day:hover,
+  .flatpickr-day.prevMonthDay:hover,
+  .flatpickr-day.nextMonthDay:hover,
+  .flatpickr-day:focus,
+  .flatpickr-day.prevMonthDay:focus,
+  .flatpickr-day.nextMonthDay:focus {
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .flatpickr-day.selected,
@@ -8463,6 +8367,10 @@ textarea:focus-visible {
   flex-grow: 1;
 }
 
+.border-collapse {
+  border-collapse: collapse;
+}
+
 .-translate-x-15 {
   --tw-translate-x: -3.75rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -8595,6 +8503,10 @@ textarea:focus-visible {
   flex-wrap: nowrap;
 }
 
+.content-start {
+  align-content: flex-start;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -8653,10 +8565,6 @@ textarea:focus-visible {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .gap-6 {
@@ -9477,11 +9385,6 @@ textarea:focus-visible {
   color: var(--fallback-bc,oklch(var(--bc)/0.9));
 }
 
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
-}
-
 .text-error {
   --tw-text-opacity: 1;
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
@@ -9537,14 +9440,6 @@ textarea:focus-visible {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-error\/60 {
-  color: var(--fallback-er,oklch(var(--er)/0.6));
-}
-
-.text-warning\/60 {
-  color: var(--fallback-wa,oklch(var(--wa)/0.6));
 }
 
 .no-underline {
