@@ -26,98 +26,116 @@
                 <option value="trampa">Trampa</option>
               </select>
             </div>
-            
-            <div class="col-span-1" id="lvl-container" style="display: none;">
-              <label class="label label-text" for="card_lvl">LVL:</label>
-              <div class="input-group">
-                <input type="number" class="input grow input-sm" required="" min="1" placeholder="4" step="1" name="card_lvl" id="card_lvl">
-                <label class="sr-only" for="card_lvl">LVL</label>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="col-span-1" id="atk-container" style="display: none;">
+                <label class="label label-text" for="card_atk">ATK:</label>
+                <div class="input-group">
+                  <input type="number" class="input grow input-sm" required="" min="0" placeholder="1500" step="100" name="card_atk" id="card_atk">
+                  <label class="sr-only" for="card_atk">ATK</label>
+                </div>
               </div>
-            </div>
-            
-            <div class="col-span-1" id="atk-container" style="display: none;">
-              <label class="label label-text" for="card_atk">ATK:</label>
-              <div class="input-group">
-                <input type="number" class="input grow input-sm" required="" min="0" placeholder="1500" step="100" name="card_atk" id="card_atk">
-                <label class="sr-only" for="card_atk">ATK</label>
+              
+              <div class="col-span-1" id="def-container" style="display: none;">
+                <label class="label label-text" for="card_def">DEF:</label>
+                <div class="input-group">
+                  <input type="number" class="input grow input-sm" required="" min="0" placeholder="1000" step="100" name="card_def" id="card_def">
+                  <label class="sr-only" for="card_def">DEF</label>
+                </div>
               </div>
-            </div>
-            
-            <div class="col-span-1" id="def-container" style="display: none;">
-              <label class="label label-text" for="card_def">DEF:</label>
-              <div class="input-group">
-                <input type="number" class="input grow input-sm" required="" min="0" placeholder="1000" step="100" name="card_def" id="card_def">
-                <label class="sr-only" for="card_def">DEF</label>
-              </div>
-            </div>
-            
-            <div class="col-span-2">
-              <label class="label label-text" for="card_rarity">Rareza</label>
-              <select required class="select select-sm" name='rarity' id="card_rarity">
-                <option value="1">Comun</option>
-                <option value="2">Rare</option>
-                <option value="3">Super rare</option>
-                <option value="4">Ultra rare</option>
-                <option value="5">Secret rare</option>
-              </select>
-            </div>
-            
-            <div class="col-span-2" id="attribute-container" style="display: none;">
-              <label class="label label-text" for="card_attribute">Atributo:</label>
-              <div class="input-group">
-                <select required class="select select-sm" name='card_attribute' id="card_attribute">
-                  <option value="1">Fuego</option>
-                    <option value="2">Agua</option>
-                    <option value="3">Viento</option>
-                    <option value="4">Tierra</option>
-                    <option value="5">Oscuridad</option>
-                    <option value="6">Luz</option>
-                    <option value="7">Divinidad</option>
-                </select>
-                <label class="sr-only" for="card_attribute">Atributo</label>
-              </div>
-            </div>
-            
-            <div class="col-span-2" id="spell-type-container" style="display: none;">
-              <label class="label label-text" for="spell_type">Tipo de Magia:</label>
-              <div class="input-group">
-                <select required class="select select-sm" name='spell_type' id="spell_type">
-                  <option value="Normal">Normal</option>
-                  <option value="Continuous">Continuous</option>
-                  <option value="Equip">Equip</option>
-                  <option value="Field">Field</option>
-                  <option value="Quick-Play">Quick-Play</option>
-                  <option value="Ritual">Ritual</option>
-                </select>
-                <label class="sr-only" for="spell_type">Tipo de Magia</label>
-              </div>
-            </div>
-            
-            <div class="col-span-2" id="trap-type-container" style="display: none;">
-              <label class="label label-text" for="trap_type">Tipo de Trampa:</label>
-              <div class="input-group">
-                <select required class="select select-sm" name='trap_type' id="trap_type">
-                  <option value="Normal">Normal</option>
-                  <option value="Continuous">Continuous</option>
-                  <option value="Counter">Counter</option>
-                </select>
-                <label class="sr-only" for="trap_type">Tipo de Trampa</label>
-              </div>
-            </div>
   
-            <div class="col-span-2">
-              <label class="label label-text" for="archetype">Arquetipo:</label>
-              <div class="input-group">
-                <select required class="select select-sm" name='archetype' id="archetype">
-                  <option value="Albaz">Albaz</option>
-                  <option value="Abyss Actor">Abyss Actor</option>
-                  <option value="Adamancipator">Adamancipator</option>
-                  <option value="Adventurer Token">Adventurer Token</option>
+              <div class="col-span-1" id="lvl-container" style="display: none;">
+                <label class="label label-text" for="card_lvl">LVL:</label>
+                <div class="input-group">
+                  <input type="number" class="input grow input-sm" required="" min="1" placeholder="4" step="1" name="card_lvl" id="card_lvl">
+                  <label class="sr-only" for="card_lvl">LVL</label>
+                </div>
               </div>
-            </div>
-          </form>
-          
-          
+              
+              
+              <div class="col-span-1">
+                <label class="label label-text" for="card_rarity">Rareza</label>
+                <select required class="select select-sm" name='rarity' id="card_rarity">
+                  <option value="1">Comun</option>
+                  <option value="2">Rare</option>
+                  <option value="3">Super rare</option>
+                  <option value="4">Ultra rare</option>
+                  <option value="5">Secret rare</option>
+                </select>
+              </div>
+              
+              <div class="col-span-1" id="attribute-container" style="display: none;">
+                <label class="label label-text" for="card_attribute">Atributo:</label>
+                <div class="input-group">
+                  <select required class="select select-sm" name='card_attribute' id="card_attribute">
+                    <option value="1">Fuego</option>
+                      <option value="2">Agua</option>
+                      <option value="3">Viento</option>
+                      <option value="4">Tierra</option>
+                      <option value="5">Oscuridad</option>
+                      <option value="6">Luz</option>
+                      <option value="7">Divinidad</option>
+                  </select>
+                  <label class="sr-only" for="card_attribute">Atributo</label>
+                </div>
+              </div>
+  
+              <div class="col-span-1" id="monster-type-container" style="display: none;">
+                <label class="label label-text" for="monster_type">Tipo:</label>
+                <div class="input-group">
+                  <select required class="select select-sm" name='monster_type' id="monster_type">
+                    <option value="Normal">Normal</option>
+                    <option value="Effect">Effect</option>
+                    <option value="Fusion">Fusion</option>
+                    <option value="Ritual">Ritual</option>
+                    <option value="Synchro">Synchro</option>
+                    <option value="Xyz">Xyz</option>
+                    <option value="Pendulum">Pendulum</option>
+                    <option value="Link">Link</option>
+                  </select>
+                  <label class="sr-only" for="monster_type">Tipo</label>
+                </div>
+              </div>
+              
+              <div class="col-span-1" id="spell-type-container" style="display: none;">
+                <label class="label label-text" for="spell_type">Tipo de Magia:</label>
+                <div class="input-group">
+                  <select required class="select select-sm" name='spell_type' id="spell_type">
+                    <option value="Normal">Normal</option>
+                    <option value="Continuous">Continuous</option>
+                    <option value="Equip">Equip</option>
+                    <option value="Field">Field</option>
+                    <option value="Quick-Play">Quick-Play</option>
+                    <option value="Ritual">Ritual</option>
+                  </select>
+                  <label class="sr-only" for="spell_type">Tipo de Magia</label>
+                </div>
+              </div>
+              
+              <div class="col-span-1" id="trap-type-container" style="display: none;">
+                <label class="label label-text" for="trap_type">Tipo de Trampa:</label>
+                <div class="input-group">
+                  <select required class="select select-sm" name='trap_type' id="trap_type">
+                    <option value="Normal">Normal</option>
+                    <option value="Continuous">Continuous</option>
+                    <option value="Counter">Counter</option>
+                  </select>
+                  <label class="sr-only" for="trap_type">Tipo de Trampa</label>
+                </div>
+              </div>
+    
+              <div class="col-span-2">
+                <label class="label label-text" for="archetype">Arquetipo:</label>
+                <div class="input-group">
+                  <select required class="select select-sm" name='archetype' id="archetype">
+                    <option value="Albaz">Albaz</option>
+                    <option value="Abyss Actor">Abyss Actor</option>
+                    <option value="Adamancipator">Adamancipator</option>
+                    <option value="Adventurer Token">Adventurer Token</option>
+                </div>
+              </div>
+            </form>
+          </div>
+            
         </div>
         <div class="modal-footer">
           {% comment %} SOME CODE HERE {% endcomment %}
@@ -134,6 +152,7 @@
       const defContainer = document.getElementById('def-container');
       const cardAttributeContainer = document.getElementById('attribute-container');
       const cardAttribute = document.getElementById('card_attribute');
+      const monsterTypeContainer = document.getElementById('monster-type-container');
       const spellTypeContainer = document.getElementById('spell-type-container');
       const trapTypeContainer = document.getElementById('trap-type-container');
   
@@ -144,6 +163,7 @@
         spellTypeContainer.style.display = 'none';
         trapTypeContainer.style.display = 'none';
         cardAttributeContainer.style.display = 'block';
+        monsterTypeContainer.style.display = 'block';
   
         // Load attributes for "Monstruo"
         cardAttribute.innerHTML = `
@@ -162,6 +182,7 @@
         spellTypeContainer.style.display = 'block';
         trapTypeContainer.style.display = 'none';
         cardAttributeContainer.style.display = 'none';
+        monsterTypeContainer.style.display = 'none';
   
         // Clear attributes
         cardAttribute.innerHTML = '';
@@ -172,6 +193,7 @@
         spellTypeContainer.style.display = 'none';
         trapTypeContainer.style.display = 'block';
         cardAttributeContainer.style.display = 'none';
+        monsterTypeContainer.style.display = 'none';
   
         // Clear attributes
         cardAttribute.innerHTML = '';
@@ -182,6 +204,7 @@
         spellTypeContainer.style.display = 'none';
         trapTypeContainer.style.display = 'none';
         cardAttributeContainer.style.display = 'none';
+        monsterTypeContainer.style.display = 'none';
   
         // Clear attributes
         cardAttribute.innerHTML = '';
