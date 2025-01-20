@@ -12,11 +12,11 @@
             <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
             </span>
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput3" 
-            name="kbdInput2" 
-            hx-post="{% url 'search_user_cards' %}" 
+            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput4" 
+            name="kbdInput4" 
+            hx-post="{% url 'search_cards_shop' %}" 
             hx-trigger="input changed, delay:500ms" 
-            hx-target="#card-list" hx-include="[name=kbdInput3], [name=csrfmiddlewaretoken]" 
+            hx-target="#search-results" hx-include="[name=kbdInput3], [name=csrfmiddlewaretoken]" 
             hx-indicator="#spinerSearchAllMyAlbumCards"/>
             <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
             <label class="sr-only" for="kbdInput3">Buscar</label>
@@ -25,127 +25,7 @@
     </div>   
 
     <!-- Listado de Cartas en Venta -->
-    <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-7  mb-12">
-        
-        <div class=" p-3 shadow-md rounded  bg-base-200/50 flex justify-start w-full items-start gap-3  relative ">
-            <span class="  absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50  -rotate-12  ">TCG</span>
-
-            <div class="">
-            <img src="https://primervirgen.pythonanywhere.com/media/cards_small/34541863.jpg" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
-            </div>
-                <div class="w-full flex flex-col justify-between h-full gap-3">
-                    <div class="flex flex-col gap-2">
-                        <p class="text-base-content text-sm md:text-md lg:text-lg text-success/60 font-bold">
-                            "A" Cell Breeding Device
-                        </p>
-                        
-                        <p class="text-base-content text-xs sm:text-sm">
-                            Cantidad: 1 unidades
-                        </p>
-                        <a href="https://wa.me/+5355193484" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: Mangel <span class=" text-success icon-[tabler--brand-whatsapp] size-4 "></span>
-                            </a>
-                        <p class="text-base-content text-xs sm:text-sm ">Rareza: Común</p>
-                        <p class="text-base-content text-xs sm:text-sm ">Precio: $5.99</p>
-                        
-                    </div>
-                    <div class="flex justify-end gap-3 w-full mt-2">
-                        <button class="btn btn-soft btn-primary btn-sm "> <span class="icon-[tabler--shopping-cart] size-5"></span></button>
-                        <a href="#" class="btn btn-soft btn-info btn-sm"><span class="icon-[tabler--eye] size-5"></span></a>
-                    </div>
-    
-                    
-               
-            </div>
-            
-        </div>
-        <div class=" p-3 shadow-md rounded  bg-base-200/50 flex justify-start w-full items-start gap-3  relative ">
-            <span class="  absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50  -rotate-12  ">OCG</span>
-
-            <div class="">
-            <img src="https://primervirgen.pythonanywhere.com/media/cards_small/70335319.jpg" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
-            </div>
-                <div class="w-full flex flex-col justify-between h-full gap-3">
-                    <div class="flex flex-col gap-2">
-                        <p class="text-base-content text-sm md:text-md lg:text-lg text-warning/60 font-bold">
-                            All-Eyes Phantom Dragon
-                        </p>
-                        
-                        <p class="text-base-content text-xs sm:text-sm">
-                            Cantidad: 3 unidades
-                        </p>
-                        <a href="https://wa.me/+5355193484" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: Mangel <span class=" text-success icon-[tabler--brand-whatsapp] size-4 "></span>
-                            </a>
-                        <p class="text-base-content text-xs sm:text-sm ">Rareza: Super rare</p>
-                        <p class="text-base-content text-xs sm:text-sm ">Precio: $5.99</p>
-                        
-                    </div>
-                    <div class="flex justify-end gap-3 w-full mt-2">
-                        <button class="btn btn-soft btn-primary btn-sm "> <span class="icon-[tabler--shopping-cart] size-5"></span></button>
-                        <a href="#" class="btn btn-soft btn-info btn-sm"><span class="icon-[tabler--eye] size-5"></span></a>
-                    </div>
-    
-                    
-               
-            </div>
-            
-        </div>
-        <div class=" p-3 shadow-md rounded  bg-base-200/50 flex justify-start w-full items-start gap-3  relative ">
-            <span class="  absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50  -rotate-12  ">TCG</span>
-
-            <div class="">
-            <img src="https://primervirgen.pythonanywhere.com/media/cards_small/77421977.jpg" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
-            </div>
-                <div class="w-full flex flex-col justify-between h-full gap-3">
-                    <div class="flex flex-col gap-2">
-                        <p class="text-base-content text-sm md:text-md lg:text-lg text-error/60 font-bold">
-                            A.I. Shadow
-                        </p>
-                        
-                        <p class="text-base-content text-xs sm:text-sm">
-                            Cantidad: 5 unidades
-                        </p>
-                        <a href="https://wa.me/+5355193484" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: Mangel <span class=" text-success icon-[tabler--brand-whatsapp] size-4 "></span>
-                            </a>
-                        <p class="text-base-content text-xs sm:text-sm ">Rareza: Rare</p>
-                        <p class="text-base-content text-xs sm:text-sm ">Precio: $5.99</p>
-                        
-                    </div>
-                    <div class="flex justify-end gap-3 w-full mt-2">
-                        <button class="btn btn-soft btn-primary btn-sm "> <span class="icon-[tabler--shopping-cart] size-5"></span></button>
-                        <a href="#" class="btn btn-soft btn-info btn-sm"><span class="icon-[tabler--eye] size-5"></span></a>
-                    </div>
-    
-                    
-               
-            </div>
-            
-        </div>
-        
-        
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.show-more').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    const shortDesc = this.previousElementSibling.previousElementSibling;
-                    const longDesc = this.previousElementSibling;
-                    if (longDesc.classList.contains('hidden')) {
-                        longDesc.classList.remove('hidden');
-                        shortDesc.classList.add('hidden');
-                        this.textContent = 'Mostrar menos';
-                    } else {
-                        longDesc.classList.add('hidden');
-                        shortDesc.classList.remove('hidden');
-                        this.textContent = 'Mostrar más';
-                    }
-                });
-            });
-        });
-    </script>
+    {% include "shop/partials/cards-list.html" %}
 
 {% endblock content %}
 
