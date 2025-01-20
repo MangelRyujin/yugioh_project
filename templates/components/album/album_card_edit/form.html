@@ -7,7 +7,21 @@ hx-indicator="#spinner"
 class="needs-validation peer grid grid-cols-2 gap-3">
     {% csrf_token %}
       <!-- Account Details -->
-      
+      <div class="">
+        <label class="label label-text" for="card_expantion">Expanción:</label>
+        <div class="input-group">
+          <input type="text" maxlength="30" class="input grow input-sm" value="{{form.expantion.value}}" required  placeholder="Expanción"  name='expantion'  id="card_expantion" />
+          <label class="sr-only" for="card_expantion">Entre la expanción</label>
+          <span class="input-group-text">XXX</span>
+        </div>
+        {% if form.stock.errors %}
+            <div class="alert alert-error mt-2">
+                {% for error in form.stock.errors %}
+                    {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
+      </div>
           <div class="">
           <label class="label label-text" for="card_stock">Cantidad:</label>
           <div class="input-group  w-full">
@@ -44,8 +58,8 @@ class="needs-validation peer grid grid-cols-2 gap-3">
           <div class="">
             <label class="label label-text" for="card_version">Versión </label>
             <select required class="select select-sm" name='version' id="card_version">
-              <option {% if form.version.value == "TCG" %}selected{% endif %} value="1">TCG</option>
-              <option {% if form.version.value == "OCG" %}selected{% endif %} value="2">OCG</option>
+              <option {% if form.version.value == "1" %}selected{% endif %} value="1">TCG</option>
+              <option {% if form.version.value == "2" %}selected{% endif %} value="2">OCG</option>
               
             </select>
           </div>

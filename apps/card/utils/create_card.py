@@ -84,6 +84,7 @@ def album_card_create(request,data):
                         rarity = request.POST.get('rarity', '1'),
                         stock = request.POST.get('stock', 1),
                         version = request.POST.get('version', '1'),
+                        expantion=request.POST.get('expantion', 'No definida'),
                         konami_id=data['konami_id'],
                         name=data['name'],
                         typeline=data['typeline'],

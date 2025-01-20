@@ -1,24 +1,35 @@
 {% if card %}
-<div class=" flex-col justify-start gap-3  bg-base-100 p-2 " id="Card{{card.konami_id}}" >
-    <div class="flex flex-col items-start  w-full h-full">
+<div class="flex flex-col justify-start gap-3  bg-base-100 p-2 " id="Card{{card.konami_id}}" >
+    <form class="flex flex-col items-start  w-full h-full"
+    hx-post="{% url 'add_card' pk=card.konami_id %}" 
+            hx-trigger="submit" 
+            hx-swap="outerHTML"
+            hx-target="#Card{{card.konami_id}}" 
+            hx-indicator="#sniper{{card.konami_id}}">
+            {% csrf_token %}
       <div class="flex items-start gap-3 w-full">
         
         <img src="{{ card.card_images.0.image_url_small  }}" alt="imagen" alt="card" loading="lazy" width="60" height="60" class="object-cover" />
         <div class="flex flex-col items-start  w-full">
           <span class="text-base-content font-medium">{{ card.name }}</span>
           <span class="text-base-content/80 mt-1 text-xs">{{ card.type }}</span>
+          <div class="">
+            <label class="label label-text" for="card_expantion">Expanción:</label>
+            <div class="input-group  w-full">
+              
+              <input type="text" maxlength="30" class="input grow input-sm" required placeholder="Expanción" name='expantion'  id="card_expantion" />
+              <label class="sr-only" for="card_expantion">Entre la expanción</label>
+              <span class="input-group-text"> xxx</span>
+            </div>
+          </div>
         </div>
         
       </div>  
       <div class="flex items-start gap-1 w-full">   
-        <form class="grid grid-cols-2 justify-start w-full items-end gap-2 "
-            hx-post="{% url 'add_card' pk=card.konami_id %}" 
-            hx-trigger="submit" 
-            hx-swap="outerHTML"
-            hx-target="#Card{{card.konami_id}}" 
-            hx-indicator="#sniper{{card.konami_id}}"
+        <div class="grid grid-cols-2 justify-start w-full items-end gap-2 "
+            
         >
-          {% csrf_token %}
+          
           <div class="">
             <label class="label label-text" for="card_stock">Cantidad:</label>
             <div class="input-group  w-full">
@@ -67,13 +78,19 @@
               </div>
             </div>
           </div>
-        </div>
+      
 
-        {% if message %}
+        
+         
+        </div>
+      </div>          
+    
+    </form>
+    {% if message %}
         <script>
           showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
         </script>
-        <span class="alert alert-soft alert-success p-2 text-xs mt-1">{{message}}</span>
+        <span class="alert alert-soft alert-success p-2 text-xs mt-1 w-full">{{message}}</span>
             <div
             hx-get="{% url "search_user_cards" %}"
             hx-trigger="load" 
@@ -82,12 +99,6 @@
 
             </div>
         {% endif %} 
-         
-        </form>
-      </div>          
-    </div>
-      </div>
-    </div>
        
   </div>
   {% endif %}

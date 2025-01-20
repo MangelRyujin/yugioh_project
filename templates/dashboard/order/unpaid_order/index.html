@@ -31,108 +31,125 @@
         <table class="table  min-w-full">
           <thead>
             <tr>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Nombre
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Comprador
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Móvil
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Cantidad
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Precio
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="group w-fit">
+              <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
                   Categoría
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
               </th>
-              <th scope="col" class="--exclude-from-ordering">Acciones</th>
+              <th scope="col" class="--exclude-from-ordering text-xs">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr class="hover">
               
               
-              <td class="text-nowrap">Blue-Eyes White Dragon</td>
-              <td class="text-nowrap">Mangel</td>
-              <td class="text-nowrap"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td>3</td>
-              <td>$999</td>
+              <td class="text-nowrap text-xs tooltip mt-1.5">
+                <div class="tooltip-toggle " aria-label="Tooltip">
+                  Blue-Eyes White Dragon
+                </div>
+                
+                <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible [--trigger:click]" role="tooltip">
+                  <span class="">
+                    <div class="tooltip-body flex flex-col items-start pe-4">
+                      <span class=" font-medium">Blue-Eyes White Dragon</span>
+                      <span class="text-xs">TCG</span>
+                      <span class="text-xs">Expanción: BTX-9021031</span>
+                      <span class="text-xs">Rareza: Secret rare</span>
+                      <span class="text-xs">$ 25.34</span>
+                    </div>
+                  </span>
+                  
+                </span>
+             </td>
+              <td class="text-nowrap text-xs">Mangel</td>
+              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
+              <td class="text-xs">3</td>
+              <td class="text-xs">$999</td>
               
-              <td><span class="badge badge-soft badge-primary ">Carta</span></td>
+              <td><span class="badge badge-soft badge-primary badge-sm">Carta</span></td>
               <td>
-                <button class="btn btn-gradient btn-success btn-text btn-sm" aria-label="Action button">
+                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
                   
-                  Pagado
+                  <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                <button class="btn btn-gradient btn-error btn-text btn-sm" aria-label="Action button">
+                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
                   
-                  Eliminar
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
+                </button>
+              </td>
+            </tr>
+            <tr class="hover ">
+              
+              <td class="text-nowrap text-xs">Forros negros</td>
+              <td class="text-nowrap text-xs">Fidel</td>
+              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
+              <td class="text-xs">2</td>
+              <td class="text-xs">$899</td>
+              <td><span class="badge badge-soft badge-info badge-sm ">Forro</span></td>
+              <td>
+                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
+                  
+                  <span class="icon-[tabler--check] size-5"></span>
+                </button>
+                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
+                  
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
                 </button>
               </td>
             </tr>
             <tr class="hover">
               
-              <td class="text-nowrap">Forros negros</td>
-              <td class="text-nowrap">Fidel</td>
-              <td class="text-nowrap"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td>2</td>
-              <td>$899</td>
-              <td><span class="badge badge-soft badge-info ">Forro</span></td>
+              <td class="text-nowrap text-xs">Playmat Elemental Hero</td>
+              <td class="text-nowrap text-xs">Victor</td>
+              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
+              <td class="text-xs">1</td>
+              <td class="text-xs">$399</td>
+              <td><span class="badge badge-soft badge-success badge-sm">Playmat</span></td>
               <td>
-                <button class="btn btn-gradient btn-success btn-text btn-sm" aria-label="Action button">
+                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
                   
-                  Pagado
+                  <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                <button class="btn btn-gradient btn-error btn-text btn-sm" aria-label="Action button">
+                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
                   
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr class="hover">
-              
-              <td class="text-nowrap">Playmat Elemental Hero</td>
-              <td class="text-nowrap">Victor</td>
-              <td class="text-nowrap"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td>1</td>
-              <td>$399</td>
-              <td><span class="badge badge-soft badge-success ">Playmat</span></td>
-              <td>
-                <button class="btn btn-gradient btn-success btn-text btn-sm" aria-label="Action button">
-                  
-                  Pagado
-                </button>
-                <button class="btn btn-gradient btn-error btn-text btn-sm" aria-label="Action button">
-                  
-                  Eliminar
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
                 </button>
                 
               </td>
