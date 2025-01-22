@@ -54,7 +54,7 @@ class AlbumCard(models.Model):
     scale = models.IntegerField(null=True, blank=True)
     linkval = models.IntegerField(null=True, blank=True)
     linkmarkers = models.JSONField(null=True, blank=True)
-    
+    expantion = models.CharField(max_length=30)
     
     class Meta:
         verbose_name = "AlbumCard"

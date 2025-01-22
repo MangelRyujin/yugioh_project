@@ -6,6 +6,8 @@ module.exports = {
     require("flyonui/plugin"),
     require("tailwindcss-motion"), // Require only if you want to use FlyonUI JS component
   ],
+  darkMode: "media",
+  lightMode: "media",
   theme: {
     extend: {
       fontFamily: {

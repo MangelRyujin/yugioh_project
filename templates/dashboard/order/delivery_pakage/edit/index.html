@@ -30,10 +30,10 @@
       <div class="overflow-hidden">
         <table class="table min-w-full">
           <thead>
-            <tr>
+            <tr >
               
               <th scope="col" class="group w-fit text-xs">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between ">
                   Código
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
@@ -48,21 +48,7 @@
               </th>
               <th scope="col" class="group w-fit text-xs">
                 <div class="flex items-center justify-between">
-                  Creador
-                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-                </div>
-              </th>
-              <th scope="col" class="group w-fit text-xs">
-                <div class="flex items-center justify-between">
-                  Responsable actual
-                  <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                  <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-                </div>
-              </th>
-              <th scope="col" class="group w-fit text-xs">
-                <div class="flex items-center justify-between">
-                  Provincia actual
+                  Dueño
                   <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
                   <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
                 </div>
@@ -75,63 +61,72 @@
                 </div>
               </th>
               
-              <th scope="col" class="--exclude-from-ordering">Acciones</th>
+              <th scope="col" class="--exclude-from-ordering text-xs">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="hover">
+            <tr class="hover ">
               
               
               <td class="text-nowrap text-xs">01</td>
-              <td><span class="badge badge-soft badge-error badge-sm">Faltan entregas</span></td>
+              <td><span class="badge badge-soft badge-xs badge-success ">Entregado</span></td>
               <td class="text-nowrap text-xs">Mangel</td>
-              <td class="text-nowrap text-xs">Mauro</td>
-              <td class="text-xs">Ciefuegos</td>
+              
+              
               <td class="text-xs">24 de septiembre del 2025</td>
               
               
-              <td>
-                <button class="btn btn-circle btn-success border border-success btn-soft btn-sm" aria-label="Action button">
+              <td class="flex gap-2">
+                <button class="btn btn-circle  btn-soft btn-sm btn-disabled" aria-label="Action button">
                   <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                <button class="btn btn-circle btn-warning border border-warning btn-soft btn-sm" aria-label="Action button">
-                  <span class="icon-[tabler--pencil] size-5"></span>
+                <button class="btn btn-circle btn-info border border-info btn-soft btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--eye] size-5"></span
+                </button>
+                <button class="btn btn-circle  btn-soft btn-sm btn-disabled" aria-label="Action button">
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
                 </button>
               </td>
             </tr>
-            <tr class="hover">
+            <tr class="hover ">
               
               <td class="text-nowrap text-xs">02</td>
-              <td><span class="badge badge-soft badge-success badge-sm ">Todo entregado</span></td>
+              <td><span class="badge badge-soft badge-xs badge-error ">No entregado</span></td>
               <td class="text-nowrap text-xs">Fidel</td>
-              <td class="text-nowrap text-xs">Mauro</td>
-              <td class="text-xs">Habana</td>
+          
               <td class="text-xs">5 de marzo del 2025</td>
               
-              <td>
-                <button class="btn btn-circle  btn-soft btn-sm btn-disabled" aria-label="Action button">
+              <td class="flex gap-2">
+                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success " aria-label="Action button">
                   <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                <button class="btn btn-circle btn-warning border border-warning btn-soft btn-sm" aria-label="Action button">
-                  <span class="icon-[tabler--pencil] size-5"></span>
+                <button class="btn btn-circle btn-info border border-info btn-soft btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--eye] size-5"></span
+                </button>
+                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
+                  
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
                 </button>
               </td>
             </tr>
-            <tr class="hover">
+            <tr class="hover ">
               
               <td class="text-nowrap text-xs">03</td>
-              <td><span class="badge badge-soft badge-success badge-sm ">Todo entregado</span></td>
+              <td><span class="badge badge-soft badge-xs badge-error ">No entregado</span></td>
               <td class="text-nowrap text-xs">Victor</td>
-              <td class="text-nowrap text-xs">Fidel</td>
-              <td class="text-xs">Villa Clara</td>
+
               <td class="text-xs">12 de octubre del 2025</td>
               
-              <td>
-                <button class="btn btn-circle  btn-soft btn-sm btn-disabled" aria-label="Action button">
+              <td class="flex gap-2">
+                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success " aria-label="Action button">
                   <span class="icon-[tabler--check] size-5"></span>
                 </button>
-                <button class="btn btn-circle btn-warning border border-warning btn-soft btn-sm" aria-label="Action button">
-                  <span class="icon-[tabler--pencil] size-5"></span>
+                <button class="btn btn-circle btn-info border border-info btn-soft btn-sm" aria-label="Action button">
+                  <span class="icon-[tabler--eye] size-5"></span
+                </button>
+                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
+                  
+                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
                 </button>
               </td>
             </tr>

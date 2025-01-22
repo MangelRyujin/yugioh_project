@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
-from apps.accounts.models import User
+from apps.accounts.models import Donation, User
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -51,3 +51,11 @@ class CustomPasswordChangeForm(forms.Form):
         new_password = self.cleaned_data["new_password1"]
         self.user.set_password(new_password)
         self.user.save()
+        
+        
+class DonationForm(forms.Form):
+    
+    
+    class Meta:
+        model = Donation
+        fields = ['user', 'amount', 'code', 'message']

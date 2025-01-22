@@ -48,6 +48,7 @@
             animate-text">Iniciar Sesión</h1>
         <form action="{% url 'login' %}" method="POST" class="grid justify-center grid-cols-1">
             {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
             <div class="flex-colum justify-center mb-4">
                 <div class="input-group-filled">
                   <span class="input-group-text">

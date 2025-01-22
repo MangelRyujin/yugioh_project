@@ -7,4 +7,4 @@ class UpdateAlbumCardForm(forms.ModelForm):
     
     class Meta:
         model = AlbumCard
-        fields = ["price","stock","rarity","version"]
+        fields = ["price","stock","rarity","version","expantion"]

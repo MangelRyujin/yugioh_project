@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        .bg-animated {
+            background: url('{% static "img/donation.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            {% comment %} animation: backgroundAnimation 10s infinite alternate; {% endcomment %}
+            position: relative;
+            z-index: 1;
+            height:100dvh;
+        }
+
+        .bg-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(0.8); }
+            100% { filter: brightness(1); }
+        }
+    </style>
+</head>
+<body class="bg-animated flex items-center justify-center ">
+    <div class="container px-3">
+    <div class="bg-gray-800 bg-opacity-70 p-4 rounded-lg shadow-lg  max-w-md mx-auto ">
+      <a href="{% url "index" %}" class="btn btn-square btn-gradient btn-primary ">
+        <span class="icon-[tabler--arrow-back-up] size-6"></span>
+      </a>
+        
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div class="card text-error  bg-base-200/80">
+            <div class="card-body p-2">
+              <h5 class="text-center text-error-content mb-2.5 flex-col w-full ">
+                
+                <span class="icon-[tabler--credit-card] size-10 text-error" ></span>
+                <p>
+                  Pago nacional
+                </p>
+              </h5>
+              <button type="submit" class="btn btn-error btn-gradient  w-full text-sm">
+                Pagar
+              </button>
+            </div>
+          </div>
+          <div class="card text-info  bg-base-200/80">
+            <div class="card-body p-2">
+              <h5 class=" text-center text-info-content mb-2.5">
+                <span class="icon-[tabler--brand-stripe] size-10 text-info" ></span>
+                <p>
+                  Pago con stripe
+                </p>
+              </h5>
+              <button type="submit" class="btn btn-gradient btn-info waves waves-light w-full text-sm">
+                Pagar
+              </button>
+            </div>
+          </div>
+          <div class="card text-center  bg-base-200/80 col-span-2">
+            <div class="card-body p-2">
+              <h5 class=" text-center text-accent-content mb-2.5">
+                <span class="icon-[tabler--brand-paypal-filled] size-10 text-accent" ></span>
+                <p>
+                  Pago con Paypal
+                </p>
+
+              </h5>
+              <button type="submit" class="btn btn-gradient btn-accent waves waves-light w-full text-sm">
+                Pagar
+              </button>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+  </div>
+    <script src="{% static 'js/flyonui.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+</body>
+</html>
