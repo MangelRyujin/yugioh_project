@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from apps.accounts.decorators import user_is_not_authenticated
-from apps.accounts.forms import RegisterForm, ProfileUpdateForm
+from apps.accounts.forms import DonationForm, RegisterForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -17,7 +17,8 @@ from django.urls import reverse_lazy
 @user_is_not_authenticated
 def login_view(request):
     context = {
-        "next": request.GET.get('next') or '/'
+        "next": request.GET.get('next','')
+
     }
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -92,3 +93,18 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       " If you don't receive an email, " \
                       "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('login')
+    
+    
+@login_required(login_url='/login/')
+def donation_view(request):
+    form= DonationForm()
+    if request.method == 'POST':
+        form= DonationForm(request.POST)
+        if form.is_valid():
+            donation=form.save(commit=False)
+            donation.user = request.user
+            donation.save()
+    context={
+            "form":form
+        }
+    return render(request, 'donation/index.html', context)

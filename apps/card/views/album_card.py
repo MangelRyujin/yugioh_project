@@ -6,7 +6,8 @@ from django.shortcuts import render, get_object_or_404
 # Create your views here.
 
 
-@login_required
+
+@login_required(login_url='/login/')
 def album_card_update(request,pk):
     card=get_object_or_404(AlbumCard,album__user=request.user,pk=pk)
     context={
@@ -16,7 +17,8 @@ def album_card_update(request,pk):
     return render(request, 'dashboard/album/album_card_update/index.html',context)
 
 
-@login_required
+
+@login_required(login_url='/login/')
 def album_card_form_update(request,pk):
     card=get_object_or_404(AlbumCard,album__user=request.user,pk=pk)
     form = UpdateAlbumCardForm(instance=card)

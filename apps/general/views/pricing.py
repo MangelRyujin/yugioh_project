@@ -4,7 +4,8 @@ from apps.general.models import Subscription
 # Create your views here.
 
 
-@login_required
+
+@login_required(login_url='/login/')
 def pricing(request):
     context={
         'subscriptions':Subscription.objects.all()
