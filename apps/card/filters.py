@@ -2,8 +2,8 @@ from apps.card.models import AlbumCard
 import django_filters
 
 class AlbumCardFilter(django_filters.FilterSet):
-    name=  django_filters.CharFilter(lookup_expr='icontains')
-    konami_id=  django_filters.CharFilter(lookup_expr='icontains')
+    name =  django_filters.CharFilter(lookup_expr='icontains')
+    konami_id =  django_filters.CharFilter(lookup_expr='icontains')
 
     rarity = django_filters.ChoiceFilter(choices=AlbumCard.RARITY_CARD)
     version = django_filters.ChoiceFilter(choices=AlbumCard.VERSION_CARD)
@@ -18,6 +18,6 @@ class AlbumCardFilter(django_filters.FilterSet):
 
     class Meta:
         model = AlbumCard
-        fields = ['name','konami_id', 'rarity', 'version', 'price_min', 'price_max', 'stock_min', 'stock_max', 'name', 'type', 'attribute', 'archetype']
+        fields = ['name', 'konami_id', 'rarity', 'version', 'price_min', 'price_max', 'stock_min', 'stock_max', 'name', 'type', 'attribute', 'archetype']
         
 
