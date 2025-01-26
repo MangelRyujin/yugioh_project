@@ -62,6 +62,8 @@ class AlbumCard(models.Model):
 
     def __str__(self):
         return str(self.konami_id)
+    
+    
 
 class CardImage(models.Model):
     card = models.OneToOneField(AlbumCard, related_name='card_images', on_delete=models.CASCADE)

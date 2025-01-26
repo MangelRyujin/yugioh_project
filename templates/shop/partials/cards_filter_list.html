@@ -16,21 +16,28 @@
           </div>
         </div>
         <div class="modal-body px-3">
-          <form>
+          <form 
+          hx-get="{% url 'cards_filter_result' %}" 
+            hx-trigger="submit" 
+            hx-target="#search-results" 
+            hx-indicator="#spinerFilterAllMyAlbumCards"
+          >
+            <input type="hidden" name="filters" value="{{ filters|default_if_none:'{}'|escapejs }}">
+            {% csrf_token %}
             <div class="col-span-2">
               <label class="label label-text" for="card_type">Tipo de carta:</label>
-              <select required class="select select-sm" name='card_type' id="card_type" onchange="handleCardTypeChange()">
-                <option disabled selected>--- Selecciona el tipo de carta ---</option>
-                <option value="monstruo">Monstruo</option>
-                <option value="magia">Magia</option>
-                <option value="trampa">Trampa</option>
+              <select required class="select select-sm" name='type' id="card_type" onchange="handleCardTypeChange()">
+                <option value="" disabled selected>--- Selecciona el tipo de carta ---</option>
+                <option value="Monster">Monstruo</option>
+                <option value="Spell Card">Magia</option>
+                <option value="Trap Card">Trampa</option>
               </select>
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div class="col-span-1" id="atk-container" style="display: none;">
                 <label class="label label-text" for="card_atk">ATK:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" required="" min="0" placeholder="1500" step="100" name="card_atk" id="card_atk">
+                  <input type="number" class="input grow input-sm" min="0" placeholder="1500" step="100" name="card_atk" id="card_atk">
                   <label class="sr-only" for="card_atk">ATK</label>
                 </div>
               </div>
@@ -38,7 +45,7 @@
               <div class="col-span-1" id="def-container" style="display: none;">
                 <label class="label label-text" for="card_def">DEF:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" required="" min="0" placeholder="1000" step="100" name="card_def" id="card_def">
+                  <input type="number" class="input grow input-sm" min="0" placeholder="1000" step="100" name="def" id="card_def">
                   <label class="sr-only" for="card_def">DEF</label>
                 </div>
               </div>
@@ -46,15 +53,15 @@
               <div class="col-span-1" id="lvl-container" style="display: none;">
                 <label class="label label-text" for="card_lvl">LVL:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" required="" min="1" placeholder="4" step="1" name="card_lvl" id="card_lvl">
+                  <input type="number" class="input grow input-sm" min="1" placeholder="4" step="1" name="level" id="card_lvl">
                   <label class="sr-only" for="card_lvl">LVL</label>
                 </div>
               </div>
               
-              
               <div class="col-span-1">
                 <label class="label label-text" for="card_rarity">Rareza</label>
-                <select required class="select select-sm" name='rarity' id="card_rarity">
+                <select class="select select-sm" name='rarity' id="card_rarity">
+                  <option value="" selected>--- Selecciona la rareza ---</option>
                   <option value="1">Comun</option>
                   <option value="2">Rare</option>
                   <option value="3">Super rare</option>
@@ -66,7 +73,8 @@
               <div class="col-span-1" id="attribute-container" style="display: none;">
                 <label class="label label-text" for="card_attribute">Atributo:</label>
                 <div class="input-group">
-                  <select required class="select select-sm" name='card_attribute' id="card_attribute">
+                  <select class="select select-sm" name='card_attribute' id="card_attribute">
+                    <option value="" selected>--- Selecciona un atributo ---</option>
                     <option value="1">Fuego</option>
                       <option value="2">Agua</option>
                       <option value="3">Viento</option>
@@ -82,7 +90,8 @@
               <div class="col-span-1" id="monster-type-container" style="display: none;">
                 <label class="label label-text" for="monster_type">Tipo:</label>
                 <div class="input-group">
-                  <select required class="select select-sm" name='monster_type' id="monster_type">
+                  <select class="select select-sm" name='monster_type' id="monster_type">
+                    <option value="" selected>--- Selecciona el tipo de monstruo ---</option>
                     <option value="Normal">Normal</option>
                     <option value="Effect">Effect</option>
                     <option value="Fusion">Fusion</option>
@@ -99,7 +108,8 @@
               <div class="col-span-1" id="spell-type-container" style="display: none;">
                 <label class="label label-text" for="spell_type">Tipo de Magia:</label>
                 <div class="input-group">
-                  <select required class="select select-sm" name='spell_type' id="spell_type">
+                  <select class="select select-sm" name='spell_type' id="spell_type">
+                    <option value="" selected>--- Selecciona el tipo de magia ---</option>
                     <option value="Normal">Normal</option>
                     <option value="Continuous">Continuous</option>
                     <option value="Equip">Equip</option>
@@ -114,7 +124,8 @@
               <div class="col-span-1" id="trap-type-container" style="display: none;">
                 <label class="label label-text" for="trap_type">Tipo de Trampa:</label>
                 <div class="input-group">
-                  <select required class="select select-sm" name='trap_type' id="trap_type">
+                  <select class="select select-sm" name='trap_type' id="trap_type">
+                    <option value="" selected>--- Selecciona el tipo de trampa ---</option>
                     <option value="Normal">Normal</option>
                     <option value="Continuous">Continuous</option>
                     <option value="Counter">Counter</option>
@@ -122,23 +133,44 @@
                   <label class="sr-only" for="trap_type">Tipo de Trampa</label>
                 </div>
               </div>
-    
-              <div class="col-span-2">
+              <div class="col-span-2" id="archetype-container">
                 <label class="label label-text" for="archetype">Arquetipo:</label>
                 <div class="input-group">
-                  <select required class="select select-sm" name='archetype' id="archetype">
+                  <select class="select select-sm" name='archetype' id="archetype">
+                    <option value="" selected>--- Selecciona un aquetipo ---</option>
                     <option value="Albaz">Albaz</option>
                     <option value="Abyss Actor">Abyss Actor</option>
                     <option value="Adamancipator">Adamancipator</option>
                     <option value="Adventurer Token">Adventurer Token</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-span-2 flex justify-end items-end">
+                  
+                <div class="w-full flex justify-end gap-3">
+                  <button type="submit" aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
+                    class="btn btn-gradient btn-primary tooltip [--placement:bottom] flex items-center">
+                    <span id="spinerFilterAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>                    
+                    Filtrar
+                    {% comment %} Title here {% endcomment %}
+                  </button>
+                  <button 
+                  hx-get="{% url 'cards_filter_result' %}" 
+                  hx-trigger="click" 
+                  hx-target="#search-results" 
+                  hx-indicator="#spinerCleanAllMyAlbumCards"
+                  type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
+                    class="btn btn-gradient btn-error tooltip [--placement:bottom] flex items-center">
+                    <span id="spinerCleanAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>                    
+                    Limpiar filtros
+                    {% comment %} Title here {% endcomment %}
+                  </button>
                 </div>
               </div>
             </form>
           </div>
-            
         </div>
-        <div class="modal-footer">
-          {% comment %} SOME CODE HERE {% endcomment %}
         </div>
       </div>
     </div>
@@ -211,4 +243,3 @@
       }
     }
   </script>
-  

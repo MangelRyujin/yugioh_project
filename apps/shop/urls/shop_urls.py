@@ -1,8 +1,11 @@
 
 from django.urls import path
-from apps.shop.views import shop_view, search_cards
+from apps.shop.views.card_view import *
 
 urlpatterns = [
-    path('', shop_view, name='shop'),
-    path('search-card/', search_cards, name='search_cards_shop'),
+    path('', shop, name='shop'),
+    path('card/', shop_card, name='shop_card'),
+    path('card-search-results/', cards_search_result, name='cards_search_result'),
+    path('card-filter-results/', cards_filter_result, name='cards_filter_result'),
+    
 ]
