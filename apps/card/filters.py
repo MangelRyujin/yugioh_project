@@ -18,6 +18,6 @@ class AlbumCardFilter(django_filters.FilterSet):
 
     class Meta:
         model = AlbumCard
-        fields = ['name', 'konami_id', 'rarity', 'version', 'price_min', 'price_max', 'stock_min', 'stock_max', 'name', 'type', 'attribute', 'archetype']
+        fields = ['konami_id', 'rarity', 'version', 'price_min', 'price_max', 'stock_min', 'stock_max', 'name', 'type', 'attribute', 'archetype']
         
 

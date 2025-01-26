@@ -17,9 +17,9 @@
             </span>
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
             <input type="hidden" name="filters" value="{{ filters|default_if_none:'{}'|escapejs }}">
-            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput4" 
-            name="kbdInput4" 
-            hx-post="{% url 'search_cards_shop' %}" 
+            <input type="search" class="input  grow" placeholder="Buscar" id="keywords" 
+            name="keywords" 
+            hx-post="{% url 'cards_search_result' %}" 
             hx-trigger="input changed, delay:500ms" 
             hx-target="#search-results" hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
             hx-indicator="#spinerSearchAllMyAlbumCards"/>
@@ -30,8 +30,8 @@
 
     <!-- Listado de Cartas en Venta -->
     <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-7 mb-12 w-full">
-        {% include "shop/partials/cards-list.html" %}
+        {% include "shop/partials/cards_list.html" %}
     </div>
-    {% include "shop/partials/cards-filter-list.html" %}
+    {% include "shop/partials/cards_filter_list.html" %}
 
 {% endblock content %}

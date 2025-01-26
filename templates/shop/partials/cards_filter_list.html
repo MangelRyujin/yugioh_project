@@ -16,7 +16,12 @@
           </div>
         </div>
         <div class="modal-body px-3">
-          <form method="POST" action="{% url 'apply_filters' %}">
+          <form 
+          hx-get="{% url 'cards_filter_result' %}" 
+            hx-trigger="submit" 
+            hx-target="#search-results" 
+            hx-indicator="#spinerFilterAllMyAlbumCards"
+          >
             <input type="hidden" name="filters" value="{{ filters|default_if_none:'{}'|escapejs }}">
             {% csrf_token %}
             <div class="col-span-2">
@@ -24,7 +29,7 @@
               <select required class="select select-sm" name='type' id="card_type" onchange="handleCardTypeChange()">
                 <option value="" disabled selected>--- Selecciona el tipo de carta ---</option>
                 <option value="Monster">Monstruo</option>
-                <option value="Magic Card">Magia</option>
+                <option value="Spell Card">Magia</option>
                 <option value="Trap Card">Trampa</option>
               </select>
             </div>
@@ -143,24 +148,29 @@
 
               <div class="col-span-2 flex justify-end items-end">
                   
-                <div class="w-full flex justify-end">
+                <div class="w-full flex justify-end gap-3">
                   <button type="submit" aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
                     class="btn btn-gradient btn-primary tooltip [--placement:bottom] flex items-center">
-                    <span class="icon-[tabler--filter] size-6" ></span>
-                    <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                    <span class="tooltip-body">Aplicar filtros</span>
-                    </span>
+                    <span id="spinerFilterAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>                    
+                    Filtrar
+                    {% comment %} Title here {% endcomment %}
+                  </button>
+                  <button 
+                  hx-get="{% url 'cards_filter_result' %}" 
+                  hx-trigger="click" 
+                  hx-target="#search-results" 
+                  hx-indicator="#spinerCleanAllMyAlbumCards"
+                  type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal" 
+                    class="btn btn-gradient btn-error tooltip [--placement:bottom] flex items-center">
+                    <span id="spinerCleanAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>                    
+                    Limpiar filtros
                     {% comment %} Title here {% endcomment %}
                   </button>
                 </div>
               </div>
-
             </form>
           </div>
         </div>
-        <div class="modal-footer">
-          {% comment %} SOME CODE {% endcomment %}
-          </div>
         </div>
       </div>
     </div>

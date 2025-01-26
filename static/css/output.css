@@ -8999,14 +8999,6 @@ textarea:focus-visible {
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
-<<<<<<< HEAD
-=======
-.text-error-content {
-  --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
-}
-
->>>>>>> ed2a638f1552a6ca7907b98b6c5ce02d39fdba74
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity, 1));
