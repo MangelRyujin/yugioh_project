@@ -14,16 +14,18 @@ class AlbumCardFilter(django_filters.FilterSet):
     attribute = django_filters.CharFilter(method='filter_attribute')
     archetype = django_filters.CharFilter(lookup_expr='icontains')
 
-    #RARITY_MAP = dict(AlbumCard.RARITY_CARD)
     RARITY_MAP = {key: value for key, value in AlbumCard.RARITY_CARD}
     VERSION_MAP = {key: value for key, value in AlbumCard.VERSION_CARD}
     ATTRIBUTE_MAP = {key: value for key, value in AlbumCard.ATTRIBUTE_CARD}
 
     def filter_rarity(self, queryset, name, value):
+        # Mapea el valor numérico al valor de texto correspondiente
         mapped_value = self.RARITY_MAP.get(value, None)
         if mapped_value:
+            # Aplica el filtro con el valor mapeado
             return queryset.filter(rarity=value)
         else:
+            # Si no se encuentra el valor mapeado, retorna el queryset sin cambios
             return queryset
 
     def filter_version(self, queryset, name, value):

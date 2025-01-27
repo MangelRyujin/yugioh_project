@@ -155,7 +155,8 @@
                     Filtrar
                     {% comment %} Title here {% endcomment %}
                   </button>
-                  <button 
+                  <button
+                  id="clearFields"
                   hx-get="{% url 'cards_filter_result' %}" 
                   hx-trigger="click" 
                   hx-target="#search-results" 
@@ -175,6 +176,50 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const cardType = document.getElementById('card_type').value;
+      const lvlContainer = document.getElementById('lvl-container');
+      const atkContainer = document.getElementById('atk-container');
+      const defContainer = document.getElementById('def-container');
+      const cardAttributeContainer = document.getElementById('attribute-container');
+      const cardAttribute = document.getElementById('card_attribute');
+      const monsterTypeContainer = document.getElementById('monster-type-container');
+      const spellTypeContainer = document.getElementById('spell-type-container');
+      const trapTypeContainer = document.getElementById('trap-type-container');
+
+      // Captura los valores iniciales de todos los inputs
+      const initialValues = {};
+      document.querySelectorAll('form input, form select, form textarea').forEach(input => {
+        initialValues[input.id] = input.value;
+      });
+
+      // Función para restablecer los valores iniciales
+      function resetFields() {
+        document.querySelectorAll('form input, form select, form textarea').forEach(input => {
+          input.value = initialValues[input.id];
+          lvlContainer.style.display = 'none';
+          atkContainer.style.display = 'none';
+          defContainer.style.display = 'none';
+          spellTypeContainer.style.display = 'none';
+          trapTypeContainer.style.display = 'none';
+          cardAttributeContainer.style.display = 'none';
+          monsterTypeContainer.style.display = 'none';
+    
+          // Clear attributes
+          cardAttribute.innerHTML = '';
+        });
+      }
+
+      // Agrega el evento al botón de "Limpiar"
+      document.getElementById('clearFields').addEventListener('click', function(event) {
+        event.preventDefault(); // Previene la acción por defecto del botón
+        resetFields();
+      });
+    });
+  </script>
 
   <script>
     function handleCardTypeChange() {
