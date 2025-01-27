@@ -40,6 +40,7 @@ class AlbumCard(models.Model):
         ('6', 'LIGHT'),
         ('7', 'DIVINE')
     )
+    
     price = models.FloatField(blank=False, null=False, default=0.00)
     stock = models.PositiveBigIntegerField(default=1, blank=False, null=False)
     rarity = models.CharField(max_length=1, choices=RARITY_CARD, default='1') 
