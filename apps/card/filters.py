@@ -11,6 +11,7 @@ class AlbumCardFilter(django_filters.FilterSet):
     level = django_filters.NumberFilter(field_name='level', lookup_expr='exact')
     price = django_filters.NumberFilter(field_name='price', method='filter_price')
     tipo = django_filters.CharFilter(field_name='tipo', lookup_expr='icontains')
+    frameType = django_filters.CharFilter(field_name='frameType', lookup_expr='icontains')
     attribute = django_filters.CharFilter(method='filter_attribute')
     archetype = django_filters.CharFilter(lookup_expr='icontains')
 
@@ -51,4 +52,4 @@ class AlbumCardFilter(django_filters.FilterSet):
 
     class Meta:
         model = AlbumCard
-        fields = ['konami_id', 'tipo', 'name', 'rarity', 'version', 'atk', 'defense', 'price', 'attribute', 'archetype']
+        fields = ['konami_id', 'tipo','frameType', 'name', 'rarity', 'version', 'atk', 'defense', 'price', 'attribute', 'archetype']
