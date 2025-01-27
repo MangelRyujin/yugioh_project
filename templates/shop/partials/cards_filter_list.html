@@ -37,7 +37,7 @@
               <div class="col-span-1" id="atk-container" style="display: none;">
                 <label class="label label-text" for="card_atk">ATK:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" min="0" placeholder="1500" step="100" name="card_atk" id="card_atk">
+                  <input type="number" class="input grow input-sm" min="0" placeholder="1500" step="100" name="atk" id="card_atk">
                   <label class="sr-only" for="card_atk">ATK</label>
                 </div>
               </div>
@@ -45,7 +45,7 @@
               <div class="col-span-1" id="def-container" style="display: none;">
                 <label class="label label-text" for="card_def">DEF:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" min="0" placeholder="1000" step="100" name="def" id="card_def">
+                  <input type="number" class="input grow input-sm" min="0" placeholder="1000" step="100" name="defense" id="card_def">
                   <label class="sr-only" for="card_def">DEF</label>
                 </div>
               </div>
@@ -53,7 +53,7 @@
               <div class="col-span-1" id="lvl-container" style="display: none;">
                 <label class="label label-text" for="card_lvl">LVL:</label>
                 <div class="input-group">
-                  <input type="number" class="input grow input-sm" min="1" placeholder="4" step="1" name="level" id="card_lvl">
+                  <input type="number" class="input grow input-sm" min="1" placeholder="4" step="1" name="level" id="level">
                   <label class="sr-only" for="card_lvl">LVL</label>
                 </div>
               </div>
@@ -61,7 +61,7 @@
               <div class="col-span-1">
                 <label class="label label-text" for="card_rarity">Rareza</label>
                 <select class="select select-sm" name='rarity' id="card_rarity">
-                  <option value="" selected>--- Selecciona la rareza ---</option>
+                  <option value="" selected>-- Rareza --</option>
                   <option value="1">Comun</option>
                   <option value="2">Rare</option>
                   <option value="3">Super rare</option>
@@ -73,8 +73,8 @@
               <div class="col-span-1" id="attribute-container" style="display: none;">
                 <label class="label label-text" for="card_attribute">Atributo:</label>
                 <div class="input-group">
-                  <select class="select select-sm" name='card_attribute' id="card_attribute">
-                    <option value="" selected>--- Selecciona un atributo ---</option>
+                  <select class="select select-sm" name='attribute' id="card_attribute">
+                    <option value="" selected>-- Atributo --</option>
                     <option value="1">Fuego</option>
                       <option value="2">Agua</option>
                       <option value="3">Viento</option>
@@ -90,14 +90,14 @@
               <div class="col-span-1" id="monster-type-container" style="display: none;">
                 <label class="label label-text" for="monster_type">Tipo:</label>
                 <div class="input-group">
-                  <select class="select select-sm" name='monster_type' id="monster_type">
-                    <option value="" selected>--- Selecciona el tipo de monstruo ---</option>
+                  <select class="select select-sm" name='type' id="monster_type">
+                    <option value="" selected>-- Tipo --</option>
                     <option value="Normal">Normal</option>
                     <option value="Effect">Effect</option>
                     <option value="Fusion">Fusion</option>
                     <option value="Ritual">Ritual</option>
                     <option value="Synchro">Synchro</option>
-                    <option value="Xyz">Xyz</option>
+                    <option value="XYZ">Xyz</option>
                     <option value="Pendulum">Pendulum</option>
                     <option value="Link">Link</option>
                   </select>
@@ -109,7 +109,7 @@
                 <label class="label label-text" for="spell_type">Tipo de Magia:</label>
                 <div class="input-group">
                   <select class="select select-sm" name='spell_type' id="spell_type">
-                    <option value="" selected>--- Selecciona el tipo de magia ---</option>
+                    <option value="" selected>-- Magia --</option>
                     <option value="Normal">Normal</option>
                     <option value="Continuous">Continuous</option>
                     <option value="Equip">Equip</option>
@@ -125,7 +125,7 @@
                 <label class="label label-text" for="trap_type">Tipo de Trampa:</label>
                 <div class="input-group">
                   <select class="select select-sm" name='trap_type' id="trap_type">
-                    <option value="" selected>--- Selecciona el tipo de trampa ---</option>
+                    <option value="" selected>-- Trampa --</option>
                     <option value="Normal">Normal</option>
                     <option value="Continuous">Continuous</option>
                     <option value="Counter">Counter</option>
@@ -188,7 +188,7 @@
       const spellTypeContainer = document.getElementById('spell-type-container');
       const trapTypeContainer = document.getElementById('trap-type-container');
   
-      if (cardType === 'monstruo') {
+      if (cardType === 'Monster') {
         lvlContainer.style.display = 'block';
         atkContainer.style.display = 'block';
         defContainer.style.display = 'block';
@@ -199,6 +199,7 @@
   
         // Load attributes for "Monstruo"
         cardAttribute.innerHTML = `
+          <option value="" selected>-- Atributo --</option>
           <option value="1">Fuego</option>
           <option value="2">Agua</option>
           <option value="3">Viento</option>
@@ -207,7 +208,7 @@
           <option value="6">Luz</option>
           <option value="7">Divinidad</option>
         `;
-      } else if (cardType === 'magia') {
+      } else if (cardType === 'Spell Card') {
         lvlContainer.style.display = 'none';
         atkContainer.style.display = 'none';
         defContainer.style.display = 'none';
@@ -218,7 +219,7 @@
   
         // Clear attributes
         cardAttribute.innerHTML = '';
-      } else if (cardType === 'trampa') {
+      } else if (cardType === 'Trap Card') {
         lvlContainer.style.display = 'none';
         atkContainer.style.display = 'none';
         defContainer.style.display = 'none';
