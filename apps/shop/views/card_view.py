@@ -26,7 +26,6 @@ def cards_filter_result(request):
     return render(request, 'shop/partials/cards_list.html', context=_show_cards_filter(request))
 
 
-
 def _show_cards_filter(request):
     get_copy = request.GET.copy()
     parameters = get_copy.pop('page', True) and get_copy.urlencode()
@@ -39,6 +38,6 @@ def _show_cards(request):
     cards = AlbumCard.objects.all()
     if request.method == 'POST':
         keywords = request.POST.get('keywords', '')
-        cards_search = cards.filter( Q(name__icontains = keywords) | Q(type__icontains = keywords) ).distinct()
+        cards_search = cards.filter( Q(name__icontains = keywords) ).distinct()
         cards=cards_search
     return _get_paginator(request,cards)

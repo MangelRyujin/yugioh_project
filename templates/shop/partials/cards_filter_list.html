@@ -26,7 +26,7 @@
             {% csrf_token %}
             <div class="col-span-2">
               <label class="label label-text" for="card_type">Tipo de carta:</label>
-              <select required class="select select-sm" name='type' id="card_type" onchange="handleCardTypeChange()">
+              <select required class="select select-sm" name='tipo' id="card_type" onchange="handleCardTypeChange()">
                 <option value="" disabled selected>--- Selecciona el tipo de carta ---</option>
                 <option value="Monster">Monstruo</option>
                 <option value="Spell Card">Magia</option>
@@ -223,69 +223,69 @@
 
   <script>
     function handleCardTypeChange() {
-      const cardType = document.getElementById('card_type').value;
-      const lvlContainer = document.getElementById('lvl-container');
-      const atkContainer = document.getElementById('atk-container');
-      const defContainer = document.getElementById('def-container');
-      const cardAttributeContainer = document.getElementById('attribute-container');
-      const cardAttribute = document.getElementById('card_attribute');
-      const monsterTypeContainer = document.getElementById('monster-type-container');
-      const spellTypeContainer = document.getElementById('spell-type-container');
-      const trapTypeContainer = document.getElementById('trap-type-container');
-  
-      if (cardType === 'Monster') {
-        lvlContainer.style.display = 'block';
-        atkContainer.style.display = 'block';
-        defContainer.style.display = 'block';
-        spellTypeContainer.style.display = 'none';
-        trapTypeContainer.style.display = 'none';
-        cardAttributeContainer.style.display = 'block';
-        monsterTypeContainer.style.display = 'block';
-  
-        // Load attributes for "Monstruo"
-        cardAttribute.innerHTML = `
-          <option value="" selected>-- Atributo --</option>
-          <option value="1">Fuego</option>
-          <option value="2">Agua</option>
-          <option value="3">Viento</option>
-          <option value="4">Tierra</option>
-          <option value="5">Oscuridad</option>
-          <option value="6">Luz</option>
-          <option value="7">Divinidad</option>
-        `;
-      } else if (cardType === 'Spell Card') {
-        lvlContainer.style.display = 'none';
-        atkContainer.style.display = 'none';
-        defContainer.style.display = 'none';
-        spellTypeContainer.style.display = 'block';
-        trapTypeContainer.style.display = 'none';
-        cardAttributeContainer.style.display = 'none';
-        monsterTypeContainer.style.display = 'none';
-  
-        // Clear attributes
-        cardAttribute.innerHTML = '';
-      } else if (cardType === 'Trap Card') {
-        lvlContainer.style.display = 'none';
-        atkContainer.style.display = 'none';
-        defContainer.style.display = 'none';
-        spellTypeContainer.style.display = 'none';
-        trapTypeContainer.style.display = 'block';
-        cardAttributeContainer.style.display = 'none';
-        monsterTypeContainer.style.display = 'none';
-  
-        // Clear attributes
-        cardAttribute.innerHTML = '';
-      } else {
-        lvlContainer.style.display = 'none';
-        atkContainer.style.display = 'none';
-        defContainer.style.display = 'none';
-        spellTypeContainer.style.display = 'none';
-        trapTypeContainer.style.display = 'none';
-        cardAttributeContainer.style.display = 'none';
-        monsterTypeContainer.style.display = 'none';
-  
-        // Clear attributes
-        cardAttribute.innerHTML = '';
-      }
-    }
+  const cardType = document.getElementById('card_type').value;
+  const lvlContainer = document.getElementById('lvl-container');
+  const atkContainer = document.getElementById('atk-container');
+  const defContainer = document.getElementById('def-container');
+  const cardAttributeContainer = document.getElementById('attribute-container');
+  const cardAttribute = document.getElementById('card_attribute');
+  const monsterTypeContainer = document.getElementById('monster-type-container');
+  const spellTypeContainer = document.getElementById('spell-type-container');
+  const trapTypeContainer = document.getElementById('trap-type-container');
+
+  if (cardType === 'Monster') {
+    lvlContainer.style.display = 'block';
+    atkContainer.style.display = 'block';
+    defContainer.style.display = 'block';
+    spellTypeContainer.style.display = 'none';
+    trapTypeContainer.style.display = 'none';
+    cardAttributeContainer.style.display = 'block';
+    monsterTypeContainer.style.display = 'block';
+
+    // Load attributes for "Monstruo"
+    cardAttribute.innerHTML = `
+      <option value="" selected>-- Atributo --</option>
+      <option value="1">Fuego</option>
+      <option value="2">Agua</option>
+      <option value="3">Viento</option>
+      <option value="4">Tierra</option>
+      <option value="5">Oscuridad</option>
+      <option value="6">Luz</option>
+      <option value="7">Divinidad</option>
+    `;
+  } else if (cardType === 'Spell Card') {
+    lvlContainer.style.display = 'none';
+    atkContainer.style.display = 'none';
+    defContainer.style.display = 'none';
+    spellTypeContainer.style.display = 'block';
+    trapTypeContainer.style.display = 'none';
+    cardAttributeContainer.style.display = 'none';
+    monsterTypeContainer.style.display = 'none';
+
+    // Clear attributes
+    cardAttribute.innerHTML = '';
+  } else if (cardType === 'Trap Card') {
+    lvlContainer.style.display = 'none';
+    atkContainer.style.display = 'none';
+    defContainer.style.display = 'none';
+    spellTypeContainer.style.display = 'none';
+    trapTypeContainer.style.display = 'block';
+    cardAttributeContainer.style.display = 'none';
+    monsterTypeContainer.style.display = 'none';
+
+    // Clear attributes
+    cardAttribute.innerHTML = '';
+  } else {
+    lvlContainer.style.display = 'none';
+    atkContainer.style.display = 'none';
+    defContainer.style.display = 'none';
+    spellTypeContainer.style.display = 'none';
+    trapTypeContainer.style.display = 'none';
+    cardAttributeContainer.style.display = 'none';
+    monsterTypeContainer.style.display = 'none';
+
+    // Clear attributes
+    cardAttribute.innerHTML = '';
+  }
+}
   </script>
