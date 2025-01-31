@@ -9,19 +9,19 @@ from utils.methods import _get_paginator
 
 
 
-@login_required
+@login_required(login_url='/login/')
 def shop(request):
-    return render(request, 'shop/index.html')
+    return render(request, 'shop/shop.html')
 
-@login_required
+@login_required(login_url='/login/')
 def shop_card(request):
     return render(request, 'shop/index.html', context=_show_cards(request))
 
-@login_required
+@login_required(login_url='/login/')
 def cards_search_result(request):
     return render(request, 'shop/partials/cards_list.html', context=_show_cards(request))
 
-@login_required
+@login_required(login_url='/login/')
 def cards_filter_result(request):
     return render(request, 'shop/partials/cards_list.html', context=_show_cards_filter(request))
 
@@ -38,6 +38,6 @@ def _show_cards(request):
     cards = AlbumCard.objects.all()
     if request.method == 'POST':
         keywords = request.POST.get('keywords', '')
-        cards_search = cards.filter( Q(name__icontains = keywords) | Q(type__icontains = keywords) ).distinct()
+        cards_search = cards.filter( Q(name__icontains = keywords) ).distinct()
         cards=cards_search
     return _get_paginator(request,cards)
