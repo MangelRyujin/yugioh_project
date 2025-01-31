@@ -45,14 +45,7 @@ class="needs-validation peer grid grid-cols-2 gap-3">
             <input type="number" class="input grow input-sm" value={{form.price.value}} required min='0.01' placeholder="0.01" step="0.01" name='price'  id="card_price" />
             <label class="sr-only" for="card_price">Entre el monto</label>
             <span class="input-group-text">USD</span>
-            <script>
-              document.getElementById('card_price').addEventListener('input', function(e) {
-                let value = e.target.value;
-                if (value.includes(',')) {
-                    e.target.value = value.replace(',', '.');
-                }
-            });
-            </script>
+            
           </div>
           {% if form.price.errors %}
               <div class="alert alert-error mt-2">
@@ -100,3 +93,14 @@ class="needs-validation peer grid grid-cols-2 gap-3">
       
      
     </form>
+    <script>
+      
+        let number = document.getElementById('card_price');
+        console.log(number)
+        console.log(number.value)
+        if (number.value.includes(',')) {
+          console.log("contiene ,")
+            e.target.value = value.replace(',', '.');
+        }
+  
+    </script>
