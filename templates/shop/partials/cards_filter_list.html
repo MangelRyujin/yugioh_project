@@ -26,7 +26,7 @@
             {% csrf_token %}
             <div class="col-span-2">
               <label class="label label-text" for="card_type">Tipo de carta:</label>
-              <select required class="select select-sm" name='tipo' id="card_type" onchange="handleCardTypeChange()">
+              <select required class="select select-sm" name='type' id="card_type" onchange="handleCardTypeChange()">
                 <option value="" disabled selected>--- Selecciona el tipo de carta ---</option>
                 <option value="Monster">Monstruo</option>
                 <option value="Spell Card">Magia</option>
