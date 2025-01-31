@@ -49,7 +49,7 @@ class AlbumCard(models.Model):
     konami_id = models.CharField(null=False, blank=False, default='0', max_length=8)
     name = models.CharField(max_length=255)
     typeline = models.JSONField(null=True, blank=True)
-    tipo = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
     humanReadableCardType = models.CharField(max_length=255)
     frameType = models.CharField(max_length=255)
     desc = models.TextField()
@@ -73,6 +73,15 @@ class AlbumCard(models.Model):
     def __str__(self):
         return str(self.konami_id)
     
+    @property
+    def color_name(self):
+        if self.type == "Spell Card":
+            color="text-success/60"
+        elif self.type == "Trap Card":
+            color="text-error/80"
+        else:
+            color="text-warning/70"
+        return f"{color}"
     
 
 class CardImage(models.Model):
