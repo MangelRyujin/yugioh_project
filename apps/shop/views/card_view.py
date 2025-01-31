@@ -38,6 +38,6 @@ def _show_cards(request):
     cards = AlbumCard.objects.all()
     if request.method == 'POST':
         keywords = request.POST.get('keywords', '')
-        cards_search = cards.filter( Q(name__icontains = keywords) | Q(type__icontains = keywords) ).distinct()
+        cards_search = cards.filter( Q(name__icontains = keywords) ).distinct()
         cards=cards_search
     return _get_paginator(request,cards)

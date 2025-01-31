@@ -31,6 +31,16 @@ class AlbumCard(models.Model):
         ('1',"TCG"),
         ('2',"OCG")
     )
+    ATTRIBUTE_CARD = (
+        ('1', 'FIRE'),
+        ('2', 'WATER'),
+        ('3', 'WIND'),
+        ('4', 'EARTH'),
+        ('5', 'DARK'),
+        ('6', 'LIGHT'),
+        ('7', 'DIVINE')
+    )
+    
     price = models.FloatField(blank=False, null=False, default=0.00)
     stock = models.PositiveBigIntegerField(default=1, blank=False, null=False)
     rarity = models.CharField(max_length=1, choices=RARITY_CARD, default='1') 
@@ -39,7 +49,7 @@ class AlbumCard(models.Model):
     konami_id = models.CharField(null=False, blank=False, default='0', max_length=8)
     name = models.CharField(max_length=255)
     typeline = models.JSONField(null=True, blank=True)
-    type = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=255)
     humanReadableCardType = models.CharField(max_length=255)
     frameType = models.CharField(max_length=255)
     desc = models.TextField()
@@ -49,7 +59,7 @@ class AlbumCard(models.Model):
     atk = models.IntegerField(null=True, blank=True)
     defense = models.IntegerField(null=True, blank=True)
     level = models.IntegerField(null=True, blank=True)
-    attribute = models.CharField(null=True, blank=True, max_length=255)
+    attribute = models.CharField(null=True, blank=True, max_length=1, choices=ATTRIBUTE_CARD)
     archetype = models.CharField(max_length=255, null=True, blank=True)
     scale = models.IntegerField(null=True, blank=True)
     linkval = models.IntegerField(null=True, blank=True)

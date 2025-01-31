@@ -1,57 +1,63 @@
 {% if paginator %}
     {% for album_card in paginator %}
-        <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-start w-full items-start gap-3 relative">
-            <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
-                {% if album_card.version == '1' %}
-                    TCG
-                {% else %}
-                    OCG
-                {% endif %}
-            </span>
-            <div>
-                <img src="{{ album_card.card_images.image_url_small }}" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
-            </div>
-            <div class="w-full flex flex-col justify-between h-full gap-3">
-                <div class="flex flex-col gap-2">
-                    <p class="text-base-content text-sm md:text-md lg:text-lg text-success/60 font-bold">
-                        {{ album_card.name }}
-                    </p>
-                    <p class="text-base-content text-xs sm:text-sm">
-                        Cantidad: {{ album_card.stock }} unidades
-                    </p>
-                    <a href="https://wa.me/{{ album_card.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                        Vendedor: {{ album_card.album.user.username }} <span class="text-success icon-[tabler--brand-whatsapp] size-4"></span>
-                    </a>
-                    <p class="text-base-content text-xs sm:text-sm">
-                        Rareza: 
-                        {% if album_card.rarity == '1' %}
-                            Común
-                        {% elif album_card.rarity == '2' %}
-                            Rare
-                        {% elif album_card.rarity == '3' %}
-                            Super rare
-                        {% elif album_card.rarity == '4' %}
-                            Ultra rare
-                        {% elif album_card.rarity == '5' %}
-                            Secret rare
-                        {% endif %}
-                    </p>
-                    <p class="text-base-content text-xs sm:text-sm">
-                        Precio: ${{ album_card.price }}
-                    </p>
+        <div>
+            <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-start w-full items-start gap-3 relative">
+                <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
+                    {% if album_card.version == 'TCG' %}
+                        TCG
+                    {% else %}
+                        OCG
+                    {% endif %}
+                </span>
+                <div>
+                    <img src="{{ album_card.card_images.image_url_small }}" width="150" height="150" alt="Carta de Yugioh" class="object-cover">
                 </div>
-                <div class="flex justify-end gap-3 w-full mt-2">
-                    <button class="btn btn-soft btn-primary btn-sm">
-                        <span class="icon-[tabler--shopping-cart] size-5"></span>
-                    </button>
-                    <a href="#" class="btn btn-soft btn-info btn-sm">
-                        <span class="icon-[tabler--eye] size-5"></span>
-                    </a>
+                <div class="w-full flex flex-col justify-between h-full gap-3">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-base-content text-sm md:text-md lg:text-lg text-success/60 font-bold">
+                            {{ album_card.name }}
+                        </p>
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Cantidad: {{ album_card.stock }} unidades
+                        </p>
+                        <a href="https://wa.me/{{ album_card.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
+                            Vendedor: {{ album_card.album.user.username }} <span class="text-success icon-[tabler--brand-whatsapp] size-4"></span>
+                        </a>
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Rareza: 
+                            {% if album_card.rarity == '1' %}
+                                Común
+                            {% elif album_card.rarity == '2' %}
+                                Rare
+                            {% elif album_card.rarity == '3' %}
+                                Super rare
+                            {% elif album_card.rarity == '4' %}
+                                Ultra rare
+                            {% elif album_card.rarity == '5' %}
+                                Secret rare
+                            {% endif %}
+                        </p>
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Precio: ${{ album_card.price }}
+                        </p>
+                    </div>
+                    <div class="flex justify-end gap-3 w-full mt-2">
+                        <button class="btn btn-soft btn-primary btn-sm">
+                            <span class="icon-[tabler--shopping-cart] size-5"></span>
+                        </button>
+                        <a href="#" class="btn btn-soft btn-info btn-sm">
+                            <span class="icon-[tabler--eye] size-5"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     {% endfor %}
-
-    {% else %}
-        <h1>NO HAY RESULTADOS</h1>
+    {% if paginator.has_next %}
+        <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-center items-center w-full gap-3 relative sm:fixed sm:inset-0 sm:m-auto sm:w-1/2 sm:h-1/2 lg:fixed lg:inset-0 lg:m-auto lg:w-1/2 lg:h-1/2" hx-get="{% url 'cards_search_result' %}?page={{ paginator.next_page_number }}" hx-trigger="revealed" hx-swap="outerHTML">
+            <div class="loading loading-dots text-4xl"></div>
+        </div>
+    {% endif %}
+{% else %}
+    <h1>NO HAY RESULTADOS</h1>
 {% endif %}
