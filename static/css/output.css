@@ -9480,33 +9480,9 @@ textarea:focus-visible {
   color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
 }
 
-.text-warning\/70 {
-  color: var(--fallback-wa,oklch(var(--wa)/0.7));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-warning\/50 {
-  color: var(--fallback-wa,oklch(var(--wa)/0.5));
-}
-
-.text-error\/50 {
-  color: var(--fallback-er,oklch(var(--er)/0.5));
-}
-
-.text-error\/70 {
-  color: var(--fallback-er,oklch(var(--er)/0.7));
-}
-
-.text-error\/80 {
-  color: var(--fallback-er,oklch(var(--er)/0.8));
-}
-
-.text-success\/60 {
-  color: var(--fallback-su,oklch(var(--su)/0.6));
 }
 
 .no-underline {
