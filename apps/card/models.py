@@ -107,6 +107,10 @@ class AlbumDecks(models.Model):
     def __str__(self):
         return str(self.name)
     
+    @property
+    def total_cards(self):
+        return sum(card.stock for card in self.deck_cards.all())
+    
 
 class AlbumDecksCard(AbstractCard):
     deck = models.ForeignKey(AlbumDecks, related_name='deck_cards', on_delete=models.CASCADE)
