@@ -1,4 +1,4 @@
-from apps.card.models import AlbumCard
+from apps.card.models import AlbumCard, AlbumDecks
 import django_filters
 
 class AlbumCardFilter(django_filters.FilterSet):
@@ -53,3 +53,13 @@ class AlbumCardFilter(django_filters.FilterSet):
     class Meta:
         model = AlbumCard
         fields = ['konami_id', 'type','frameType', 'name', 'rarity', 'version', 'atk', 'defense', 'price', 'attribute', 'archetype']
+        
+        
+class AlbumDeckFilter(django_filters.FilterSet):
+    
+    name =  django_filters.CharFilter(lookup_expr='icontains')
+
+
+    class Meta:
+        model = AlbumDecks
+        fields = [ 'name', 'description']
