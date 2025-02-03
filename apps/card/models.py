@@ -72,17 +72,6 @@ class AlbumCard(models.Model):
 
     def __str__(self):
         return str(self.konami_id)
-    
-    @property
-    def color_name(self):
-        if self.type == "Spell Card":
-            color="text-success/60"
-        elif self.type == "Trap Card":
-            color="text-error/80"
-        else:
-            color="text-warning/70"
-        return f"{color}"
-    
 
 class CardImage(models.Model):
     card = models.OneToOneField(AlbumCard, related_name='card_images', on_delete=models.CASCADE)
