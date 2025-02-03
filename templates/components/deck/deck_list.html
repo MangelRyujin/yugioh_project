@@ -1,0 +1,25 @@
+{% load static %}
+{% if pagination %}
+<span class="">Decks mostrados 6 de 6 </span>
+{% comment %} <span class="">Decks mostrados {{pagination.object_list|length }} de {{pagination.paginator.count }} </span> {% endcomment %}
+<div  class="grid grid-cols-2  sm:grid-cols-4  lg:grid-cols-6 gap-5 sm:gap-6 mt-3">
+  {% for deck in pagination %}
+      {% include "components/deck/deck.html" %}
+  {% endfor %}
+</div>
+{% if search %}
+<script>
+  document.querySelectorAll('[id^="myAlbumCard"]').forEach(function(card) {
+    card.addEventListener('click', function() {
+        this.classList.toggle('show');
+    });
+});
+</script>
+{% endif %}
+{% endif %}
+
+
+       
+          
+          
+       

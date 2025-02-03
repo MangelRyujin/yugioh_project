@@ -1,0 +1,120 @@
+{% load static %}
+{% if deck %}
+<div class="w-full flex-col justify-center items-center">
+  <div id="myAlbumDeck{{deck.pk}}"  class="stack stack-bottom-start w-full">
+    
+      <div class="bg-primary text-primary-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded "
+      style="background: url({% static 'img/ra-slider.jpg' %}); background-size: cover; background-position: center;"
+      >
+      <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">60</span>
+      </div>
+      <div class="bg-base-200 text-success-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">2</div>
+      <div class="bg-base-200 text-warning-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">3</div>
+      
+  </div>
+  <div class="w-full text-center mt-4">
+                  
+    <span class="text-base-content text-xs font-medium">Nombre del deck a la venta</span>
+  </div>
+  <div class="flex justify-around gap-1 mt-1">
+              
+    <a 
+    {% comment %} href="{% url "album_card_update" pk=card.pk %}"  {% endcomment %}
+    class="btn btn-gradient btn-warning btn-xs">
+        <span class="icon-[tabler--edit-circle] "></span>
+    </a>
+    <button  class="btn btn-gradient btn-error btn-xs"
+      {% comment %} hx-delete="{% url "album_card_delete" pk=card.pk %}" {% endcomment %}
+      hx-target="#myAlbumCard{{card.pk}}"
+      hx-swap="outerHTML"
+      hx-indicator="#sniperMyAlbumCard{{card.pk}}"
+      hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+    >
+        <span class="icon-[tabler--square-rounded-x-filled] "></span>
+        
+    </button>
+  </div>  
+</div>
+
+
+<div class="w-full flex-col justify-center items-center">
+  <div id="myAlbumDeck{{deck.pk}}"  class="stack stack-bottom-start w-full">
+    
+      <div class="bg-primary text-primary-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded "
+      style="background: url({% static 'img/slifer-slider.jpg' %}); background-size: cover; background-position: center;"
+      >
+      <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">60</span>
+      </div>
+      <div class="bg-base-200 text-success-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">2</div>
+      <div class="bg-base-200 text-warning-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">3</div>
+      
+  </div>
+  <div class="w-full text-center mt-4">
+                  
+    <span class="text-base-content text-xs font-medium">Nombre del deck a la venta</span>
+  </div>
+  <div class="flex justify-around gap-1 mt-1">
+              
+    <a 
+    {% comment %} href="{% url "album_card_update" pk=card.pk %}"  {% endcomment %}
+    class="btn btn-gradient btn-warning btn-xs">
+        <span class="icon-[tabler--edit-circle] "></span>
+    </a>
+    <button  class="btn btn-gradient btn-error btn-xs"
+      {% comment %} hx-delete="{% url "album_card_delete" pk=card.pk %}" {% endcomment %}
+      hx-target="#myAlbumCard{{card.pk}}"
+      hx-swap="outerHTML"
+      hx-indicator="#sniperMyAlbumCard{{card.pk}}"
+      hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+    >
+        <span class="icon-[tabler--square-rounded-x-filled] "></span>
+        
+    </button>
+  </div>  
+</div>
+
+
+<div class="w-full flex-col justify-center items-center">
+  <div id="myAlbumDeck{{deck.pk}}"  class="stack stack-bottom-start w-full">
+    
+      <div class="bg-primary text-primary-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded "
+      style="background: url({% static 'img/obelisk-slider.jpg' %}); background-size: cover; background-position: center;"
+      >
+      <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">60</span>
+      </div>
+      <div class="bg-base-200 text-success-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">2</div>
+      <div class="bg-base-200 text-warning-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded">3</div>
+      
+  </div>
+  <div class="w-full text-center mt-4">
+                  
+    <span class="text-base-content text-xs font-medium">Nombre del deck a la venta</span>
+  </div>
+  <div class="flex justify-around gap-1 mt-1">
+              
+    <a 
+    {% comment %} href="{% url "album_card_update" pk=card.pk %}"  {% endcomment %}
+    class="btn btn-gradient btn-warning btn-xs">
+        <span class="icon-[tabler--edit-circle] "></span>
+    </a>
+    <button  class="btn btn-gradient btn-error btn-xs"
+      {% comment %} hx-delete="{% url "album_card_delete" pk=card.pk %}" {% endcomment %}
+      hx-target="#myAlbumCard{{card.pk}}"
+      hx-swap="outerHTML"
+      hx-indicator="#sniperMyAlbumCard{{card.pk}}"
+      hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+    >
+        <span class="icon-[tabler--square-rounded-x-filled] "></span>
+        
+    </button>
+  </div>  
+</div>
+
+
+
+{% endif %}
+{% if message %}
+<script>
+    showNotification('error', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+</script>
+{% endif %}

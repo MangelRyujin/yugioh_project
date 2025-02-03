@@ -4,22 +4,7 @@ from apps.accounts.models import User
 
 # Create your models here.
 
-class Album(models.Model):
-    
-    name = models.CharField(max_length=100, blank=False, null=False, default='Album')
-    cardsQuantity = models.PositiveIntegerField(default=0, blank=False, null=False)
-    total_price = models.FloatField(default=0.00, blank=True, null=False)
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-    
-    class Meta:
-        verbose_name = "Album"
-        verbose_name_plural = "Albumes"
-
-    def __str__(self):
-        return str(self.name)
-
-
-class AlbumCard(models.Model):
+class AbstractCard(models.Model):
     RARITY_CARD = (
         ('1',"Comun"),
         ('2',"Rare"),
@@ -40,12 +25,9 @@ class AlbumCard(models.Model):
         ('6', 'LIGHT'),
         ('7', 'DIVINE')
     )
-    
-    price = models.FloatField(blank=False, null=False, default=0.00)
     stock = models.PositiveBigIntegerField(default=1, blank=False, null=False)
     rarity = models.CharField(max_length=1, choices=RARITY_CARD, default='1') 
     version = models.CharField(max_length=1, choices=VERSION_CARD, default='1') 
-    album = models.ForeignKey(Album, related_name='cards', on_delete=models.CASCADE)
     konami_id = models.CharField(null=False, blank=False, default='0', max_length=8)
     name = models.CharField(max_length=255)
     typeline = models.JSONField(null=True, blank=True)
@@ -67,23 +49,77 @@ class AlbumCard(models.Model):
     expantion = models.CharField(max_length=30)
     
     class Meta:
+        abstract = True
+
+class AbstractCardImage(models.Model):
+    image_url = models.URLField()
+    image_url_small = models.URLField()
+    image_url_cropped = models.URLField()
+    
+    class Meta:
+        abstract = True
+
+
+class Album(models.Model):
+    
+    name = models.CharField(max_length=100, blank=False, null=False, default='Album')
+    cardsQuantity = models.PositiveIntegerField(default=0, blank=False, null=False)
+    total_price = models.FloatField(default=0.00, blank=True, null=False)
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Album"
+        verbose_name_plural = "Albumes"
+
+    def __str__(self):
+        return str(self.name)
+
+
+class AlbumCard(AbstractCard):
+    price = models.FloatField(blank=False, null=False, default=0.00)
+    album = models.ForeignKey(Album, related_name='cards', on_delete=models.CASCADE)
+    
+    
+    class Meta:
         verbose_name = "AlbumCard"
         verbose_name_plural = "AlbumCards"
 
     def __str__(self):
-        return str(self.konami_id)
+        return str(self.konami_id)    
 
-class CardImage(models.Model):
+class CardImage(AbstractCardImage):
     card = models.OneToOneField(AlbumCard, related_name='card_images', on_delete=models.CASCADE)
-    image_url = models.URLField()
-    image_url_small = models.URLField()
-    image_url_cropped = models.URLField()
-
 
     def __str__(self):
         return self.card.name
 
 
     
-
+class AlbumDecks(models.Model):
+    name = models.CharField(max_length=100, blank=False, null=False, default='Album')
+    description =  models.TextField()
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="album_deck_user")
     
+    class Meta:
+        verbose_name = "AlbumDeck"
+        verbose_name_plural = "AlbumDecks"
+
+    def __str__(self):
+        return str(self.name)
+    
+
+class AlbumDecksCard(AbstractCard):
+    deck = models.ForeignKey(AlbumDecks, related_name='deck_cards', on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "AlbumDecksCard"
+        verbose_name_plural = "AlbumDecksCards"
+
+    def __str__(self):
+        return str(self.konami_id)    
+
+class DeckCardImage(AbstractCardImage):
+    card = models.OneToOneField(AlbumDecksCard, related_name='deck_card_images', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.card.name

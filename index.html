@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.caja-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.caja {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: rotateY(-45deg);
+}
+
+.lado {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frente {
+    transform: translateZ(100px);
+}
+
+.atras {
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.arriba {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.abajo {
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+.derecha {
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.izquierda {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+</style>
+</head>
+<body>
+<div class="caja-container">
+    <div class="caja">
+        <div class="lado frente">Frente</div>
+        <!-- <div class="lado atras">Atrás</div> -->
+        <!-- <div class="lado arriba">Arriba</div> -->
+        <!-- <div class="lado abajo">Abajo</div> -->
+        <div class="lado derecha">Derecha</div>
+        <!-- <div class="lado izquierda">Izquierda</div> -->
+    </div>
+</div>
+</body>
+</html>
