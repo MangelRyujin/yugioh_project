@@ -1,12 +1,12 @@
 {% load static %}
-{% if pagination %}
+{% if cards %}
 
 <div  class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-9 gap-2 mt-3">
-  {% for card in pagination %}
-      {% include "components/album/card.html" %}
+  {% for card in cards %}
+      {% include "components/deck/detail/card/card.html" %}
   {% endfor %}
 </div>
-{% if search %}
+
 <script>
   document.querySelectorAll('[id^="myAlbumCard"]').forEach(function(card) {
     card.addEventListener('click', function() {
@@ -14,7 +14,7 @@
     });
 });
 </script>
-{% endif %}
+
 {% endif %}
 
 

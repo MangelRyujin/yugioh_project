@@ -1,0 +1,98 @@
+{% load static %}
+{% if form %}
+<form  class="needs-validation peer grid gap-y-3"
+          enctype="multipart/form-data"
+          hx-post="{% url 'update_deck_profile' pk=deck.pk %}" 
+          hx-target="#deck-info" 
+          hx-swap="outerHTML" 
+          hx-indicator="#spinnerDeckProfileUPdate">
+          {% csrf_token %}
+            <!-- Account Details -->
+            
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 items-center">
+                                <div class="flex gap-3 items-center">
+                                  
+                                  <input id="albumDeckImageProfile" type="file" name="image" class="hidden" aria-label="file-input" />
+                                    
+            
+                                        <label for="albumDeckImageProfile" class="border-base-content/30 text-base-content/50 flex size-20 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-dotted hover:bg-base-200/60 group-has-[div]:hidden" >
+                                          <span id="iconAlbunDeckImageProfile" class="icon-[tabler--photo-cancel] size-9 shrink-0 text-primary"></span>
+                                        </label>
+                                        <span id="imgAlbumDeckText">Subir imagen</span>
+                                        
+                                          <script>
+                                            const image = document.getElementById('albumDeckImageProfile');
+                                            image.addEventListener('change', function(e) {
+                                                    const nombreArchivo = e.target.files[0].name || 'Ningún archivo seleccionado';
+                                                    icon=document.getElementById('iconAlbunDeckImageProfile');
+                                                    icon.classList.remove('icon-[tabler--photo-cancel]');
+                                                    icon.classList.add('icon-[tabler--photo-check]');
+                                                    text_image=document.getElementById('imgAlbumDeckText');
+                                                    text_image.innerHTML = 'Imagen seleccionada';
+                                              
+                                            });
+                                                
+                                                
+                                      </script>
+                                    </div>
+              <div class="">
+                <div class="input-group-filled ">
+                  <span class="input-group-text ">
+                    <span class="icon-[tabler--cards-filled] text-primary size-6"></span>
+                  </span>
+                  <div class="relative grow ">
+                    <input type="text" name="name" placeholder="Nombre" required class=" input input-filled peer" id="albumDeckName" value="{% if form.name %}{{form.name.value}}{% endif %}" />
+                    <label class="input-filled-label text-primary" for="albumDeckName" >Nombre</label>
+                  </div>
+                </div>
+                <span class="input-filled-focused"></span>
+              </div>
+              
+            </div>
+            <div class="mt-2">
+              <div class="flex gap-3">
+                <input type="radio" name="is_active" class="radio radio-success" value="true" id="radioTrue" {% if  deck.is_active %}checked{% endif %} />
+                <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioTrue">
+                  <span class="label-text text-base">Activar</span>
+                  <span class="label-text-alt text-success">Mostrar en la tienda.</span>
+                </label>
+              </div>
+              
+              <div class="flex gap-3">
+                <input type="radio" name="is_active" class="radio radio-error" value="false" id="radioFalse" {% if not deck.is_active %}checked{% endif %}  />
+                <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioFalse">
+                  <span class="label-text text-base">Desactivar</span>
+                  <span class="label-text-alt text-error">No mostrar en la tienda.</span>
+                </label>
+              </div>
+            </div>
+            <!-- Email and password -->
+            <div class="grid grid-cols-1 mt-3">
+              
+               
+                    <div class="w-full">
+                        
+                        <div class="relative">
+                          <textarea class="textarea textarea-floating peer" name="description" placeholder="Escriba una descripción!!!" required id="textareaHelperTextFloating">{% if form.description %}{{form.description.value}}{% endif %}</textarea>
+                          <label class="textarea-floating-label" for="textareaHelperTextFloating">Descripción</label>
+                        </div>
+                       
+                      </div>
+                  
+            
+             
+                
+            </div>
+
+            
+           <div class="flex justify-end">
+              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient flex justify-center items-center">
+                <span id="spinnerDeckProfileUPdate" class="loading loading-dots loading-sm htmx-indicator"></span>
+                Actualizar</button>
+            </div>
+          </form>
+          
+
+          {% endif %}
+          
+          

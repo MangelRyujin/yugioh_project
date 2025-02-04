@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from apps.card.filters import AlbumDeckFilter
+from apps.card.form import UpdateAlbumDecksForm
 from apps.card.models import *
 import requests
 from django.http import  HttpResponse
@@ -58,7 +59,8 @@ def create_album_deck(request):
 def delete_album_deck(request,pk):
     deck = get_object_or_404(AlbumDecks,pk = pk)
     context={
-        "deck":deck
+        "deck":deck,
+        
     }
     if request.method == 'DELETE':
         if deck:
@@ -66,3 +68,30 @@ def delete_album_deck(request,pk):
             context['deck']=[]
             context['message']="Deck eliminado con éxito"
     return render(request,'components/deck/deck.html',context)
+
+
+@login_required(login_url='/login/')
+def album_deck_detail(request,pk):
+    deck = get_object_or_404(AlbumDecks,pk = pk)
+    context={
+        "deck":deck,
+        "cards": deck.deck_cards.all().order_by('name'),
+        "form": UpdateAlbumDecksForm(instance=deck)
+    }
+    return render(request,'dashboard/deck/detail/index.html',context)
+
+@login_required(login_url='/login/')
+def update_deck_profile(request,pk):
+    deck = get_object_or_404(AlbumDecks,pk = pk)
+    form=UpdateAlbumDecksForm(instance=deck)
+    context={
+        "deck":deck,
+    }
+    if request.POST:
+        form=UpdateAlbumDecksForm(request.POST,request.FILES,instance=deck)
+        if form.is_valid():
+            form.save()
+            context['message']="Deck editado con éxito"
+            context['form']=form
+ 
+    return render(request,'components/deck/detail/deck/deck_perfil.html',context)

@@ -1,0 +1,79 @@
+<form 
+hx-post="{% url 'album_deck_card_form_update' pk=card.pk %}" 
+hx-trigger="submit" 
+hx-swap="innerHTML"
+hx-target="#myCardFormEdit" 
+hx-indicator="#spinner" 
+class="needs-validation peer grid grid-cols-2 gap-3">
+    {% csrf_token %}
+      <!-- Account Details -->
+      <div class="">
+        <label class="label label-text" for="card_expantion">Expanción:</label>
+        <div class="input-group">
+          <input type="text" maxlength="30" class="input grow input-sm" value="{{form.expantion.value}}" required  placeholder="Expanción"  name='expantion'  id="card_expantion" />
+          <label class="sr-only" for="card_expantion">Entre la expanción</label>
+          <span class="input-group-text">XXX</span>
+        </div>
+        {% if form.stock.errors %}
+            <div class="alert alert-error mt-2">
+                {% for error in form.stock.errors %}
+                    {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
+      </div>
+          <div class="">
+          <label class="label label-text" for="card_stock">Cantidad:</label>
+          <div class="input-group  w-full">
+            
+            <input type="number" min=1 class="input grow input-sm" value={{form.stock.value}} required placeholder="1" name='stock' value='1' id="card_stock" />
+            <label class="sr-only" for="card_stock">Entre la cantidad</label>
+            <span class="input-group-text"> <p class="icon-[tabler--cards-filled] size-4"></p></span>
+          </div>
+          {% if form.stock.errors %}
+              <div class="alert alert-error mt-2">
+                  {% for error in form.stock.errors %}
+                      {{ error }}
+                  {% endfor %}
+                </div>
+              {% endif %}
+        </div>
+        
+        
+          <div class="">
+            <label class="label label-text" for="card_version">Versión </label>
+            <select required class="select select-sm" name='version' id="card_version">
+              <option {% if form.version.value == "1" %}selected{% endif %} value="1">TCG</option>
+              <option {% if form.version.value == "2" %}selected{% endif %} value="2">OCG</option>
+              
+            </select>
+          </div>
+        
+          <div class="">
+            <label class="label label-text" for="card_rarity">Rareza</label>
+            <select required class="select select-sm" name='rarity' id="card_rarity">
+              <option {% if form.rarity.value == "1" %}selected{% endif %} value="1">Comun</option>
+              <option {% if form.rarity.value == "2" %}selected{% endif %} value="2">Rare</option>
+              <option {% if form.rarity.value == "3" %}selected{% endif %} value="3">Super rare</option>
+              <option {% if form.rarity.value == "4" %}selected{% endif %} value="4">Ultra rare</option>
+              <option {% if form.rarity.value == "5" %}selected{% endif %} value="5">Secret rare</option>
+            </select>
+          </div>
+          
+          <div class="flex col-span-2 justify-center sm:justify-end mt-3">
+              
+              <button type="submit" name="submitButton" class="btn btn-primary btn-gradient flex justify-center items-center">
+                  <span id="spinner" class="loading loading-dots loading-sm htmx-indicator"></span>
+                  
+                  Editar
+              </button>
+          </div>
+          {% if message %}
+                    <script>
+                        showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+                    </script>
+          {% endif %}
+            
+      
+     
+    </form>

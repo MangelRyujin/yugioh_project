@@ -99,6 +99,8 @@ class AlbumDecks(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False, default='Album')
     description =  models.TextField()
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="album_deck_user")
+    image= models.ImageField(upload_to="AlbumDeck",null=True)
+    is_active=models.BooleanField(default=False)
     
     class Meta:
         verbose_name = "AlbumDeck"
