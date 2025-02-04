@@ -1,0 +1,29 @@
+{% load static %}
+<div id="deck-info" class="card bg-transparent backdrop-blur-sm shadow-none  " id="user-card">
+    <div class="alert p-3 btn-gradient btn-primary alert-soft border-none flex items-center gap-2" role="alert">
+        
+      <span class="font-bold">
+        Deck: {{deck.name}}</span>
+    </div>
+    <div class=" bg-primary/20 rounded-b-md p-3 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 ">
+        <div class="w-full h-72 rounded"
+        style="background: url({% if deck.image %}{{deck.image.url}}{% else %} {% static "img/donation.jpg" %} {% endif %}); background-size: cover; background-position: center;"
+        >
+            
+            {% comment %} <img loading="lazy" src="{% if deck.image %}{{deck.image.url}}{% else %} {% static "img/donation.jpg" %} {% endif %}" width="200" height="200" class="w-full object-cover rounded"/>  {% endcomment %}
+        </div>
+        <div class="w-full">
+            <span class="text-xs md:text-base">
+                {{deck.description}}
+            </span>
+        </div>
+      
+      
+  </div>
+</div>
+
+{% if message %}
+        <script>
+            showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+        </script>
+{% endif %}

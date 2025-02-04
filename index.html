@@ -1,70 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<style>
-.caja-container {
-    perspective: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-}
-
-.caja {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    transform-style: preserve-3d;
-    transform: rotateY(-45deg);
-}
-
-.lado {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.frente {
-    transform: translateZ(100px);
-}
-
-.atras {
-    transform: rotateY(180deg) translateZ(100px);
-}
-
-.arriba {
-    transform: rotateX(90deg) translateZ(100px);
-}
-
-.abajo {
-    transform: rotateX(-90deg) translateZ(100px);
-}
-
-.derecha {
-    transform: rotateY(90deg) translateZ(100px);
-}
-
-.izquierda {
-    transform: rotateY(-90deg) translateZ(100px);
-}
-</style>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div class="caja-container">
-    <div class="caja">
-        <div class="lado frente">Frente</div>
-        <!-- <div class="lado atras">Atrás</div> -->
-        <!-- <div class="lado arriba">Arriba</div> -->
-        <!-- <div class="lado abajo">Abajo</div> -->
-        <div class="lado derecha">Derecha</div>
-        <!-- <div class="lado izquierda">Izquierda</div> -->
+<body class="p-4">
+    <!-- Contenedor del botón -->
+    <div class="subir-imagen inline-block mx-4 my-5">
+        <!-- Input oculto -->
+        <input 
+            type="file" 
+            accept="image/*"
+            id="archivo"
+            class="hidden"
+        >
+        <!-- Botón personalizado -->
+        <label 
+            for="archivo"
+            class="
+                bg-blue-600 hover:bg-blue-700
+                text-white px-4 py-2 rounded
+                cursor-pointer transition-colors
+                duration-300 ease-in-out
+            "
+        >
+            Subir imagen
+        </label>
     </div>
-</div>
+
+    <!-- JavaScript para conectar el label con el input -->
+    <script>
+        const contenedores = document.querySelectorAll('.subir-imagen');
+        contenedores.forEach(contenedor => {
+            const input = contenedor.querySelector('input');
+            const label = contenedor.querySelector('label');
+            
+            // Conectar el label con el input
+            label.htmlFor = input.id;
+            
+            // Mostrar el nombre del archivo seleccionado
+            input.addEventListener('change', function(e) {
+                const nombreArchivo = e.target.files[0].name || 'Ningún archivo seleccionado';
+                console.log(`Archivo seleccionado: ${nombreArchivo}`);
+            });
+        });
+    </script>
 </body>
 </html>

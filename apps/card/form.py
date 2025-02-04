@@ -1,5 +1,5 @@
 from django import forms
-from apps.card.models import AlbumCard, AlbumDecksCard
+from apps.card.models import AlbumCard, AlbumDecksCard,AlbumDecks
 
 
         
@@ -14,3 +14,9 @@ class UpdateAlbumDecksCardForm(forms.ModelForm):
     class Meta:
         model = AlbumDecksCard
         fields = ["stock","rarity","version","expantion"]
+        
+class UpdateAlbumDecksForm(forms.ModelForm):
+    
+    class Meta:
+        model = AlbumDecks
+        fields = ["name","description","image","is_active"]

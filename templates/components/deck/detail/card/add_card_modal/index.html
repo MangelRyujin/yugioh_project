@@ -1,10 +1,10 @@
 {% csrf_token %}
-<div id="add-card-modal" class="overlay modal overlay-open:opacity-100 hidden [--overlay-backdrop:static]" role="dialog" tabindex="-1" data-overlay-keyboard="false">
+<div id="add-deck-card-modal" class="overlay modal overlay-open:opacity-100 hidden [--overlay-backdrop:static]" role="dialog" tabindex="-1" data-overlay-keyboard="false">
     <div class="modal-dialog overlay-open:opacity-100 ">
       <div class="modal-content">
         <div class="modal-header p-3">
           <h3 class="modal-title">Añadir carta</h3>
-          <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#add-card-modal">
+          <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#add-deck-card-modal">
             <span class="icon-[tabler--x] size-4"></span>
           </button>
         </div>
@@ -15,30 +15,34 @@
                 <span class="icon-[tabler--search]  size-6"></span>
                 </span>
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="kbdInput1" 
-                hx-post="{% url 'search_cards_modal' %}" 
+                <input type="search" class="input grow" placeholder="Buscar" id="kbdInput1" name="keywordDeckCardAdd" 
+                hx-post="{% url 'search_deck_cards_modal' %}?deck_id={{deck.pk}}" 
                 hx-trigger="input changed, delay:500ms" 
-                hx-target="#search-results" 
+                hx-target="#deck-card-search-results" 
                 hx-include="[name=kbdInput1], [name=csrfmiddlewaretoken]"
                 hx-indicator="#searchIndicatorModal" />
                 <label class="sr-only" for="kbdInput1">Buscar</label>
                 <span class="input-group-text gap-2">
-                    
+                  
                     <span id="searchIndicatorModal" class="loading loading-dots loading-sm htmx-indicator"></span>
                 </span>
             </div>
-        
+            {% comment %} <bottom  class="btn btn-gradient btn-error ">
+                <span class="icon-[tabler--square-rounded-x-filled] size-6" ></span>
+            </bottom> {% endcomment %}
           </div>
         </div>
         <div class="modal-body px-3">
-
-           <div id="search-results">
-            
+          
+           <div id="deck-card-search-results">
+            {% comment %} {% include "components/album/add_card_modal/search_results.html" %} {% endcomment %}
            </div>
 
            
         </div>
-    
+        <div class="modal-footer">
+          {% comment %} SOME CODE HERE {% endcomment %}
+        </div>
       </div>
     </div>
   </div>
