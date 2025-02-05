@@ -69,7 +69,7 @@ def _show_cards(request):
         keyword = request.POST.get("kbdInput2",'')
     search_card = AlbumCard.objects.filter(name__icontains=keyword,album__user=request.user).order_by('-id')
     cards = AlbumCardFilter(request.GET, queryset=search_card)
-    paginator = Paginator(cards.qs, 25)    # Show 25 contacts per page.
+    paginator = Paginator(cards.qs, 60)    # Show 40 contacts per page.
     page_number = request.GET.get("page",1)
     page_obj = paginator.get_page(page_number)
     context={
