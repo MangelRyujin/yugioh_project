@@ -9431,6 +9431,11 @@ textarea:focus-visible {
   color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity, 1)));
 }
 
+.text-error-content {
+  --tw-text-opacity: 1;
+  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
+}
+
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity, 1));
@@ -10837,8 +10842,28 @@ textarea:focus-visible {
 }
 
 @media (min-width: 640px) {
+  .sm\:fixed {
+    position: fixed;
+  }
+
+  .sm\:inset-0 {
+    inset: 0px;
+  }
+
+  .sm\:m-auto {
+    margin: auto;
+  }
+
   .sm\:inline {
     display: inline;
+  }
+
+  .sm\:h-1\/2 {
+    height: 50%;
+  }
+
+  .sm\:w-1\/2 {
+    width: 50%;
   }
 
   .sm\:grid-cols-2 {
@@ -10940,12 +10965,32 @@ textarea:focus-visible {
 }
 
 @media (min-width: 1024px) {
+  .lg\:fixed {
+    position: fixed;
+  }
+
+  .lg\:inset-0 {
+    inset: 0px;
+  }
+
   .lg\:col-span-6 {
     grid-column: span 6 / span 6;
   }
 
+  .lg\:m-auto {
+    margin: auto;
+  }
+
   .lg\:grid {
     display: grid;
+  }
+
+  .lg\:h-1\/2 {
+    height: 50%;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:grid-cols-12 {
