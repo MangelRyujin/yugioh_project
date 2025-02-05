@@ -4,7 +4,10 @@
 {% csrf_token %}
     <!-- Barra de Busqueda con Filtro -->
     
-    <div class="grid grid-cols-1 mb-4 ">
+    <div class="flex justify-between gap-5 mb-4 ">
+        <a href="{% url "shop"  %}" class="btn btn-square btn-gradient btn-primary ">
+            <span class="icon-[tabler--arrow-back-up] size-6"></span>
+          </a>
         <div class="input-group bg-transparent max-w-sm ">
             <span class="input-group-text">
             <span class="icon-[tabler--search] text-base-content/80 size-6"></span>

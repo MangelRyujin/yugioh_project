@@ -747,6 +747,10 @@ html {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Cpath d='m3 7l9 6l9-6'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+.icon-\[tabler--map-pin\] {
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M9 11a3 3 0 1 0 6 0a3 3 0 0 0-6 0'/%3E%3Cpath d='M17.657 16.657L13.414 20.9a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 .icon-\[tabler--menu-2\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E");
 }
@@ -783,6 +787,10 @@ html {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4'/%3E%3C/svg%3E");
 }
 
+.icon-\[tabler--phone\] {
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2'/%3E%3C/svg%3E");
+}
+
 .icon-\[tabler--phone-filled\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath fill='black' d='M9 3a1 1 0 0 1 .877.519l.051.11l2 5a1 1 0 0 1-.313 1.16l-.1.068l-1.674 1.004l.063.103a10 10 0 0 0 3.132 3.132l.102.062l1.005-1.672a1 1 0 0 1 1.113-.453l.115.039l5 2a1 1 0 0 1 .622.807L21 15v4c0 1.657-1.343 3-3.06 2.998C9.361 21.477 2.522 14.638 2 6a3 3 0 0 1 2.824-2.995L5 3z'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -797,6 +805,10 @@ html {
 
 .icon-\[tabler--plus\] {
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 5v14m-7-7h14'/%3E%3C/svg%3E");
+}
+
+.icon-\[tabler--question-mark\] {
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 8a3.5 3 0 0 1 3.5-3h1A3.5 3 0 0 1 16 8a3 3 0 0 1-2 3a3 4 0 0 0-2 4m0 4v.01'/%3E%3C/svg%3E");
 }
 
 .icon-\[tabler--search\] {
@@ -1825,6 +1837,41 @@ html {
 
 .collapse:not(td):not(tr):not(colgroup) {
   visibility: visible;
+}
+
+.divider {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 1rem;
+  white-space: nowrap;
+}
+
+.divider::before {
+  height: 1px;
+  width: 100%;
+  flex-grow: 1;
+  border-top-width: 1px;
+  --tw-content: '';
+  content: var(--tw-content);
+  border-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+}
+
+.divider::after {
+  display: flex;
+  height: 1px;
+  width: 100%;
+  flex-grow: 1;
+  border-top-width: 1px;
+  --tw-content: '';
+  content: var(--tw-content);
+  border-color: var(--fallback-bc,oklch(var(--bc)/0.1));
 }
 
 .drawer {
@@ -4328,6 +4375,10 @@ select.is-invalid + .advance-select-toggle:focus,
 .nested-collapse-wrapper .collapse-toggle.open > .collapse-icon {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.divider:not(:empty) {
+  gap: 1rem;
 }
 
 .drawer-body::-webkit-scrollbar-thumb {
@@ -8193,6 +8244,11 @@ textarea:focus-visible {
   margin-bottom: 0.25rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -8387,6 +8443,11 @@ textarea:focus-visible {
 .size-10 {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.size-12 {
+  width: 3rem;
+  height: 3rem;
 }
 
 .size-16 {
@@ -8790,6 +8851,10 @@ textarea:focus-visible {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
 }
 
 .gap-12 {
@@ -9945,6 +10010,10 @@ textarea:focus-visible {
   --placement: bottom-end;
 }
 
+.\[--placement\:bottom-start\] {
+  --placement: bottom-start;
+}
+
 .\[--placement\:bottom\] {
   --placement: bottom;
 }
@@ -10822,6 +10891,10 @@ textarea:focus-visible {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .hover\:bg-base-200\/60:hover {
   background-color: var(--fallback-b2,oklch(var(--b2)/0.6));
 }
@@ -11198,6 +11271,10 @@ textarea:focus-visible {
     --tw-shadow: 0 2px 4px 0 var(--fallback-bs,oklch(var(--bs)/0.26));
     --tw-shadow-colored: 0 2px 4px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .sm\:\[--placement\:right\] {
+    --placement: right;
   }
 }
 
