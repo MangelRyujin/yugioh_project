@@ -7035,30 +7035,6 @@ textarea:focus-visible {
   display: none !important;
 }
 
-.flatpickr-day.today:not(.selected) {
-  border-color: transparent;
-  background-color: var(--fallback-p,oklch(var(--p)/0.2));
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
-}
-
-.flatpickr-day.inRange,
-  .flatpickr-day.prevMonthDay.inRange,
-  .flatpickr-day.nextMonthDay.inRange,
-  .flatpickr-day.today.inRange,
-  .flatpickr-day.prevMonthDay.today.inRange,
-  .flatpickr-day.nextMonthDay.today.inRange,
-  .flatpickr-day:hover,
-  .flatpickr-day.prevMonthDay:hover,
-  .flatpickr-day.nextMonthDay:hover,
-  .flatpickr-day:focus,
-  .flatpickr-day.prevMonthDay:focus,
-  .flatpickr-day.nextMonthDay:focus {
-  cursor: pointer;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 .flatpickr-day.selected,
   .flatpickr-day.startRange,
   .flatpickr-day.endRange,
@@ -8460,6 +8436,16 @@ textarea:focus-visible {
   height: 100%;
 }
 
+.size-3\.5 {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.size-\[22px\] {
+  width: 22px;
+  height: 22px;
+}
+
 .\!h-2\.5 {
   height: 0.625rem !important;
 }
@@ -8503,6 +8489,10 @@ textarea:focus-visible {
 
 .min-h-40 {
   min-height: 10rem;
+}
+
+.min-h-0 {
+  min-height: 0px;
 }
 
 .\!w-2\.5 {
@@ -8602,6 +8592,10 @@ textarea:focus-visible {
   max-width: 20rem;
 }
 
+.max-w-32 {
+  max-width: 8rem;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -8612,10 +8606,6 @@ textarea:focus-visible {
 
 .grow {
   flex-grow: 1;
-}
-
-.border-collapse {
-  border-collapse: collapse;
 }
 
 .-translate-x-15 {
@@ -8752,10 +8742,6 @@ textarea:focus-visible {
 
 .place-content-center {
   place-content: center;
-}
-
-.content-start {
-  align-content: flex-start;
 }
 
 .items-start {

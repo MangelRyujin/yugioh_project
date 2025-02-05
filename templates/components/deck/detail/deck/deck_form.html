@@ -49,21 +49,40 @@
               </div>
               
             </div>
-            <div class="mt-2">
-              <div class="flex gap-3">
-                <input type="radio" name="is_active" class="radio radio-success" value="true" id="radioTrue" {% if  deck.is_active %}checked{% endif %} />
-                <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioTrue">
-                  <span class="label-text text-base">Activar</span>
-                  <span class="label-text-alt text-success">Mostrar en la tienda.</span>
-                </label>
+            <div class="grid w-full grid-cols-1 sm:grid-cols-2">
+              <div class="mt-2">
+                <div class="flex gap-3">
+                  <input type="radio" name="is_active" class="radio radio-success" value="true" id="radioTrue" {% if  deck.is_active %}checked{% endif %} />
+                  <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioTrue">
+                    <span class="label-text text-base">Activar</span>
+                    <span class="label-text-alt text-success">Mostrar en la tienda.</span>
+                  </label>
+                </div>
+                
+                <div class="flex gap-3">
+                  <input type="radio" name="is_active" class="radio radio-error" value="false" id="radioFalse" {% if not deck.is_active %}checked{% endif %}  />
+                  <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioFalse">
+                    <span class="label-text text-base">Desactivar</span>
+                    <span class="label-text-alt text-error">No mostrar en la tienda.</span>
+                  </label>
+                </div>
               </div>
-              
-              <div class="flex gap-3">
-                <input type="radio" name="is_active" class="radio radio-error" value="false" id="radioFalse" {% if not deck.is_active %}checked{% endif %}  />
-                <label class="label -mt-1 cursor-pointer flex-col items-start pt-0" for="radioFalse">
-                  <span class="label-text text-base">Desactivar</span>
-                  <span class="label-text-alt text-error">No mostrar en la tienda.</span>
-                </label>
+              <div class="w-full">
+                <label class="label label-text" for="number-input-mini">Precio:</label>
+
+                  <div class="input-group w-full" data-input-number>
+                    <span class="input-group-text gap-3">
+                      <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Decrement button" data-input-number-decrement>
+                        <span class="icon-[tabler--minus] size-3.5 flex-shrink-0"></span>
+                      </button>
+                    </span>
+                    <input class="input text-center" value="{{deck.price}}" id="number-input-mini" name="price" type="text"  data-input-number-input />
+                    <span class="input-group-text gap-3">
+                      <button type="button" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Increment button" data-input-number-increment>
+                        <span class="icon-[tabler--plus] size-3.5 flex-shrink-0"></span>
+                      </button>
+                    </span>
+                  </div>
               </div>
             </div>
             <!-- Email and password -->

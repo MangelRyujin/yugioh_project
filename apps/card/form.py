@@ -19,4 +19,4 @@ class UpdateAlbumDecksForm(forms.ModelForm):
     
     class Meta:
         model = AlbumDecks
-        fields = ["name","description","image","is_active"]
+        fields = ["name","description","image","is_active","price"]
