@@ -31,10 +31,8 @@
                         </p>
                     </div>
                     <div class="flex justify-end gap-3 w-full mt-2">
-                        <button class="btn btn-soft btn-primary btn-sm">
-                            <span class="icon-[tabler--shopping-cart] size-5"></span>
-                        </button>
-                        <a href="#" class="btn btn-soft btn-info btn-sm">
+                        {% include "components/cart/deck_cart_btn.html" %}
+                        <a href="{% url "shop_deck_card" pk=deck.pk %}" class="btn btn-soft btn-info btn-sm">
                             <span class="icon-[tabler--eye] size-5"></span>
                         </a>
                     </div>
