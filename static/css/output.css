@@ -7035,6 +7035,30 @@ textarea:focus-visible {
   display: none !important;
 }
 
+.flatpickr-day.today:not(.selected) {
+  border-color: transparent;
+  background-color: var(--fallback-p,oklch(var(--p)/0.2));
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
+}
+
+.flatpickr-day.inRange,
+  .flatpickr-day.prevMonthDay.inRange,
+  .flatpickr-day.nextMonthDay.inRange,
+  .flatpickr-day.today.inRange,
+  .flatpickr-day.prevMonthDay.today.inRange,
+  .flatpickr-day.nextMonthDay.today.inRange,
+  .flatpickr-day:hover,
+  .flatpickr-day.prevMonthDay:hover,
+  .flatpickr-day.nextMonthDay:hover,
+  .flatpickr-day:focus,
+  .flatpickr-day.prevMonthDay:focus,
+  .flatpickr-day.nextMonthDay:focus {
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .flatpickr-day.selected,
   .flatpickr-day.startRange,
   .flatpickr-day.endRange,
@@ -8477,10 +8501,6 @@ textarea:focus-visible {
   max-height: 14rem;
 }
 
-.min-h-32 {
-  min-height: 8rem;
-}
-
 .min-h-40 {
   min-height: 10rem;
 }
@@ -8499,6 +8519,10 @@ textarea:focus-visible {
 
 .w-3\.5 {
   width: 0.875rem;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-60 {
@@ -8528,10 +8552,6 @@ textarea:focus-visible {
 
 .w-full {
   width: 100%;
-}
-
-.w-3\/4 {
-  width: 75%;
 }
 
 .min-w-28 {
@@ -8592,6 +8612,10 @@ textarea:focus-visible {
 
 .grow {
   flex-grow: 1;
+}
+
+.border-collapse {
+  border-collapse: collapse;
 }
 
 .-translate-x-15 {
@@ -8728,6 +8752,10 @@ textarea:focus-visible {
 
 .place-content-center {
   place-content: center;
+}
+
+.content-start {
+  align-content: flex-start;
 }
 
 .items-start {
@@ -9678,6 +9706,10 @@ textarea:focus-visible {
 .text-error-content {
   --tw-text-opacity: 1;
   color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity, 1)));
+}
+
+.text-error\/80 {
+  color: var(--fallback-er,oklch(var(--er)/0.8));
 }
 
 .text-indigo-600 {
@@ -11112,28 +11144,16 @@ textarea:focus-visible {
 }
 
 @media (min-width: 640px) {
-  .sm\:fixed {
-    position: fixed;
-  }
-
-  .sm\:inset-0 {
-    inset: 0px;
-  }
-
-  .sm\:m-auto {
-    margin: auto;
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 
   .sm\:inline {
     display: inline;
   }
 
-  .sm\:h-1\/2 {
-    height: 50%;
-  }
-
-  .sm\:w-1\/2 {
-    width: 50%;
+  .sm\:h-44 {
+    height: 11rem;
   }
 
   .sm\:grid-cols-2 {
@@ -11252,32 +11272,20 @@ textarea:focus-visible {
 }
 
 @media (min-width: 1024px) {
-  .lg\:fixed {
-    position: fixed;
-  }
-
-  .lg\:inset-0 {
-    inset: 0px;
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
   }
 
   .lg\:col-span-6 {
     grid-column: span 6 / span 6;
   }
 
-  .lg\:m-auto {
-    margin: auto;
-  }
-
   .lg\:grid {
     display: grid;
   }
 
-  .lg\:h-1\/2 {
-    height: 50%;
-  }
-
-  .lg\:w-1\/2 {
-    width: 50%;
+  .lg\:h-52 {
+    height: 13rem;
   }
 
   .lg\:grid-cols-12 {
