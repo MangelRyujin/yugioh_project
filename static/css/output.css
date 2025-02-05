@@ -5561,18 +5561,6 @@ input:focus-visible {
       var(--tw-ring-shadow);
 }
 
-.radio-primary:checked,
-    .radio-primary[aria-checked="true"] {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity, 1)));
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
-}
-
-.radio-primary:checked:focus-visible, .radio-primary[aria-checked="true"]:focus-visible {
-  outline-color: var(--fallback-p,oklch(var(--p)/0.3));
-}
-
 .radio-success:checked,
     .radio-success[aria-checked="true"] {
   --tw-border-opacity: 1;
@@ -8114,6 +8102,10 @@ textarea:focus-visible {
   right: 1rem;
 }
 
+.start-0 {
+  inset-inline-start: 0px;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -8136,10 +8128,6 @@ textarea:focus-visible {
 
 .top-full {
   top: 100%;
-}
-
-.start-0 {
-  inset-inline-start: 0px;
 }
 
 .-z-0 {
@@ -8227,6 +8215,10 @@ textarea:focus-visible {
 
 .\!ms-auto {
   margin-inline-start: auto !important;
+}
+
+.-mt-1 {
+  margin-top: -0.25rem;
 }
 
 .mb-0\.5 {
@@ -8339,10 +8331,6 @@ textarea:focus-visible {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.-mt-1 {
-  margin-top: -0.25rem;
 }
 
 .line-clamp-2 {

@@ -32,7 +32,7 @@ class Subscription(models.Model):
     def month_price_CUP(self):
         cup = Coin.objects.first()
         if self.month_price:
-            return self.month_price * cup.cup
+            return int(self.month_price * cup.cup)
         return 0
     
     @property
@@ -48,7 +48,7 @@ class Subscription(models.Model):
     @property
     def discount_anual_price_cup(self):
         cup = Coin.objects.first()
-        return round(self.discount_anual_price * cup.cup , 2)
+        return int(round(self.discount_anual_price * cup.cup , 2))
     
 class FeatureSubscription(models.Model):
     name = models.CharField(max_length=255)
