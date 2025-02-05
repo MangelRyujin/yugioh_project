@@ -31,12 +31,10 @@ def _show_cards_filter(request):
     parameters = get_copy.pop('page', True) and get_copy.urlencode()
     cards = AlbumCardFilter(request.GET, queryset=AlbumCard.objects.all())
     context=_get_paginator(request,cards.qs)
-    context['parameters']=parameters
+    context['parameters'] = parameters
     return context
 
 def _show_cards(request):
-    import time
-    time.sleep(2)
     cards = AlbumCard.objects.all()
     if request.method == 'POST':
         keywords = request.POST.get('keywords', '')

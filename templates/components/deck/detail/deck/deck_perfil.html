@@ -1,9 +1,11 @@
 {% load static %}
 <div id="deck-info" class="card bg-transparent backdrop-blur-sm shadow-none  " id="user-card">
-    <div class="alert p-3 btn-gradient btn-primary alert-soft border-none flex items-center gap-2" role="alert">
+    <div class="alert p-3 btn-gradient btn-primary alert-soft border-none flex flex-col items-start gap-2" role="alert">
         
       <span class="font-bold">
-        Deck: {{deck.name}}</span>
+        Nombre: {{deck.name}}</span>
+        <span class="font-bold">
+            Precio: $ {{deck.price}} USD</span>
     </div>
     <div class=" bg-primary/20 rounded-b-md p-3 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 ">
         <div class="w-full h-72 rounded"
