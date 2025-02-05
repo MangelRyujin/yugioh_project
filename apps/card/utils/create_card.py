@@ -3,6 +3,7 @@ import requests
 from django.shortcuts import render, get_object_or_404
 from apps.card.models import *
 
+
 def create_card(request,pk):
     if request.method == 'POST':
             konami_id = request.POST.get('konami_id', '')
@@ -116,3 +117,44 @@ def album_card_create(request,data):
                             image_url_cropped=image_data['image_url_cropped']
                         )
     return AlbumCard.objects.filter(album=album)
+
+
+def album_deck_card_create(request,data,deck_id):
+    deck = AlbumDecks.objects.get(user=request.user,pk=deck_id)
+    card = AlbumDecksCard.objects.create(
+                        rarity = request.POST.get('rarity', '1'),
+                        stock = request.POST.get('stock', 1),
+                        version = request.POST.get('version', '1'),
+                        expantion=request.POST.get('expantion', 'No definida'),
+                        konami_id=data['konami_id'],
+                        name=data['name'],
+                        typeline=data['typeline'],
+                        type=data['type'],
+                        humanReadableCardType=data['humanReadableCardType'],
+                        frameType=data['frameType'],
+                        desc=data['desc'],
+                        race=data['race'],
+                        pend_desc=data['pend_desc'],
+                        monster_desc=data['monster_desc'],
+                        atk=data['atk'],
+                        defense=data['defense'],
+                        level=data['level'],
+                        attribute=data['attribute'],
+                        archetype=data['archetype'],
+                        scale=data['scale'],
+                        linkval=data['linkval'],
+                        linkmarkers=data['linkmarkers'],
+                        deck=deck,
+                    )
+                    
+                    
+                    # Crear instancias de CardImage
+    for image_data in data['card_images']:
+                        DeckCardImage.objects.create(
+                            card=card,
+                            image_url=image_data['image_url'],
+                            image_url_small=image_data['image_url_small'],
+                            image_url_cropped=image_data['image_url_cropped']
+                        )
+                       
+    return AlbumDecksCard.objects.filter(deck=deck).order_by('name')

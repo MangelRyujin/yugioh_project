@@ -26,16 +26,14 @@ def search_user_cards(request):
 @login_required(login_url='/login/')
 def search_cards_modal(request):
     if request.method == 'POST':
-        #print(request.POST.get('kbdInput'))
-        query = request.POST.get('kbdInput1', '')
-        external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?name={query}'
-        #print(f"Query: {query}")  # Agrega esta línea para depurar
         
+        query = request.POST['kbdInput1'] or ''
+        external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?name={query}'
         try:
             response = requests.get(external_api_url)
             if response.status_code == 200:
                 data = response.json()
-                #print(f"URL: {external_api_url}")  # Agrega esta línea para depurar
+               
                 return render(request, 'components/album/add_card_modal/search_results.html', {'cards': data['results']})
             else:
                 return HttpResponse('<p>No se encontraron resultados</p>', status=response.status_code)
@@ -53,11 +51,9 @@ def add_card(request,pk):
     if request.method == 'POST':
         external_api_url = f'https://primervirgen.pythonanywhere.com/api/cards/?konami_id={pk}' 
         context={}    
-        # response para almacenar los datos de la carta
         response = requests.get(external_api_url)
         if response.status_code == 200:
             data = response.json()['results'][0]
-            # user_album_card = get_object_or_404(AlbumCard, konami_id=pk)
             cards= album_card_create(request,data)
             context['card']=data
             context['cards']=cards

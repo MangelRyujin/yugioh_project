@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-4">
+    <!-- Contenedor del botón -->
+    <div class="subir-imagen inline-block mx-4 my-5">
+        <!-- Input oculto -->
+        <input 
+            type="file" 
+            accept="image/*"
+            id="archivo"
+            class="hidden"
+        >
+        <!-- Botón personalizado -->
+        <label 
+            for="archivo"
+            class="
+                bg-blue-600 hover:bg-blue-700
+                text-white px-4 py-2 rounded
+                cursor-pointer transition-colors
+                duration-300 ease-in-out
+            "
+        >
+            Subir imagen
+        </label>
+    </div>
+
+    <!-- JavaScript para conectar el label con el input -->
+    <script>
+        const contenedores = document.querySelectorAll('.subir-imagen');
+        contenedores.forEach(contenedor => {
+            const input = contenedor.querySelector('input');
+            const label = contenedor.querySelector('label');
+            
+            // Conectar el label con el input
+            label.htmlFor = input.id;
+            
+            // Mostrar el nombre del archivo seleccionado
+            input.addEventListener('change', function(e) {
+                const nombreArchivo = e.target.files[0].name || 'Ningún archivo seleccionado';
+                console.log(`Archivo seleccionado: ${nombreArchivo}`);
+            });
+        });
+    </script>
+</body>
+</html>

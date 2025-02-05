@@ -1,4 +1,4 @@
-from apps.card.models import AlbumCard
+from apps.card.models import AlbumCard, AlbumDecks
 import django_filters
 
 class AlbumCardFilter(django_filters.FilterSet):
@@ -10,7 +10,7 @@ class AlbumCardFilter(django_filters.FilterSet):
     defense = django_filters.NumberFilter(field_name='defense', lookup_expr='exact')
     level = django_filters.NumberFilter(field_name='level', lookup_expr='exact')
     price = django_filters.NumberFilter(field_name='price', method='filter_price')
-    tipo = django_filters.CharFilter(field_name='tipo', lookup_expr='icontains')
+    type = django_filters.CharFilter(field_name='type', lookup_expr='icontains')
     frameType = django_filters.CharFilter(field_name='frameType', lookup_expr='icontains')
     attribute = django_filters.CharFilter(method='filter_attribute')
     archetype = django_filters.CharFilter(lookup_expr='icontains')
@@ -52,4 +52,22 @@ class AlbumCardFilter(django_filters.FilterSet):
 
     class Meta:
         model = AlbumCard
-        fields = ['konami_id', 'tipo','frameType', 'name', 'rarity', 'version', 'atk', 'defense', 'price', 'attribute', 'archetype']
+        fields = ['konami_id', 'type','frameType', 'name', 'rarity', 'version', 'atk', 'defense', 'price', 'attribute', 'archetype']
+        
+        
+class AlbumDeckFilter(django_filters.FilterSet):
+    name =  django_filters.CharFilter(lookup_expr='icontains')
+
+    class Meta:
+        model = AlbumDecks
+        fields = [ 'name']
+        
+        
+class ShopAlbumDeckFilter(django_filters.FilterSet):
+    name =  django_filters.CharFilter(lookup_expr='icontains')
+    user =  django_filters.CharFilter(field_name='user__username',lookup_expr='icontains')
+    
+
+    class Meta:
+        model = AlbumDecks
+        fields = [ 'name', 'user',]

@@ -1,0 +1,55 @@
+{% load static %}
+{% if deck %}
+<div id="myAlbumDeck{{deck.pk}}" class="w-full flex-col justify-center items-center">
+  <div class="stack  w-full  stack-animated">
+    
+      <div class="bg-primary text-primary-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded "
+      style="background: url({% if deck.image %}{{deck.image.url}}{% else %} {% static "img/donation.jpg" %} {% endif %}); background-size: cover; background-position: center;"
+      >
+      <div id="sniperMyAlbumDeck{{deck.pk}}" class="htmx-indicator w-full h-full flex justify-center items-center bg-base-200/60 absolute">
+        <span class="loading loading-ring loading-lg"></span>
+    </div>
+      <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">{{deck.total_cards}}</span>
+      <span class="absolute   start-0 bottom-0 -translate-y-2 badge-lg  md:badge-sm z-10">
+        <p class=" size-10 {% if deck.is_active %}icon-[tabler--check] text-success {% else %}icon-[tabler--x] text-error {% endif %} ">
+          
+        </p>
+      </span>
+      </div>
+      <div class="bg-base-200 text-success-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded"></div>
+      <div class="bg-base-200 text-warning-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded"></div>
+      
+  </div>
+  <div class="w-full text-center mt-2">
+                  
+    <span class="text-base-content text-xs font-medium">{{deck.name}}</span>
+  </div>
+  <div class="flex justify-around gap-1 mt-1">
+              
+    <a 
+    href="{% url "album_deck_detail" pk=deck.pk %}" 
+    class="btn btn-gradient btn-warning btn-xs">
+        <span class="icon-[tabler--edit-circle] "></span>
+    </a>
+    <button  class="btn btn-gradient btn-error btn-xs"
+      hx-delete="{% url "delete_album_deck" pk=deck.pk %}"
+      hx-target="#myAlbumDeck{{deck.pk}}"
+      hx-swap="outerHTML"
+      hx-indicator="#sniperMyAlbumDeck{{deck.pk}}"
+      hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+    >
+        <span class="icon-[tabler--square-rounded-x-filled] "></span>
+        
+    </button>
+  </div>  
+</div>
+
+
+
+
+{% endif %}
+{% if message %}
+<script>
+    showNotification('error', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+</script>
+{% endif %}

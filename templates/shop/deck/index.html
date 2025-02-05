@@ -1,0 +1,37 @@
+{% extends "shop/base.html" %}
+{% block content %}
+{% load static %}
+{% csrf_token %}
+    <!-- Barra de Busqueda con Filtro -->
+    <button type="button" id="show-modal" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary px-2 border-2 btn-primary wave btn-text max-sm:btn-square z-50"     
+    aria-haspopup="dialog" 
+    aria-expanded="false" 
+    aria-controls="add-filter-modal" 
+    data-overlay="#add-filter-modal" >
+        <span class="icon-[tabler--filter] size-6 "></span>
+    </button>
+    <div class="grid grid-cols-1 mb-4 ">
+        <div class="input-group bg-transparent max-w-sm ">
+            <span class="input-group-text">
+            <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
+            </span>
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="hidden" name="filters" value="{{ filters|default_if_none:'{}'|escapejs }}">
+            <input type="search" class="input  grow" placeholder="Buscar" id="keywords" 
+            name="keywords" 
+            hx-post="{% url 'decks_search_result' %}" 
+            hx-trigger="input changed, delay:500ms" 
+            hx-target="#search-results" hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
+            hx-indicator="#spinerSearchAllMyAlbumDecks"/>
+            <span id="spinerSearchAllMyAlbumDecks" class="loading loading-dots htmx-indicator me-1"></span>
+            <label class="sr-only" for="kbdInput3">Buscar</label>
+        </div>
+    </div>   
+
+    <!-- Listado de Cartas en Venta -->
+    <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-7 mb-12 w-full">
+        {% include "shop/deck/partials/decks_list.html" %}
+    </div>
+    
+
+{% endblock content %}

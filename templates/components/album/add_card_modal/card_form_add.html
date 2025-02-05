@@ -14,11 +14,11 @@
           <span class="text-base-content font-medium">{{ card.name }}</span>
           <span class="text-base-content/80 mt-1 text-xs">{{ card.type }}</span>
           <div class="">
-            <label class="label label-text" for="card_expantion">Expanción:</label>
+            <label class="label label-text" for="card_expantion{{card.konami_id}}">Expanción:</label>
             <div class="input-group  w-full">
               
-              <input type="text" maxlength="30" class="input grow input-sm" required placeholder="Expanción" name='expantion'  id="card_expantion" />
-              <label class="sr-only" for="card_expantion">Entre la expanción</label>
+              <input type="text" maxlength="30" class="input grow input-sm" required placeholder="Expanción" name='expantion'  id="card_expantion{{card.konami_id}}" />
+              <label class="sr-only" for="card_expantion{{card.konami_id}}">Entre la expanción</label>
               <span class="input-group-text"> xxx</span>
             </div>
           </div>
@@ -31,35 +31,35 @@
         >
           
           <div class="">
-            <label class="label label-text" for="card_stock">Cantidad:</label>
+            <label class="label label-text" for="card_stock{{card.konami_id}}">Cantidad:</label>
             <div class="input-group  w-full">
               
-              <input type="number" min=1 class="input grow input-sm" required placeholder="1" name='stock' value='1' id="card_stock" />
-              <label class="sr-only" for="card_stock">Entre la cantidad</label>
+              <input type="number" min=1 class="input grow input-sm" required placeholder="1" name='stock' value='1' id="card_stock{{card.konami_id}}" />
+              <label class="sr-only" for="card_stock{{card.konami_id}}">Entre la cantidad</label>
               <span class="input-group-text"> <p class="icon-[tabler--cards-filled] size-4"></p></span>
             </div>
           </div>
           <div class="">
-            <label class="label label-text" for="card_price">Precio por unidad:</label>
+            <label class="label label-text" for="card_price{{card.konami_id}}">Precio por unidad:</label>
             <div class="input-group">
               <span class="input-group-text">$</span>
-              <input type="number" class="input grow input-sm" required min='0.01' placeholder="0.01" step="0.01" name='price'  id="card_price" />
-              <label class="sr-only" for="card_price">Entre el monto</label>
+              <input type="number" class="input grow input-sm" required min='0.01' placeholder="0.01" step="0.01" name='price'  id="card_price{{card.konami_id}}" />
+              <label class="sr-only" for="card_price{{card.konami_id}}">Entre el monto</label>
               <span class="input-group-text">USD</span>
             </div>
           </div>
           <div class="col-span-2 grid grid-cols-5 items-end gap-2">
             <div class="col-span-2">
-              <label class="label label-text" for="card_version">Versión</label>
-              <select required class="select select-sm" name='version' id="card_version">
+              <label class="label label-text" for="card_version{{card.konami_id}}">Versión</label>
+              <select required class="select select-sm" name='version' id="card_version{{card.konami_id}}">
                 <option>TCG</option>
                 <option>OCG</option>
               </select>
             </div>
           
             <div class="col-span-2">
-              <label class="label label-text" for="card_rarity">Rareza</label>
-              <select required class="select select-sm" name='rarity' id="card_rarity">
+              <label class="label label-text" for="card_rarity{{card.konami_id}}">Rareza</label>
+              <select required class="select select-sm" name='rarity' id="card_rarity{{card.konami_id}}">
                 <option value="1">Comun</option>
                 <option value="2">Rare</option>
                 <option value="3">Super rare</option>

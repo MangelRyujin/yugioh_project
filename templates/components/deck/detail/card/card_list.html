@@ -1,0 +1,24 @@
+{% load static %}
+{% if cards %}
+
+<div  class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-9 gap-2 mt-3">
+  {% for card in cards %}
+      {% include "components/deck/detail/card/card.html" %}
+  {% endfor %}
+</div>
+
+<script>
+  document.querySelectorAll('[id^="myAlbumCard"]').forEach(function(card) {
+    card.addEventListener('click', function() {
+        this.classList.toggle('show');
+    });
+});
+</script>
+
+{% endif %}
+
+
+       
+          
+          
+       

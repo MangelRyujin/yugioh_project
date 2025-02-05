@@ -1,0 +1,35 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+      <div class=" items-start gap-3 w-full flex mb-5">
+        <a href="{% url "album_deck" %}" class="btn btn-square btn-gradient btn-primary ">
+            <span class="icon-[tabler--arrow-back-up] size-6"></span>
+        </a>
+      </div>
+    <div  class="w-full">
+      {% include "components/deck/detail/deck/deck_info.html" %}
+    </div >
+    
+
+    <div class="flex w-full justify-end items-center mt-5">
+      
+      <bottom aria-haspopup="dialog" aria-expanded="false" aria-controls="add-deck-card-modal" data-overlay="#add-deck-card-modal" 
+      class="btn btn-gradient btn-success tooltip [--placement:bottom] flex items-center">
+        <span class="icon-[tabler--square-rounded-plus-filled] size-6" ></span>
+        <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
+          <span class="tooltip-body">Añadir a la lista</span>
+        </span>
+        Añadir
+    </bottom>
+     
+    </div>
+  <div id="deck-card-list" class="w-full">
+      {% include "components/deck/detail/card/card_list.html" %}
+    </div>
+    
+        
+           
+
+   
+      
+{% endblock content %}

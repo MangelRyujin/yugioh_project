@@ -1,0 +1,49 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="flex justify-between items-center gap-4 mb-5">
+        <div class="input-group bg-transparent max-w-sm ">
+            <span class="input-group-text">
+            <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
+            </span>
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="search" class="input  grow" placeholder="Buscar" id="kbdInput2" 
+            name="kbdInput2" 
+            hx-post="{% url 'search_album_deck' %}" 
+            hx-trigger="input changed, delay:500ms" 
+            hx-target="#deck-list" hx-include="[name=kbdInput2], [name=csrfmiddlewaretoken]" 
+            hx-indicator="#spinerSearchAllMyAlbumCards"/>
+            <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
+            <label class="sr-only" for="kbdInput2">Buscar</label>
+        </div>
+        
+        <bottom 
+          hx-get="{% url 'create_album_deck' %}"
+          hx-trigger="click" 
+          hx-target="#deck-list" 
+          hx-indicator="#sniperAddAlbumDeck"
+          class="btn btn-gradient btn-success  flex items-center px-1">
+          
+            <span class="icon-[tabler--square-rounded-plus-filled] size-6" ></span>
+           
+            Añadir
+        </bottom>
+        
+        
+    </div>            
+     
+
+               
+        <div id="sniperAddAlbumDeck" class="w-full h-full  flex justify-center items-center htmx-indicator  ">
+          <span class="loading loading-ring loading-lg me-2"></span>
+          Actualizando lista
+        </div>
+        <!-- Listado de Cartas -->
+        <div id="deck-list" class="w-full grid grid-cols-1 relative">
+          
+          
+          {% include "components/deck/deck_list.html" %}
+        </div>
+   
+      
+{% endblock content %}

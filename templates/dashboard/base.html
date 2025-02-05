@@ -16,6 +16,7 @@
 
 <body class="relative  ">
   {% include "components/album/add_card_modal/index.html" %}
+  {% include "components/deck/detail/card/add_card_modal/index.html" %}
   <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-1 animate-pulse " alt="ligth">
   </div>  
@@ -163,7 +164,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url "shop_card" %}">
+                  <a class="dropdown-item" href="{% url "shop" %}">
                     <span class="icon-[tabler--building-store] size-6"></span>
                     Tienda
                   </a>
@@ -228,7 +229,12 @@
                 Armar deck
               </a>
             </li> {% endcomment %}
-            
+            <li class="mx-1">
+              <a href="{% url "album_deck" %}" class="link-primary animate-text link-animated">
+                <span class="icon-[tabler--cards-filled] size-6" ></span>
+                Mis Decks
+              </a>
+            </li>
             <li class="mx-1">
               <a href="{% url "album" %}" class="link-primary animate-text link-animated">
                 <span class="icon-[tabler--brand-kickstarter] size-6" ></span>
@@ -370,6 +376,8 @@
           })
         })
       })
-    </script>
+    </script>      
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 </body>
 </html>

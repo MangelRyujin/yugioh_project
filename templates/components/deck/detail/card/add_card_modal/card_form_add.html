@@ -1,0 +1,96 @@
+{% if card %}
+<div class="flex flex-col justify-start gap-3  bg-base-100 p-2 " id="Card{{card.konami_id}}" >
+    <form class="flex flex-col items-start  w-full h-full"
+     hx-post="{% url 'add_deck_card' pk=card.konami_id %}?deck_id={{deck_id}}"  
+            hx-trigger="submit" 
+            hx-swap="outerHTML"
+            hx-target="#Card{{card.konami_id}}" 
+            hx-indicator="#sniper{{card.konami_id}}">
+            {% csrf_token %}
+      <div class="flex items-start gap-3 w-full">
+        
+        <img src="{{ card.card_images.0.image_url_small  }}" alt="imagen" alt="card" loading="lazy" width="60" height="60" class="object-cover" />
+        <div class="flex flex-col items-start  w-full">
+          <span class="text-base-content font-medium">{{ card.name }}</span>
+          <span class="text-base-content/80 mt-1 text-xs">{{ card.type }}</span>
+          
+        </div>
+        
+      </div>  
+      <div class="flex items-start gap-1 w-full">   
+        <div class="grid grid-cols-2 justify-start w-full items-end gap-2 "
+            
+        >
+        <div class="">
+          <label class="label label-text" for="deck_card_expantion{{card.konami_id}}">Expanción:</label>
+          <div class="input-group  w-full">
+            
+            <input type="text" maxlength="30" class="input grow input-sm" required placeholder="Expanción" name='expantion'  id="deck_card_expantion{{card.konami_id}}" />
+            <label class="sr-only" for="deck_card_expantion{{card.konami_id}}">Entre la expanción</label>
+            <span class="input-group-text"> xxx</span>
+          </div>
+        </div>
+          <div class="">
+            <label class="label label-text" for="deck_card_stock{{card.konami_id}}">Cantidad:</label>
+            <div class="input-group  w-full">
+              
+              <input type="number" min=1 class="input grow input-sm" required placeholder="1" name='stock' value='1' id="deck_card_stock{{card.konami_id}}" />
+              <label class="sr-only" for="deck_card_stock{{card.konami_id}}">Entre la cantidad</label>
+              <span class="input-group-text"> <p class="icon-[tabler--cards-filled] size-4"></p></span>
+            </div>
+          </div>
+          
+          <div class="col-span-2 grid grid-cols-5 items-end gap-2">
+            <div class="col-span-2">
+              <label class="label label-text" for="deck_card_version{{card.konami_id}}">Versión</label>
+              <select required class="select select-sm" name='version' id="deck_card_version{{card.konami_id}}">
+                <option>TCG</option>
+                <option>OCG</option>
+              </select>
+            </div>
+          
+            <div class="col-span-2">
+              <label class="label label-text" for="deck_card_rarity{{card.konami_id}}">Rareza</label>
+              <select required class="select select-sm" name='rarity' id="deck_card_rarity{{card.konami_id}}">
+                <option value="1">Comun</option>
+                <option value="2">Rare</option>
+                <option value="3">Super rare</option>
+                <option value="4">Ultra rare</option>
+                <option value="5">Secret rare</option>
+              </select>
+            </div>
+            <div class="col-span-1 flex justify-end items-end">
+              
+              <div class="w-full flex justify-end">
+                <button type="submit" class="btn-gradient btn btn-success btn-sm flex justify-center items-center" aria-label="Increment button" data-input-number-increment>
+                  <span id="sniper{{card.konami_id}}" class="loading loading-dots loading-sm htmx-indicator"></span>
+                  <span class="icon-[tabler--square-rounded-plus-filled] size-5 flex-shrink-0 htmx-text"></span>
+                  
+                </button>
+              </div>
+            </div>
+          </div>
+      
+
+        
+         
+        </div>
+      </div>          
+    
+    </form>
+    {% if message %}
+        <script>
+          showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+        </script>
+        <span class="alert alert-soft alert-success p-2 text-xs mt-1 w-full">{{message}}</span>
+            <div
+            hx-get="{% url "search_deck_user_cards" pk=deck_id %}"
+            hx-trigger="load" 
+            hx-target="#deck-card-list"
+            >
+
+            </div>
+        {% endif %} 
+       
+  </div>
+  {% endif %}
