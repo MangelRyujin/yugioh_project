@@ -35,8 +35,6 @@ def _show_cards_filter(request):
     return context
 
 def _show_cards(request):
-    import time
-    time.sleep(2)
     cards = AlbumCard.objects.all()
     if request.method == 'POST':
         keywords = request.POST.get('keywords', '')

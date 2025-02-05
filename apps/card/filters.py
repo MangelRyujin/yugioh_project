@@ -56,10 +56,18 @@ class AlbumCardFilter(django_filters.FilterSet):
         
         
 class AlbumDeckFilter(django_filters.FilterSet):
-    
     name =  django_filters.CharFilter(lookup_expr='icontains')
-
 
     class Meta:
         model = AlbumDecks
-        fields = [ 'name', 'description']
+        fields = [ 'name']
+        
+        
+class ShopAlbumDeckFilter(django_filters.FilterSet):
+    name =  django_filters.CharFilter(lookup_expr='icontains')
+    user =  django_filters.CharFilter(field_name='user__username',lookup_expr='icontains')
+    
+
+    class Meta:
+        model = AlbumDecks
+        fields = [ 'name', 'user',]

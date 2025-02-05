@@ -8477,6 +8477,14 @@ textarea:focus-visible {
   max-height: 14rem;
 }
 
+.min-h-32 {
+  min-height: 8rem;
+}
+
+.min-h-40 {
+  min-height: 10rem;
+}
+
 .\!w-2\.5 {
   width: 0.625rem !important;
 }
@@ -8520,6 +8528,10 @@ textarea:focus-visible {
 
 .w-full {
   width: 100%;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .min-w-28 {
