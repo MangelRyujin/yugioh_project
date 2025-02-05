@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.card.models import AlbumDecks
+from apps.card.models import AlbumDecks, AlbumDecksCard
 from django.db.models import Q
 
 from utils.methods import _get_paginator
@@ -22,3 +22,20 @@ def _show_decks(request):
             ).distinct()
         decks=decks_search
     return _get_paginator(request,decks)
+
+
+def shop_card(request):
+    return render(request, 'shop/index.html', context=_show_cards(request))
+
+
+def cards_search_result(request):
+    return render(request, 'shop/partials/cards_list.html', context=_show_cards(request))
+
+
+def _show_cards(request,pk):
+    cards = AlbumDecksCard.objects.all()
+    if request.method == 'POST':
+        keywords = request.POST.get('keywords', '')
+        cards_search = cards.filter( Q(name__icontains = keywords) ).distinct()
+        cards=cards_search
+    return _get_paginator(request,cards)
