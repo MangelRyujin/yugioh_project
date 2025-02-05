@@ -88,10 +88,12 @@ def update_deck_profile(request,pk):
         "deck":deck,
     }
     if request.POST:
+        
         form=UpdateAlbumDecksForm(request.POST,request.FILES,instance=deck)
         if form.is_valid():
             form.save()
             context['message']="Deck editado con éxito"
             context['form']=form
- 
+        else:
+            print(form)
     return render(request,'components/deck/detail/deck/deck_perfil.html',context)
