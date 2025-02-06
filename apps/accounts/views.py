@@ -12,6 +12,8 @@ from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 
+from apps.card.models import Album
+
 # Create your views here.
 
 @user_is_not_authenticated
@@ -39,6 +41,10 @@ def register_view(request):
     if request.method == 'POST':
         if form.is_valid():
             user = form.save()
+            Album.objects.create(
+                user=user,
+                name=f"Album {user.username}"
+            )
             login(request, user)
             return redirect('/')
             
