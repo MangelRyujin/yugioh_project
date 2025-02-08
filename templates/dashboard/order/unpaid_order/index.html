@@ -78,33 +78,40 @@
             </tr>
           </thead>
           <tbody>
+            {% for item in items %}
             <tr class="hover">
               
               
               <td class="text-nowrap text-xs tooltip mt-1.5">
                 <div class="tooltip-toggle " aria-label="Tooltip">
-                  Blue-Eyes White Dragon
+                  {{item.item.name}}
                 </div>
-                
-                <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible [--trigger:click]" role="tooltip">
-                  <span class="">
-                    <div class="tooltip-body flex flex-col items-start pe-4">
-                      <span class=" font-medium">Blue-Eyes White Dragon</span>
-                      <span class="text-xs">TCG</span>
-                      <span class="text-xs">Expanción: BTX-9021031</span>
-                      <span class="text-xs">Rareza: Secret rare</span>
-                      <span class="text-xs">$ 25.34</span>
-                    </div>
+                {% if item.type == '1' %}
+                  <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible [--trigger:click]" role="tooltip">
+                  
+                      <div class="tooltip-body flex flex-col items-start pe-4">
+                        <span class=" font-medium">{{item.item.name}}</span>
+                        <span class="text-xs">{{item.item.version}}</span>
+                        <span class="text-xs">Expanción: {{item.item.expantion}}</span>
+                        <span class="text-xs">Rareza: {{item.item.type}}</span>
+                        <span class="text-xs">$ {{item.item.price}} USD</span>
+                      </div>
+
                   </span>
-                  
-                </span>
+                {% endif %} 
              </td>
-              <td class="text-nowrap text-xs">Mangel</td>
-              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td class="text-xs">3</td>
-              <td class="text-xs">$999</td>
+              <td class="text-nowrap text-xs">{{item.customer.username}}</td>
+              <td class="text-nowrap text-xs">
+                {% if item.customer.phone_number %}
+                <a href="https://wa.me/{{item.customer.phone_number}}" class="cursor-pointer link-animated">{{item.customer.phone_number}}</a>
+                {% else %}
+                No asignado
+                {% endif %}
+              </td>
+              <td class="text-xs">{{item.cant}}</td>
+              <td class="text-xs">$ {{item.price}} USD</td>
               
-              <td><span class="badge badge-soft badge-primary badge-sm">Carta</span></td>
+              <td><span class="badge badge-soft {% if item.type == '1' %} badge-primary {% else %} badge-accent{% endif %} badge-sm">{% if item.type == '1' %}Carta {% else %} Deck{% endif %}</span></td>
               <td>
                 <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
                   
@@ -116,46 +123,7 @@
                 </button>
               </td>
             </tr>
-            <tr class="hover ">
-              
-              <td class="text-nowrap text-xs">Forros negros</td>
-              <td class="text-nowrap text-xs">Fidel</td>
-              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td class="text-xs">2</td>
-              <td class="text-xs">$899</td>
-              <td><span class="badge badge-soft badge-info badge-sm ">Forro</span></td>
-              <td>
-                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
-                  
-                  <span class="icon-[tabler--check] size-5"></span>
-                </button>
-                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
-                  
-                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
-                </button>
-              </td>
-            </tr>
-            <tr class="hover">
-              
-              <td class="text-nowrap text-xs">Playmat Elemental Hero</td>
-              <td class="text-nowrap text-xs">Victor</td>
-              <td class="text-nowrap text-xs"><a href="https://wa.me/55193484" class="cursor-pointer link-animated">55193484</a></td>
-              <td class="text-xs">1</td>
-              <td class="text-xs">$399</td>
-              <td><span class="badge badge-soft badge-success badge-sm">Playmat</span></td>
-              <td>
-                <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
-                  
-                  <span class="icon-[tabler--check] size-5"></span>
-                </button>
-                <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
-                  
-                  <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
-                </button>
-                
-              </td>
-            </tr>
-            
+            {% endfor %}
           </tbody>
         </table>
       </div>

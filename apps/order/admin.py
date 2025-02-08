@@ -6,10 +6,10 @@ from apps.order.models import *
 
 # admin.site.register(Order)
 
-# @admin.register(Item)
-# class ItemAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'customer', 'seller','create_date_at', 'create_time_at','price','cant']
-#     list_per_page = 100
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ['id', 'customer', 'seller','create_date_at', 'create_time_at','price','cant']
+    list_per_page = 100
     
 
 class ItemInline(admin.TabularInline):

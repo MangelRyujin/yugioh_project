@@ -24,7 +24,12 @@ class Item(models.Model):
         ('1',"Procesando"),
         ('2',"Pagada"),
     )
+    TYPE_CARD = (
+        ('1',"Carta"),
+        ('2',"Deck"),
+    )
     state = models.CharField(max_length=1, choices=STATE_CARD, default='1') 
+    type = models.CharField(max_length=1, choices=TYPE_CARD, default='1') 
     delivery = models.BooleanField(default=False)
     create_date_at = models.DateField(auto_now=True)
     create_time_at = models.TimeField(auto_now=True)
