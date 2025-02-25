@@ -22,9 +22,9 @@
                         <p class="text-base-content text-xs sm:text-sm">
                             Total de cartas: {{ deck.total_cards }}
                         </p>
-                        <a href="https://wa.me/{{ deck.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: {{ deck.user.username }} <span class="text-success icon-[tabler--brand-whatsapp] size-4"></span>
-                        </a>
+                        <p class="w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
+                            Vendedor: {{ deck.user.username }}
+                        </p>
                 
                         <p class="text-base-content text-xs sm:text-sm">
                             Precio: $ {{ deck.price }} USD
@@ -34,6 +34,9 @@
                         {% include "components/cart/deck_cart_btn.html" %}
                         <a href="{% url "shop_deck_card" pk=deck.pk %}" class="btn btn-soft btn-info btn-sm">
                             <span class="icon-[tabler--eye] size-5"></span>
+                        </a>
+                        <a href="https://wa.me/{{ deck.user.phone_number }}" class="btn btn-soft btn-success btn-sm">
+                            <span class="icon-[tabler--brand-whatsapp] size-5"></span>
                         </a>
                     </div>
                 </div>
