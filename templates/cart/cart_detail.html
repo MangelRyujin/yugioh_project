@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <ul>
+        {% for item in cart.items.all %}
+            <li>
+                {{ item.quantity }} x {{ item.content_object.name }} - ${{ item.get_total_price }}
+                <a href="{% url 'increase_quantity' item.content_type.id item.object_id %}">+</a>
+                <a href="{% url 'decrease_quantity' item.content_type.id item.object_id %}">-</a>
+                <a href="{% url 'remove_from_cart' item.content_type.id item.object_id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ cart.get_total_price }}</p>
+    <a href="{% url 'clear_cart' %}">Limpiar Carrito</a>
+</body>
+</html>
