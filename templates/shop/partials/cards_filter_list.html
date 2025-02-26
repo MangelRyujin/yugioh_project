@@ -90,7 +90,7 @@
               <div class="col-span-1" id="monster-type-container" style="display: none;">
                 <label class="label label-text" for="monster_type">Tipo:</label>
                 <div class="input-group">
-                  <select class="select select-sm" name='frameType' id="monster_type">
+                  <select class="select select-sm" name='frameType' id="monster_type" onchange="toggleDivs()">
                     <option value="" selected>-- Tipo --</option>
                     <option value="normal">Normal</option>
                     <option value="effect">Effect</option>
@@ -102,6 +102,32 @@
                     <option value="link">Link</option>
                   </select>
                   <label class="sr-only" for="monster_type">Tipo</label>
+                </div>
+              </div>
+
+              <div class="col-span-1" id="monster-scale-container" style="display: none;">
+                <label class="label label-text" for="scale">Escala:</label>
+                <div class="input-group">
+                  <input type="number" class="input grow input-sm" min="1" max="12" placeholder="1" step="1" name="scale" id="scale">
+                  <label class="sr-only" for="scale">Escala</label>
+                </div>
+              </div>
+
+              <div class="col-span-1" id="monster-link-arrows-container" style="display: none;">
+                <label class="label label-text" for="monster-link-arrows">Link Arrows</label>
+                <div class="input-group">
+                  <select class="select select-sm" name='frameType' id="monster-link-arrows" multiple>
+                    <option value="" selected>-- Link Arrows --</option>
+                    <option value="Top-Left">Top-Left</option>
+                    <option value="Top">Top</option>
+                    <option value="Top-Right">Top-Right</option>
+                    <option value="Left">Left</option>
+                    <option value="Right">Right</option>
+                    <option value="Bottom-Left">Bottom-Left</option>
+                    <option value="Bottom">Bottom</option>
+                    <option value="Bottom-Right">Bottom-Right</option>
+                  </select>
+                  <label class="sr-only" for="monster-link-arrows">Link Arrows</label>
                 </div>
               </div>
               
@@ -210,6 +236,8 @@
       const cardAttributeContainer = document.getElementById('attribute-container');
       const cardAttribute = document.getElementById('card_attribute');
       const monsterTypeContainer = document.getElementById('monster-type-container');
+      const monsterPendulumScale = document.getElementById('monster-scale-container');
+      const monsterLinkArrows = document.getElementById('monster-link-arrows-container');
       const spellTypeContainer = document.getElementById('spell-type-container');
       const trapTypeContainer = document.getElementById('trap-type-container');
 
@@ -230,6 +258,9 @@
           trapTypeContainer.style.display = 'none';
           cardAttributeContainer.style.display = 'none';
           monsterTypeContainer.style.display = 'none';
+          monsterPendulumScale.style.display = 'none';
+          monsterLinkArrows.style.display = 'none';
+          
     
           // Clear attributes
           cardAttribute.innerHTML = '';
@@ -253,6 +284,8 @@
       const cardAttributeContainer = document.getElementById('attribute-container');
       const cardAttribute = document.getElementById('card_attribute');
       const monsterTypeContainer = document.getElementById('monster-type-container');
+      const monsterPendulumScale = document.getElementById('monster-scale-container');
+      const monsterLinkArrows = document.getElementById('monster-link-arrows-container');
       const spellTypeContainer = document.getElementById('spell-type-container');
       const trapTypeContainer = document.getElementById('trap-type-container');
 
@@ -284,6 +317,8 @@
         trapTypeContainer.style.display = 'none';
         cardAttributeContainer.style.display = 'none';
         monsterTypeContainer.style.display = 'none';
+        monsterPendulumScale.style.display = 'none';
+        monsterLinkArrows.style.display = 'none';
 
         // Clear attributes
         cardAttribute.innerHTML = '';
@@ -295,6 +330,8 @@
         trapTypeContainer.style.display = 'block';
         cardAttributeContainer.style.display = 'none';
         monsterTypeContainer.style.display = 'none';
+        monsterPendulumScale.style.display = 'none';
+        monsterLinkArrows.style.display = 'none';
 
         // Clear attributes
         cardAttribute.innerHTML = '';
@@ -306,9 +343,33 @@
         trapTypeContainer.style.display = 'none';
         cardAttributeContainer.style.display = 'none';
         monsterTypeContainer.style.display = 'none';
+        monsterPendulumScale.style.display = 'none';
+        monsterLinkArrows.style.display = 'none';
+        
 
         // Clear attributes
         cardAttribute.innerHTML = '';
       }
+    }
+  </script>
+
+  <script>
+    function toggleDivs() {
+        var select = document.getElementById("monster_type");
+        var escalaDiv = document.getElementById("monster-scale-container");
+        var linkArrowsDiv = document.getElementById("monster-link-arrows-container");
+        //console.log(select);
+        console.log(linkArrowsDiv);
+        if (select.value === "pendulum") {
+          escalaDiv.style.display = "block";
+          linkArrowsDiv.style.display = "none";
+      } else if (select.value === "link") {
+          escalaDiv.style.display = "none";
+          linkArrowsDiv.style.display = "block";
+      } else {
+          escalaDiv.style.display = "none";
+          linkArrowsDiv.style.display = "none";
+      }
+        
     }
   </script>
