@@ -5,18 +5,31 @@
       <ul class="space-y-4">
         {% for item in cart.items.all %}
           <li class="flex items-center space-x-4">
-            <img src="{{ item.content_object.card_images.image_url_small }}" width="50" height="50" alt="{{ item.content_object.name }}" class="object-cover">
+            <img src="{{ item.content_object.card_images.image_url_small }}" width="100" height="100" alt="{{ item.content_object.name }}" class="object-cover">
             <div class="flex flex-col">
               <span class="font-medium">{{ item.content_object.name }}</span>
               <span class="text-sm text-gray-500">${{ item.get_total_price }}</span>
             </div>
             <div class="flex items-center space-x-2">
-              <a href="{% url 'increase_quantity' item.content_type.id item.object_id %}" class="text-green-500 hover:text-green-700">+</a>
+              <div class="input-group max-w-32" data-input-number>
+                <span class="input-group-text gap-3">
+                  <a href="{% url 'decrease_quantity' item.content_type.id item.object_id %}" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Decrement button" data-input-number-decrement>
+                    <span class="icon-[tabler--minus] size-3.5 flex-shrink-0"></span>
+                  </a>
+                </span>
+                <input class="input text-center" id="number-input-mini" type="text" value="0" data-input-number-input />
+                <span class="input-group-text gap-3">
+                  <a href="{% url 'increase_quantity' item.content_type.id item.object_id %}" class="btn btn-primary btn-soft size-[22px] rounded min-h-0 p-0" aria-label="Increment button" data-input-number-increment>
+                    <span class="icon-[tabler--plus] size-3.5 flex-shrink-0"></span>
+                  </a>
+                </span>
+              </div>
               <input type="number" value="{{ item.quantity }}" class="w-12 text-center border rounded">
-              <a href="{% url 'decrease_quantity' item.content_type.id item.object_id %}" class="text-red-500 hover:text-red-700">-</a>
-              <a href="{% url 'remove_from_cart' item.content_type.id item.object_id %}" class="text-gray-500 hover:text-gray-700">Eliminar</a>
             </div>
+
+            <label class="label label-text" for="number-input-mini">Quantity:</label>
           </li>
+          
         {% endfor %}
       </ul>
     </div>
