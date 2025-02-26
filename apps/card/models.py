@@ -79,7 +79,6 @@ class AlbumCard(AbstractCard):
     price = models.FloatField(blank=False, null=False, default=0.00)
     album = models.ForeignKey(Album, related_name='cards', on_delete=models.CASCADE)
     
-    
     class Meta:
         verbose_name = "AlbumCard"
         verbose_name_plural = "AlbumCards"

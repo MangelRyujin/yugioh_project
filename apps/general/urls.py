@@ -9,6 +9,7 @@ urlpatterns = [
     path('', home, name='index'), 
     path('precios/', pricing, name='pricing'),
     path('tienda/', include('apps.shop.urls.shop_urls')),
+    path('carrito/', include('apps.shop.urls.cart_urls')),  # incluye las urls del carrito de compras
     path('mi_compra/', include('apps.shop.urls.cart_urls')),
     
 ]

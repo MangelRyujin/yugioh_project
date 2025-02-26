@@ -1,36 +1,26 @@
-{% load static %}
-<div class="max-w-screen-xl  grid  mx-auto space-y-12 lg:space-y-20  lg:px-6  ">
-  <!-- Row -->
-  
-  <div class="items-start   gap-8  grid grid-cols-1 md:grid-cols-2 xl:gap-6 ">
-      <div class="text-center  sm:text-lg   ">
-          <h2 class="mb-4 text-3xl font-extrabold tracking-tight  ">Mis pedidos</h2>
-          <p class=" font-normal">Gestione sus pedidos de  <span class="bg-gradient-to-r bg-clip-text  text-transparent 
-      from-indigo-500 via-purple-500 to-indigo-500
-      animate-text text-xl font-bold text-nowrap">YU-GI-OH</span></p>
-          <!-- List -->
-          <div class="flex justify-center ">
-            
-            <img loading="lazy" src="{% static "img/box-card.png" %}" width="250" height="250" class="cover-image waves active:motion-preset-confetti motion-duration-700" />
-            
-        </div>
-          
-      </div>
-     
-      <div class="w-full h-full flex justify-center items-center mb-12">
-        {% if cart %}
-        {% else %}
-        <div class="flex-col text-center "> 
-          <span class="icon-[tabler--question-mark] size-20"></span>
-          <h2>No se encuentran resultados</h2>
-          
-        </div>
-        {% endif %}
-        
-      
-      </div>
-  
-  </div>
- 
+<div class="w-full h-full flex flex-col mb-12">
+  <h1 class="text-2xl font-bold mb-4">Carrito de Compras</h1>
+  {% if cart.items.exists %}
+    <div class="flex flex-col space-y-4">
+      <ul class="space-y-4">
+        {% for item in cart.items.all %}
+          <li class="flex items-center space-x-4">
+            <img src="{{ item.content_object.card_images.image_url_small }}" width="50" height="50" alt="{{ item.content_object.name }}" class="object-cover">
+            <div class="flex flex-col">
+              <span class="font-medium">{{ item.content_object.name }}</span>
+              <span class="text-sm text-gray-500">${{ item.get_total_price }}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="{% url 'increase_quantity' item.content_type.id item.object_id %}" class="text-green-500 hover:text-green-700">+</a>
+              <input type="number" value="{{ item.quantity }}" class="w-12 text-center border rounded">
+              <a href="{% url 'decrease_quantity' item.content_type.id item.object_id %}" class="text-red-500 hover:text-red-700">-</a>
+              <a href="{% url 'remove_from_cart' item.content_type.id item.object_id %}" class="text-gray-500 hover:text-gray-700">Eliminar</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="text-gray-500">Tu carrito está vacío.</p>
+  {% endif %}
 </div>
-
