@@ -20,9 +20,9 @@
                         <p class="text-base-content text-xs sm:text-sm">
                             Cantidad: {{ album_card.stock }} unidades
                         </p>
-                        <a href="https://wa.me/{{ album_card.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: {{ album_card.album.user.username }} <span class="text-success icon-[tabler--brand-whatsapp] size-4"></span>
-                        </a>
+                        <p href="https://wa.me/{{ album_card.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
+                            Vendedor: {{ album_card.album.user.username }}
+                        </p>
                         <p class="text-base-content text-xs sm:text-sm">
                             Expanción: {{ album_card.expantion }}
                         </p>
@@ -42,7 +42,7 @@
                             {% endif %}
                         </p>
                         <p class="text-base-content text-xs sm:text-sm">
-                            Precio: ${{ album_card.price }}
+                            Precio: $ {{ album_card.price }} USD
                         </p>
                     </div>
                     <div class="flex justify-end gap-3 w-full mt-2">
@@ -51,6 +51,9 @@
                         </button>
                         <a href="#" class="btn btn-soft btn-info btn-sm">
                             <span class="icon-[tabler--eye] size-5"></span>
+                        </a>
+                        <a href="https://wa.me/{{ album_card.album.user.phone_number }}" class="btn btn-soft btn-success btn-sm">
+                            <span class="icon-[tabler--brand-whatsapp] size-5"></span>
                         </a>
                     </div>
                 </div>

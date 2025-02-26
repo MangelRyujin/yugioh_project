@@ -12,5 +12,6 @@ urlpatterns = [
     #Decks
     path('deck/', shop_deck, name='shop_deck'),
     path('deck-search-results/', decks_search_result, name='decks_search_result'),
- 
+    path('deck/<int:pk>', shop_deck_card, name='shop_deck_card'),
+    path('deck-card-search/<int:pk>', shop_deck_cards_search_result, name='shop_deck_cards_search_result'),
 ]

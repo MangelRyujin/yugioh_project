@@ -1,0 +1,51 @@
+{% if cards %}
+    {% for card in cards %}
+        <div class="mb-6">
+            <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-start w-full items-start gap-3 relative">
+                <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
+                    {% if card.version == 'TCG' %}
+                        TCG
+                    {% else %}
+                        OCG
+                    {% endif %}
+                </span>
+                <div>
+                    <img src="{{ card.deck_card_images.image_url_small }}" width="150" height="150" alt="{{card.name}}" class="object-cover">
+                </div>
+                <div class="w-full flex flex-col justify-between h-full gap-3">
+                    <div class="flex flex-col gap-2">
+                        <p class=" text-sm md:text-md lg:text-lg {% if card.type == 'Spell Card' %}text-success/60 {% else %}{% if card.type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}   font-bold">
+                            {{ card.name }}
+                        </p>
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Cantidad: {{ card.stock }} unidades
+                        </p>
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Expanción: {{ card.expantion }}
+                        </p>
+                        
+                        <p class="text-base-content text-xs sm:text-sm">
+                            Rareza: 
+                            {% if card.rarity == '1' %}
+                                Común
+                            {% elif card.rarity == '2' %}
+                                Rare
+                            {% elif card.rarity == '3' %}
+                                Super rare
+                            {% elif card.rarity == '4' %}
+                                Ultra rare
+                            {% elif card.rarity == '5' %}
+                                Secret rare
+                            {% endif %}
+                        </p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% else %}
+    <h1>NO HAY RESULTADOS</h1>
+{% endif %}

@@ -9,19 +9,15 @@ from utils.methods import _get_paginator
 
 
 
-@login_required(login_url='/login/')
 def shop(request):
     return render(request, 'shop/shop.html')
 
-@login_required(login_url='/login/')
 def shop_card(request):
     return render(request, 'shop/index.html', context=_show_cards(request))
 
-@login_required(login_url='/login/')
 def cards_search_result(request):
     return render(request, 'shop/partials/cards_list.html', context=_show_cards(request))
 
-@login_required(login_url='/login/')
 def cards_filter_result(request):
     return render(request, 'shop/partials/cards_list.html', context=_show_cards_filter(request))
 

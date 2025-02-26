@@ -3,14 +3,11 @@
 {% load static %}
 {% csrf_token %}
     <!-- Barra de Busqueda con Filtro -->
-    <button type="button" id="show-modal" class="fixed end-0 bottom-0 me-3 mb-3 shadow-md btn btn-gradient border-primary px-2 border-2 btn-primary wave btn-text max-sm:btn-square z-50"     
-    aria-haspopup="dialog" 
-    aria-expanded="false" 
-    aria-controls="add-filter-modal" 
-    data-overlay="#add-filter-modal" >
-        <span class="icon-[tabler--filter] size-6 "></span>
-    </button>
-    <div class="grid grid-cols-1 mb-4 ">
+    
+    <div class="flex justify-between gap-5 mb-4 ">
+        <a href="{% url "shop"  %}" class="btn btn-square btn-gradient btn-primary ">
+            <span class="icon-[tabler--arrow-back-up] size-6"></span>
+          </a>
         <div class="input-group bg-transparent max-w-sm ">
             <span class="input-group-text">
             <span class="icon-[tabler--search] text-base-content/80 size-6"></span>

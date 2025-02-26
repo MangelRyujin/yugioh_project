@@ -14,7 +14,7 @@ Follow the steps below to install the app in your corresponding environment
 
 ```
 # Clone git repo in your path
-git clone https://github.com/MangelRyujin/yugioh_project.git
+git clone https://github.com/Remiux/remiux_backend.git
       
 ```
 

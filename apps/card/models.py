@@ -100,7 +100,7 @@ class AlbumDecks(models.Model):
     price = models.FloatField(validators=[MinValueValidator(0)], default=1)
     description =  models.TextField()
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="album_deck_user")
-    image= models.ImageField(upload_to="AlbumDeck",null=True)
+    image= models.ImageField(upload_to="AlbumDeck",null=True, blank=True)
     is_active=models.BooleanField(default=False)
     
     class Meta:

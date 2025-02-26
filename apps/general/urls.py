@@ -9,4 +9,6 @@ urlpatterns = [
     path('', home, name='index'), 
     path('precios/', pricing, name='pricing'),
     path('tienda/', include('apps.shop.urls.shop_urls')),
+    path('mi_compra/', include('apps.shop.urls.cart_urls')),
+    
 ]
