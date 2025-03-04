@@ -24,7 +24,8 @@
             name="keywords" 
             hx-post="{% url 'cards_search_result' %}" 
             hx-trigger="input changed, delay:500ms" 
-            hx-target="#search-results" hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
+            hx-target="#search-results" 
+            hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
             hx-indicator="#spinerSearchAllMyAlbumCards"/>
             <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
             <label class="sr-only" for="kbdInput3">Buscar</label>
@@ -32,7 +33,7 @@
     </div>   
 
     <!-- Listado de Cartas en Venta -->
-    <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-7 mb-12 w-full">
+    <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-7 mb-12 w-full ">
         {% include "shop/partials/cards_list.html" %}
     </div>
     {% include "shop/partials/cards_filter_list.html" %}

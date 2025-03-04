@@ -65,7 +65,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries': {
-                'card_exist': 'apps.card.templatetags.custom_tags'
+                'card_exist': 'apps.card.templatetags.custom_tags',
+                'card_in_cart' : 'apps.shop.templatetags.card_in_cart',
+                'quantity_card_in_cart':'apps.shop.templatetags.card_in_cart'
             },
         },
     },
@@ -153,6 +155,9 @@ LOGIN_REDIRECT_URL = '/'
 # User Model
 AUTH_USER_MODEL = 'accounts.User'
 
+
+# Cart
+CART_SESSION_ID = 'cart'
 
 # EMAIL configs
 EMAIL_BACKEND = config('EMAIL_BACKEND',default='django.core.mail.backends.smtp.EmailBackend')

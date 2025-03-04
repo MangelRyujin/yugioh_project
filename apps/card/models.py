@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from apps.accounts.models import User
+from apps.shop.cart_instance import Cart
 
 # Create your models here.
 
@@ -50,6 +51,28 @@ class AbstractCard(models.Model):
     
     class Meta:
         abstract = True
+        
+    @property
+    def get_rarity(self):
+        if self.rarity == '1':
+            return 'Comun'
+        if self.rarity == '2':
+            return 'Rare'
+        if self.rarity == '3':
+            return 'Super rare'
+        if self.rarity == '4':
+            return 'Ultra rare'
+        if self.rarity == '5':
+            return 'Secret rare'
+    
+    @property
+    def get_version(self):
+        if self.version == '1':
+            return 'TCG'
+        if self.version == '2':
+            return 'OCG'
+        
+    
 
 class AbstractCardImage(models.Model):
     image_url = models.URLField()
@@ -79,13 +102,12 @@ class AlbumCard(AbstractCard):
     price = models.FloatField(blank=False, null=False, default=0.00)
     album = models.ForeignKey(Album, related_name='cards', on_delete=models.CASCADE)
     
-    
     class Meta:
         verbose_name = "AlbumCard"
         verbose_name_plural = "AlbumCards"
 
     def __str__(self):
-        return str(self.konami_id)    
+        return str(self.konami_id)
 
 class CardImage(AbstractCardImage):
     card = models.OneToOneField(AlbumCard, related_name='card_images', on_delete=models.CASCADE)

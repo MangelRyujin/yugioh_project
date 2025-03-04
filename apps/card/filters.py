@@ -15,6 +15,8 @@ class AlbumCardFilter(django_filters.FilterSet):
     attribute = django_filters.CharFilter(method='filter_attribute')
     archetype = django_filters.CharFilter(lookup_expr='icontains')
     race = django_filters.CharFilter(lookup_expr='exact')
+    #scale = django_filters.NumberFilter(field_name='scale', lookup_expr='exact')
+    
     RARITY_MAP = {key: value for key, value in AlbumCard.RARITY_CARD}
     VERSION_MAP = {key: value for key, value in AlbumCard.VERSION_CARD}
     ATTRIBUTE_MAP = {key: value for key, value in AlbumCard.ATTRIBUTE_CARD}
