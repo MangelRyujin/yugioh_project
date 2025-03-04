@@ -14,17 +14,17 @@
                 </div>
                 <div class="w-full flex flex-col justify-between h-full gap-3">
                     <div class="flex flex-col gap-2">
-                        <p class=" text-sm md:text-md lg:text-lg {% if card.type == 'Spell Card' %}text-success/60 {% else %}{% if card.type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}   font-bold">
+                        <p class="link link-animated w-fit  text-sm md:text-md lg:text-lg {% if card.type == 'Spell Card' %}text-success/60 {% else %}{% if card.type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}   font-bold">
                             {{ card.name }}
                         </p>
-                        <p class="text-base-content text-xs sm:text-sm">
+                        <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
                             Cantidad: {{ card.stock }} unidades
                         </p>
-                        <p class="text-base-content text-xs sm:text-sm">
+                        <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
                             Expanción: {{ card.expantion }}
                         </p>
                         
-                        <p class="text-base-content text-xs sm:text-sm">
+                        <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
                             Rareza: 
                             {% if card.rarity == '1' %}
                                 Común

@@ -25,7 +25,6 @@ def _show_decks(request):
 
 
 def shop_deck_card(request,pk):
-    print(_show_shop_deck_cards(request,pk))
     return render(request, 'shop/deck/detail.html', context=_show_shop_deck_cards(request,pk))
 
 

@@ -1,0 +1,56 @@
+
+{% if album_card %}
+    <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-start w-full items-start gap-3 relative" 
+    id="ShopAlbumCard{{album_card.pk}}">
+        <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
+            {% if album_card.version == 'TCG' %}
+                TCG
+            {% else %}
+                OCG
+            {% endif %}
+        </span>
+        <div>
+            <img src="{{ album_card.card_images.image_url_small }}" width="150" height="150" alt="{{album_card.name}}" class="object-cover">
+        </div>
+        <div class="w-full flex flex-col justify-between h-full gap-3">
+            <div class="flex flex-col gap-2">
+                <p class="link link-animated w-fit text-sm md:text-md lg:text-lg {% if album_card.type == 'Spell Card' %}text-success/60 {% else %}{% if album_card.type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}   font-bold">
+                    {{ album_card.name }}
+                </p>
+                <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
+                    Cantidad: {{ album_card.stock }} unidades
+                </p>
+                <p href="https://wa.me/{{ album_card.album.user.phone_number }}" class="link link-animated w-fit text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
+                    Vendedor: {{ album_card.album.user.username }}
+                </p>
+                <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
+                    Expanción: {{ album_card.expantion }}
+                </p>
+                <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
+                    Rareza: 
+                    {% if album_card.rarity == '1' %}
+                        Común
+                    {% elif album_card.rarity == '2' %}
+                        Rare
+                    {% elif album_card.rarity == '3' %}
+                        Super rare
+                    {% elif album_card.rarity == '4' %}
+                        Ultra rare
+                    {% elif album_card.rarity == '5' %}
+                        Secret rare
+                    {% endif %}
+                </p>
+                <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
+                    Precio: $ {{ album_card.price }} USD
+                </p>
+            </div>
+            <div class="flex justify-end gap-3 w-full mt-2">
+                {% include "components/cart/card/index.html" %}
+                
+                <a href="https://wa.me/{{ album_card.album.user.phone_number }}" class="btn btn-soft btn-success btn-sm">
+                    <span class="icon-[tabler--brand-whatsapp] size-5"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
