@@ -1,32 +1,66 @@
-<li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full">
-    <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
-      {% if album_card.version == 'TCG' %}
-          TCG
-      {% else %}
-          OCG
-      {% endif %}
+<li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
+  <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
+    {% if album_card.version == 'TCG' %}
+        TCG
+    {% else %}
+        OCG
+    {% endif %}
   </span>
-    <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
-    <div class="flex flex-col gap-1 w-full">
-      <span class="font-medium
-      {% if item.product_type == 'Spell Card' %}text-success/60 {% else %}{% if item.product_type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}
-      ">{{ item.product_name }}</span>
-      
-      <span class="text-sm">Rareza: {{item.product_rarity}}</span>
-      
-      <span class="text-sm">Expanción: {{item.product_expantion}}</span>
-      <span class="text-sm">Precio: $ {{item.price}} USD</span>
-      <div class="w-full justify-end items-center mt-2 flex gap-2 ">
+  <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
+  <div class="flex flex-col gap-1 w-full">
+    <span class="font-medium
+    {% if item.product_type == 'Spell Card' %}text-success/60 {% else %}{% if item.product_type == 'Trap Card' %}text-error/80{% else %}text-warning/70 {% endif %}{% endif %}
+    ">{{ item.product_name }}</span>
+    
+    <span class="text-sm">Rareza: {{item.product_rarity}}</span>
+    
+    <span class="text-sm">Expanción: {{item.product_expantion}}</span>
+    <span class="text-sm">Precio: $ {{item.price}} USD</span>
+    <div class="w-full justify-end items-center mt-2 flex gap-2 ">
 
-         
-          <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
-      
-          <span class="">{{item.cant}}</span>
-   
+      <a href="{% url 'increment_cart_item' item.pk 'card' %}" class="increment-btn" data-item-id="{{ item.pk }}"> 
+        <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
+       </a>
+        
+      <span class="item-cant" id="item-cant-{{ item.pk }}">{{item.cant}}</span>
+
+      <a href="{% url 'decrement_cart_item' item.pk 'card' %}" class="decrement-btn" data-item-id="{{ item.pk }}">
           <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
-          
-          <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
+      </a>
+        
+      <a href="{% url 'remove_cart_item' item.pk 'card' %}" class="remove-btn" data-item-id="{{ item.pk }}">
+        <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
+      </a>
       
-      </div>
     </div>
-  </li>
+  </div>
+</li>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.increment-btn, .decrement-btn, .remove-btn').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        fetch(button.href, {
+          method: 'GET',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            const itemId = button.getAttribute('data-item-id');
+            const itemElement = document.getElementById(`item-${itemId}`);
+            const itemCantElement = document.getElementById(`item-cant-${itemId}`);
+            itemCantElement.textContent = data.new_quantity;
+            console.log(`Nueva cantidad de la carta: ${data.new_quantity}`);
+            if (data.new_quantity === 0) {
+              itemElement.remove();
+            }
+          }
+        });
+      });
+    });
+  });
+</script>

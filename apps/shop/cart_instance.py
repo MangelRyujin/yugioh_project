@@ -47,20 +47,22 @@ class Cart:
         self.save()
         return True
     
-    def increment(self,product):
+    def increment(self, product):
         product_id = str(product.id)
         if product_id not in self.cart.keys():
-                self.cart[product_id] = {
-                    'pk':product.pk,
-                    'cant': 1,
-                    'price': float(round((product.price - (product.price*product.discount)/100),2)),
-                    'product_name': product.name,
-                    'product_image': product.image_one.url,
-                    'message':'',
-                    }
+            self.cart[product_id] = {
+                'pk': product.pk,
+                'cant': 1,
+                'price': float(round(product.price, 2)),
+                'product_name': product.name,
+                'product_image': getattr(product, 'image_one', None).url if hasattr(product, 'image_one') else '',
+                'message': '',
+            }
         else:
-                self.cart[product_id]['cant'] = self.cart[product_id]['cant'] + 1
-                self.cart[product_id]['price'] = float(round((product.price - (product.price*product.discount)/100) * self.cart[product_id]['cant'],2))
+            self.cart[product_id]['cant'] += 1
+            print(self.cart[product_id]['cant'])
+            
+            self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
         self.save()
         return True
     
@@ -70,7 +72,8 @@ class Cart:
                 self.remove(product)
         else:
                 self.cart[product_id]['cant'] = self.cart[product_id]['cant'] -1
-                self.cart[product_id]['price'] = float(round((product.price - (product.price*product.discount)/100) * self.cart[product_id]['cant'],2))
+                print(self.cart[product_id]['cant'])
+                self.cart[product_id]['price'] = float(round((product.price - (product.price)/100) * self.cart[product_id]['cant'],2))
         self.save()
         return True
     
