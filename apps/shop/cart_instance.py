@@ -60,28 +60,28 @@ class Cart:
             }
         else:
             self.cart[product_id]['cant'] += 1
-            print(self.cart[product_id]['cant'])
+            print(self.cart[product_id]['cant']) 
+            
             
             self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
         self.save()
         return True
     
-    def decrement(self,product):
-        product_id = str(product.id)
-        if self.cart[product_id]['cant'] == 1:
-                self.remove(product)
-        else:
-                self.cart[product_id]['cant'] = self.cart[product_id]['cant'] -1
-                print(self.cart[product_id]['cant'])
-                self.cart[product_id]['price'] = float(round((product.price - (product.price)/100) * self.cart[product_id]['cant'],2))
-        self.save()
-        return True
-    
+    def decrement(self, product):
+        product_id = f"card{str(product.id)}"
+        if product_id in self.cart:
+            self.cart[product_id]['cant'] -= 1
+            if self.cart[product_id]['cant'] <= 0:
+                self.remove(product, 'card')
+            else:
+                self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
+            self.save()
+            return True
+        return False
 
-        
-    def remove(self, product,object):
-         product_id = f"{object}{str(product.id)}"
-         if product_id in self.cart:
+    def remove(self, product, object):
+        product_id = f"{object}{str(product.id)}"
+        if product_id in self.cart:
             del self.cart[product_id]
             self.save()
     

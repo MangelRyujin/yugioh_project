@@ -18,49 +18,20 @@
     <span class="text-sm">Precio: $ {{item.price}} USD</span>
     <div class="w-full justify-end items-center mt-2 flex gap-2 ">
 
-      <a href="{% url 'increment_cart_item' item.pk 'card' %}" class="increment-btn" data-item-id="{{ item.pk }}"> 
+      <a href="{% url 'increment_cart_item' item.pk 'card' %}" class="increment-btn" hx-get="{% url 'increment_cart_item' item.pk 'card' %}" hx-target="#item-cant-{{ item.pk }}" hx-swap="outerHTML"> 
         <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
        </a>
-        
-      <span class="item-cant" id="item-cant-{{ item.pk }}">{{item.cant}}</span>
+       
+      {% include "components/cart/card/partials/item_cant.html" %}
 
-      <a href="{% url 'decrement_cart_item' item.pk 'card' %}" class="decrement-btn" data-item-id="{{ item.pk }}">
-          <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
+      <a href="{% url 'decrement_cart_item' item.pk 'card' %}" class="decrement-btn" hx-get="{% url 'decrement_cart_item' item.pk 'card' %}" hx-target="#item-cant-{{ item.pk }}" hx-swap="outerHTML">
+        <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
       </a>
         
-      <a href="{% url 'remove_cart_item' item.pk 'card' %}" class="remove-btn" data-item-id="{{ item.pk }}">
+      <a href="{% url 'remove_cart_item' item.pk 'card' %}" class="remove-btn" hx-get="{% url 'remove_cart_item' item.pk 'card' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML">
         <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
       </a>
       
     </div>
   </div>
 </li>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.increment-btn, .decrement-btn, .remove-btn').forEach(function(button) {
-      button.addEventListener('click', function(event) {
-        event.preventDefault();
-        fetch(button.href, {
-          method: 'GET',
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            const itemId = button.getAttribute('data-item-id');
-            const itemElement = document.getElementById(`item-${itemId}`);
-            const itemCantElement = document.getElementById(`item-cant-${itemId}`);
-            itemCantElement.textContent = data.new_quantity;
-            console.log(`Nueva cantidad de la carta: ${data.new_quantity}`);
-            if (data.new_quantity === 0) {
-              itemElement.remove();
-            }
-          }
-        });
-      });
-    });
-  });
-</script>

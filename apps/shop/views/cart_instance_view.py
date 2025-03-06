@@ -1,6 +1,7 @@
 from apps.card.models import AlbumCard
 from apps.shop.cart_instance import Cart
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 
 
 def cart_view(request):
@@ -46,27 +47,41 @@ def remove_to_cart_instance(request, pk, object):
     return render(request, 'shop/partials/card.html',context)
 
 from django.http import JsonResponse
+from django.http import HttpResponse
 
+# def increment_cart_item(request, pk, object):
+#     cart = Cart(request)
+#     if object == 'card':
+#         album_card = AlbumCard.objects.filter(pk=pk).first()
+#         cart.increment(album_card)
+#         item = cart.cart[f'{object}{pk}']
+#         #span_html = render_to_string('components/cart/card/partials/item_cant.html', {'item': item})
+#         return render(request, 'components/cart/card/partials/item_cant.html', {'item': item})
+#         #return HttpResponse(span_html)
+#     return HttpResponse('')
 def increment_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
         cart.increment(album_card)
-        return JsonResponse({'success': True, 'new_quantity': cart.cart[f'{object}{pk}']['cant']})
-    return JsonResponse({'success': False})
+        return render(request, 'components/cart/card/partials/item_cant.html', {'item': cart.cart[f'{object}{pk}']})
+    return render(request, 'components/cart/card/card.html', {'error': 'Item not found'})
 
 def decrement_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
         cart.decrement(album_card)
-        return JsonResponse({'success': True, 'new_quantity': cart.cart[f'{object}{pk}']['cant']})
-    return JsonResponse({'success': False})
+        item = cart.cart.get(f'{object}{pk}')
+        if item:
+            return render(request, 'components/cart/card/partials/item_cant.html', {'item': item})
+        else:
+            return HttpResponse('')
+    return HttpResponse('')
 
 def remove_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
         cart.remove(album_card, object)
-        return JsonResponse({'success': True, 'new_quantity': 0})
-    return JsonResponse({'success': False})
+        return HttpResponse('')
