@@ -8381,14 +8381,6 @@ textarea:focus-visible {
   margin-top: 2rem;
 }
 
-.mb-24 {
-  margin-bottom: 6rem;
-}
-
-.mb-44 {
-  margin-bottom: 11rem;
-}
-
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -9599,10 +9591,6 @@ textarea:focus-visible {
   padding-top: 2rem;
 }
 
-.pb-24 {
-  padding-bottom: 6rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -9767,11 +9755,6 @@ textarea:focus-visible {
 
 .text-error\/80 {
   color: var(--fallback-er,oklch(var(--er)/0.8));
-}
-
-.text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
 .text-indigo-600 {

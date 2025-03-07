@@ -18,13 +18,15 @@
     <span class="text-sm">Precio: $ {{item.price}} USD</span>
     <div class="w-full justify-end items-center mt-2 flex gap-2 ">
 
-      <a href="{% url 'increment_cart_item' item.pk 'card' %}" class="increment-btn" hx-get="{% url 'increment_cart_item' item.pk 'card' %}" hx-target="#item-cant-{{ item.pk }}" hx-swap="outerHTML"> 
+      <a href="{% url 'increment_cart_item' item.pk 'card' %}" class="increment-btn" 
+      hx-get="{% url 'increment_cart_item' item.pk 'card' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML"> 
         <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
        </a>
        
       {% include "components/cart/card/partials/item_cant.html" %}
 
-      <a href="{% url 'decrement_cart_item' item.pk 'card' %}" class="decrement-btn" hx-get="{% url 'decrement_cart_item' item.pk 'card' %}" hx-target="#item-cant-{{ item.pk }}" hx-swap="outerHTML">
+      <a href="{% url 'decrement_cart_item' item.pk 'card' %}" class="decrement-btn" 
+      hx-get="{% url 'decrement_cart_item' item.pk 'card' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML">
         <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
       </a>
         

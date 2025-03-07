@@ -2,8 +2,15 @@
 {% load static %}
 {% block title %} Mi compra{% endblock title %}
 {% block content %}
-        
+        {% include "components/cart/actions_cart.html" %}
+        <h1 class="pb-10 pt-4 text-center font-bold font-manrope text-4xl lg:text-5xl  leading-[50px] relative">
+                <span class=" ">Carrrito de compras </span>  <span class="text-nowrap font-bold 
+              bg-gradient-to-r bg-clip-text  text-transparent 
+              from-indigo-500 via-purple-500 to-indigo-500
+              animate-text ">YuGi Faction</span>
+              </h1>
+        <div id="CartSection">
         {% include "components/cart/cart_list.html" %}
-
+        </div>
 
 {% endblock content %}
