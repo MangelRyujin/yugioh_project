@@ -113,7 +113,7 @@ class CardImage(AbstractCardImage):
     card = models.OneToOneField(AlbumCard, related_name='card_images', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.card.name
+        return self.card.name if self.card else 'No Card'
 
 
     
@@ -151,4 +151,4 @@ class DeckCardImage(AbstractCardImage):
     card = models.OneToOneField(AlbumDecksCard, related_name='deck_card_images', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.card.name
+        return self.card.name if self.card else 'No Card'
