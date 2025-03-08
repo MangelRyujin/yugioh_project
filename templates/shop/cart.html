@@ -14,3 +14,16 @@
         </div>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+    document.body.addEventListener('htmx:afterOnLoad', function(evt) {
+        if (evt.detail.xhr.responseType === 'json') {
+            const response = evt.detail.xhr.response;
+            if (response.empty) {
+                document.getElementById('CartSection').innerHTML = response.html;
+            }
+        }
+    });
+</script>
+{% endblock extra_js %}

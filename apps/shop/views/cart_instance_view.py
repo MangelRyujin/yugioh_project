@@ -2,6 +2,7 @@ from apps.card.models import AlbumCard
 from apps.shop.cart_instance import Cart
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 
 def cart_view(request):
@@ -46,8 +47,6 @@ def remove_to_cart_instance(request, pk, object):
     }
     return render(request, 'shop/partials/card.html',context)
 
-from django.http import HttpResponse
-
 def increment_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
@@ -60,7 +59,9 @@ def decrement_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
-        cart.decrement(album_card,object)
+        result = cart.decrement(album_card, object)
+        if isinstance(result, HttpResponse):
+            return result
         item = cart.cart.get(f'{object}{pk}')
         if item:
             return render(request, 'components/cart/card/card.html', {'item': item})
@@ -72,7 +73,9 @@ def remove_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
-        cart.remove(album_card, object)
+        result = cart.remove(album_card, object)
+        if isinstance(result, HttpResponse):
+            return result
         return HttpResponse('')
     
 def clear_cart_instance(request):

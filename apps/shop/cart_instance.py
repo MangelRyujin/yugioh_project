@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings 
 from django.contrib import messages
+from django.shortcuts import redirect
 
 
 class Cart:
@@ -73,6 +74,9 @@ class Cart:
                 self.cart[product_id]['cant'] -= 1
                 if self.cart[product_id]['cant'] <= 0:
                     self.remove(product, object)
+                    if not self.cart.keys():
+                        # Era el último elemento del carrito
+                        return redirect('clear_cart_instance')
                 else:
                     self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
                     self.save()
@@ -84,12 +88,15 @@ class Cart:
         product_id = f"{object}{str(product.id)}"
         if product_id in self.cart:
             del self.cart[product_id]
+            if not self.cart.keys():
+                # Era el ultimo elemento del carrito 
+                #print('Era el uiltimo elemento del carrito')
+                return redirect('clear_cart_instance')
             self.save()
     
     def save(self) :
         self.session.modified=True
         
-    
             
     def clear_items(self):
         self.session['cart']={}
