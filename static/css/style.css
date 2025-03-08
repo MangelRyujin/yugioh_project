@@ -34,7 +34,7 @@
   }
   
   .card-2-anima .wrapper-2 {
-    transform: perspective(900px) translateY(10%) rotateX(25deg) translateZ(0)  scale(.7);
+    transform: perspective(900px) translateY(25%) rotateX(65deg) translateZ(0)  scale(.7);
     
   }
   .card-2-anima .slifer{
@@ -103,18 +103,28 @@
   }
   
 
+  .animate-cloud-landing{
+    animation: animate-avatars-landing 1s infinite alternate ;
+  }
+  .animate-cloud{
+    animation: animate-avatars 1.3s infinite alternate ;
+  }
+
   .character-ra{
-    
+    scale: .90;
     filter: drop-shadow(0px 6px 6px rgba(241, 163, 29, 0.814));
+    
   }
 
   .character-slifer{
-    
+    scale: .90;
     filter: drop-shadow(0px 6px 6px rgba(237, 21, 21, 0.761));
+    
   }
   .character-obelis{
-    
+    scale: .90;
     filter: drop-shadow(0px 6px 6px rgba(29, 75, 241, 0.789));
+    
   }
 
   .card-2-anima .character-2 {
@@ -122,7 +132,25 @@
     transform: translate3d(0%, -20%, 60px);
   }
 
+  @keyframes animate-avatars-landing {
+    0%{
+      transform: translateY(-.5%) scale(1);
+    }
+    100%{
+      transform: translateY(0%) scale(.99);
+    }
+    
+  }
 
+  @keyframes animate-avatars {
+    0%{
+      transform: translateY(-28%) scale(.9);
+    }
+    100%{
+      transform: translateY(-26%) scale(.87);
+    }
+    
+  }
   
 
 .animate-spin-card {

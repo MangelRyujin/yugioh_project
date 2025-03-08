@@ -17,12 +17,12 @@
   <div class="absolute  z-0" >
     <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
   </div>
-    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-50 ">
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between px-2 lg:px-3 rounded-box shadow z-50 ">
         <div class="flex  items-center">
-          <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
-            from-indigo-400 via-purple-500 to-indigo-700
-            animate-text text-nowrap no-underline hover:no-underline font-bold text-xl lg:text-3xl" href="#">
-            <img src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
+          <a href="/" class="flex items-end bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-700 via-purple-500 to-indigo-700
+            animate-text text-nowrap no-underline hover:no-underline font-bold text-sm" >
+            <img src="{% static "img/logo/logo.svg" %}" width="70" height="70"/>
           </a>
         </div>
         <div class="navbar-center  flex  items-center gap-4">
@@ -175,8 +175,8 @@
               </ul>
             </div>
             {% else %}
-            <a class="btn btn-gradient btn-primary waves waves-light " href="{% url 'login' %}">
-              <span class="text-lg">Log in</span>
+            <a class="btn btn-gradient  btn-primary  " href="{% url 'login' %}">
+              <span class="text-lg">Empezar</span>
               
             </a>
            
@@ -196,22 +196,22 @@
           <a class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-400 via-purple-500 to-indigo-700
             animate-text text-nowrap no-underline hover:no-underline font-bold text-sm lg:text-base" href="#">
-            <img loading="lazy" src="{% static "img/blue-eyes-toon-logo.png" %}" width="40" height="50"/> YuGiFaction
+            <img loading="lazy" src="{% static "img/logo/logo.svg" %}" width="70" height="70"/>
           </a>
         </div>
        
         <div class="flex h-5 gap-4">
           <a href="#" class="link link-animated" aria-label="Github Link">
-            <span class="icon-[tabler--brand-github] size-5"></span>
+            <span class="icon-[tabler--brand-github] size-6"></span>
           </a>
           <a href="#" class="link link-animated" aria-label="Facebook Link">
-            <span class="icon-[tabler--brand-facebook] size-5"></span>
+            <span class="icon-[tabler--brand-facebook] size-6"></span>
           </a>
           <a href="#" class="link link-animated" aria-label="X Link">
-            <span class="icon-[tabler--brand-x] size-5"></span>
+            <span class="icon-[tabler--brand-x] size-6"></span>
           </a>
           <a href="#" class="link link-animated" aria-label="Google Link">
-            <span class="icon-[tabler--brand-google] size-5"></span>
+            <span class="icon-[tabler--brand-google] size-6"></span>
           </a>
         </div>
       </div>
