@@ -284,7 +284,7 @@
     
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    {% comment %} <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> {% endcomment %}
      <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
      <script>
       window.addEventListener('load', function () {
@@ -307,11 +307,11 @@
         })
       })
     </script>
-    <script>
+    {% comment %} <script>
       AOS.init({
         once: true,
       });
-    </script>
+    </script> {% endcomment %}
     <script>
         document.addEventListener('flyonUIInit', function () {
             // Reinitialize FlyonUI components
