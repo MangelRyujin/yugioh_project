@@ -13,17 +13,19 @@
             animate-text ">YuGi Faction</span>
             </h1>
             <p class="sm:text-lg font-normal">
-              Bienvenidos duelistas. Compite contra otros jugadores y forma parte de una comunidad. 
-              <a href="/" class="font-bold text-indigo-600 link link-primary link-animated">Compite por la mejor posición.</a>
+              Bienvenidos duelistas. Acceda a las mejores cartas, decks y accesorios. Nos encargamos de ayudarlo a encontrar lo que desea. 
+              <a href="{% url "shop" %}" class="font-bold text-indigo-600 link link-primary link-animated">¡Comercie ahora!</a>
             </p>
+            {% if not request.user.is_authenticated %}
             <div class="flex justify-center lg:justify-start mt-10">
-              <a class=" btn btn-gradient btn-primary waves waves-light btn-lg " href="{% url 'register' %}">
-                <span class="text-xl">Unirse</span>
+              <a class=" btn btn-gradient btn-primary waves waves-light btn-lg " href="{% url 'login' %}">
+                <span class="text-xl">Empezar</span>
              
               </a>
             </div>
+            {% endif %}
           </div>
-          <div class="w-full xl:col-span-6 lg:col-span-6 flex justify-center items-center relative order-1 md:order-2" data-aos="zoom-in">
+          <div class="animate-cloud-landing w-full xl:col-span-6 lg:col-span-6 flex justify-center items-center relative order-1 md:order-2" >
               <div class="absolute" style="transform: translateX(30px) translateY(-80px);">
                 <img loading="lazy" src="{% static "img/red.svg" %}" width="150" alt="3 dioses egipcios" class=" object-cover  blur-2xl  md:w-52"> 
               </div>

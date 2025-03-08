@@ -40,7 +40,12 @@
 </head>
 <body class="bg-animated flex items-center justify-center ">
     <div class="container px-3">
-    <div class="bg-gray-800 bg-opacity-90 p-4 rounded-lg shadow-lg  max-w-md mx-auto ">
+    <div class="bg-gray-800 bg-opacity-90 p-4 rounded-lg shadow-lg  max-w-md mx-auto relative">
+      <div class="flex items-center justify-center bg-gradient-to-r bg-clip-text start-0  text-transparent w-full top-0 absolute
+            from-indigo-400 via-purple-500 to-indigo-700
+            animate-text text-nowrap no-underline hover:no-underline font-bold text-xl lg:text-3xl" >
+            <img src="{% static "img/logo/logo.svg" %}" width="120" height="120" class="-translate-y-5" />
+    </div>
       <a href="{% url "index" %}" class="btn btn-square btn-gradient btn-primary ">
         <span class="icon-[tabler--arrow-back-up] size-6"></span>
       </a>
