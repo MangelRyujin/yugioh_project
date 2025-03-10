@@ -10,20 +10,7 @@
               animate-text ">YuGi Faction</span>
               </h1>
         <div id="CartSection">
-        {% include "components/cart/cart_list.html" %}
+                {% include "components/cart/cart_list.html" %}
         </div>
 
 {% endblock content %}
-
-{% block extra_js %}
-<script>
-    document.body.addEventListener('htmx:afterOnLoad', function(evt) {
-        if (evt.detail.xhr.responseType === 'json') {
-            const response = evt.detail.xhr.response;
-            if (response.empty) {
-                document.getElementById('CartSection').innerHTML = response.html;
-            }
-        }
-    });
-</script>
-{% endblock extra_js %}

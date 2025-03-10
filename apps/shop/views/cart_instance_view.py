@@ -7,8 +7,10 @@ from django.http import HttpResponse
 
 def cart_view(request):
     cart= Cart(request)
+    element_last = cart.last_element()
     context = {
-        'cart':cart.cart.values()
+        'cart':cart.cart.values(),
+        'element_last': element_last
     }
     return render(request, 'shop/cart.html', context)
 
@@ -59,24 +61,31 @@ def decrement_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
-        result = cart.decrement(album_card, object)
-        if isinstance(result, HttpResponse):
-            return result
-        item = cart.cart.get(f'{object}{pk}')
-        if item:
-            return render(request, 'components/cart/card/card.html', {'item': item})
-        else:
+        cart.decrement(album_card, object)
+        if not cart.cart:
+            context = { 'cart': [] }
+            return render(request, 'components/cart/cart_list.html', context)
+        elif f'{object}{pk}' in cart.cart.keys():
+            element_last = cart.last_element()
+            return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}'], 'element_last': element_last})
+        else :
             return HttpResponse('')
     return HttpResponse('')
+
 
 def remove_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
-        result = cart.remove(album_card, object)
-        if isinstance(result, HttpResponse):
-            return result
-        return HttpResponse('')
+        cart.remove(album_card, object)
+        element_last = cart.last_element()
+        print(element_last)
+        if not cart.cart:
+            context = { 'cart': [], 'element_last': element_last}
+            return render(request, 'components/cart/cart_list.html', context)
+        else:
+            return HttpResponse('')
+        
     
 def clear_cart_instance(request):
     cart = Cart(request)
