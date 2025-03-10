@@ -62,16 +62,13 @@ def decrement_cart_item(request, pk, object):
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
         cart.decrement(album_card, object)
-        if not cart.cart:
-            context = { 'cart': [] }
-            return render(request, 'components/cart/cart_list.html', context)
-        elif f'{object}{pk}' in cart.cart.keys():
-            element_last = cart.last_element()
-            return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}'], 'element_last': element_last})
-        else :
-            return HttpResponse('')
+        element_last = cart.last_element()
+        context = {
+            'cart': cart.cart.values(),
+            'element_last': element_last
+        }
+        return render(request, 'components/cart/cart_list.html', context)
     return HttpResponse('')
-
 
 def remove_cart_item(request, pk, object):
     cart = Cart(request)
@@ -79,12 +76,12 @@ def remove_cart_item(request, pk, object):
         album_card = AlbumCard.objects.filter(pk=pk).first()
         cart.remove(album_card, object)
         element_last = cart.last_element()
-        print(element_last)
-        if not cart.cart:
-            context = { 'cart': [], 'element_last': element_last}
-            return render(request, 'components/cart/cart_list.html', context)
-        else:
-            return HttpResponse('')
+        context = {
+            'cart': cart.cart.values(),
+            'element_last': element_last
+        }
+        return render(request, 'components/cart/cart_list.html', context)
+    return HttpResponse('')
         
     
 def clear_cart_instance(request):
