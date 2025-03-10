@@ -85,3 +85,4 @@ def clear_cart_instance(request):
         'cart':[]
     }
     return render(request, 'components/cart/cart_list.html',context)
+
