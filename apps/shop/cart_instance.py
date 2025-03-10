@@ -33,6 +33,16 @@ class Cart:
                         'product_type': product.type,
                         'product_image': product.card_images.image_url_small,
                         }
+            elif object == 'deck':
+                if product_id not in self.cart.keys():
+                    self.cart[product_id] = {
+                        'pk': product.pk,
+                        'object': object,
+                        'cant': cant or 0,
+                        'price': product.price,
+                        'product_name': product.name,
+                        'product_image': product.image.url if product.image else None,
+                    }
                 else:
                     self.cart[product_id]['cant'] = cant
                     self.cart[product_id]['price'] = product.price * cant

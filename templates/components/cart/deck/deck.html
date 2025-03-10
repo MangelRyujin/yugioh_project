@@ -1,0 +1,34 @@
+<li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
+    <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
+      {% if item.product_version == 'TCG' %}
+          TCG
+      {% else %}
+          OCG
+      {% endif %}
+    </span>
+    <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
+    <div class="flex flex-col gap-1 w-full">
+      <span class="font-medium">{{ item.product_name }}</span>
+      <span class="text-sm">Precio: $ {{ item.price }} USD</span>
+      <div class="w-full justify-end items-center mt-2 flex gap-2 ">
+        <a class="increment-btn" 
+        hx-get="{% url 'increment_cart_item' item.pk 'deck' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML"> 
+          <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
+         </a>
+         
+         <span class="item-cant" id="item-cant-{{ item.pk }}">{{ item.cant }}1</span>
+  
+        <a class="decrement-btn" 
+        hx-get="{% url 'decrement_cart_item' item.pk 'deck' %}" 
+        hx-target="#CartSection" hx-swap="innerHTML">
+          <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
+        </a>
+  
+        <a class="remove-btn" 
+        hx-get="{% url 'remove_cart_item' item.pk 'deck' %}" 
+        hx-target="#CartSection" hx-swap="innerHTML">
+          <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
+        </a>
+      </div>
+    </div>
+  </li>
