@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.card',
     'apps.order',
     'apps.shop',
+    'apps.forum',
 ]
 
 MIDDLEWARE = [

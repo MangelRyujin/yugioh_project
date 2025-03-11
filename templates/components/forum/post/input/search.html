@@ -1,0 +1,80 @@
+
+    <div class="w-full flex justify-start gap-3 mb-8 ">
+        
+        <div class="input-group bg-transparent max-w-sm ">
+            <span class="input-group-text">
+            <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
+            </span>
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="search" class="input  grow" placeholder="Buscar" id="keywords" 
+            name="keywords" 
+            hx-post="{% url 'cards_search_result' %}" 
+            hx-trigger="input changed, delay:500ms" 
+            hx-target="#search-results" 
+            hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
+            hx-indicator="#spinerSearchAllMyAlbumCards"/>
+            <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
+            <label class="sr-only" for="kbdInput3">Buscar</label>
+            
+        </div>
+        <div class="  ">
+            <div class="max-w-sm">
+                <select
+                  data-select='{
+                  "placeholder": "Select option...",
+                  "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"mt-1\" data-icon></span><span class=\"text-base-content\" data-title></span></button>",
+                  "toggleClasses": "advance-select-toggle items-center",
+                  "dropdownClasses": "advance-select-menu max-h-72",
+                  "optionClasses": "advance-select-option selected:active",
+                  "optionTemplate": "<div><div class=\"flex items-center\"> <div class=\"\" data-icon></div> <div class=\"font-semibold text-base-content\" data-title></div> </div> <div class=\" text-sm text-base-content/80\" data-description></div> </div>",
+                  "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] flex-shrink-0 size-3 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+                  }'
+                  class="hidden"
+                >
+                  <option value="">Choose</option>
+                  <option
+                    value="0"
+                    selected
+                    data-select-option='{
+                     
+                      "icon": "<span class=\"icon-[tabler--layout-list] flex-shrink-0 size-5 text-primary \"></span>"}'
+                  >
+                    
+                  </option>
+                  <option
+                    value="1"
+                    data-select-option='{
+                      
+                      "icon": "<span class=\"icon-[tabler--code] flex-shrink-0 size-5 text-success \"></span>"}'
+                  >
+                    
+                  </option>
+                  <option
+                    value="2"
+                    data-select-option='{
+                      
+                      "icon": "<span class=\"icon-[tabler--calendar-event] flex-shrink-0 size-5 text-info \"></span>"}'
+                  >
+                    
+                  </option>
+                  <option
+                    value="3"
+                    data-select-option='{
+                      
+                      "icon": "<span class=\"icon-[tabler--hand-stop] flex-shrink-0 size-5 text-accent \"></span>"}'
+                  >
+                    
+                  </option>
+                  <option
+                    value="4"
+                    data-select-option='{
+                      
+                      "icon": "<span class=\"icon-[tabler--bug] flex-shrink-0 size-5 text-error \"></span>"}'
+                  >
+                    
+                  </option>
+                </select>
+              </div>
+        </div>
+        
+    </div>   
