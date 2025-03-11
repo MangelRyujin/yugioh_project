@@ -12,6 +12,9 @@ urlpatterns = [
     #Decks
     path('deck/', shop_deck, name='shop_deck'),
     path('deck-search-results/', decks_search_result, name='decks_search_result'),
-    path('deck/<int:pk>', shop_deck_card, name='shop_deck_card'),
-    path('deck-card-search/<int:pk>', shop_deck_cards_search_result, name='shop_deck_cards_search_result'),
+    path('deck/<int:pk>/', shop_deck_card, name='shop_deck_card'),
+    path('deck-card-search/<int:pk>/', shop_deck_cards_search_result, name='shop_deck_cards_search_result'),
+    path('shop-deck-card-cart-instance-add/<int:pk>/', shop_deck_card_cart_instance_add, name='shop_deck_card_cart_instance_add'),
+    path('shop-deck-card-cart-instance-remove/<int:pk>/', shop_deck_card_cart_instance_remove, name='shop_deck_card_cart_instance_remove'),
+    
 ]

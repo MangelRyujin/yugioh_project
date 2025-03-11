@@ -1,0 +1,29 @@
+<li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
+      <div class=" w-3/5 sm:w-2/4  ">
+
+        <div class="bg-primary text-primary-content grid h-full w-full place-content-center rounded min-h-40"
+        style="background: url({% if  item.product_image %}{{item.product_image}}{% endif %}); background-size: cover; background-position: center;"
+        >
+        
+        
+        </div>
+      
+    </div>
+    
+    <div class="flex flex-col gap-1 w-full h-full justify-between">
+      <div class="flex flex-col gap-1">
+      <span class="font-medium">{{ item.product_name }}</span>
+      <span class="text-sm">Cantidad: 1</span>
+      <span class="text-sm">Total de cartas: {{ item.total_cards }}</span>
+      <span class="text-sm">Precio: $ {{ item.price }} USD</span>
+      </div>
+      <div class="w-full justify-end items-center mt-2 flex gap-2 ">
+        
+        <a class="remove-btn" 
+        hx-get="{% url 'remove_cart_item' item.pk 'deck' %}" 
+        hx-target="#CartSection" hx-swap="innerHTML">
+          <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
+        </a>
+      </div>
+    </div>
+  </li>

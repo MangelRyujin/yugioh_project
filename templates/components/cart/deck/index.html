@@ -1,0 +1,32 @@
+{% load deck_in_cart %}
+<div id="AlbumDeckItem{{album_deck.pk}}">
+    {% if album_deck|deck_in_cart:cart %}
+        <div class="flex gap-3">
+            <a href="{% url 'cart_view' %}" class="btn btn-soft btn-accent btn-sm">
+                1
+                <span class="icon-[tabler--shopping-cart-copy] size-5"></span>
+            </a>
+            <a
+            hx-get="{% url "remove_to_cart_instance" pk=album_deck.pk object='deck' %}"
+            hx-swap="outerHTML"
+            hx-target="#ShopAlbumDeck{{album_deck.pk}}"
+            hx-trigger="click"
+            hx-indicator="#IndicatorAlbumDeckItem{{album_deck.pk}}"
+            class="relative flex justify-center items-center btn btn-soft btn-error btn-sm">
+                <span id="IndicatorAlbumDeckItem{{album_deck.pk}}" class="htmx-indicator w-full h-full absolute loading loading-ring"></span>
+                <span class="icon-[tabler--shopping-cart-cancel] size-5"></span>
+            </a>
+        </div>
+    {% else %}
+        <a
+        hx-get="{% url "add_to_cart_instance" pk=album_deck.pk object='deck' %}"
+        hx-swap="outerHTML"
+        hx-target="#ShopAlbumDeck{{album_deck.pk}}"
+        hx-trigger="click"
+        hx-indicator="#IndicatorAlbumDeckItem{{album_deck.pk}}"
+        class="relative flex justify-center items-center btn btn-soft btn-primary btn-sm">
+        <span id="IndicatorAlbumDeckItem{{album_deck.pk}}" class="htmx-indicator w-full h-full absolute loading loading-ring"></span>
+            <span class="icon-[tabler--shopping-cart] size-5"></span>
+        </a>
+    {% endif %}
+</div>

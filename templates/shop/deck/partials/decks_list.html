@@ -1,49 +1,7 @@
 {% load static %}
 {% if paginator %}
-    {% for deck in paginator %}
-        <div>
-            <div class="p-3 shadow-md rounded bg-base-200/50 flex justify-start w-full items-start gap-3 relative">
-                
-                <div class="  w-3/4  ">
-    
-                    <div class="bg-primary text-primary-content grid h-full w-full place-content-center rounded min-h-40"
-                    style="background: url({% if deck.image %}{{deck.image.url}}{% else %} {% static "img/donation.jpg" %} {% endif %}); background-size: cover; background-position: center;"
-                    >
-                    
-                    
-                    </div>
-                   
-                </div>
-                <div class="w-full flex flex-col justify-between h-full gap-3">
-                    <div class="flex flex-col gap-2">
-                        <p class="link link-animated w-fit  text-sm md:text-md lg:text-lg font-bold">
-                            {{ deck.name }}
-                        </p>
-                        <p class="link link-animated w-fit text-base-content text-xs sm:text-sm">
-                            Total de cartas: {{ deck.total_cards }}
-                        </p>
-                        <p class="link link-animated w-fit  text-base-content text-xs sm:text-sm flex justify-start items-center gap-1">
-                            Vendedor: {{ deck.user.username }}
-                        </p>
-                
-                        <p class="link link-animated w-fit  text-base-content text-xs sm:text-sm">
-                            Precio: $ {{ deck.price }} USD
-                        </p>
-                    </div>
-                    <div class="flex justify-end gap-3 w-full mt-2">
-                        {% include "components/cart/deck_cart_btn.html" %}
-                        <a href="{% url "shop_deck_card" pk=deck.pk %}" class="btn btn-soft btn-info btn-sm">
-                            <span class="icon-[tabler--eye] size-5"></span>
-                        </a>
-                        <a href="https://wa.me/{{ deck.user.phone_number }}" class="btn btn-soft btn-success btn-sm">
-                            <span class="icon-[tabler--brand-whatsapp] size-5"></span>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
+    {% for album_deck in paginator %}
+        {% include "shop/deck/partials/deck.html" %}
     {% endfor %}
     {% if paginator.has_next %}
         <div class="w-full col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 flex justify-center" hx-get="{% url 'decks_search_result' %}?page={{ paginator.next_page_number }}" hx-trigger="revealed" hx-swap="outerHTML">

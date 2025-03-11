@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings 
 from django.contrib import messages
+from django.shortcuts import redirect
 
 
 class Cart:
@@ -32,11 +33,26 @@ class Cart:
                         'product_type': product.type,
                         'product_image': product.card_images.image_url_small,
                         }
-                else:
-                    self.cart[product_id]['cant'] = cant
-                    self.cart[product_id]['price'] = product.price * cant
             elif object == 'deck':
-                pass # Decks proccess
+                
+                if product_id not in self.cart.keys():
+                    self.cart[product_id] = {
+                        'pk': product.pk,
+                        'object': object,
+                        'cant': 1,
+                        'price': product.price,
+                        'total_cards': product.total_cards,
+                        'product_name': product.name,
+                        'product_image': product.image.url if product.image else None,
+                    }
+                    
+                
+                else:
+                    
+                    self.cart[product_id]['cant'] = 1
+                    self.cart[product_id]['price'] = product.price 
+            else:
+                pass
         self.save()
         return True
     
@@ -81,16 +97,23 @@ class Cart:
         return True
 
     def remove(self, product, object):
-        product_id = f"{object}{str(product.id)}"
+        product_id = f"{object}{product.id}"
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
+    
+    def last_element(self):
+        if len(self.cart) == 1:
+            for item in self.cart.values():
+                if item['cant'] == 1:
+                    return True
+        return False
+
     
     def save(self) :
         self.session.modified=True
         
     
-            
     def clear_items(self):
         self.session['cart']={}
         self.session.modified=True
