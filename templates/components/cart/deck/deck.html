@@ -1,8 +1,9 @@
+{% load static %}
 <li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
       <div class=" w-3/5 sm:w-2/4  ">
 
         <div class="bg-primary text-primary-content grid h-full w-full place-content-center rounded min-h-40"
-        style="background: url({% if  item.product_image %}{{item.product_image}}{% endif %}); background-size: cover; background-position: center;"
+        style="background: url({% if  item.product_image %}{{item.product_image}}{% else %}{% static "img/donation.jpg" %}{% endif %}); background-size: cover; background-position: center;"
         >
         
         
