@@ -1,5 +1,30 @@
+<div class="fixed end-0 bottom-0 me-3 mb-3 flex gap-3 flex-col z-50 items-end" id="AlbumDeckCartDetailActions">
+{% if not deck_in_cart %}
+    <div class="shadow-md  px-2 btn btn-gradient btn-primary waves waves-primary z-50"
+    hx-get="{% url "shop_deck_card_cart_instance_add" pk=deck.pk %}" 
+    hx-target = "#AlbumDeckCartDetailActions"
+    hx-trigger = "click"
+    hx-swap = "outerHTML">
+        
+        <span class="icon-[tabler--shopping-cart-plus] size-6"></span>
+    </div>
 
-<div class="fixed end-0 bottom-0 me-3 mb-3 shadow-md  px-2 btn btn-gradient btn-primary waves waves-primary z-50">
-    <span class="icon-[tabler--shopping-cart-plus] size-6"></span>
-</div>
+{% else %}
 
+    <a href="{% url "cart_view" %}" class=" shadow-md  px-2 btn btn-gradient  btn-accent waves waves-primary ">
+        1<span class="icon-[tabler--shopping-cart-check] size-6"></span>
+    </a>
+
+    <div class="w-fit shadow-md  px-2 btn btn-gradient btn-error waves waves-error "
+    hx-get="{% url "shop_deck_card_cart_instance_remove" pk=deck.pk %}" 
+    hx-target = "#AlbumDeckCartDetailActions"
+    hx-trigger = "click"
+    hx-swap = "outerHTML"
+    >
+        <span class="icon-[tabler--shopping-cart-x] size-6"></span>
+    </div> 
+
+
+
+{% endif %}
+</div> 

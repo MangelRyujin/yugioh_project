@@ -23,31 +23,39 @@ def album_card_detail_shop_card(request,pk):
     return render(request, 'shop/partials/card.html',context)
 
 def add_to_cart_instance(request, pk, object):
-    album_card = []
+    product = []
     cart=Cart(request)
-    if object == 'card':
-        album_card = AlbumCard.objects.filter(pk=pk).first()
-    cart.add_cart(object,album_card,1)
-    
     context = {
-        'cart':cart,
-        'album_card': album_card
+       
     }
-    return render(request, 'shop/partials/card.html',context)
+    if object == 'card':
+        product = AlbumCard.objects.filter(pk=pk).first()
+        context['album_card']=product
+        template='shop/partials/card.html'
+    elif object == 'deck':
+        product = AlbumDecks.objects.filter(pk=pk).first()
+        context['album_deck']=product
+        template='shop/deck/partials/deck.html'
+    cart.add_cart(object,product,1)
+    context['cart']=cart
+    return render(request, template ,context)
 
 
 def remove_to_cart_instance(request, pk, object):
-    album_card = []
+    product = []
     cart=Cart(request)
+    context={}
     if object == 'card':
-        album_card = AlbumCard.objects.filter(pk=pk).first()
-    cart.remove(album_card,object)
-    
-    context = {
-        'cart':cart,
-        'album_card': album_card
-    }
-    return render(request, 'shop/partials/card.html',context)
+        product = AlbumCard.objects.filter(pk=pk).first()
+        context['album_card']=product
+        template='shop/partials/card.html'
+    elif object == 'deck':
+        product = AlbumDecks.objects.filter(pk=pk).first()
+        context['album_deck']=product
+        template='shop/deck/partials/deck.html'
+    cart.remove(product,object)
+    context['cart'] = cart
+    return render(request, template,context)
 
 def increment_cart_item(request, pk, object):
     cart = Cart(request)
@@ -61,18 +69,6 @@ def increment_cart_item(request, pk, object):
         return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
     return render(request, 'components/cart/card/card.html', {'error': 'Item not found'})
 
-# def decrement_cart_item(request, pk, object):
-#     cart = Cart(request)
-#     if object == 'card':
-#         album_card = AlbumCard.objects.filter(pk=pk).first()
-#         cart.decrement(album_card, object)
-#         element_last = cart.last_element()
-#         context = {
-#             'cart': cart.cart.values(),
-#             'element_last': element_last
-#         }
-#         return render(request, 'components/cart/cart_list.html', context)
-#     return HttpResponse('')
 
 def decrement_cart_item(request, pk, object):
     cart = Cart(request)
@@ -89,27 +85,16 @@ def decrement_cart_item(request, pk, object):
     }
     return render(request, 'components/cart/cart_list.html', context)
 
-# def remove_cart_item(request, pk, object):
-#     cart = Cart(request)
-#     if object == 'card':
-#         album_card = AlbumCard.objects.filter(pk=pk).first()
-#         cart.remove(album_card, object)
-#         element_last = cart.last_element()
-#         context = {
-#             'cart': cart.cart.values(),
-#             'element_last': element_last
-#         }
-#         return render(request, 'components/cart/cart_list.html', context)
-#     return HttpResponse('')
+
 
 def remove_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
-        album_card = AlbumCard.objects.filter(pk=pk).first()
-        cart.remove(album_card, object)
+        product = AlbumCard.objects.filter(pk=pk).first()
+        cart.remove(product, object)
     elif object == 'deck':
-        album_deck = AlbumDecks.objects.filter(pk=pk).first()
-        cart.remove(album_deck, object)
+        product = AlbumDecks.objects.filter(pk=pk).first()
+        cart.remove(product, object)
     element_last = cart.last_element()
     context = {
         'cart': cart.cart.values(),

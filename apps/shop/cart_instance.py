@@ -34,20 +34,25 @@ class Cart:
                         'product_image': product.card_images.image_url_small,
                         }
             elif object == 'deck':
+                
                 if product_id not in self.cart.keys():
                     self.cart[product_id] = {
                         'pk': product.pk,
                         'object': object,
-                        'cant': cant or 0,
+                        'cant': 1,
                         'price': product.price,
+                        'total_cards': product.total_cards,
                         'product_name': product.name,
                         'product_image': product.image.url if product.image else None,
                     }
+                    
+                
                 else:
-                    self.cart[product_id]['cant'] = cant
-                    self.cart[product_id]['price'] = product.price * cant
-            elif object == 'deck':
-                pass # Decks proccess
+                    
+                    self.cart[product_id]['cant'] = 1
+                    self.cart[product_id]['price'] = product.price 
+            else:
+                pass
         self.save()
         return True
     
@@ -92,7 +97,7 @@ class Cart:
         return True
 
     def remove(self, product, object):
-        product_id = f"{object}{str(product.id)}"
+        product_id = f"{object}{product.id}"
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()

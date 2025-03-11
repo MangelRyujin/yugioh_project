@@ -1,29 +1,24 @@
 <li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
-    <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
-      {% if item.product_version == 'TCG' %}
-          TCG
-      {% else %}
-          OCG
-      {% endif %}
-    </span>
-    <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
-    <div class="flex flex-col gap-1 w-full">
+      <div class=" w-3/5 sm:w-2/4  ">
+
+        <div class="bg-primary text-primary-content grid h-full w-full place-content-center rounded min-h-40"
+        style="background: url({% if  item.product_image %}{{item.product_image}}{% endif %}); background-size: cover; background-position: center;"
+        >
+        
+        
+        </div>
+      
+    </div>
+    
+    <div class="flex flex-col gap-1 w-full h-full justify-between">
+      <div class="flex flex-col gap-1">
       <span class="font-medium">{{ item.product_name }}</span>
+      <span class="text-sm">Cantidad: 1</span>
+      <span class="text-sm">Total de cartas: {{ item.total_cards }}</span>
       <span class="text-sm">Precio: $ {{ item.price }} USD</span>
+      </div>
       <div class="w-full justify-end items-center mt-2 flex gap-2 ">
-        <a class="increment-btn" 
-        hx-get="{% url 'increment_cart_item' item.pk 'deck' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML"> 
-          <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
-         </a>
-         
-         <span class="item-cant" id="item-cant-{{ item.pk }}">{{ item.cant }}1</span>
-  
-        <a class="decrement-btn" 
-        hx-get="{% url 'decrement_cart_item' item.pk 'deck' %}" 
-        hx-target="#CartSection" hx-swap="innerHTML">
-          <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
-        </a>
-  
+        
         <a class="remove-btn" 
         hx-get="{% url 'remove_cart_item' item.pk 'deck' %}" 
         hx-target="#CartSection" hx-swap="innerHTML">
