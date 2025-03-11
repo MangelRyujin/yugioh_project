@@ -9,9 +9,9 @@
   </span>
 
   {% comment %} Aqui comentado el ejemplo de lanzar una alerta de item cart {% endcomment %}
-  {% comment %} {% if not item_validate_cant %}
+  {% if not item_validate_cant %}
   <img src="{% static "img/messages/edit_cant.svg" %}" width="180" height="180" alt="{{ item.product_name }}" class="object-cover absolute">
-  {% endif %} {% endcomment %}
+  {% endif %} 
   
   <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
   <div class="flex flex-col gap-1 w-full">
