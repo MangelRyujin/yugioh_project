@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/output.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body class="relative  ">
@@ -280,6 +281,26 @@
               }
           }, intervalTime);
       }
+  </script>
+
+  <!-- Script para SweetAlert -->
+  <script>
+    function showModal(type, message) {
+        Swal.fire({
+            icon: type,
+            title: type.charAt(0).toUpperCase() + type.slice(1),
+            text: message,
+            confirmButtonText: 'OK'
+        });
+    }
+
+    // Mostrar notificaciones de mensajes de Django
+    document.addEventListener('DOMContentLoaded', function () {
+        const messages = {{ messages|json_script:"messages" }};
+        messages.forEach(message => {
+            showModal(message.tags, message.message);
+        });
+    });
   </script>
     
     <script src="{% static 'js/flyonui.js' %}"></script>

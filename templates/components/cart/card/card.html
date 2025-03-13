@@ -1,6 +1,19 @@
 {% load static %}
 
-
+{% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+            {% comment %} <div class="message {{ message.tags }}">{{ message }}</div> {% endcomment %}
+          <script>
+              showNotification('error', 'Error', '{{message}}', 3000, 'fas fa-times-circle');
+          </script>
+        {% elif message.tags == 'success'%}
+          <script>
+              showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-info-circle');
+          </script>
+        {% endif %}
+      {% endfor %}
+  {% endif %}
 
 <li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
   <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
@@ -23,21 +36,6 @@
     ">{{ item.product_name }}</span>
     
     <span class="text-sm">Rareza: {{item.product_rarity}}</span>
-
-    {% if messages %}
-      {% for message in messages %}
-        {% if message.tags == 'error' %}
-            {% comment %} <div class="message {{ message.tags }}">{{ message }}</div> {% endcomment %}
-          <script>
-              showNotification('error', 'Error', '{{message}}', 3000, 'fas fa-times-circle');
-          </script>
-        {% elif message.tags == 'success'%}
-          <script>
-              showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-info-circle');
-          </script>
-        {% endif %}
-      {% endfor %}
-  {% endif %}
 
     <span class="text-sm">Expanción: {{item.product_expantion}}</span>
     <span class="text-sm">Precio: $ {{item.price}} USD</span>

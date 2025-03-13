@@ -58,44 +58,6 @@ def remove_to_cart_instance(request, pk, object):
     context['cart'] = cart
     return render(request, template,context)
 
-# def increment_cart_item(request, pk, object):
-#     cart = Cart(request)
-#     if object == 'card':
-#         album_card = AlbumCard.objects.filter(pk=pk).first()
-#         cart.increment(album_card, object)
-#         return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
-#     elif object == 'deck':
-#         album_deck = AlbumDecks.objects.filter(pk=pk).first()
-#         cart.increment(album_deck, object)
-#         return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
-#     return render(request, 'components/cart/card/card.html', {'error': 'Item not found'})
-
-# def increment_cart_item(request, pk, object):
-#     cart = Cart(request)
-#     if object == 'card':
-#         album_card = AlbumCard.objects.filter(pk=pk).first()
-#         if album_card:
-#             if cart.increment(album_card, object):
-#                 return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
-#             else:
-#                 messages.error(request, 'Por favor corrige los errores que se muestran.')
-#                 print('MauroXXX')
-#                 return JsonResponse({'error': 'No hay suficiente stock'}, status=400)
-#         else:
-#             print('Mauro')
-#             return JsonResponse({'error': 'Item not found'}, status=404)
-#     elif object == 'deck':
-#         album_deck = AlbumDecks.objects.filter(pk=pk).first()
-#         if album_deck:
-#             if cart.increment(album_deck, object):
-#                 return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
-#             else:
-#                 return JsonResponse({'error': 'No hay suficiente stock'}, status=400)
-#         else:
-#             return JsonResponse({'error': 'Item not found'}, status=404)
-#     return JsonResponse({'error': 'Invalid object type'}, status=400)
-
-
 def increment_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
@@ -165,26 +127,43 @@ def clear_cart_instance(request):
     return render(request, 'components/cart/cart_list.html',context)
 
 
-from django.http import JsonResponse
-
-def check_stock(request, pk, object):
+def check_cart(request):
     cart = Cart(request)
-    if object == 'card':
-        product = AlbumCard.objects.filter(pk=pk).first()
-    elif object == 'deck':
-        product = AlbumDecks.objects.filter(pk=pk).first()
-    else:
-        return JsonResponse({'error': 'Invalid object type'}, status=400)
-
-    if not product:
-        return JsonResponse({'error': 'Product not found'}, status=404)
-
-    product_id = f"{object}{product.pk}"
-    if product_id in cart.cart:
-        desired_quantity = cart.cart[product_id]['cant']
-        if desired_quantity > product.stock:
-            return JsonResponse({'in_stock': False}, status=200)
+    missingProduct = False
+    quantityAdjusting = False
+    text = 'text'
+    for item in list(cart.cart.values()):
+        if item['object'] == 'card':
+            product = AlbumCard.objects.filter(pk=item['pk']).first()
+        elif item['object'] == 'deck':
+            product = AlbumDecks.objects.filter(pk=item['pk']).first()
         else:
-            return JsonResponse({'in_stock': True}, status=200)
-    else:
-        return JsonResponse({'error': 'Product not in cart'}, status=404)
+            print(f"Invalid object type for item {item['pk']}")
+            continue
+        
+        if item['object'] == 'card' and item['cant'] == 0:
+            missingProduct = True
+
+        if item['object'] == 'card' and item['cant'] > product.stock:
+            quantityAdjusting = True
+            print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
+            item['cant'] = product.stock
+            cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+            cart.save()
+            
+    if missingProduct:
+        text = 'Algunos productos quedaron agotados!'
+    if quantityAdjusting and missingProduct:
+        text += '\nCantidad de productos reajustada por ausencia de stock!'    
+    elif quantityAdjusting:
+        text = '\nCantidad de productos reajustada por ausencia de stock!'    
+
+    if text != 'text':
+        messages.info(request, text)
+        #print(text)
+    
+    
+    context = {
+        'cart': cart.cart.values()
+    }
+    return render(request, 'components/cart/cart_list.html', context)
