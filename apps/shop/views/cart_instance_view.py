@@ -129,7 +129,6 @@ def clear_cart_instance(request):
 
 def check_cart(request):
     cart = Cart(request)
-    missingProduct = False
     quantityAdjusting = False
     text = 'text'
     for item in list(cart.cart.values()):
@@ -138,32 +137,26 @@ def check_cart(request):
         elif item['object'] == 'deck':
             product = AlbumDecks.objects.filter(pk=item['pk']).first()
         else:
-            print(f"Invalid object type for item {item['pk']}")
+            #print(f"Invalid object type for item {item['pk']}")
             continue
-        
-        if item['object'] == 'card' and item['cant'] == 0:
-            missingProduct = True
 
         if item['object'] == 'card' and item['cant'] > product.stock:
             quantityAdjusting = True
-            print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
+            #print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
             item['cant'] = product.stock
             cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
             cart.save()
             
-    if missingProduct:
-        text = 'Algunos productos quedaron agotados!'
-    if quantityAdjusting and missingProduct:
-        text += '\nCantidad de productos reajustada por ausencia de stock!'    
-    elif quantityAdjusting:
-        text = '\nCantidad de productos reajustada por ausencia de stock!'    
+    if quantityAdjusting:
+        text = 'Cantidad de productos reajustada por ausencia de stock!'    
+    
 
     if text != 'text':
         messages.info(request, text)
-        #print(text)
-    
+    elif text == 'text':
+        messages.success(request, 'Carrito validado correctamente!')
     
     context = {
-        'cart': cart.cart.values()
+        'cart': cart.cart.values(),
     }
     return render(request, 'components/cart/cart_list.html', context)

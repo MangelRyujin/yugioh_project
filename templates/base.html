@@ -283,25 +283,7 @@
       }
   </script>
 
-  <!-- Script para SweetAlert -->
-  <script>
-    function showModal(type, message) {
-        Swal.fire({
-            icon: type,
-            title: type.charAt(0).toUpperCase() + type.slice(1),
-            text: message,
-            confirmButtonText: 'OK'
-        });
-    }
-
-    // Mostrar notificaciones de mensajes de Django
-    document.addEventListener('DOMContentLoaded', function () {
-        const messages = {{ messages|json_script:"messages" }};
-        messages.forEach(message => {
-            showModal(message.tags, message.message);
-        });
-    });
-  </script>
+  
     
     <script src="{% static 'js/flyonui.js' %}"></script>
     <script src="{% static 'js/change_theme.js' %}"></script>

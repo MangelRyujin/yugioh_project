@@ -3237,10 +3237,6 @@ select.is-invalid + .advance-select-toggle:focus,
     --btn-color: var(--fallback-p);
   }
 
-  .btn-secondary {
-    --btn-color: var(--fallback-s);
-  }
-
   .btn-accent {
     --btn-color: var(--fallback-a);
   }
@@ -3332,12 +3328,6 @@ select.is-invalid + .advance-select-toggle:focus,
     --tw-border-opacity: 1;
     border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity, 1)));
     background-color: var(--fallback-p,oklch(var(--p)/0.1));
-  }
-
-  .btn-outline.btn-secondary:hover {
-    --tw-border-opacity: 1;
-    border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity, 1)));
-    background-color: var(--fallback-s,oklch(var(--s)/0.1));
   }
 
   .btn-outline.btn-accent:hover {
@@ -3473,10 +3463,6 @@ select.is-invalid + .advance-select-toggle:focus,
     --btn-color: var(--p);
   }
 
-  .btn-secondary {
-    --btn-color: var(--s);
-  }
-
   .btn-accent {
     --btn-color: var(--a);
   }
@@ -3524,12 +3510,6 @@ select.is-invalid + .advance-select-toggle:focus,
   .btn-gradient.btn-error {
     --light-shade: var(--er);
   }
-}
-
-.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity, 1)));
-  outline-color: var(--fallback-s,oklch(var(--s)/0.3));
 }
 
 .btn-accent {
@@ -3730,21 +3710,6 @@ select.is-invalid + .advance-select-toggle:focus,
 
 .btn-outline.btn-primary:focus-visible {
   background-color: var(--fallback-p,oklch(var(--p)/0.1));
-}
-
-.btn-outline.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity, 1)));
-}
-
-.btn-outline.btn-secondary.btn-active {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity, 1)));
-  background-color: var(--fallback-s,oklch(var(--s)/0.1));
-}
-
-.btn-outline.btn-secondary:focus-visible {
-  background-color: var(--fallback-s,oklch(var(--s)/0.1));
 }
 
 .btn-outline.btn-accent {
@@ -8404,10 +8369,6 @@ textarea:focus-visible {
   margin-top: 2rem;
 }
 
-.mt-12 {
-  margin-top: 3rem;
-}
-
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -8421,10 +8382,6 @@ textarea:focus-visible {
 
 .inline-block {
   display: inline-block;
-}
-
-.inline {
-  display: inline;
 }
 
 .\!flex {
@@ -10048,10 +10005,6 @@ textarea:focus-visible {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
 .motion-scale-in-0 {
   --motion-origin-scale-x: 0;
   --motion-origin-scale-y: 0;
@@ -11305,10 +11258,6 @@ textarea:focus-visible {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.open.overlay-open\:mt-4 {
-  margin-top: 1rem;
-}
-
 .open.overlay-open\:translate-x-0 {
   --tw-translate-x: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -11318,14 +11267,6 @@ textarea:focus-visible {
   opacity: 1;
 }
 
-.open.overlay-open\:duration-500 {
-  transition-duration: 500ms;
-}
-
-.open .overlay-open\:mt-4 {
-  margin-top: 1rem;
-}
-
 .open .overlay-open\:translate-x-0 {
   --tw-translate-x: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -11333,10 +11274,6 @@ textarea:focus-visible {
 
 .open .overlay-open\:opacity-100 {
   opacity: 1;
-}
-
-.open .overlay-open\:duration-500 {
-  transition-duration: 500ms;
 }
 
 .selected.selected\:block {

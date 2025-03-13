@@ -3,7 +3,6 @@
 {% if messages %}
       {% for message in messages %}
         {% if message.tags == 'error' %}
-            {% comment %} <div class="message {{ message.tags }}">{{ message }}</div> {% endcomment %}
           <script>
               showNotification('error', 'Error', '{{message}}', 3000, 'fas fa-times-circle');
           </script>
@@ -11,9 +10,14 @@
           <script>
               showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-info-circle');
           </script>
+        {% elif message.tags == 'info'%}
+          <script>
+            showNotification('info', 'Información', '{{message}}', 3000, 'fas fa-info-circle');
+          </script>
         {% endif %}
       {% endfor %}
   {% endif %}
+
 
 <li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
   <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
