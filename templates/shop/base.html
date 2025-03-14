@@ -17,14 +17,15 @@
 <body class="relative  ">
    {% comment %} {% include "shop/partials/cards-filter-list.html" %} {% endcomment %}
   <div class="absolute  z-0" >
-    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-0 animate-pulse " alt="ligth">
-  </div>
-    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-50 ">
+    <img src="{% static "img/docs@30.8b9a76a2.avif" %}"  class="h-96 -z-1 animate-pulse " alt="ligth">
+  </div>  
+    <div id="notification-container" class="fixed top-4 right-4 space-y-4 z-50"></div>
+    <nav class="sticky top-0 navbar backdrop-blur-sm  bg-base-200/90 flex justify-between rounded-box shadow px-2 lg:px-3 z-40 ">
         <div class="flex  items-center">
           <a href="/" class="flex items-center bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-400 via-purple-500 to-indigo-700
             animate-text text-nowrap no-underline hover:no-underline font-bold text-xl lg:text-3xl" >
-            <img src="{% static "img/logo/logo.svg" %}" width="70" height="70"/>
+            <img src="{% static "img/logo/logo.svg" %}" width="60" height="60"/>
           </a>
         </div>
         <div class="navbar-center  flex  items-center gap-4">
@@ -197,68 +198,71 @@
     
     <script>
       const notificationTypes = {
-          info: {
-              color: "bg-blue-500 text-white",
-              progressColor: "bg-blue-700"
-          },
-          success: {
-              color: "bg-green-500 text-white",
-              progressColor: "bg-green-700"
-          },
-          warning: {
-              color: "bg-yellow-500 text-white",
-              progressColor: "bg-yellow-700"
-          },
-          error: {
-              color: "bg-red-500 text-white",
-              progressColor: "bg-red-700"
-          }
-      };
-  
-      function showNotification(type, title, message, duration, icon) {
-          const notificationType = notificationTypes[type];
-          const notificationContainer = document.getElementById('notification-container');
-  
-          const notification = document.createElement('div');
-          notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-6 w-80`;
-  
-          notification.innerHTML = `
-              <div class="flex items-center mb-4">
-                  <i class="${icon} text-2xl mr-2"></i>
-                  <h2 class="text-xl font-bold">${title}</h2>
-              </div>
-              <p class="mb-4">${message}</p>
-              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
-              </div>
-          `;
-  
-          notificationContainer.appendChild(notification);
-  
-          setTimeout(() => {
-              notification.classList.remove('slide-in');
-          }, 10);
-  
-          const intervalTime = 50; // Intervalo de actualización en milisegundos
-          const totalIntervals = duration / intervalTime;
-          let progress = 0;
-          const progressBar = notification.querySelector('.h-full');
-          console.log(progressBar); // Verificar que el elemento se selecciona correctamente
-          const interval = setInterval(() => {
-              progress += 100 / totalIntervals;
-              progressBar.style.width = `${progress}%`;
-              //console.log(`Progress: ${progress}%`); // Verificar que el progreso se actualiza correctamente
-              if (progress >= 100) {
-                  clearInterval(interval);
-                  setTimeout(() => {
-                      notification.classList.add('slide-out');
-                      setTimeout(() => {
-                          notification.remove();
-                      }, 500);
-                  }, 500);
-              }
-          }, intervalTime);
-      }
+        info: {
+            color: "bg-info/70 text-white",
+            progressColor: "bg-info"
+        },
+        success: {
+            color: "bg-success/70 text-white",
+            progressColor: "bg-success"
+        },
+        warning: {
+            color: "bg-warning/70 text-white",
+            progressColor: "bg-warning"
+        },
+        error: {
+            color: "bg-error/70 text-white",
+            progressColor: "bg-error"
+        }
+    };
+
+    function showNotification(type, title, message, duration, icon) {
+        
+        const notificationType = notificationTypes[type];
+        const notificationContainer = document.getElementById('notification-container');
+
+        const notification = document.createElement('div');
+       
+        notification.className = `slide-in ${notificationType.color} rounded-lg shadow-lg p-3 max-w-xs backdrop-blur-sm  blur-notify`;
+
+        notification.innerHTML = `
+           
+            <p class="mb-3 flex items-center text-sm">
+            <i class="${icon} text-md me-2"></i>
+            ${message}</p>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+           
+                <div class="h-full ${notificationType.progressColor}" style="width: 0%;"></div>
+            </div>
+        `;
+
+        notificationContainer.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.remove('slide-in');
+        }, 10);
+
+        const intervalTime = 50; // Intervalo de actualización en milisegundos
+        const totalIntervals = duration / intervalTime;
+        let progress = 0;
+        const progressBar = notification.querySelector('.h-full');
+        console.log(progressBar); // Verificar que el elemento se selecciona correctamente
+        const interval = setInterval(() => {
+            progress += 100 / totalIntervals;
+            progressBar.style.width = `${progress}%`;
+            //console.log(`Progress: ${progress}%`); // Verificar que el progreso se actualiza correctamente
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    notification.classList.add('slide-out');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 500);
+                }, 500);
+            }
+        }, intervalTime);
+    }
+
   </script>
     
     <script src="{% static 'js/flyonui.js' %}"></script>

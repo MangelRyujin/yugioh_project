@@ -57,26 +57,55 @@ class Cart:
         return True
     
    
-    def increment(self, product,object):
+    # def increment(self, product,object):
+    #     product_id = f"{object}{product.pk}"
+    #     if object == 'card':
+    #         if product_id not in self.cart.keys():
+    #             self.cart[product_id] = {
+    #                 'pk': product.pk,
+    #                 'cant': 1,
+    #                 'price': float(round(product.price, 2)),
+    #                 'product_name': product.name,
+    #                 'product_rarity':product.get_rarity,
+    #                 'product_version':product.get_version,
+    #                 'product_expantion':product.expantion,
+    #                 'product_type': product.type,
+    #                 'product_image': product.card_images.image_url_small,
+    #             }
+    #         else:
+    #             self.cart[product_id]['cant'] += 1        
+    #             self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
+    #     elif object == 'deck':
+    #         pass # Decks proccess
+    #     self.save()
+    #     return True
+    
+    def increment(self, product, object):
         product_id = f"{object}{product.pk}"
         if object == 'card':
             if product_id not in self.cart.keys():
-                self.cart[product_id] = {
-                    'pk': product.pk,
-                    'cant': 1,
-                    'price': float(round(product.price, 2)),
-                    'product_name': product.name,
-                    'product_rarity':product.get_rarity,
-                    'product_version':product.get_version,
-                    'product_expantion':product.expantion,
-                    'product_type': product.type,
-                    'product_image': product.card_images.image_url_small,
-                }
+                if product.stock >= 1:
+                    self.cart[product_id] = {
+                        'pk': product.pk,
+                        'cant': 1,
+                        'price': float(round(product.price, 2)),
+                        'product_name': product.name,
+                        'product_rarity': product.get_rarity,
+                        'product_version': product.get_version,
+                        'product_expantion': product.expantion,
+                        'product_type': product.type,
+                        'product_image': product.card_images.image_url_small,
+                    }
+                else:
+                    return False  # No hay suficiente stock
             else:
-                self.cart[product_id]['cant'] += 1        
-                self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
+                if self.cart[product_id]['cant'] < product.stock:
+                    self.cart[product_id]['cant'] += 1
+                    self.cart[product_id]['price'] = float(round(product.price * self.cart[product_id]['cant'], 2))
+                else:
+                    return False  # No hay suficiente stock
         elif object == 'deck':
-            pass # Decks proccess
+            pass  # Proceso para decks
         self.save()
         return True
     

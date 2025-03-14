@@ -1,34 +1,60 @@
-<li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
-  <span class="absolute -top-5 end-2 size-16 text-4xl font-bold text-primary/50 -rotate-12">
-    {% if item.product_version == 'TCG' %}
-        TCG
-    {% else %}
-        OCG
-    {% endif %}
-  </span>
-  <img src="{{ item.product_image }}" width="100" height="100" alt="{{ item.product_name }}" class="object-cover">
-  <div class="flex flex-col gap-1 w-full">
-    <span class="font-medium">{{ item.product_name }}</span>
-    <span class="text-sm">Precio: $ {{ item.price }} USD</span>
-    <div class="w-full justify-end items-center mt-2 flex gap-2 ">
-      <a class="increment-btn" 
-      hx-get="{% url 'increment_cart_item' item.pk 'deck' %}" hx-target="#item-{{ item.pk }}" hx-swap="outerHTML"> 
-        <span class="icon-[tabler--square-rounded-plus] size-8 cursor-pointer btn-success btn text-soft"></span>
-       </a>
-       
-       <span class="item-cant" id="item-cant-{{ item.pk }}">{{ item.cant }}</span>
-
-      <a class="decrement-btn" 
-      hx-get="{% url 'decrement_cart_item' item.pk 'deck' %}" 
-      hx-target="#CartSection" hx-swap="innerHTML">
-        <span class="icon-[tabler--square-rounded-minus] size-8 cursor-pointer btn-warning btn text-soft"></span>
-      </a>
-
-      <a class="remove-btn" 
-      hx-get="{% url 'remove_cart_item' item.pk 'deck' %}" 
-      hx-target="#CartSection" hx-swap="innerHTML">
-        <span class="icon-[tabler--square-rounded-x] size-8 cursor-pointer btn-error btn  text-error"></span>
-      </a>
+{% load static %}
+ {% if deck %}
+ <div id="myAlbumDeck{{deck.pk}}" class="w-full flex-col justify-center items-center">
+    
+    <div class="stack  w-full  stack-animated">
+  
+        <div class="bg-primary text-primary-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded "
+        style="background: url({% if deck.image %}{{deck.image.url}}{% else %} {% static "img/donation.jpg" %} {% endif %}); background-size: cover; background-position: center;"
+        >
+        <div id="sniperMyAlbumDeck{{deck.pk}}" class="htmx-indicator w-full h-full flex justify-center items-center bg-base-200/60 absolute">
+          <span class="loading loading-ring loading-lg"></span>
+      </div>
+        <span class="absolute badge end-0 -translate-y-2 badge-xs btn-gradient btn-primary md:badge-sm z-10">{{deck.total_cards}}</span>
+        <span class="absolute   start-0 bottom-0 -translate-y-2 badge-lg  md:badge-sm z-10">
+          <p class=" size-10 {% if deck.is_active %}icon-[tabler--check] text-success {% else %}icon-[tabler--x] text-error {% endif %} ">
+            
+          </p>
+        </span>
+        </div>
+        <div class="bg-base-200 text-success-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded"></div>
+        <div class="bg-base-200 text-warning-content grid h-56 sm:h-44 lg:h-52 w-11/12 place-content-center rounded"></div>
+  
     </div>
-  </div>
-</li>
+    
+    <div class="w-full text-center mt-2">
+  
+      <span class="text-base-content text-xs font-medium">{{deck.name}}</span>
+    </div>
+    <div class="flex justify-around gap-1 mt-1">
+      <a 
+      
+      href="{% url "album_deck_detail" pk=deck.pk %}" 
+      class="btn btn-gradient btn-warning btn-xs">
+          <span class="icon-[tabler--edit-circle] "></span>
+      </a>
+      <button  class="btn btn-gradient btn-error btn-xs"
+        hx-delete="{% url "delete_album_deck" pk=deck.pk %}"
+        hx-target="#myAlbumDeck{{deck.pk}}"
+        hx-swap="outerHTML"
+        hx-indicator="#sniperMyAlbumDeck{{deck.pk}}"
+        hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+      >
+          <span class="icon-[tabler--square-rounded-x-filled] "></span>
+  
+      </button>
+    </div>  
+ 
+</div>
+ 
+ 
+ 
+ 
+ {% endif %}
+ {% if message %}
+  <script>
+      showNotification('error', 'Confirmación', '{{message}}', 3000, 'fas fa-check-circle');
+  </script>
+ {% endif %}
+
+ {% comment %} href="{% url "album_card_update" pk=card.pk %}"  {% endcomment %}

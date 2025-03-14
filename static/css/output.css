@@ -2547,6 +2547,85 @@ html {
   margin-inline-start: 1rem;
 }
 
+.stack {
+  display: inline-grid;
+  place-items: center;
+  align-items: flex-end;
+}
+
+.stack > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transform: translateY(14%) scale(0.9);
+  z-index: 1;
+  width: 100%;
+  opacity: 0.6;
+}
+
+.stack > *:nth-child(2) {
+  transform: translateY(7%) scale(0.95);
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.stack > *:nth-child(1) {
+  transform: translateY(0) scale(1) translateX(0);
+  z-index: 3;
+  opacity: 1;
+}
+
+.stack-bottom-start > * {
+  transform: translateY(14%) scale(0.9) translateX(-14%);
+  z-index: 1;
+}
+
+.stack-bottom-start > *:nth-child(2) {
+  transform: translateY(7%) scale(0.95) translateX(-7%);
+  z-index: 2;
+}
+
+.stack-animated:hover > * {
+  transform: translateY(7%) scale(1) translateX(0%);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stack-top.stack-animated:hover > * {
+  transform: translateY(-7%) scale(1);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stack-bottom-start.stack-animated:hover > * {
+  transform: translateY(7%) scale(1) translateX(-7%);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stack-bottom-end.stack-animated:hover > * {
+  transform: translateY(7%) scale(1) translateX(7%);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stack-top-start.stack-animated:hover > * {
+  transform: translateY(-7%) scale(1) translateX(-7%);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stack-top-end.stack-animated:hover > * {
+  transform: translateY(-7%) scale(1) translateX(7%);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .stats {
   display: inline-grid;
   border-radius: var(--rounded-box, 0.5rem);
@@ -7441,6 +7520,14 @@ textarea:focus-visible {
   line-height: 1rem;
 }
 
+.badge-lg {
+  height: 1.75rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
 .btn-xs {
   height: 1.5rem;
   min-height: 1.5rem;
@@ -7966,14 +8053,6 @@ textarea:focus-visible {
   animation: var(--motion-all-loop-and-enter-animations);
 }
 
-.motion-preset-slide-left {
-  --motion-origin-translate-x: 25%;
-  --motion-origin-opacity: 0;
-  --motion-opacity-in-animation: motion-opacity-in calc(var(--motion-opacity-duration) * var(--motion-opacity-perceptual-duration-multiplier)) var(--motion-opacity-timing) var(--motion-opacity-delay) both;
-  --motion-translate-in-animation: motion-translate-in calc(var(--motion-translate-duration) * var(--motion-translate-perceptual-duration-multiplier)) var(--motion-translate-timing) var(--motion-translate-delay) both;
-  animation: var(--motion-all-loop-and-enter-animations);
-}
-
 @keyframes RomboConfettiPop {
   0% {
     opacity: 0;
@@ -8492,8 +8571,16 @@ textarea:focus-visible {
   height: 1.25rem;
 }
 
+.h-56 {
+  height: 14rem;
+}
+
 .h-72 {
   height: 18rem;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .h-96 {
@@ -8507,10 +8594,6 @@ textarea:focus-visible {
 
 .h-full {
   height: 100%;
-}
-
-.h-80 {
-  height: 20rem;
 }
 
 .max-h-24 {
@@ -8543,6 +8626,10 @@ textarea:focus-visible {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-11\/12 {
+  width: 91.666667%;
 }
 
 .w-3\.5 {
@@ -9375,11 +9462,6 @@ textarea:focus-visible {
   background-color: rgb(161 98 7 / var(--tw-bg-opacity, 1));
 }
 
-.bg-base-300 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity, 1)));
-}
-
 .bg-opacity-70 {
   --tw-bg-opacity: 0.7;
 }
@@ -9854,6 +9936,11 @@ textarea:focus-visible {
   color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity, 1)));
 }
 
+.text-success-content {
+  --tw-text-opacity: 1;
+  color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity, 1)));
+}
+
 .text-success\/60 {
   color: var(--fallback-su,oklch(var(--su)/0.6));
 }
@@ -9865,6 +9952,11 @@ textarea:focus-visible {
 .text-warning {
   --tw-text-opacity: 1;
   color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
+}
+
+.text-warning-content {
+  --tw-text-opacity: 1;
+  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity, 1)));
 }
 
 .text-warning\/70 {
@@ -10018,19 +10110,6 @@ textarea:focus-visible {
 .motion-ease-spring-bouncy {
   --motion-timing: var(--motion-spring-bouncy);
   --motion-perceptual-duration-multiplier: 1.66;
-  --motion-filter-timing: var(--motion-spring-smooth);
-  --motion-opacity-timing: var(--motion-spring-smooth);
-  --motion-background-color-timing: var(--motion-spring-smooth);
-  --motion-text-color-timing: var(--motion-spring-smooth);
-  --motion-filter-perceptual-duration-multiplier: 1.66;
-  --motion-opacity-perceptual-duration-multiplier: 1.66;
-  --motion-background-color-perceptual-duration-multiplier: 1.66;
-  --motion-text-color-perceptual-duration-multiplier: 1.66;
-}
-
-.motion-ease-spring-bouncier {
-  --motion-timing: var(--motion-spring-bouncier);
-  --motion-perceptual-duration-multiplier: 2.035;
   --motion-filter-timing: var(--motion-spring-smooth);
   --motion-opacity-timing: var(--motion-spring-smooth);
   --motion-background-color-timing: var(--motion-spring-smooth);
@@ -10962,6 +11041,10 @@ textarea:focus-visible {
   background-color: var(--fallback-s,oklch(var(--s)/0.2));
 }
 
+.hover\:bg-warning\/20:hover {
+  background-color: var(--fallback-wa,oklch(var(--wa)/0.2));
+}
+
 .hover\:text-accent:hover {
   --tw-text-opacity: 1;
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
@@ -10980,6 +11063,11 @@ textarea:focus-visible {
 .hover\:text-secondary:hover {
   --tw-text-opacity: 1;
   color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity, 1)));
+}
+
+.hover\:text-warning:hover {
+  --tw-text-opacity: 1;
+  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity, 1)));
 }
 
 .hover\:no-underline:hover {
@@ -11156,6 +11244,11 @@ textarea:focus-visible {
   background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity, 1)));
 }
 
+[data-tab].active.active-tab\:bg-warning {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity, 1)));
+}
+
 [data-tab].active.active-tab\:bg-none {
   background-image: none;
 }
@@ -11223,6 +11316,11 @@ textarea:focus-visible {
 [data-tab].active .active-tab\:bg-secondary {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity, 1)));
+}
+
+[data-tab].active .active-tab\:bg-warning {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-bg-opacity, 1)));
 }
 
 [data-tab].active .active-tab\:bg-none {
@@ -11346,6 +11444,10 @@ textarea:focus-visible {
 
   .sm\:inline {
     display: inline;
+  }
+
+  .sm\:h-44 {
+    height: 11rem;
   }
 
   .sm\:w-2\/4 {
@@ -11495,6 +11597,10 @@ textarea:focus-visible {
 
   .lg\:grid {
     display: grid;
+  }
+
+  .lg\:h-52 {
+    height: 13rem;
   }
 
   .lg\:grid-cols-12 {
