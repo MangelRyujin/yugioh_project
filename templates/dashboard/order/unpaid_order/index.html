@@ -2,18 +2,16 @@
 {% load static %}
 {% block content %}
 <nav class="tabs mb-4 space-x-1 rtl:space-x-reverse overflow-x-auto" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
-  <button type="button" class="grow btn btn-text active-tab:bg-secondary   active-tab:text-white hover:text-secondary active hover:bg-secondary/20" id="tabs-fill-item-1" data-tab="#tabs-fill-1" aria-controls="tabs-fill-1" role="tab" aria-selected="false">
+  <button type="button" class="grow btn btn-text active-tab:bg-error   active-tab:text-white hover:text-error active hover:bg-error/20" id="tabs-fill-item-1" data-tab="#tabs-fill-1" aria-controls="tabs-fill-1" role="tab" aria-selected="false">
     Cartas
   </button>
   <button type="button" class="grow btn btn-text active-tab:bg-accent active-tab:text-white hover:text-accent hover:bg-accent/20" id="tabs-fill-item-2" data-tab="#tabs-fill-2" aria-controls="tabs-fill-2" role="tab" aria-selected="false">
     Decks
   </button>
-  <button type="button" class="grow btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-primary/20" id="tabs-fill-item-3" data-tab="#tabs-fill-3" aria-controls="tabs-fill-3" role="tab" aria-selected="false">
-    Playmats
+  <button type="button" class="grow btn btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-warning/20 disabled" id="tabs-fill-item-3" data-tab="#tabs-fill-3" aria-controls="tabs-fill-3" role="tab" aria-selected="false">
+    Accesorios
   </button>
-  <button type="button" class="grow btn btn-text active-tab:bg-error active-tab:text-white hover:text-error hover:bg-error/20" id="tabs-fill-item-4" data-tab="#tabs-fill-4" aria-controls="tabs-fill-4" role="tab" aria-selected="false">
-    Forros
-  </button>
+
 </nav>
 
 <div class="mt-3">
@@ -255,7 +253,7 @@
       </div>
     </div>
     <div class="overflow-hidden">
-      {% if playmats %}
+      {% if accesories %}
       <table class="table  min-w-full">
         <thead>
           <tr>
@@ -349,111 +347,7 @@
           {% endif %}
     </div>
   </div>
-  <div id="tabs-fill-4" class="hidden" role="tabpanel" aria-labelledby="tabs-fill-item-4">
-    <div class="pb-4 border-b border-base-content/25 ">
-      <div class="input-group max-w-sm bg-transparent">
-        <span class="input-group-text">
-          <span class="icon-[tabler--search] shrink-0 size-6 text-base-content"></span>
-        </span>
-        <label class="sr-only" for="table-input-search"></label>
-        <input type="search" class="input grow " id="table-input-search" placeholder="Buscar" data-datatable-search=""/>
-      </div>
-    </div>
-    <div class="overflow-hidden">
-      {% if forros %}
-      <table class="table  min-w-full">
-        <thead>
-          <tr>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Nombre
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Comprador
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Móvil
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Cantidad
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Precio
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="group w-fit text-xs">
-              <div class="flex items-center justify-between">
-                Categoría
-                <span class="icon-[tabler--chevron-up] datatable-ordering-asc:block hidden"></span>
-                <span class="icon-[tabler--chevron-down] datatable-ordering-desc:block hidden"></span>
-              </div>
-            </th>
-            <th scope="col" class="--exclude-from-ordering text-xs">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in items %}
-          <tr class="hover">
-            
-            
-            <td class="text-nowrap text-xs tooltip mt-1.5">
-              <div class="tooltip-toggle " aria-label="Tooltip">
-                Forro negro
-              </div>
-              
-           </td>
-            <td class="text-nowrap text-xs">{{item.customer.username}}</td>
-            <td class="text-nowrap text-xs">
-              {% if item.customer.phone_number %}
-              <a href="https://wa.me/{{item.customer.phone_number}}" class="cursor-pointer link-animated">{{item.customer.phone_number}}</a>
-              {% else %}
-              No asignado
-              {% endif %}
-            </td>
-            <td class="text-xs">{{item.cant}}</td>
-            <td class="text-xs">$ {{item.price}} USD</td>
-            
-            <td><span class="badge badge-soft  badge-error badge-sm">Forro</span></td>
-            <td>
-              <button class="btn btn-circle  btn-soft btn-sm btn-success border-success" aria-label="Action button">
-                
-                <span class="icon-[tabler--check] size-5"></span>
-              </button>
-              <button class="btn btn-circle btn-error border border-error btn-soft btn-sm" aria-label="Action button">
-                
-                <span class="icon-[tabler--square-rounded-x-filled] size-5"></span>
-              </button>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-            <div class="flex flex-col justify-center items-center mt-5">
-            <span class="icon-[tabler--zoom-question] size-24"></span>
-            <span class="">Sin resultados</span>
-            </div>
-          {% endif %}
-    </div>
-  </div>
+  
 </div>
    
     

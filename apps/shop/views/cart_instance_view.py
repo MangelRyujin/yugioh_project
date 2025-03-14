@@ -158,5 +158,6 @@ def check_cart(request):
     
     context = {
         'cart': cart.cart.values(),
+        'message':{}
     }
     return render(request, 'components/cart/cart_list.html', context)
