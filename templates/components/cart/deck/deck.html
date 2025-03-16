@@ -1,18 +1,29 @@
 {% load static %}
 <li class="p-3 shadow-md rounded bg-base-200/50 flex justify-start items-start gap-3 relative w-full" id="item-{{ item.pk }}">
 
-  {% comment %} Aqui comentado el ejemplo de lanzar una alerta de item cart {% endcomment %}
-  {% if not item_validate_cant %}
-  <img src="{% static "img/messages/sold.svg" %}" width="180" height="180" alt="{{ item.product_name }}" class="object-cover absolute">
-  {% endif %} 
+    {% if item.pk in adjusted_items %}
+      <img src="{% static 'img/messages/edit_cant.svg' %}" width="180" height="180" alt="{{ item.product_name }}" class="object-cover absolute">
+    {% endif %}
+    {% if item.pk in zero_quantity_items %}
+      <img src="{% static 'img/messages/sold.svg' %}" width="180" height="180" alt="{{ item.product_name }}" class="object-cover absolute">
+      <script>
+        setTimeout(function() {
+            document.getElementById('item-{{ item.pk }}').remove();
+            fetch("{% url 'remove_cart_item' item.pk 'deck' %}", {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            });
+        }, 5000); 
+      </script>
+    {% endif %}
 
       <div class=" w-3/5 sm:w-2/4  ">
 
         <div class="bg-primary text-primary-content grid h-full w-full place-content-center rounded min-h-40"
         style="background: url({% if  item.product_image %}{{item.product_image}}{% else %}{% static "img/donation.jpg" %}{% endif %}); background-size: cover; background-position: center;"
         >
-        
-        
         </div>
       
     </div>
