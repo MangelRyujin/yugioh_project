@@ -15,7 +15,9 @@
           <button type="button" class="btn btn-soft btn-secondary" data-overlay="#slide-down-animated-modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-primary">Confirmar</button>
+          <button hx-get="{% url "check_cart" %}"
+          hx-target="#CartSection"
+          hx-trigger="click" type="button" class="btn btn-primary" data-overlay="#slide-down-animated-modal">Confirmar</button>
         </div>
       </div>
     </div>

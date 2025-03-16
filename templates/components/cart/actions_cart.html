@@ -1,20 +1,8 @@
 <div class="fixed end-0 bottom-0 me-3 mb-3 flex gap-3 flex-col z-50">
 
 
-    <button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="slide-down-animated-modal" data-overlay="#slide-down-animated-modal">Open modal</button>
-    <div class=" shadow-md  px-2 btn btn-gradient  btn-primary waves waves-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="add-card-modal" data-overlay="#add-card-modal"
-    hx-get="{% url "check_cart" %}"
-    hx-target="#CartSection"
-    hx-trigger="click"
-    >
+    <div class=" shadow-md  px-2 btn btn-gradient  btn-primary waves waves-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="slide-down-animated-modal" data-overlay="#slide-down-animated-modal">
         <span class="icon-[tabler--shopping-cart-check] size-6"></span>
-
-        
-
-        {% include "components/cart/card/modal.html" %}
-
-
-
     </div>
 
     <div class=" shadow-md  px-2 btn btn-gradient btn-error waves waves-error "

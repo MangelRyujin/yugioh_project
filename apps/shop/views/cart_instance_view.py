@@ -126,9 +126,124 @@ def clear_cart_instance(request):
     return render(request, 'components/cart/cart_list.html',context)
 
 
+# def check_cart(request):
+#     cart = Cart(request)
+#     quantityAdjusting = False
+#     adjusted_items = []
+#     zero_quantity_items = []
+#     text = 'text'
+#     message = {
+#         'tag': '',
+#         'header': '',
+#         'text': '',
+#     }
+#     for item in list(cart.cart.values()):
+#         if item['object'] == 'card':
+#             product = AlbumCard.objects.filter(pk=item['pk']).first()
+#         elif item['object'] == 'deck':
+#             product = AlbumDecks.objects.filter(pk=item['pk']).first()
+#         else:
+#             #print(f"Invalid object type for item {item['pk']}")
+#             continue
+
+#         if item['object'] == 'card' and item['cant'] > product.stock:
+#             quantityAdjusting = True
+#             #print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
+#             item['cant'] = product.stock
+#             cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+#             cart.save()
+#             adjusted_items.append(item['pk'])
+            
+#         if item['object'] == 'card' and item['cant'] == 0:
+#             zero_quantity_items.append(item['pk'])
+            
+#         if quantityAdjusting:
+#             text = 'Cantidad de productos reajustada por ausencia de stock!'    
+#             message = {
+#                 'tag': 'info',
+#                 'header': 'Información',
+#                 'text': text,
+#             }
+#         else:
+#             message = {
+#                 'tag': 'success',
+#                 'header': 'Confirmación',
+#                 'text': 'Carrito validado correctamente!',
+#             }
+
+#         context = {
+#             'cart': cart.cart.values(),
+#             'message': message,
+#             'adjusted_items': adjusted_items,
+#             'zero_quantity_items': zero_quantity_items,
+#         }
+    
+#     return render(request, 'components/cart/cart_list.html', context)
+
+
+# def check_cart(request):
+#     cart = Cart(request)
+#     quantityAdjusting = False
+#     adjusted_items = []
+#     zero_quantity_items = []
+#     text = 'text'
+#     message = {
+#         'tag': '',
+#         'header': '',
+#         'text': '',
+#     }
+#     for item in list(cart.cart.values()):
+#         if item['object'] == 'card':
+#             product = AlbumCard.objects.filter(pk=item['pk']).first()
+#         elif item['object'] == 'deck':
+#             product = AlbumDecks.objects.filter(pk=item['pk']).first()
+#         else:
+#             continue
+
+#         if item['object'] == 'card' and item['cant'] > product.stock:
+#             quantityAdjusting = True
+#             item['cant'] = product.stock
+#             if item['cant'] == 0:
+#                 zero_quantity_items.append(item['pk'])
+#                 cart.remove(product, item['object'])
+#             else:
+#                 cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+#                 cart.save()
+#                 adjusted_items.append(item['pk'])
+            
+#         if item['object'] == 'card' and item['cant'] == 0:
+#             zero_quantity_items.append(item['pk'])
+#             cart.remove(product, item['object'])
+            
+#     if quantityAdjusting:
+#         text = 'Cantidad de productos reajustada por ausencia de stock!'    
+#         message = {
+#             'tag': 'info',
+#             'header': 'Información',
+#             'text': text,
+#         }
+#     else:
+#         message = {
+#             'tag': 'success',
+#             'header': 'Confirmación',
+#             'text': 'Carrito validado correctamente!',
+#         }
+
+#     context = {
+#         'cart': cart.cart.values(),
+#         'message': message,
+#         'adjusted_items': adjusted_items,
+#         'zero_quantity_items': zero_quantity_items,
+#     }
+    
+#     return render(request, 'components/cart/cart_list.html', context)
+
+
 def check_cart(request):
     cart = Cart(request)
     quantityAdjusting = False
+    adjusted_items = []
+    zero_quantity_items = []
     text = 'text'
     message = {
         'tag': '',
@@ -141,33 +256,42 @@ def check_cart(request):
         elif item['object'] == 'deck':
             product = AlbumDecks.objects.filter(pk=item['pk']).first()
         else:
-            #print(f"Invalid object type for item {item['pk']}")
             continue
 
         if item['object'] == 'card' and item['cant'] > product.stock:
             quantityAdjusting = True
-            #print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
             item['cant'] = product.stock
-            cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
-            cart.save()
+            if item['cant'] == 0:
+                zero_quantity_items.append(item['pk'])
+                # No eliminar el producto del carrito inmediatamente
+            else:
+                cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+                cart.save()
+                adjusted_items.append(item['pk'])
             
-        if quantityAdjusting:
-            text = 'Cantidad de productos reajustada por ausencia de stock!'    
-            message = {
-                'tag': 'info',
-                'header': 'Información',
-                'text': text,
-            }
-        else:
-            message = {
-                'tag': 'success',
-                'header': 'Confirmación',
-                'text': 'Carrito validado correctamente!',
-            }
-
-        context = {
-            'cart': cart.cart.values(),
-            'message': message,
+        if item['object'] == 'card' and item['cant'] == 0:
+            zero_quantity_items.append(item['pk'])
+            # No eliminar el producto del carrito inmediatamente
+            
+    if quantityAdjusting:
+        text = 'Cantidad de productos reajustada por ausencia de stock!'    
+        message = {
+            'tag': 'info',
+            'header': 'Información',
+            'text': text,
         }
+    else:
+        message = {
+            'tag': 'success',
+            'header': 'Confirmación',
+            'text': 'Carrito validado correctamente!',
+        }
+
+    context = {
+        'cart': cart.cart.values(),
+        'message': message,
+        'adjusted_items': adjusted_items,
+        'zero_quantity_items': zero_quantity_items,
+    }
     
     return render(request, 'components/cart/cart_list.html', context)
