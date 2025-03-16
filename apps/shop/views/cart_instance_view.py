@@ -66,7 +66,7 @@ def increment_cart_item(request, pk, object):
             if cart.increment(album_card, object):
                 return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
             else:
-                messages.error(request, 'No hay suficiente stock')
+                messages.error(request, 'No hay suficiente cantidad en stock')
                 return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
         else:
             messages.error(request, 'Item not found')
@@ -77,7 +77,7 @@ def increment_cart_item(request, pk, object):
             if cart.increment(album_deck, object):
                 return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
             else:
-                messages.error(request, 'No hay suficiente stock')
+                messages.error(request, 'No hay suficiente cantidad en stock')
                 return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
         else:
             messages.error(request, 'Item not found')
@@ -100,7 +100,6 @@ def decrement_cart_item(request, pk, object):
         'element_last': element_last
     }
     return render(request, 'components/cart/cart_list.html', context)
-
 
 
 def remove_cart_item(request, pk, object):
@@ -131,6 +130,11 @@ def check_cart(request):
     cart = Cart(request)
     quantityAdjusting = False
     text = 'text'
+    message = {
+        'tag': '',
+        'header': '',
+        'text': '',
+    }
     for item in list(cart.cart.values()):
         if item['object'] == 'card':
             product = AlbumCard.objects.filter(pk=item['pk']).first()
@@ -147,17 +151,23 @@ def check_cart(request):
             cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
             cart.save()
             
-    if quantityAdjusting:
-        text = 'Cantidad de productos reajustada por ausencia de stock!'    
-    
+        if quantityAdjusting:
+            text = 'Cantidad de productos reajustada por ausencia de stock!'    
+            message = {
+                'tag': 'info',
+                'header': 'Información',
+                'text': text,
+            }
+        else:
+            message = {
+                'tag': 'success',
+                'header': 'Confirmación',
+                'text': 'Carrito validado correctamente!',
+            }
 
-    if text != 'text':
-        messages.info(request, text)
-    elif text == 'text':
-        messages.success(request, 'Carrito validado correctamente!')
+        context = {
+            'cart': cart.cart.values(),
+            'message': message,
+        }
     
-    context = {
-        'cart': cart.cart.values(),
-        'message':{}
-    }
     return render(request, 'components/cart/cart_list.html', context)
