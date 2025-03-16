@@ -1,24 +1,23 @@
-
-<div class="mx-auto max-w-7xl  sm:px-6 lg:px-8 flex justify-center items-center mb-20" id="cart-container">
+<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 flex justify-center items-center mb-20" id="cart-container">
 
   {% if cart %}
 
     {% if message %}
       <script>
-        showNotification('{{message.tag}}', '{{message.header}}', '{{message.text}}', 3000, 'fas fa-times-circle');
+        showNotification('{{ message.tag }}', '{{ message.header }}', '{{ message.text }}', 3000, 'fas fa-times-circle');
       </script>
     {% endif %}
 
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-20">
-        {% for item in cart %}
-          {% if item.object == "card" %}
-            {% include "components/cart/card/card.html" %}
-          {% elif item.object == "deck" %}
-            {% include "components/cart/deck/deck.html" %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-   
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-20">
+      {% for item in cart %}
+        {% if item.object == "card" %}
+          {% include "components/cart/card/card.html" %}
+        {% elif item.object == "deck" %}
+          {% include "components/cart/deck/deck.html" %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
   {% else %}
     {% include "components/cart/card/partials/no_result.html" %}
   {% endif %}
