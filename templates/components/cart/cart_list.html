@@ -1,36 +1,23 @@
-
-<div class="mx-auto max-w-7xl  sm:px-6 lg:px-8 flex justify-center items-center mb-20" id="cart-container">
-  
-  {% if messages %}
-      {% for message in messages %}
-        {% if message.tags == 'error' %}
-          <script>
-              showNotification('error', 'Error', '{{message}}', 3000, 'fas fa-times-circle');
-          </script>
-        {% elif message.tags == 'success'%}
-          <script>
-              showNotification('success', 'Confirmación', '{{message}}', 3000, 'fas fa-info-circle');
-          </script>
-        {% elif message.tags == 'info'%}
-          <script>
-            showNotification('info', 'Información', '{{message}}', 3000, 'fas fa-info-circle');
-          </script>
-        {% endif %}
-      {% endfor %}
-  {% endif %}
+<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 flex justify-center items-center mb-20" id="cart-container">
 
   {% if cart %}
 
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-20">
-        {% for item in cart %}
-          {% if item.object == "card" %}
-            {% include "components/cart/card/card.html" %}
-          {% elif item.object == "deck" %}
-            {% include "components/cart/deck/deck.html" %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-   
+    {% if message %}
+      <script>
+        showNotification('{{ message.tag }}', '{{ message.header }}', '{{ message.text }}', 3000, 'fas fa-times-circle');
+      </script>
+    {% endif %}
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-20">
+      {% for item in cart %}
+        {% if item.object == "card" %}
+          {% include "components/cart/card/card.html" %}
+        {% elif item.object == "deck" %}
+          {% include "components/cart/deck/deck.html" %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
   {% else %}
     {% include "components/cart/card/partials/no_result.html" %}
   {% endif %}

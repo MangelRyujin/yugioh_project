@@ -2,8 +2,9 @@ from apps.card.models import AlbumCard, AlbumDecks
 from apps.shop.cart_instance import Cart
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.urls import reverse
 
 
 def cart_view(request):
@@ -66,22 +67,11 @@ def increment_cart_item(request, pk, object):
             if cart.increment(album_card, object):
                 return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
             else:
-                messages.error(request, 'No hay suficiente stock')
+                messages.error(request, 'No hay suficiente cantidad en stock')
                 return render(request, 'components/cart/card/card.html', {'item': cart.cart[f'{object}{pk}']})
         else:
             messages.error(request, 'Item not found')
             return render(request, 'components/cart/card/card.html', {'error': 'Item not found'})
-    elif object == 'deck':
-        album_deck = AlbumDecks.objects.filter(pk=pk).first()
-        if album_deck:
-            if cart.increment(album_deck, object):
-                return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
-            else:
-                messages.error(request, 'No hay suficiente stock')
-                return render(request, 'components/cart/deck/deck.html', {'item': cart.cart[f'{object}{pk}']})
-        else:
-            messages.error(request, 'Item not found')
-            return render(request, 'components/cart/deck/deck.html', {'error': 'Item not found'})
     messages.error(request, 'Invalid object type')
     return render(request, 'components/cart/card/card.html', {'error': 'Invalid object type'})
 
@@ -90,17 +80,13 @@ def decrement_cart_item(request, pk, object):
     cart = Cart(request)
     if object == 'card':
         album_card = AlbumCard.objects.filter(pk=pk).first()
-        cart.decrement(album_card, object)
-    elif object == 'deck':
-        album_deck = AlbumDecks.objects.filter(pk=pk).first()
-        cart.decrement(album_deck, object)
+        cart.decrement(album_card, object)    
     element_last = cart.last_element()
     context = {
         'cart': cart.cart.values(),
         'element_last': element_last
     }
     return render(request, 'components/cart/cart_list.html', context)
-
 
 
 def remove_cart_item(request, pk, object):
@@ -124,40 +110,79 @@ def clear_cart_instance(request):
     context={
         'cart':[]
     }
+    
     return render(request, 'components/cart/cart_list.html',context)
-
 
 def check_cart(request):
     cart = Cart(request)
     quantityAdjusting = False
+    adjusted_items = []
+    zero_quantity_items = []
     text = 'text'
+    cart_validated = False
+    message = {
+        'tag': '',
+        'header': '',
+        'text': '',
+    }
     for item in list(cart.cart.values()):
         if item['object'] == 'card':
             product = AlbumCard.objects.filter(pk=item['pk']).first()
         elif item['object'] == 'deck':
             product = AlbumDecks.objects.filter(pk=item['pk']).first()
         else:
-            #print(f"Invalid object type for item {item['pk']}")
             continue
 
         if item['object'] == 'card' and item['cant'] > product.stock:
             quantityAdjusting = True
-            #print(f"Adjusting quantity for product {item['pk']} from {item['cant']} to {product.stock}")
             item['cant'] = product.stock
-            cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
-            cart.save()
+            if item['cant'] == 0:
+                zero_quantity_items.append(item['pk'])
+            else:
+                cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+                cart.save()
+                adjusted_items.append(item['pk'])
+            
+        if item['object'] == 'card' and item['cant'] == 0:
+            zero_quantity_items.append(item['pk'])
+
+        if item['object'] == 'deck' and item['cant'] > product.stock:
+            quantityAdjusting = True
+            item['cant'] = product.stock
+            if item['cant'] == 0:
+                zero_quantity_items.append(item['pk'])
+            else:
+                cart.cart[f"{item['object']}{item['pk']}"]['cant'] = product.stock
+                cart.save()
+                adjusted_items.append(item['pk'])
+        
+        if item['object'] == 'deck' and item['cant'] == 0:
+            zero_quantity_items.append(item['pk'])
             
     if quantityAdjusting:
         text = 'Cantidad de productos reajustada por ausencia de stock!'    
-    
+        message = {
+            'tag': 'info',
+            'header': 'Información',
+            'text': text,
+        }
+    else:
+        message = {
+            'tag': 'success',
+            'header': 'Confirmación',
+            'text': 'Carrito validado correctamente!',
+        }
+        cart_validated = True
 
-    if text != 'text':
-        messages.info(request, text)
-    elif text == 'text':
-        messages.success(request, 'Carrito validado correctamente!')
-    
     context = {
         'cart': cart.cart.values(),
-        'message':{}
+        'message': message,
+        'adjusted_items': adjusted_items,
+        'zero_quantity_items': zero_quantity_items,
+        'cart_validated': cart_validated,
     }
+    
+    if cart_validated:
+        return HttpResponseRedirect(reverse('clear_cart_instance'))
+    
     return render(request, 'components/cart/cart_list.html', context)
