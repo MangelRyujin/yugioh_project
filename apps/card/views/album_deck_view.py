@@ -95,5 +95,5 @@ def update_deck_profile(request,pk):
             context['message']="Deck editado con éxito"
             context['form']=form
         else:
-            print(form)
+            pass
     return render(request,'components/deck/detail/deck/deck_perfil.html',context)
