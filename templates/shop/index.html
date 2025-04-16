@@ -18,14 +18,11 @@
             <span class="input-group-text">
             <span class="icon-[tabler--search] text-base-content/80 size-6"></span>
             </span>
-            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-            <input type="hidden" name="filters" value="{{ filters|default_if_none:'{}'|escapejs }}">
             <input type="search" class="input  grow" placeholder="Buscar" id="keywords" 
-            name="keywords" 
-            hx-post="{% url 'cards_search_result' %}" 
+            name="name" 
+            hx-get="{% url 'cards_search_result' %}" 
             hx-trigger="input changed, delay:500ms" 
             hx-target="#search-results" 
-            hx-include="[name=csrfmiddlewaretoken], [name=filters], [name=konami_id], [name=rarity], [name=version], [name=price_min], [name=price_max], [name=stock_min], [name=stock_max], [name=type], [name=attribute], [name=archetype]" 
             hx-indicator="#spinerSearchAllMyAlbumCards"/>
             <span id="spinerSearchAllMyAlbumCards" class="loading loading-dots htmx-indicator me-1"></span>
             <label class="sr-only" for="kbdInput3">Buscar</label>

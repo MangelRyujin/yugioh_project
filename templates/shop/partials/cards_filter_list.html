@@ -130,35 +130,38 @@
                   <label class="sr-only" for="monster-link-arrows">Link Arrows</label>
                 </div>
               </div>
-              
+
+              <!-- BLoque de Magias -->
               <div class="col-span-1" id="spell-type-container" style="display: none;">
                 <label class="label label-text" for="spell_type">Tipo de Magia:</label>
                 <div class="input-group">
-                  <select class="select select-sm" name='race' id="spell_type">
+                  <select class="select select-sm" id="spell_type">
                     <option value="" selected>-- Magia --</option>
-                    <option value="Normal">Normal</option>
-                    <option value="Continuous">Continuous</option>
-                    <option value="Equip">Equip</option>
-                    <option value="Field">Field</option>
-                    <option value="Quick-Play">Quick-Play</option>
-                    <option value="Ritual">Ritual</option>
+                    <option value="Normal Spell">Normal</option>
+                    <option value="Continuous Spell">Continuous</option>
+                    <option value="Equip Spell">Equip</option>
+                    <option value="Field Spell">Field</option>
+                    <option value="Quick-Play Spell">Quick-Play</option>
+                    <option value="Ritual Spell">Ritual</option>
                   </select>
                   <label class="sr-only" for="spell_type">Tipo de Magia</label>
                 </div>
               </div>
-              
+
+              <!-- Bloque de trampas -->
               <div class="col-span-1" id="trap-type-container" style="display: none;">
                 <label class="label label-text" for="trap_type">Tipo de Trampa:</label>
                 <div class="input-group">
-                  <select class="select select-sm" name='race' id="trap_type">
+                  <select class="select select-sm" id="trap_type">
                     <option value="" selected>-- Trampa --</option>
-                    <option value="Normal">Normal</option>
-                    <option value="Continuous">Continuous</option>
-                    <option value="Counter">Counter</option>
+                    <option value="Normal Trap">Normal</option>
+                    <option value="Continuous Trap">Continuous</option>
+                    <option value="Counter Trap">Counter</option>
                   </select>
                   <label class="sr-only" for="trap_type">Tipo de Trampa</label>
                 </div>
               </div>
+
               <div class="col-span-2" id="archetype-container">
                 <label class="label label-text" for="archetype">Arquetipo:</label>
                 <div class="input-group">
@@ -288,6 +291,8 @@
       const monsterLinkArrows = document.getElementById('monster-link-arrows-container');
       const spellTypeContainer = document.getElementById('spell-type-container');
       const trapTypeContainer = document.getElementById('trap-type-container');
+      const spellType = document.getElementById('spell_type');
+      const trapType = document.getElementById('trap_type');
 
       if (cardType === 'Monster') {
         lvlContainer.style.display = 'block';
@@ -310,6 +315,8 @@
           <option value="7">Divinidad</option>
         `;
       } else if (cardType === 'Spell Card') {
+        spellType.setAttribute('name', 'humanReadableCardType');
+        trapType.removeAttribute('name');
         lvlContainer.style.display = 'none';
         atkContainer.style.display = 'none';
         defContainer.style.display = 'none';
@@ -323,6 +330,8 @@
         // Clear attributes
         cardAttribute.innerHTML = '';
       } else if (cardType === 'Trap Card') {
+        trapType.setAttribute('name', 'humanReadableCardType');
+        spellType.removeAttribute('name');
         lvlContainer.style.display = 'none';
         atkContainer.style.display = 'none';
         defContainer.style.display = 'none';

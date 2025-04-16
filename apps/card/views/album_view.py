@@ -1,17 +1,16 @@
 from django.shortcuts import render
 from apps.card.filters import AlbumCardFilter
 from apps.card.models import *
-import requests
 from django.http import  HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from apps.card.models import AlbumCard, Album
-import requests
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from apps.card.utils.create_card import album_card_create
 from django.db.models import Q
+import requests
 # Create your views here.
 
 

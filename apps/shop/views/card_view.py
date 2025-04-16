@@ -16,13 +16,13 @@ def shop(request):
 
 def shop_card(request):
     content_type = ContentType.objects.get_for_model(AlbumCard)
-    context = _show_cards(request)
+    context = _show_cards_filter(request)
     context['content_type_id'] = content_type.id
     context['cart'] = Cart(request)
     return render(request, 'shop/index.html', context)
 
 def cards_search_result(request):
-    context=_show_cards(request)
+    context = _show_cards_filter(request)
     content_type = ContentType.objects.get_for_model(AlbumCard)
     context['content_type_id'] = content_type.id
     context['cart'] = Cart(request)
@@ -41,17 +41,4 @@ def _show_cards_filter(request):
     cards = AlbumCardFilter(request.GET, queryset=AlbumCard.objects.filter(stock__gt=0).order_by('id'))
     context = _get_paginator(request, cards.qs)
     context['parameters'] = parameters
-    return context
-
-def _show_cards(request):
-    cards = AlbumCard.objects.filter(stock__gt=0).order_by('id')
-    if request.method == "POST":
-        keywords = request.POST.get('keywords', '')
-        cards = AlbumCard.objects.filter(
-            Q(name__icontains = keywords) | Q(version__icontains = keywords) | Q(konami_id__icontains = keywords) |
-                                    Q(archetype__icontains = keywords) | Q(expantion__icontains = keywords)
-                                    | Q(type__icontains = keywords),stock__gt=0
-            ).distinct().order_by('id')
-    cards_result = AlbumCardFilter(request.GET, queryset=cards)
-    context = _get_paginator(request, cards_result.qs)
     return context
