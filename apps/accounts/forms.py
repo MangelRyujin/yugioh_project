@@ -4,12 +4,13 @@ from apps.accounts.models import Donation, User
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    phone_number = forms.IntegerField(required=True)
     first_name = forms.CharField()
     last_name = forms.CharField()
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2','first_name','last_name']
+        fields = ['username', 'email', 'phone_number', 'password1', 'password2','first_name','last_name']
 
 class ProfileUpdateForm(UserChangeForm):
     phone_number = forms.IntegerField(required=False)
