@@ -1,6 +1,8 @@
 from django.shortcuts import render,get_object_or_404
 from apps.card.models import AlbumDecks, AlbumDecksCard
+from apps.card.filters import AlbumDeckFilter
 from django.db.models import Q
+from django.db.models import Count
 
 from apps.shop.cart_instance import Cart
 from utils.methods import _get_paginator
@@ -11,22 +13,18 @@ def shop_deck(request):
     return render(request, 'shop/deck/index.html',context )
 
 def decks_search_result(request):
-    context=_show_decks(request)
+    context=_show_decks_filter(request)
     context['cart'] = Cart(request)
     return render(request, 'shop/deck/partials/decks_list.html',context )
 
 
 def _show_decks(request):
-    decks = AlbumDecks.objects.filter(is_active=True)
-    if request.method == 'POST':
-        keywords = request.POST.get('keywords', '')
-        decks_search = decks.filter(
-            Q(name__icontains = keywords) 
-            | Q(user__username__icontains = keywords) 
-            | Q(description__icontains = keywords)
-            ).distinct()
-        decks=decks_search
-    return _get_paginator(request,decks)
+    get_copy = request.GET.copy()
+    parameters = get_copy.pop('page', True) and get_copy.urlencode()
+    decks = AlbumDecks.objects.filter(is_active=True).annotate(total_cards_count=Count('deck_cards')).filter(total_cards_count__gt=0)
+    context = _get_paginator(request, decks)
+    context['parameters'] = parameters
+    return context
 
 
 def shop_deck_card(request,pk):
@@ -38,6 +36,14 @@ def shop_deck_card(request,pk):
 def shop_deck_cards_search_result(request,pk):
     return render(request, 'shop/deck/partials/card_list.html', context=_show_shop_deck_cards(request,pk))
 
+
+def _show_decks_filter(request):
+    get_copy = request.GET.copy()
+    parameters = get_copy.pop('page', True) and get_copy.urlencode()
+    decks = AlbumDeckFilter(request.GET, queryset=AlbumDecks.objects.filter(is_active=True).annotate(total_cards_count=Count('deck_cards')).filter(total_cards_count__gt=0))
+    context = _get_paginator(request, decks.qs)
+    context['parameters'] = parameters
+    return context
 
 def _show_shop_deck_cards(request,pk):
     deck = get_object_or_404(AlbumDecks,pk=pk)
